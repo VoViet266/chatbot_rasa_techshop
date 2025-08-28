@@ -13,6 +13,12 @@ responses:
   utter_greet:
   - text: "Xin chào, bạn có khỏe không?"
   - text: "Cơm nước gì chưa người đẹp?"
+  - text: "Chào ní, khỏe hông?"
+
+  utter_mood_great:
+  - text: "Xem bạn vui chưa kìa?"
+  - text: "Có chuyện gì vui dữ vậy bạn?"
+  - text: "Hí hí, vui quá he?"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -25,10 +31,14 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Tạm biệt bạn nhé!"
+  - text: "Bái bai!"
+  - text: "Bai nhe!"
+  - text: "Tạm biệt quý khách!"
+  - text: "TechShop xin tạm biệt quý khách!"
 
   utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "Tôi là một mô hình chatbot được xây dựng bằng Rasa."
 
 session_config:
   session_expiration_time: 60
