@@ -23,24 +23,22 @@ class ActionProvidePrice(Action):
         variants_collection = db["variants"]
 
         # 1. Tìm product theo tên
-        product = products_collection.find_one({
-    "name": {"$regex": f"^{product_name}$", "$options": "i"}
-})
-        # product = products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
-
-        print("Product name:", product_name)
+        product = products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
 
         if not product:
             dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product_name}.")
             return []
 
-        # 2. Lấy danh sách variants theo product_id
-        product_id = product["_id"]
-        variants = variants_collection.find({"product_id": str(product_id)})
-        print("Variants:", list(variants))
+        # 2. Lấy danh sách variant IDs từ product
+        variant_ids = product.get("variants", [])
+        if not variant_ids:
+            dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
+            return []
 
-        # 3. Ghép dữ liệu lại
+        # 3. Tìm variants theo _id
+        variants = variants_collection.find({"_id": {"$in": variant_ids}})
         variants = list(variants)
+
         if len(variants) == 0:
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
         else:
