@@ -3,65 +3,34 @@ version: "3.1"
 nlu:
 - intent: greet
   examples: |
-    - Xin chào
-    - Chào bạn
-    - Hello em
-    - Hello bạn
-    - Xin chào bạn
-    - Chào ní
-    - Hé lô ní
-    - Chào nhe
-    - Chao xìn
-    - Hé lô
-    - A lô
-    - Cơm nước gì chưa người đẹp?
+    - xin chào
+    - chào bạn
+    - hello
+    - hi
 
 - intent: goodbye
   examples: |
-    - Bai
-    - Đi nghe
-    - Tạm biệt
-    - Bái bai
-    - Gặp lại sau
-    - Bye
+    - tạm biệt
+    - chào nhé
+    - hẹn gặp lại
+    - bye
 
-- intent: affirm
+- intent: ask_price
   examples: |
-    - Ok
-    - Được á
-    - Được
-    - Duyệt
+    - Giá của [iPhone 16](product) là bao nhiêu?
+    - Cho tôi biết giá [Macbook Air M3](product)
+    - Bao nhiêu tiền [Samsung S24](product)
+    - Giá [iPad Pro](product) thế nào?
+    - Tôi muốn biết giá [Dell XPS 13](product)
+    - Tôi cần biết giá của một số sản phẩm
 
-- intent: deny
-  examples: |
-    - Không
-    - No
-    - Không bao giờ
-    - Hông
-    - Hông nhe
-    - Không có cửa
-    - No never
+# - intent: ask_brand
+#   examples: |
+#     - Có những sản phẩm của [Apple](brand) không?
+#     - Cho tôi xem laptop [Dell](brand)
+#     - Hệ thống của bạn bán những thương hiệu nào?
+#     - Bạn có sản phẩm từ [Samsung](brand) không?
+#     - Tôi muốn tìm hiểu về các sản phẩm của [Apple](brand)
+#     - Hệ thống của bạn bán sản phẩm của bao nhiêu thương hiệu?
+#     - Bạn có bán điện thoại [Samsung](brand) không?
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - Pơ phẹt
-    - Tuyệt vời
-    - Tuỵt dzời
-    - Quá xá đã luôn
-    - Ôi thật yomost
-    - Trời ơi nó đã quá Tổ quốc ơi
-
-- intent: mood_unhappy
-  examples: |
-    - Tôi đang buồn
-    - Quá buồn
-    - Lòng buồn não nề
-    - Quá thất vọng
-
-- intent: bot_challenge
-  examples: |
-    - Bạn có phải chatbot không?
-    - Bạn có phải con người không?
-    - Tôi đang nói chuyện với bot à?
-    - Tôi có đang nói chuyện với con người không?
