@@ -39,15 +39,27 @@ class ActionProvidePrice(Action):
         variants = variants_collection.find({"_id": {"$in": variant_ids}})
         variants = list(variants)
 
+
         if len(variants) == 0:
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
         else:
-            message = f"Thông tin giá cho {product['name']}:\n"
-            for v in variants:
-                ram = v.get("ram", "")
-                storage = v.get("storage", "")
-                price = v.get("price", "Liên hệ")
-                message += f"- {ram} / {storage}: {price:,} VND\n"
+            message = f"""<div style="display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 12px; padding: 16px; margin: 8px 0; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+  <div style="flex-shrink: 0; margin-right: 16px;">
+    <img src="{variants[0]["color"][0]["images"][0]}" alt="${product["name"]}" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;" />
+  </div>
+  <div style="flex-grow: 1;">
+    <h3 style="margin: 0 0 8px 0; color: #333; font-size: 15px; font-weight: 600;">${product["name"]}</h3>
+    <div style="color: #666; font-size: 14px; line-height: 1.5;">
+      <div style="margin-bottom: 4px;"><strong>Giá:</strong> {variants[0]["price"]}</div>
+      <div style="margin-bottom: 4px;"><strong>Màu:</strong> {variants[0]["color"][0]["colorName"]}</div>
+    </div>
+  </div>
+</div>"""
+            # for v in variants:
+            #     ram = v.get("ram", "")
+            #     storage = v.get("storage", "")
+            #     price = v.get("price", "Liên hệ")
+            #     message += f"- {ram} / {storage}: {price:,} VND\n"
             dispatcher.utter_message(text=message)
 
         return []
