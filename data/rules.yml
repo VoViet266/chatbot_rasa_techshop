@@ -13,5 +13,5 @@ rules:
 
 - rule: Provide fallback when user input is unclear
   steps:
-  - intent: nlu_fallback
+  - intent: out_of_scope
   - action: utter_fallback

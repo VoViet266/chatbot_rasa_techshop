@@ -1,28 +1,42 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - xin chào
-    - chào bạn
-    - hello
-    - hi
+  - intent: greet
+    examples: |
+      - xin chào
+      - chào bạn
+      - hello
+      - hi
 
-- intent: goodbye
-  examples: |
-    - tạm biệt
-    - chào nhé
-    - hẹn gặp lại
-    - bye
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - chào nhé
+      - hẹn gặp lại
+      - bye
 
-- intent: ask_price
-  examples: |
-    - Giá của [iPhone 16](product) là bao nhiêu?
-    - Cho tôi biết giá [Macbook Air M3](product)
-    - Bao nhiêu tiền [Samsung S24](product)
-    - Giá [iPad Pro](product) thế nào?
-    - Tôi muốn biết giá [Dell XPS 13](product)
-    - Tôi cần biết giá của một số sản phẩm
+  - intent: ask_price
+    examples: |
+      - Giá của [iPhone 16](product) là bao nhiêu?
+      - Cho tôi biết giá [Macbook Air M3](product)
+      - Bao nhiêu tiền [Samsung S24](product)
+      - Giá [iPad Pro](product) thế nào?
+      - Tôi muốn biết giá [Dell XPS 13](product)
+      - Tôi cần biết giá của một số sản phẩm
+
+  - intent: out_of_scope
+    examples: |
+      - ê bộ giỡn mặt đó hả
+      - ìgsdefyuefyu
+      - hfguygffkjbhjfgf
+      - ndxsjn ibcdbh
+      - con chó Diệc
+      - cái gì vậy trời
+      - vô nghĩa quá
+      - blabla
+      - thử thôi
+      - nói tào lao
+      - không liên quan
 
 # - intent: ask_brand
 #   examples: |
