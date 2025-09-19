@@ -21,6 +21,7 @@ class ActionProvidePrice(Action):
         db = client["techshop_db"]
         products_collection = db["products"]
         variants_collection = db["variants"]
+        brands_collection = db["brands"]
 
         # 1. Tìm product theo tên
         product = products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
@@ -37,29 +38,34 @@ class ActionProvidePrice(Action):
 
         # 3. Tìm variants theo _id
         variants = variants_collection.find({"_id": {"$in": variant_ids}})
+        brand = brands_collection.find_one({"_id": product["brand"]})
         variants = list(variants)
 
 
         if len(variants) == 0:
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
         else:
-            message = f"""<div style="display: flex; align-items: center; border: 1px solid #e0e0e0; border-radius: 12px; padding: 16px; margin: 8px 0; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-  <div style="flex-shrink: 0; margin-right: 16px;">
-    <img src="{variants[0]["color"][0]["images"][0]}" alt="${product["name"]}" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;" />
-  </div>
-  <div style="flex-grow: 1;">
-    <h3 style="margin: 0 0 8px 0; color: #333; font-size: 15px; font-weight: 600;">${product["name"]}</h3>
-    <div style="color: #666; font-size: 14px; line-height: 1.5;">
-      <div style="margin-bottom: 4px;"><strong>Giá:</strong> {variants[0]["price"]}</div>
-      <div style="margin-bottom: 4px;"><strong>Màu:</strong> {variants[0]["color"][0]["colorName"]}</div>
-    </div>
-  </div>
-</div>"""
-            # for v in variants:
-            #     ram = v.get("ram", "")
-            #     storage = v.get("storage", "")
-            #     price = v.get("price", "Liên hệ")
-            #     message += f"- {ram} / {storage}: {price:,} VND\n"
-            dispatcher.utter_message(text=message)
+          message = f"""
+          <h2 class="text-lg py-0">{product["name"]}</h2
+          <span>Thương hiệu: {brand["name"]}</span>
+          <br/>
+          <span>Giảm giá: {product["discount"]}%</span>
+          
+          <div class="flex items-center border border-[#e0e0e0] rounded-[12px] p-16 my-8 bg-white shadow-md">
+            <div style="shrink-0 mr-[16px]">
+              <img src="{variants[0]["color"][0]["images"][0]}" alt="${product["name"]}" style="width: 120px; height: 120px; object-fit: cover; border-radius: 8px;" />
+            </div>
+            <div style="flex-grow: 1;">
+              <h3 style="margin: 0 0 8px 0; color: #333; font-size: 15px; font-weight: 600;">{product["name"]}</h3>
+              <div style="color: #666; font-size: 14px; line-height: 1.5;">
+                <div style="margin-bottom: 4px;"><strong>Giá:</strong> {variants[0]["price"]}</div>
+                <div style="margin-bottom: 4px;"><strong>Màu:</strong> {variants[0]["color"][0]["colorName"]}</div>
+              </div>
+            </div>
+          </div>
+          """
+
+            
+        dispatcher.utter_message(text=message)
 
         return []
