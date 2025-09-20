@@ -24,7 +24,17 @@ nlu:
       - Tôi muốn biết giá [Dell XPS 13](product)
       - Thông tin [Galaxy A55](product) là gì?
       - Tôi cần biết giá của [Sony WH-1000XM5](product)
+      - Tôi cần sản phẩm [Samsung Galaxy Z fold 6](product)
+      - Sản phẩm [Galaxy S25 Ultra](product) giá bao nhiêu?
+      - Có tai nghe [WH-1000XM5](product) không?
+      - Tai nghe [Sony WH-1000XM5](product) giá sao?
+      - Sản phẩm [Extra Bass MDR-EX15AP](product) thì sao?
+      - Sản phẩm [Sony Extra Bass MDR-EX15AP](product)
+      - Tai nghe chụp tai [Sony Inzone H3](product)
       - Sản phẩm [Z fold 6](product) giá bao nhiêu?
+      - [Tai nghe gaming Sony](product)
+      - Sản phẩm [Galaxy M55](product)
+      - Thông tin về [Samsung M55](product)
       - Tai nghe [Sony MDR](product) giá bao nhiêu?
       - Sản phẩm [S25 Ultra](product) giá bao nhiêu?
       - Tôi cần biết thông tin về sản phẩm [Samsung galaxy Tab S9](product)
@@ -38,6 +48,13 @@ nlu:
       - Bảo hành sản phẩm như thế nào?
       - Sản phẩm của bạn bảo hành bao lâu?
       - Tôi cần biết về chính sách bảo hành của bạn
+    
+  - intent: ask_store
+    examples: |
+      - Hệ thống có bao nhiêu cửa hàng?
+      - Có tất cả bao nhiêu cửa hàng?
+      - Tôi cần tìm cửa hàng?
+      - Tôi muốn mua hàng tại cửa hàng?
 
   - intent: out_of_scope
     examples: |

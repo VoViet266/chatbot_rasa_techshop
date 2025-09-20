@@ -61,7 +61,7 @@ class ActionProvideProductInfo(Action):
           <span class="block mb-10">Có tổng cộng {len(variants)} biến thể cho sản phẩm này:</span>
           """
           for v in variants:
-            message += f"""<div class="flex items-center border border-gray-300 rounded-lg p-16 my-8 bg-white shadow-md">
+            message += f"""<div class="flex items-center mb-10 border border-gray-300 rounded-lg p-16 bg-white">
             <div class="shrink-0 mr-16">
               <img src="{v["color"][0]["images"][0]}" alt="{product["name"]}" class="w-80 h-80" />
             </div>

@@ -11,6 +11,11 @@ rules:
   - intent: ask_warranty
   - action: action_provide_warranty_info
 
+- rule: Provide store info when user ask
+  steps:
+  - intent: ask_store
+  - action: action_provide_store_info
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
