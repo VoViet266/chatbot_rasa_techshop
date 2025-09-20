@@ -3,7 +3,8 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - ask_price
+  - ask_product_info
+  - out_of_scope
   # - ask_brand
   - nlu_fallback
 
@@ -51,7 +52,7 @@ responses:
     - text: "Cảm ơn bạn đã liên hệ. Chúc bạn một ngày tuyệt vời!"
     - text: "Tạm biệt! Nếu cần hỗ trợ thêm, hãy quay lại nhé."
   
-  utter_ask_price:
+  utter_ask_product_info:
     - text: "Bạn muốn xem giá của sản phẩm nào ạ?"
     - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
     - text: "Bạn muốn biết giá của thương hiệu hay mẫu sản phẩm cụ thể nào?"
@@ -86,7 +87,7 @@ responses:
 actions:
   - utter_greet
   - utter_goodbye
-  - utter_ask_price
-  - action_provide_price
+  - utter_ask_product_info
+  - action_provide_product_info
   # - utter_ask_brand
   - utter_fallback

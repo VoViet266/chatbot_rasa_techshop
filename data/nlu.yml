@@ -15,13 +15,19 @@ nlu:
       - hẹn gặp lại
       - bye
 
-  - intent: ask_price
+  - intent: ask_product_info
     examples: |
       - Giá của [iPhone 16](product) là bao nhiêu?
       - Cho tôi biết giá [Macbook Air M3](product)
       - Bao nhiêu tiền [Samsung S24](product)
       - Giá [iPad Pro](product) thế nào?
       - Tôi muốn biết giá [Dell XPS 13](product)
+      - Thông tin [Galaxy A55](product) là gì?
+      - Tôi cần biết giá của [Sony WH-1000XM5](product)
+      - Sản phẩm [Z fold 6](product) giá bao nhiêu?
+      - Tai nghe [Sony MDR](product) giá bao nhiêu?
+      - Sản phẩm [S25 Ultra](product) giá bao nhiêu?
+      - Tôi cần biết thông tin về sản phẩm [Samsung galaxy Tab S9](product)
       - Tôi cần biết giá của một số sản phẩm
 
   - intent: out_of_scope

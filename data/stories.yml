@@ -5,10 +5,10 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_price
+  - intent: ask_product_info
   - slot_was_set:
     - product: null
-  - action: utter_ask_price
+  - action: utter_ask_product_info
   - intent: goodbye
   - action: utter_goodbye
 
@@ -16,9 +16,9 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_price
+  - intent: ask_product_info
   - slot_was_set:
     - product: true
-  - action: action_provide_price 
+  - action: action_provide_product_info 
   - intent: goodbye
   - action: utter_goodbye
