@@ -48,6 +48,15 @@ nlu:
       - Bảo hành sản phẩm như thế nào?
       - Sản phẩm của bạn bảo hành bao lâu?
       - Tôi cần biết về chính sách bảo hành của bạn
+
+  - intent: ask_order
+    examples: |
+      - Đơn hàng của tôi ra sao?
+      - Tôi muốn xem thông tin đơn hàng của mình
+      - Tôi đã đặt đơn hàng nào rồi
+      - Những đơn hàng của tôi ra sao
+      - Đơn hàng của tôi
+      - Cho tôi xem đơn hàng
     
   - intent: ask_store
     examples: |

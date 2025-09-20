@@ -6,6 +6,11 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: Provide order info when user ask
+  steps:
+  - intent: ask_order
+  - action: action_provide_order_info
+
 - rule: Provide warranty policies when user ask
   steps:
   - intent: ask_warranty

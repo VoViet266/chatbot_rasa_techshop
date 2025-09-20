@@ -92,5 +92,6 @@ actions:
   - action_provide_product_info
   - action_provide_warranty_info
   - action_provide_store_info
+  - action_provide_order_info
   # - utter_ask_brand
   - utter_fallback
