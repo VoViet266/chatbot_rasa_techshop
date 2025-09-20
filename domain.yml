@@ -4,6 +4,7 @@ intents:
   - greet
   - goodbye
   - ask_product_info
+  - ask_warranty
   - out_of_scope
   # - ask_brand
   - nlu_fallback
@@ -89,5 +90,6 @@ actions:
   - utter_goodbye
   - utter_ask_product_info
   - action_provide_product_info
+  - action_provide_warranty_info
   # - utter_ask_brand
   - utter_fallback

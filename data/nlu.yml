@@ -29,6 +29,15 @@ nlu:
       - Sản phẩm [S25 Ultra](product) giá bao nhiêu?
       - Tôi cần biết thông tin về sản phẩm [Samsung galaxy Tab S9](product)
       - Tôi cần biết giá của một số sản phẩm
+  
+  - intent: ask_warranty
+    examples: |
+      - Hệ thống bạn có những chính sách bảo hành nào?
+      - Chính sách bảo hành của bạn ra sao?
+      - Tôi muốn biết về chính sách bảo hành
+      - Bảo hành sản phẩm như thế nào?
+      - Sản phẩm của bạn bảo hành bao lâu?
+      - Tôi cần biết về chính sách bảo hành của bạn
 
   - intent: out_of_scope
     examples: |
