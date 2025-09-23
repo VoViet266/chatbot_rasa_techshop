@@ -33,14 +33,11 @@ class ActionProvideOrderInfo(Action):
                 for i in order["items"]:
                     product = products_collections.find_one({ "_id": ObjectId(i["product"]) })
                     if(product):
-                        print("Có sản phẩm nè", product)
                         message += f"""<div class="border border-gray-300 rounded-lg shadow-xs p-10">
                         <span class="block"><strong>Tên sản phẩm:</strong> {product["name"]}</span>
                         <span class="block"><strong>Số lượng:</strong> {i["quantity"]}</span>
                         <span class="block"><strong>Đơn giá:</strong> {i["price"]}</span>
                         <span class="block"><strong>Tổng tiền:</strong> {order["totalPrice"]}</span>
                         </div>"""
-                    else:
-                        print("Không tìm thấy product với id:", i["product"])
         dispatcher.utter_message(text=message)
         return []

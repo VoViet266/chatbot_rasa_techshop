@@ -12,8 +12,6 @@ class ActionProvideProductInfo(Action):
 
         product_name = tracker.get_slot("product")
 
-        print("Product name slot value:", product_name)
-
         if not product_name:
             dispatcher.utter_message(text="Bạn vui lòng cho tôi biết tên sản phẩm nhé.")
             return []
