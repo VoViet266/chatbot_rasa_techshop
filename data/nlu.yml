@@ -15,6 +15,48 @@ nlu:
       - hẹn gặp lại
       - bye
 
+  - intent: order
+    examples: |
+      - Tôi muốn đặt hàng
+      - Tôi muốn mua hàng
+      - Tôi muốn thanh toán
+      - Tôi muốn đặt mua sản phẩm
+      - Giúp tôi đặt hàng
+      - Tôi muốn mua sản phẩm này
+      - Tôi muốn mua cái này
+      - Tôi muốn thanh toán đơn hàng
+      - Giúp tôi thanh toán đơn hàng
+      - Tôi muốn thanh toán sản phẩm này
+      - Tôi muốn thanh toán cái này
+      - Mua hàng thôi
+      - Mua sản phẩm thôi
+      - Thanh toán thôi
+      - Thanh toán sản phẩm thôi
+
+  - intent: inform
+    examples: |
+      - [áo thun](product)
+      - Tôi muốn mua [giày thể thao](product)
+      - [Nguyễn Văn A](full_name)
+      - Tên tôi là [Trần Thị B](full_name)
+      - [0912345678](phone_number)
+      - SĐT [0987654321](phone_number)
+      - [123 Nguyễn Huệ, Q1](address)
+      - Địa chỉ [456 Lê Lợi, Cần Thơ](address)
+      - [Laptop Dell](product), tên [Phạm Văn C](full_name)
+      - Tôi là [Lê Minh D](full_name), SĐT [0901234567](phone_number), giao đến [789 Trần Hưng Đạo](address)
+      - [Điện thoại iPhone](product)
+      - Số của tôi là [0123456789](phone_number)
+      - Giao hàng tại [Số 10 Hai Bà Trưng](address)
+      - Tôi muốn mua [Tai nghe Sony WH-1000XM5](product)
+      - Tên tôi là [Nguyễn Thị E](full_name), số điện thoại [0911222333](phone_number), địa chỉ [321 Phan Đình Phùng](address)
+      - [Macbook Pro](product), tên [Trần Văn F](full_name), số điện thoại [0988777666](phone_number), địa chỉ [654 Lý Thường Kiệt](address)
+      - [Samsung Galaxy S23](product)
+      - Số điện thoại của tôi là [0933444555](phone_number)
+      - Giao hàng đến [Số 20 Nguyễn Trãi](address)
+      - Tôi muốn mua [iPad Air](product)
+      - Tên tôi là [Phạm Thị G](full_name)
+
   - intent: ask_product_info
     examples: |
       - Giá của [iPhone 16](product) là bao nhiêu?
@@ -64,6 +106,19 @@ nlu:
       - Có tất cả bao nhiêu cửa hàng?
       - Tôi cần tìm cửa hàng?
       - Tôi muốn mua hàng tại cửa hàng?
+
+  - intent: confirm_order
+    examples: |
+      - Đúng rồi
+      - Chính xác
+      - Xác nhận
+      - Tôi đồng ý
+      - Tôi xác nhận
+      - Được rồi
+      - Ok rồi
+      - Ok
+      - Đồng ý
+      - Chắc chắn rồi
 
   - intent: out_of_scope
     examples: |

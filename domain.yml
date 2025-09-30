@@ -7,7 +7,12 @@ intents:
   - ask_warranty
   - out_of_scope
   # - ask_brand
+  - confirm_order
   - nlu_fallback
+  - ask_order
+  - ask_store
+  - order
+  - inform
 
 entities:
   - product
@@ -21,14 +26,93 @@ slots:
       - type: from_entity
         entity: product
 
+  address:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: address
+
+  quantity:
+    type: float # Hoặc int, tùy vào bạn muốn số lượng là số nguyên hay số thập phân
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: quantity
+
+  payment_method:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: payment_method
+
+  full_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: full_name
+        
+  phone_number:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: phone_number
+
   brand:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: brand
+  
+forms:
+  order_form:
+    required_slots:
+      - full_name
+      - phone_number
+      - address
+      - product
+      - quantity
+      - payment_method
 
 responses:
+  utter_ask_full_name:
+    - text: "Cho tôi biết tên của bạn?"
+    - text: "Bạn tên là gì?"
+    - text: "Tôi cần biết tên của bạn để hoàn tất đơn hàng."
+    - text: "Bạn có thể cho tôi biết tên của bạn không?"
+    - text: "Tên của bạn là gì?"
+    - text: "Bạn vui lòng cho tôi biết tên của bạn để tôi có thể giúp bạn đặt hàng."
+    - text: "Tôi cần biết tên của bạn để hoàn tất đơn hàng."
+
+  utter_ask_product_name:
+    - text: "Bạn muốn đặt sản phẩm gì?"
+    - text: "Bạn định mua sản phẩm nào?"
+    - text: "Bạn muốn chọn sản phẩm nào để đặt hàng?"
+    - text: "Bạn có thể cho tôi biết sản phẩm bạn muốn đặt không?"
+  
+  utter_ask_phone_number:
+    - text: "Số điện thoại của bạn là gì?"
+    - text: "Bạn vui lòng cung cấp số điện thoại để liên hệ nhé."
+    - text: "Tôi cần số điện thoại của bạn để hoàn tất đơn hàng."
+    - text: "Bạn có thể cho tôi biết số điện thoại của bạn không?"
+
+  utter_ask_address:
+    - text: "Địa chỉ giao hàng của bạn?"
+    - text: "Bạn vui lòng cung cấp địa chỉ giao hàng nhé."
+    - text: "Tôi cần địa chỉ giao hàng để hoàn tất đơn hàng."
+    - text: "Bạn có thể cho tôi biết địa chỉ giao hàng không?"
+
+  utter_ask_quantity:
+    - text: "Bạn muốn đặt bao nhiêu sản phẩm?"
+    - text: "Số lượng sản phẩm bạn muốn đặt là bao nhiêu?"
+    - text: "Bạn định mua bao nhiêu sản phẩm?"
+    - text: "Bạn có thể cho tôi biết số lượng sản phẩm bạn muốn đặt không?"
+
+
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
     - text: "Chào bạn! Bạn cần hỗ trợ gì?"
@@ -90,8 +174,15 @@ actions:
   - utter_goodbye
   - utter_ask_product_info
   - action_provide_product_info
+  - action_process_order
   - action_provide_warranty_info
   - action_provide_store_info
+  - utter_ask_product_name
+  - utter_ask_phone_number
+  - utter_ask_address
+  - utter_ask_quantity
+  - utter_submit_order
   - action_provide_order_info
+  - action_submit_order
   # - utter_ask_brand
   - utter_fallback

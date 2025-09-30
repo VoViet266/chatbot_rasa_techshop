@@ -1,16 +1,28 @@
 version: "3.1"
 
 stories:
-- story: Hỏi giá sản phẩm nhưng chưa nêu tên
+# - story: Hỏi giá sản phẩm nhưng chưa nêu tên
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - intent: ask_product_info
+#   - slot_was_set:
+#     - product: null
+#   - action: utter_ask_product_info
+#   - intent: goodbye
+#   - action: utter_goodbye
+
+- story: Đặt hàng với Form
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: ask_product_info
-  - slot_was_set:
-    - product: null
-  - action: utter_ask_product_info
-  - intent: goodbye
-  - action: utter_goodbye
+  - intent: order
+  - action: order_form
+  - active_loop: order_form
+   # Form tự động hỏi các thông tin thiếu
+  - active_loop: null  # Form hoàn thành
+  - intent: confirm_order
+  - action: action_submit_order
 
 - story: Hỏi giá sản phẩm có nêu tên
   steps:
