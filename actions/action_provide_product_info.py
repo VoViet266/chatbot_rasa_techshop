@@ -1,8 +1,7 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
-import json
-from utils.convert_to_json import serialize_doc
+from utils.format_currentcy import format_vnd
 
 class ActionProvideProductInfo(Action):
     def name(self):
@@ -35,31 +34,51 @@ class ActionProvideProductInfo(Action):
         # 2. Lấy danh sách variant IDs từ product
         variant_ids = product.get("variants", [])
         if not variant_ids:
-            dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
+            dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
             return []
 
         # 3. Tìm variants theo _id
         variants = variants_collection.find({"_id": {"$in": variant_ids}})
         brand = brands_collection.find_one({"_id": product["brand"]})
-        brand.pop("createdAt", None)
-        brand.pop("updatedAt", None)
-        brand.pop("deletedAt", None)
-
         variants = list(variants)
-        for v in variants:
-          v.pop("createdAt", None)
-          v.pop("updatedAt", None)
-          v.pop("deletedAt", None)
-
-        product["brand"] = brand["name"] if brand else "N/A"
-        product["variants"] = variants
-        product.pop("createdAt", None)
-        product.pop("updatedAt", None)
-        product.pop("deletedAt", None)
 
         if len(variants) == 0:
-            dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
+            dispatcher.utter_message(text=f"Sản phẩm {product['name']} chưa có thông tin giá.")
         else:
-            product_serialized = serialize_doc(product)
-            dispatcher.utter_message(json_message=product_serialized)
+          if(product["description"]):
+            description = product["description"]
+          else:
+            description = "Chưa có mô tả"
+          message = f"""
+          <h2 class="text-lg py-0">{product["name"]}</h2>
+          <span class="block">Thương hiệu: {brand["name"]}</span>
+          <span class="block">Giảm giá: {product["discount"]}%</span>
+          <p class="block text-justify line-clamp-3">Mô tả: {description}</p>
+          <span class="block mb-10">Có tổng cộng {len(variants)} biến thể cho sản phẩm này:</span>
+          """
+          for v in variants:
+            message += f"""<div class="flex items-center mb-10 border border-gray-300 rounded-lg p-16 bg-white">
+            <div class="shrink-0 mr-16">
+              <img src="{v["color"][0]["images"][0]}" alt="{product["name"]}" class="w-80 h-80" />
+            </div>
+            <div class="grow-1">
+              <h3 style="margin: 0 0 8px 0; color: #333; font-size: 15px; font-weight: 600;">{product["name"]}</h3>
+              <div style="color: #666; font-size: 14px; line-height: 1.5;">
+                <div style="margin-bottom: 4px;"><strong>Giá:</strong> {format_vnd(variants[0]["price"])}</div>
+                <div style="margin-bottom: 4px;"><strong>Màu:</strong>
+              """
+            for c in v["color"]:
+                message += f"""{c["colorName"]}, """
+
+            message += f"""</div>
+            <span class="block mb-4"><strong>RAM:</strong> {v["memory"]["ram"]}</span>
+            <span class="block mb-4"><strong>Bộ nhớ trong:</strong> {v["memory"]["storage"]}</span>
+            </div>
+            </div>
+          </div>
+            """
+
+            
+        dispatcher.utter_message(text=message)
+
         return []

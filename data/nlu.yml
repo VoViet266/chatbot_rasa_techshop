@@ -15,8 +15,18 @@ nlu:
       - hẹn gặp lại
       - bye
 
-  - intent: ask_product_info
+  - intent: search_product
     examples: |
+      - Cho tôi điện thoại [giá rẻ](price_range) [pin trâu](feature)
+      - Tìm điện thoại [pin bền](feature) [dưới 5 triệu](price_range)
+      - Có điện thoại nào [pin khủng](feature) không?
+      - Gợi ý điện thoại [giá tốt](price_range) [pin lâu](feature)
+      - Muốn mua điện thoại [pin tốt](feature) [giá phải chăng](price_range)
+      - Tìm điện thoại [camera đẹp](feature) [giá rẻ](price_range)
+      - Điện thoại [chơi game tốt](feature) [tầm 10 triệu](price_range)
+      - Có điện thoại [sạc nhanh](feature) [giá dưới 8 triệu](price_range)?
+      - Gợi ý điện thoại [màn hình lớn](feature) [pin lâu](feature)
+      - Cần điện thoại [chống nước](feature) [giá vừa phải](price_range)
       - Giá của [iPhone 16](product) là bao nhiêu?
       - Cho tôi biết giá [Macbook Air M3](product)
       - Bao nhiêu tiền [Samsung S24](product)
@@ -39,7 +49,7 @@ nlu:
       - Sản phẩm [S25 Ultra](product) giá bao nhiêu?
       - Tôi cần biết thông tin về sản phẩm [Samsung galaxy Tab S9](product)
       - Tôi cần biết giá của một số sản phẩm
-  
+
   - intent: ask_warranty
     examples: |
       - Hệ thống bạn có những chính sách bảo hành nào?
@@ -57,7 +67,7 @@ nlu:
       - Những đơn hàng của tôi ra sao
       - Đơn hàng của tôi
       - Cho tôi xem đơn hàng
-    
+
   - intent: ask_store
     examples: |
       - Hệ thống có bao nhiêu cửa hàng?
