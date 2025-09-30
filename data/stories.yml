@@ -1,24 +1,28 @@
 version: "3.1"
 
 stories:
-- story: Hỏi giá sản phẩm nhưng chưa nêu tên
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_product_info
-  - slot_was_set:
-    - product: null
-  - action: utter_ask_product_info
-  - intent: goodbye
-  - action: utter_goodbye
+  # - story: Hỏi giá sản phẩm nhưng chưa nêu tên
+  #   steps:
+  #     - intent: greet
+  #     - action: utter_greet
+  #     - intent: ask_product_info
+  #     - slot_was_set:
+  #         - product: null
+  #     - action: utter_ask_product_info
+  #     - intent: goodbye
+  #     - action: utter_goodbye
+  - story: Hỏi chung chung về sản phẩm
+    steps:
+      - intent: search_product
+      - action: action_search_product
 
-- story: Hỏi giá sản phẩm có nêu tên
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_product_info
-  - slot_was_set:
-    - product: true
-  - action: action_provide_product_info 
-  - intent: goodbye
-  - action: utter_goodbye
+  # - story: Hỏi giá sản phẩm có nêu tên
+  #   steps:
+  #     - intent: greet
+  #     - action: utter_greet
+  #     - intent: ask_product_info
+  #     - slot_was_set:
+  #         - product: true
+  #     - action: action_provide_product_info
+  #     - intent: goodbye
+  #     - action: utter_goodbye

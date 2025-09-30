@@ -1,32 +1,37 @@
 version: "3.1"
 
 rules:
-- rule: Say hello anytime the user greets
-  steps:
-  - intent: greet
-  - action: utter_greet
+  - rule: Say hello anytime the user greets
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- rule: Provide order info when user ask
-  steps:
-  - intent: ask_order
-  - action: action_provide_order_info
+  - rule: Provide order info when user ask
+    steps:
+      - intent: ask_order
+      - action: action_provide_order_info
 
-- rule: Provide warranty policies when user ask
-  steps:
-  - intent: ask_warranty
-  - action: action_provide_warranty_info
+  - rule: Provide warranty policies when user ask
+    steps:
+      - intent: ask_warranty
+      - action: action_provide_warranty_info
 
-- rule: Provide store info when user ask
-  steps:
-  - intent: ask_store
-  - action: action_provide_store_info
+  - rule: Provide store info when user ask
+    steps:
+      - intent: ask_store
+      - action: action_provide_store_info
 
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Provide fallback when user input is unclear
-  steps:
-  - intent: out_of_scope
-  - action: utter_fallback
+  - rule: Provide fallback when user input is unclear
+    steps:
+      - intent: out_of_scope
+      - action: utter_fallback
+
+  - rule: product info without product name
+    steps:
+      - intent: search_product
+      - action: action_search_product

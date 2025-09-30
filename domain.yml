@@ -3,9 +3,12 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - ask_product_info
+  # - ask_product_info
   - ask_warranty
   - out_of_scope
+  - search_product
+  - ask_store
+  - ask_order
   # - ask_brand
   - nlu_fallback
 
@@ -40,7 +43,7 @@ responses:
     - text: "Hello! Bạn muốn biết thêm thông tin gì về sản phẩm?"
     - text: "Hi! Tôi có thể giúp bạn với các câu hỏi về giá hoặc thương hiệu."
     - text: "Chào bạn! Bạn cần tư vấn về sản phẩm nào hôm nay?"
-  
+
   utter_goodbye:
     - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
     - text: "Tạm biệt! Chúc bạn một ngày tốt lành!"
@@ -52,7 +55,7 @@ responses:
     - text: "Hẹn gặp lại! Chúc bạn mọi điều tốt đẹp."
     - text: "Cảm ơn bạn đã liên hệ. Chúc bạn một ngày tuyệt vời!"
     - text: "Tạm biệt! Nếu cần hỗ trợ thêm, hãy quay lại nhé."
-  
+
   utter_ask_product_info:
     - text: "Bạn muốn xem giá của sản phẩm nào ạ?"
     - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
@@ -64,7 +67,7 @@ responses:
     - text: "Bạn có thể cho tôi biết sản phẩm cụ thể bạn muốn hỏi giá không?"
     - text: "Bạn muốn xem giá của sản phẩm nào? Ví dụ: iPhone, Samsung, Macbook..."
     - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
-  
+
   # utter_ask_brand:
   #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
   #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
@@ -76,7 +79,7 @@ responses:
   #   - text: "Bạn muốn tìm hiểu về sản phẩm của thương hiệu nào?"
   #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
   #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
-  
+
   utter_fallback:
     - text: "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn được không?"
     - text: "Rất tiếc, tôi không nắm rõ ý bạn. Bạn có thể giải thích thêm được không?"
@@ -89,7 +92,8 @@ actions:
   - utter_greet
   - utter_goodbye
   - utter_ask_product_info
-  - action_provide_product_info
+  # - action_provide_product_info
+  - action_search_product
   - action_provide_warranty_info
   - action_provide_store_info
   - action_provide_order_info
