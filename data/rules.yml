@@ -1,76 +1,61 @@
 version: "3.1"
 
 rules:
-  - rule: Kích hoạt form đặt hàng
+  # Rule chào hỏi
+  - rule: Say hello anytime the user greets
     steps:
-      - intent: ask_order
+      - intent: greet
+      - action: utter_greet
+
+  # Rule tạm biệt
+  - rule: Say goodbye anytime the user says goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Rule kích hoạt form đặt hàng
+  - rule: Activate order form
+    steps:
+      - intent: order
       - action: order_form
       - active_loop: order_form
 
-  - rule: Hoàn tất form đặt hàng
+  # Rule submit form khi hoàn tất
+  - rule: Submit order form
     condition:
       - active_loop: order_form
     steps:
-      - intent: confirm_order
       - action: order_form
       - active_loop: null
-      - action: action_submit_order   
+      - action: action_submit_order
+      
 
-
-# # # Rule kích hoạt form khi có intent order
-#   - rule: Activate order form
-#     steps:
-#     - intent: order
-#     - action: order_form
-#     - active_loop: order_form
-
-#   # Rule submit form khi đã đủ thông tin
-#   - rule: Submit order form
-#     condition:
-#     - active_loop: order_form
-#     steps:
-#     - action: order_form
-#     - active_loop: null
-#     - slot_was_set:
-#       - requested_slot: null
-#     - action: action_submit_order
-
-#   # Rule xử lý khi người dùng muốn dừng form
-#   - rule: Stop order form
-#     condition:
-#     - active_loop: order_form
-#     steps:
-#     - intent: stop
-#     - action: utter_ask_continue
-#     - action: action_deactivate_loop
-#     - active_loop: null
-
-  - rule: Say hello anytime the user greets
-    steps:
-    - intent: greet
-    - action: utter_greet
-
-  # - rule: Provide order info when user ask
+  # # Rule cung cấp thông tin bảo hành
+  # - rule: Provide warranty info when user asks
   #   steps:
-  #   - intent: ask_order
-  #   - action: action_provide_order_info
+  #     - intent: ask_warranty
+  #     - action: action_provide_warranty_info
 
-  - rule: Provide warranty policies when user ask
-    steps:
-    - intent: ask_warranty
-    - action: action_provide_warranty_info
+  # # Rule cung cấp thông tin cửa hàng
+  # - rule: Provide store info when user asks
+  #   steps:
+  #     - intent: ask_store
+  #     - action: action_provide_store_info
 
-  - rule: Provide store info when user ask
-    steps:
-    - intent: ask_store
-    - action: action_provide_store_info
+  # # Rule cung cấp thông tin đơn hàng
+  # - rule: Provide order info when user asks
+  #   steps:
+  #     - intent: ask_order
+  #     - action: action_provide_order_info
 
-  - rule: Say goodbye anytime the user says goodbye
-    steps:
-    - intent: goodbye
-    - action: utter_goodbye
+  # # Rule xử lý nội dung ngoài phạm vi
+  # - rule: Handle out of scope
+  #   steps:
+  #     - intent: out_of_scope
+  #     - action: utter_fallback
 
-  - rule: Provide fallback when user input is unclear
-    steps:
-    - intent: out_of_scope
-    - action: utter_fallback
+  # # Rule xử lý fallback
+  # - rule: Handle nlu fallback
+  #   steps:
+  #     - intent: nlu_fallback
+  #     - action: utter_fallback

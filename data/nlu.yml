@@ -1,20 +1,42 @@
 version: "3.1"
 
 nlu:
+  # Intent: Chào hỏi
   - intent: greet
     examples: |
       - xin chào
       - chào bạn
       - hello
       - hi
+      - chào
+      - xin chào bạn
+      - chào buổi sáng
+      - chào buổi chiều
+      - chào buổi tối
+      - hey
+      - hi bạn
+      - hello bạn
+      - chào nhé
+      - xin chào nhé
 
+  # Intent: Tạm biệt
   - intent: goodbye
     examples: |
       - tạm biệt
       - chào nhé
       - hẹn gặp lại
       - bye
+      - goodbye
+      - tạm biệt nhé
+      - chào bạn nhé
+      - hẹn gặp lại bạn
+      - bye bye
+      - see you
+      - thôi tạm biệt
+      - chào tạm biệt
+      - hẹn gặp lại sau
 
+  # Intent: Đặt hàng
   - intent: order
     examples: |
       - Tôi muốn đặt hàng
@@ -32,14 +54,38 @@ nlu:
       - Mua sản phẩm thôi
       - Thanh toán thôi
       - Thanh toán sản phẩm thôi
+      - Đặt hàng
+      - Mua hàng
+      - Đặt mua
+      - Tôi cần đặt hàng
+      - Tôi cần mua hàng
+      - Cho tôi đặt hàng
+      - Tôi muốn order
+      - Order đi
+      - Đặt hàng cho tôi
 
+  # Intent: Cung cấp thông tin
   - intent: inform
     examples: |
       - [áo thun](product)
       - Tôi muốn mua [giày thể thao](product)
       - [Nguyễn Văn A](full_name)
       - Tên tôi là [Trần Thị B](full_name)
+      - Số điện thoại của tôi là [0123456789](phone_number)
+      - Giao hàng đến [123 Đường Lê Lợi, Quận 1](address)
+      - Tôi muốn mua [iPhone 15](product)
+      - Số của tôi là [0123456789](phone_number)
+      - Giao hàng tại [Số 10 Hai Bà Trưng](address)
+      - Tôi tên là [Văn C](full_name)
       - [0912345678](phone_number)
+      - [viet](full_name)
+      - SĐT [0987654321](phone_number)
+      - [123 Nguyễn Huệ, Q1](address)
+      - Địa chỉ [456 Lê Lợi, Cần Thơ](address)
+      - [Laptop Dell](product), tên [Phạm Văn C](full_name)
+      - Tôi là [Lê Minh D](full_name), SĐT [0901234567](phone_number), giao đến [789 Trần Hưng Đạo](address)
+      - Tên tôi là [Trần Thị B](full_name)
+      - [0912345678](phone_number)  
       - SĐT [0987654321](phone_number)
       - [123 Nguyễn Huệ, Q1](address)
       - Địa chỉ [456 Lê Lợi, Cần Thơ](address)
@@ -56,7 +102,13 @@ nlu:
       - Giao hàng đến [Số 20 Nguyễn Trãi](address)
       - Tôi muốn mua [iPad Air](product)
       - Tên tôi là [Phạm Thị G](full_name)
+      - [Lê Văn H](full_name)
+      - Địa chỉ của tôi là [100 Lý Tự Trọng, Q1](address)
+      - SĐT tôi là [0999888777](phone_number)
+      - [Asus ROG](product)
+      - Tên [Hoàng Văn I](full_name), địa chỉ [222 Võ Văn Tần](address)
 
+  # Intent: Hỏi thông tin sản phẩm
   - intent: ask_product_info
     examples: |
       - Giá của [iPhone 16](product) là bao nhiêu?
@@ -81,7 +133,18 @@ nlu:
       - Sản phẩm [S25 Ultra](product) giá bao nhiêu?
       - Tôi cần biết thông tin về sản phẩm [Samsung galaxy Tab S9](product)
       - Tôi cần biết giá của một số sản phẩm
-  
+      - Giá sản phẩm
+      - Thông tin sản phẩm
+      - Cho tôi biết giá
+      - [Laptop](product) có giá bao nhiêu?
+      - [Điện thoại](product) giá thế nào?
+      - Bao nhiêu tiền một [máy tính bảng](product)?
+      - [AirPods](product) giá sao?
+      - Cho xem giá [MacBook](product)
+      - [iPhone 15](product) bao nhiêu?
+      - Tôi muốn xem giá [Samsung](product)
+
+  # Intent: Hỏi chính sách bảo hành
   - intent: ask_warranty
     examples: |
       - Hệ thống bạn có những chính sách bảo hành nào?
@@ -90,7 +153,17 @@ nlu:
       - Bảo hành sản phẩm như thế nào?
       - Sản phẩm của bạn bảo hành bao lâu?
       - Tôi cần biết về chính sách bảo hành của bạn
+      - Bảo hành thế nào?
+      - Có bảo hành không?
+      - Thời gian bảo hành
+      - Chính sách bảo hành
+      - Bảo hành bao lâu?
+      - Quy định bảo hành ra sao?
+      - Điều kiện bảo hành
+      - Sản phẩm có được bảo hành không?
+      - Bảo hành như nào?
 
+  # Intent: Hỏi đơn hàng
   - intent: ask_order
     examples: |
       - Đơn hàng của tôi ra sao?
@@ -99,14 +172,35 @@ nlu:
       - Những đơn hàng của tôi ra sao
       - Đơn hàng của tôi
       - Cho tôi xem đơn hàng
-    
+      - Kiểm tra đơn hàng
+      - Xem đơn hàng
+      - Thông tin đơn hàng
+      - Đơn hàng nào của tôi?
+      - Tôi đặt hàng gì rồi?
+      - Đơn đặt hàng của tôi
+      - Tình trạng đơn hàng
+      - Order của tôi
+      - Kiểm tra order
+
+  # Intent: Hỏi cửa hàng
   - intent: ask_store
     examples: |
       - Hệ thống có bao nhiêu cửa hàng?
       - Có tất cả bao nhiêu cửa hàng?
       - Tôi cần tìm cửa hàng?
       - Tôi muốn mua hàng tại cửa hàng?
+      - Cửa hàng ở đâu?
+      - Địa chỉ cửa hàng
+      - Thông tin cửa hàng
+      - Có cửa hàng nào gần tôi?
+      - Cửa hàng gần nhất
+      - Danh sách cửa hàng
+      - Cho tôi biết địa chỉ cửa hàng
+      - Cửa hàng của bạn ở đâu?
+      - Có mấy chi nhánh?
+      - Chi nhánh cửa hàng
 
+  # Intent: Xác nhận đơn hàng
   - intent: confirm_order
     examples: |
       - Đúng rồi
@@ -119,7 +213,19 @@ nlu:
       - Ok
       - Đồng ý
       - Chắc chắn rồi
+      - Yes
+      - Vâng
+      - Ừ
+      - Đúng
+      - Đồng ý đặt hàng
+      - Xác nhận đặt hàng
+      - Đặt hàng đi
+      - Hoàn tất đơn hàng
+      - Xác nhận thông tin
+      - Thông tin đúng rồi
+      - Chuẩn rồi
 
+  # Intent: Nội dung ngoài phạm vi
   - intent: out_of_scope
     examples: |
       - ê bộ giỡn mặt đó hả
@@ -133,14 +239,74 @@ nlu:
       - thử thôi
       - nói tào lao
       - không liên quan
+      - asdfghjkl
+      - 12345
+      - @@##$$
+      - ahihi
+      - đùa thôi
+      - test test
+      - hú hú
+      - lalalala
+      - xyz
+      - mày là ai
+      - tao không quan tâm
 
-# - intent: ask_brand
-#   examples: |
-#     - Có những sản phẩm của [Apple](brand) không?
-#     - Cho tôi xem laptop [Dell](brand)
-#     - Hệ thống của bạn bán những thương hiệu nào?
-#     - Bạn có sản phẩm từ [Samsung](brand) không?
-#     - Tôi muốn tìm hiểu về các sản phẩm của [Apple](brand)
-#     - Hệ thống của bạn bán sản phẩm của bao nhiêu thương hiệu?
-#     - Bạn có bán điện thoại [Samsung](brand) không?
+  # # Synonym cho sản phẩm
+  # - synonym: iPhone
+  #   examples: |
+  #     - iPhone 16
+  #     - iPhone 15
+  #     - iPhone 14
+  #     - ip 16
+  #     - ip 15
+  #     - điện thoại iPhone
+  #     - iphone
 
+  # - synonym: Samsung
+  #   examples: |
+  #     - Samsung Galaxy
+  #     - Galaxy
+  #     - Sam Sung
+  #     - samsung
+
+  # - synonym: MacBook
+  #   examples: |
+  #     - Macbook Pro
+  #     - Macbook Air
+  #     - Mac Book
+  #     - macbook
+
+  # - synonym: iPad
+  #   examples: |
+  #     - iPad Pro
+  #     - iPad Air
+  #     - Ipad
+  #     - ipad
+
+  # # Regex cho số điện thoại Việt Nam
+  # - regex: phone_number
+  #   examples: |
+  #     - \d{10}
+  #     - 0\d{9}
+  #     - \+84\d{9}
+  #     - 84\d{9}
+
+  # # Regex cho số lượng
+  # - regex: quantity
+  #   examples: |
+  #     - \d+
+  #     - [0-9]+
+
+  # # Lookup cho phương thức thanh toán
+  # - lookup: payment_method
+  #   examples: |
+  #     - COD
+  #     - tiền mặt
+  #     - chuyển khoản
+  #     - thẻ
+  #     - thẻ tín dụng
+  #     - thẻ ATM
+  #     - momo
+  #     - zalopay
+  #     - vnpay
+  #     - banking

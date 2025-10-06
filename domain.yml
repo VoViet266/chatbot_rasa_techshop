@@ -17,6 +17,9 @@ intents:
 entities:
   - product
   - brand
+  - full_name
+  - phone_number
+  - address
 
 slots:
   product:
@@ -25,35 +28,19 @@ slots:
     mappings:
       - type: from_entity
         entity: product
-
-  address:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: address
-
-  quantity:
-    type: float # Hoặc int, tùy vào bạn muốn số lượng là số nguyên hay số thập phân
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: quantity
-
-  payment_method:
-    type: text
-    influence_conversation: true
-    mappings:
-    - type: from_entity
-      entity: payment_method
-
   full_name:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
         entity: full_name
-        
+  address:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: address
+
   phone_number:
     type: text
     influence_conversation: true
@@ -67,7 +54,7 @@ slots:
     mappings:
       - type: from_entity
         entity: brand
-  
+
 forms:
   order_form:
     required_slots:
@@ -75,8 +62,6 @@ forms:
       - phone_number
       - address
       - product
-      - quantity
-      - payment_method
 
 responses:
   utter_ask_full_name:
@@ -86,13 +71,15 @@ responses:
     - text: "Bạn có thể cho tôi biết tên của bạn không?"
     - text: "Tên của bạn là gì?"
     - text: "Bạn vui lòng cho tôi biết tên của bạn để tôi có thể giúp bạn đặt hàng."
-    - text: "Tôi cần biết tên của bạn để hoàn tất đơn hàng."
 
   utter_ask_product_name:
     - text: "Bạn muốn đặt sản phẩm gì?"
     - text: "Bạn định mua sản phẩm nào?"
     - text: "Bạn muốn chọn sản phẩm nào để đặt hàng?"
     - text: "Bạn có thể cho tôi biết sản phẩm bạn muốn đặt không?"
+    - text: "Sản phẩm bạn muốn đặt là gì?"
+    - text: "Bạn muốn mua sản phẩm nào hôm nay?"
+
   
   utter_ask_phone_number:
     - text: "Số điện thoại của bạn là gì?"
@@ -106,13 +93,6 @@ responses:
     - text: "Tôi cần địa chỉ giao hàng để hoàn tất đơn hàng."
     - text: "Bạn có thể cho tôi biết địa chỉ giao hàng không?"
 
-  utter_ask_quantity:
-    - text: "Bạn muốn đặt bao nhiêu sản phẩm?"
-    - text: "Số lượng sản phẩm bạn muốn đặt là bao nhiêu?"
-    - text: "Bạn định mua bao nhiêu sản phẩm?"
-    - text: "Bạn có thể cho tôi biết số lượng sản phẩm bạn muốn đặt không?"
-
-
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
     - text: "Chào bạn! Bạn cần hỗ trợ gì?"
@@ -124,7 +104,7 @@ responses:
     - text: "Hello! Bạn muốn biết thêm thông tin gì về sản phẩm?"
     - text: "Hi! Tôi có thể giúp bạn với các câu hỏi về giá hoặc thương hiệu."
     - text: "Chào bạn! Bạn cần tư vấn về sản phẩm nào hôm nay?"
-  
+
   utter_goodbye:
     - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
     - text: "Tạm biệt! Chúc bạn một ngày tốt lành!"
@@ -136,7 +116,7 @@ responses:
     - text: "Hẹn gặp lại! Chúc bạn mọi điều tốt đẹp."
     - text: "Cảm ơn bạn đã liên hệ. Chúc bạn một ngày tuyệt vời!"
     - text: "Tạm biệt! Nếu cần hỗ trợ thêm, hãy quay lại nhé."
-  
+
   utter_ask_product_info:
     - text: "Bạn muốn xem giá của sản phẩm nào ạ?"
     - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
@@ -148,7 +128,14 @@ responses:
     - text: "Bạn có thể cho tôi biết sản phẩm cụ thể bạn muốn hỏi giá không?"
     - text: "Bạn muốn xem giá của sản phẩm nào? Ví dụ: iPhone, Samsung, Macbook..."
     - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
-  
+
+  utter_submit_order:
+    - text: "Cảm ơn bạn đã cung cấp thông tin. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý sớm nhất."
+    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và giao hàng."
+    - text: "Cảm ơn bạn! Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý trong thời gian sớm nhất."
+    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và sắp xếp giao hàng."
+    - text: "Cảm ơn bạn đã cung cấp thông tin. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý sớm nhất."
+    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và giao hàng."
   # utter_ask_brand:
   #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
   #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
@@ -160,7 +147,7 @@ responses:
   #   - text: "Bạn muốn tìm hiểu về sản phẩm của thương hiệu nào?"
   #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
   #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
-  
+
   utter_fallback:
     - text: "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn được không?"
     - text: "Rất tiếc, tôi không nắm rõ ý bạn. Bạn có thể giải thích thêm được không?"
@@ -181,6 +168,7 @@ actions:
   - utter_ask_phone_number
   - utter_ask_address
   - utter_ask_quantity
+  - utter_ask_full_name
   - utter_submit_order
   - action_provide_order_info
   - action_submit_order

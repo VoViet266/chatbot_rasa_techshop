@@ -1,36 +1,59 @@
 version: "3.1"
 
 stories:
-# - story: Hỏi giá sản phẩm nhưng chưa nêu tên
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: ask_product_info
-#   - slot_was_set:
-#     - product: null
-#   - action: utter_ask_product_info
-#   - intent: goodbye
-#   - action: utter_goodbye
+  # Story 3: Đặt hàng hoàn chỉnh với form
+  - story: Đặt hàng hoàn chỉnh với form
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_submit_order
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Đặt hàng với Form
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: order
-  - action: order_form
-  - active_loop: order_form
-   # Form tự động hỏi các thông tin thiếu
-  - active_loop: null  # Form hoàn thành
-  - intent: confirm_order
-  - action: action_submit_order
+  # Story 4: Hỏi thông tin đơn hàng
+  - story: Hỏi thông tin đơn hàng
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_order
+      - action: action_provide_order_info
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Hỏi giá sản phẩm có nêu tên
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: ask_product_info
-  - slot_was_set:
-    - product: true
-  - action: action_provide_product_info 
-  - intent: goodbye
-  - action: utter_goodbye
+  # Story 5: Hỏi thông tin bảo hành
+  - story: Ask warranty information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_warranty
+      - action: action_provide_warranty_info
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 6: Hỏi thông tin cửa hàng
+  - story: Ask store information
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_store
+      - action: action_provide_store_info
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 10: Xử lý nội dung ngoài phạm vi
+  - story: Handle out of scope input
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: out_of_scope
+      - action: utter_fallback
+      - intent: ask_product_info
+        entities:
+          - product
+      - slot_was_set:
+          - product: iPhone 16
+      - action: action_provide_product_info
