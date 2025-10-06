@@ -28,6 +28,12 @@ rules:
       - action: order_form
       - active_loop: null
       - action: action_submit_order
+  
+  # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
+  - rule: Suggest products when user asks
+    steps:
+      - intent: suggest_product
+      - action: action_suggest_product
       
 
   # # Rule cung cấp thông tin bảo hành

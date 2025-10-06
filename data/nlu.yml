@@ -251,6 +251,21 @@ nlu:
       - mày là ai
       - tao không quan tâm
 
+  # Intent: Gợi ý sản phẩm
+  - intent: suggest_product
+    examples: |
+      - Tôi cần [laptop](category) học online giá [dưới 15 triệu](price)
+      - Có mẫu [điện thoại](category) nào giá [khoảng 5 triệu](price) không?
+      - Gợi ý cho tôi vài [máy ảnh](category) [tầm trung](price)
+      - Tôi muốn mua [laptop](category) [Asus](brand) để học, [giá rẻ](price) thôi
+
+  - regex: price_range
+    examples: |
+      - dưới [0-9]+(\s?triệu)?
+      - trên [0-9]+(\s?triệu)?
+      - [0-9]+(\s?triệu)? đến [0-9]+(\s?triệu)?
+
+
   # # Synonym cho sản phẩm
   # - synonym: iPhone
   #   examples: |

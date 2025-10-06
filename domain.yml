@@ -6,6 +6,7 @@ intents:
   - ask_product_info
   - ask_warranty
   - out_of_scope
+  - suggest_product
   # - ask_brand
   - confirm_order
   - nlu_fallback
@@ -16,6 +17,8 @@ intents:
 
 entities:
   - product
+  - category
+  - price
   - brand
   - full_name
   - phone_number
@@ -54,6 +57,20 @@ slots:
     mappings:
       - type: from_entity
         entity: brand
+
+  category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: category
+
+  price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: price
 
 forms:
   order_form:
@@ -171,6 +188,7 @@ actions:
   - utter_ask_full_name
   - utter_submit_order
   - action_provide_order_info
+  - action_suggest_product
   - action_submit_order
   # - utter_ask_brand
   - utter_fallback
