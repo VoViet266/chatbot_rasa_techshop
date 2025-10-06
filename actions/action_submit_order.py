@@ -11,19 +11,25 @@ class ActionSubmitOrder(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        user_id = tracker.sender_id
 
+
+      
         # (1) Lấy tất cả dữ liệu từ các slot đã được điền trong form
         product = tracker.get_slot("product")
+        variant = tracker.get_slot("variant")
         full_name = tracker.get_slot("full_name")
         phone_number = tracker.get_slot("phone_number")
         address = tracker.get_slot("address")
         quantity = tracker.get_slot("quantity")
+        
         
 
         # (2) Hiển thị lại thông tin cho người dùng xác nhận (tùy chọn nhưng nên có)
         summary_message = (
             f"Xác nhận đơn hàng của bạn:\n"
             f"Sản phẩm: {product}\n"
+            f"Phiên bản: {variant}\n"
             f"Số lượng: {quantity}\n"
             f"Họ và tên: {full_name}\n"
             f"Số điện thoại: {phone_number}\n"
@@ -37,6 +43,7 @@ class ActionSubmitOrder(Action):
         order_payload = {
             "product": product,
             "quantity": quantity,
+            "variant": variant,
             "customer": {
                 "full_name": full_name,
                 "phone_number": phone_number,
