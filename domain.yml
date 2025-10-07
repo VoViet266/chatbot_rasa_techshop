@@ -20,6 +20,8 @@ entities:
   - category
   - price
   - brand
+  - min_price
+  - max_price
   - full_name
   - phone_number
   - address
@@ -71,6 +73,20 @@ slots:
     mappings:
       - type: from_entity
         entity: price
+
+  min_price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: min_price
+        
+  max_price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: max_price
 
 forms:
   order_form:

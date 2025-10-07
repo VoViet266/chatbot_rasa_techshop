@@ -13,9 +13,6 @@ language: vi
 pipeline:
   - name: WhitespaceTokenizer
   - name: RegexFeaturizer
-  - name: RegexEntityExtractor
-    use_regexes: True
-    use_word_boundaries: True
   - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
@@ -29,9 +26,6 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
-  - name: DucklingEntityExtractor
-    url: http://localhost:8000
-    dimensions: ["number", "amount-of-money"]
   - name: FallbackClassifier
     threshold: 0.5
     ambiguity_threshold: 0.1
