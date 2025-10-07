@@ -1,6 +1,7 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
+from utils.format_currentcy import format_vnd
 import re
 
 def convert_price_to_number(price_text):
@@ -18,11 +19,11 @@ def convert_price_to_number(price_text):
     return int(number)
 
 def render_ui(variants):
-    result = ""
+    result = "<div style='display:flex;flex-direction:column;gap:8px;'><h4>Gợi ý sản phẩm:</h4>"
     for variant in variants:
-        result += f"""div id="product-template" role="group" aria-label="Sản phẩm" 
+        result += f"""<div id="product-template" role="group" aria-label="Sản phẩm" 
   style="display:flex;justify-content:flex-start;align-items:flex-start;box-sizing:border-box;
-         padding:0;margin:0;gap:8px;max-width:520px;border-radius:6px;font-family:Arial,Helvetica,sans-serif;">
+         padding:0;margin:0;gap:8px;max-width:520px;border-radius:6px;font-family:Arial,Helvetica,sans-serif; border: 1px solid #ececec; padding: 8px;">
 
   <!-- Ảnh sản phẩm -->
   <div dir="ltr" 
@@ -40,21 +41,21 @@ def render_ui(variants):
     <!-- Tên sản phẩm -->
     <p aria-hidden="false" 
        style="font-size:12px;color:#101519;line-height:1.33;margin:0 0 4px 0;overflow-wrap:break-word;">
-      [Tên sản phẩm]
+      {variant["name"]}
     </p>
 
     <!-- Giá tiền hiện tại -->
     <p aria-live="polite" 
        style="font-size:14px;color:#dc2626;font-weight:600;white-space:nowrap;text-overflow:ellipsis;
               overflow:hidden;margin:0 0 6px 0;line-height:1.33;">
-      [Giá tiền]
+      {format_vnd(variant["price"])}₫
     </p>
 
     <!-- Giá gốc và giảm giá -->
     <div aria-hidden="true" 
          style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
       <span style="font-size:12px;color:#767676;text-decoration:line-through;line-height:1.33;">
-        [Giá gốc]
+        {format_vnd(variant["price"])}
       </span>
       <span style="font-size:12px;color:red;line-height:1.33;">
         [Giảm giá]
@@ -79,7 +80,9 @@ def render_ui(variants):
     </div>
   </div>
 </div>"""
-    return result
+    result += "</div>"
+    cleaned_result = re.sub(r'\s+', ' ', result).strip()
+    return cleaned_result
 
 class ActionSuggestProduct(Action):
     def name(self):
@@ -142,7 +145,7 @@ class ActionSuggestProduct(Action):
                     variant = variants_collection.find_one({"_id": variant_id})
                     if convert_price_to_number(min_price) <= variant["price"] <= convert_price_to_number(max_price):
                         result.append(variant)
-        result = render_ui(result[:3])
-        dispatcher.utter_message(text=result)
+        result = render_ui(result)
+        dispatcher.utter_message(text=result, html=True)
         
         return []
