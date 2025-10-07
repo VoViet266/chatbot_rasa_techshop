@@ -17,6 +17,70 @@ def convert_price_to_number(price_text):
         return int(number * 1000)
     return int(number)
 
+def render_ui(variants):
+    result = ""
+    for variant in variants:
+        result += f"""div id="product-template" role="group" aria-label="Sản phẩm" 
+  style="display:flex;justify-content:flex-start;align-items:flex-start;box-sizing:border-box;
+         padding:0;margin:0;gap:8px;max-width:520px;border-radius:6px;font-family:Arial,Helvetica,sans-serif;">
+
+  <!-- Ảnh sản phẩm -->
+  <div dir="ltr" 
+    style="display:flex;flex-direction:column;justify-content:flex-start;align-items:center;flex:0 0 auto;
+           padding:0;margin:0;">
+    <img src="{variant["color"][0]["images"][0]}" alt="[Tên sản phẩm]" 
+         style="width:80px;height:70px;object-fit:contain;object-position:center;">
+  </div>
+
+  <!-- Nội dung sản phẩm -->
+  <div dir="ltr" 
+    style="display:flex;flex-direction:column;justify-content:flex-start;flex:1 1 50px;
+           padding:0;margin:0;min-width:0;">
+
+    <!-- Tên sản phẩm -->
+    <p aria-hidden="false" 
+       style="font-size:12px;color:#101519;line-height:1.33;margin:0 0 4px 0;overflow-wrap:break-word;">
+      [Tên sản phẩm]
+    </p>
+
+    <!-- Giá tiền hiện tại -->
+    <p aria-live="polite" 
+       style="font-size:14px;color:#dc2626;font-weight:600;white-space:nowrap;text-overflow:ellipsis;
+              overflow:hidden;margin:0 0 6px 0;line-height:1.33;">
+      [Giá tiền]
+    </p>
+
+    <!-- Giá gốc và giảm giá -->
+    <div aria-hidden="true" 
+         style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
+      <span style="font-size:12px;color:#767676;text-decoration:line-through;line-height:1.33;">
+        [Giá gốc]
+      </span>
+      <span style="font-size:12px;color:red;line-height:1.33;">
+        [Giảm giá]
+      </span>
+    </div>
+
+    <!-- Nút hành động -->
+    <div role="toolbar" aria-label="Hành động" 
+         style="display:flex;gap:4px;margin-top:4px;">
+      <button type="button" tabindex="0" role="button"
+        style="display:inline-flex;align-items:center;justify-content:center;padding:6px 8px;
+               font-size:12px;color:#101519;background:transparent;border:none;cursor:pointer;
+               border-radius:4px;user-select:none;">
+        Chọn mua
+      </button>
+      <button type="button" tabindex="0" role="button"
+        style="display:inline-flex;align-items:center;justify-content:center;padding:6px 8px;
+               font-size:12px;color:#101519;background:transparent;border:none;cursor:pointer;
+               border-radius:4px;user-select:none;">
+        Xem ưu đãi
+      </button>
+    </div>
+  </div>
+</div>"""
+    return result
+
 class ActionSuggestProduct(Action):
     def name(self):
         return "action_suggest_product"
@@ -33,56 +97,52 @@ class ActionSuggestProduct(Action):
         db = client["techshop_db"]
         categories_collection = db["categories"]
         products_collection = db["products"]
+        variants_collection = db["variants"]
         category_doc = categories_collection.find_one({"name": {"$regex": category, "$options": "i"}})
 
-        if category_doc:
-            category_id = category_doc["_id"]
-            products = products_collection.find({"category_id": category_id})
-            product_ids = [product["_id"] for product in products]
-
-        print('Category doc:', category_doc)
-        
-        # Xử lý entities và từ khóa "trên"/"dưới"
         max_price = None
         min_price = None
-    
-        # Kiểm tra nếu là khoảng giá (từ X đến Y)
+
+
         if "từ" in text and "đến" in text:
             prices = []
             for entity in entities:
                 if entity['entity'] == 'max_price':
                     prices.append(entity['value'])
             if len(prices) >= 2:
-                min_price = prices[0]  # Giá đầu tiên là min
-                max_price = prices[1]  # Giá thứ hai là max
+                min_price = prices[0]
+                max_price = prices[1]
+        elif "giá rẻ" in text or "giá thấp" in text:
+            max_price = "5 triệu"
         else:
-            # Xử lý các trường hợp trên/dưới
             for entity in entities:
                 if entity['entity'] == 'max_price' and "trên" in text:
                     min_price = entity['value']
                 elif entity['entity'] == 'max_price':
                     max_price = entity['value']
-        
-        print('Category:', category)
-        print('Max price:', convert_price_to_number(max_price) if max_price else None)
-        print('Min price:', convert_price_to_number(min_price) if min_price else None)
 
-        # if "dưới" in text and max_price:
-        #     print("Max price:", max_price)
-        # elif "trên" in text and min_price:
-        #     print("Min price:", min_price)
-        # elif "đến" in text and min_price and max_price:
-        #     print("Min price:", min_price, "Max price:", max_price)
+        if category_doc:
+            category_id = category_doc["_id"]
+            products = products_collection.find({"category": category_id})
+            variant_ids = [variant_id for product in products for variant_id in product["variants"]]
 
-        # 👉 Sau đó truy vấn database hoặc gọi API gợi ý sản phẩm
-        # if max_price and not min_price:
-        #     dispatcher.utter_message(text=f"Gợi ý các mẫu laptop giá dưới {max_price} triệu...")
-        # elif min_price and not max_price:
-        #     dispatcher.utter_message(text=f"Gợi ý các mẫu laptop giá trên {min_price} triệu...")
-        # elif min_price and max_price:
-        #     dispatcher.utter_message(text=f"Gợi ý các mẫu laptop giá từ {min_price} đến {max_price} triệu...")
-        # else:
-        #     dispatcher.utter_message(text="Bạn muốn tầm giá khoảng bao nhiêu vậy?")
-        dispatcher.utter_message(text="Bạn muốn tầm giá khoảng bao nhiêu vậy?")
+            result = []
+            if "dưới" or "giá rẻ" in text and max_price:
+                for variant_id in variant_ids:    
+                    variant = variants_collection.find_one({"_id": variant_id})
+                    if variant["price"] <= convert_price_to_number(max_price):
+                        result.append(variant)
+            elif "trên" in text and min_price:
+                for variant_id in variant_ids:    
+                    variant = variants_collection.find_one({"_id": variant_id})
+                    if variant["price"] >= convert_price_to_number(min_price):
+                        result.append(variant)
+            elif "đến" in text and min_price and max_price:
+                for variant_id in variant_ids:    
+                    variant = variants_collection.find_one({"_id": variant_id})
+                    if convert_price_to_number(min_price) <= variant["price"] <= convert_price_to_number(max_price):
+                        result.append(variant)
+        result = render_ui(result[:3])
+        dispatcher.utter_message(text=result)
         
         return []
