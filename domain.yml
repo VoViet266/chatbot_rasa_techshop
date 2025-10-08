@@ -3,23 +3,23 @@ version: "3.1"
 intents:
   - greet
   - goodbye
-  - ask_product_info
-  - ask_warranty
-  - out_of_scope
-  # - ask_brand
-  - confirm_order
-  - nlu_fallback
-  - ask_order
-  - ask_store
   - order
   - inform
+  - ask_product_info
+  - ask_warranty
+  - ask_order
+  - ask_store
+  - confirm_order
+  - cancel_order
+  - out_of_scope
+  - nlu_fallback
 
 entities:
-  - product
   - brand
   - full_name
-  - phone_number
-  - address
+  - product
+  - variant_name
+  - quantity
 
 slots:
   product:
@@ -28,149 +28,68 @@ slots:
     mappings:
       - type: from_entity
         entity: product
-  full_name:
+  variant_name:
     type: text
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: full_name
-  address:
-    type: text
+        entity: variant_name
+  quantity:
+    type: float
     influence_conversation: true
     mappings:
       - type: from_entity
-        entity: address
-
-  phone_number:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: phone_number
-
-  brand:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: brand
+        entity: quantity
 
 forms:
   order_form:
     required_slots:
-      - full_name
-      - phone_number
-      - address
       - product
+      - variant_name
+      - quantity
 
 responses:
-  utter_ask_full_name:
-    - text: "Cho tôi biết tên của bạn?"
-    - text: "Bạn tên là gì?"
-    - text: "Tôi cần biết tên của bạn để hoàn tất đơn hàng."
-    - text: "Bạn có thể cho tôi biết tên của bạn không?"
-    - text: "Tên của bạn là gì?"
-    - text: "Bạn vui lòng cho tôi biết tên của bạn để tôi có thể giúp bạn đặt hàng."
-
   utter_ask_product_name:
     - text: "Bạn muốn đặt sản phẩm gì?"
-    - text: "Bạn định mua sản phẩm nào?"
-    - text: "Bạn muốn chọn sản phẩm nào để đặt hàng?"
-    - text: "Bạn có thể cho tôi biết sản phẩm bạn muốn đặt không?"
-    - text: "Sản phẩm bạn muốn đặt là gì?"
-    - text: "Bạn muốn mua sản phẩm nào hôm nay?"
 
-  
-  utter_ask_phone_number:
-    - text: "Số điện thoại của bạn là gì?"
-    - text: "Bạn vui lòng cung cấp số điện thoại để liên hệ nhé."
-    - text: "Tôi cần số điện thoại của bạn để hoàn tất đơn hàng."
-    - text: "Bạn có thể cho tôi biết số điện thoại của bạn không?"
+  utter_ask_quantity:
+    - text: "Bạn muốn đặt bao nhiêu sản phẩm?"
 
-  utter_ask_address:
-    - text: "Địa chỉ giao hàng của bạn?"
-    - text: "Bạn vui lòng cung cấp địa chỉ giao hàng nhé."
-    - text: "Tôi cần địa chỉ giao hàng để hoàn tất đơn hàng."
-    - text: "Bạn có thể cho tôi biết địa chỉ giao hàng không?"
+  utter_ask_variant_name:
+    - text: "Bạn muốn phiên bản nào?"
 
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
-    - text: "Chào bạn! Bạn cần hỗ trợ gì?"
-    - text: "Hello! Rất vui được gặp bạn."
-    - text: "Hi! Tôi có thể giúp gì cho bạn?"
-    - text: "Chào bạn! Bạn muốn tìm hiểu về sản phẩm nào?"
-    - text: "Xin chào! Bạn đang quan tâm đến sản phẩm gì?"
-    - text: "Chào bạn! Tôi có thể hỗ trợ bạn về giá cả hoặc thương hiệu sản phẩm."
-    - text: "Hello! Bạn muốn biết thêm thông tin gì về sản phẩm?"
-    - text: "Hi! Tôi có thể giúp bạn với các câu hỏi về giá hoặc thương hiệu."
-    - text: "Chào bạn! Bạn cần tư vấn về sản phẩm nào hôm nay?"
 
   utter_goodbye:
     - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
-    - text: "Tạm biệt! Chúc bạn một ngày tốt lành!"
-    - text: "Bye! Mong sớm gặp lại bạn."
-    - text: "Hẹn gặp lại! Nếu cần gì, đừng ngần ngại hỏi nhé."
-    - text: "Cảm ơn bạn! Chúc bạn một ngày vui vẻ!"
-    - text: "Tạm biệt! Rất vui được hỗ trợ bạn."
-    - text: "Bye! Hẹn gặp lại bạn trong những lần sau."
-    - text: "Hẹn gặp lại! Chúc bạn mọi điều tốt đẹp."
-    - text: "Cảm ơn bạn đã liên hệ. Chúc bạn một ngày tuyệt vời!"
-    - text: "Tạm biệt! Nếu cần hỗ trợ thêm, hãy quay lại nhé."
 
   utter_ask_product_info:
-    - text: "Bạn muốn xem giá của sản phẩm nào ạ?"
-    - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
-    - text: "Bạn muốn biết giá của thương hiệu hay mẫu sản phẩm cụ thể nào?"
-    - text: "Bạn có thể cho tôi biết sản phẩm bạn muốn hỏi giá không?"
-    - text: "Bạn muốn biết giá của sản phẩm nào? Ví dụ: iPhone, Samsung, Macbook..."
-    - text: "Bạn đang tìm giá của sản phẩm nào để tôi có thể giúp bạn?"
-    - text: "Bạn muốn biết giá của mẫu sản phẩm hay thương hiệu nào?"
-    - text: "Bạn có thể cho tôi biết sản phẩm cụ thể bạn muốn hỏi giá không?"
-    - text: "Bạn muốn xem giá của sản phẩm nào? Ví dụ: iPhone, Samsung, Macbook..."
-    - text: "Bạn đang quan tâm tới sản phẩm nào để tôi có thể cung cấp giá cho bạn?"
+    - text: "Bạn muốn xem giá hoặc thông tin của sản phẩm nào ạ?"
 
   utter_submit_order:
     - text: "Cảm ơn bạn đã cung cấp thông tin. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý sớm nhất."
-    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và giao hàng."
-    - text: "Cảm ơn bạn! Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý trong thời gian sớm nhất."
-    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và sắp xếp giao hàng."
-    - text: "Cảm ơn bạn đã cung cấp thông tin. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý sớm nhất."
-    - text: "Đơn hàng của bạn đã được tiếp nhận. Chúng tôi sẽ liên hệ với bạn để xác nhận và giao hàng."
-  # utter_ask_brand:
-  #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
-  #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
-  #   - text: "Bạn có thể cho tôi biết thương hiệu bạn muốn hỏi không?"
-  #   - text: "Bạn muốn tìm hiểu về sản phẩm của thương hiệu nào?"
-  #   - text: "Bạn đang quan tâm tới thương hiệu nào để tôi có thể giúp bạn?"
-  #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
-  #   - text: "Bạn có thể cho tôi biết thương hiệu cụ thể bạn muốn hỏi không?"
-  #   - text: "Bạn muốn tìm hiểu về sản phẩm của thương hiệu nào?"
-  #   - text: "Bạn đang quan tâm tới thương hiệu nào? Ví dụ: Apple, Samsung, Dell..."
-  #   - text: "Bạn muốn biết về sản phẩm của thương hiệu nào?"
+
+  utter_order_confirmed:
+    - text: "Đơn hàng của bạn đã được xác nhận! Chúng tôi sẽ liên hệ với bạn sớm để hoàn tất quá trình."
 
   utter_fallback:
     - text: "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn được không?"
-    - text: "Rất tiếc, tôi không nắm rõ ý bạn. Bạn có thể giải thích thêm được không?"
-    - text: "Tôi chưa hiểu lắm. Bạn có thể nói lại hoặc hỏi điều khác được không?"
-    - text: "Xin lỗi, tôi không chắc chắn về điều bạn nói. Bạn có thể thử hỏi lại không?"
-    - text: "Rất tiếc, tôi không hiểu câu hỏi của bạn. Bạn có thể nói rõ hơn được không?"
-    - text: "Tôi chưa nắm rõ ý bạn. Bạn có thể giải thích thêm được không?"
 
 actions:
   - utter_greet
   - utter_goodbye
   - utter_ask_product_info
   - action_provide_product_info
-  - action_process_order
   - action_provide_warranty_info
   - action_provide_store_info
   - utter_ask_product_name
-  - utter_ask_phone_number
-  - utter_ask_address
   - utter_ask_quantity
-  - utter_ask_full_name
+  - utter_ask_variant_name
   - utter_submit_order
+  - utter_order_confirmed
   - action_provide_order_info
+  - action_preview_order
   - action_submit_order
-  # - utter_ask_brand
+  - action_cancel_order
   - utter_fallback

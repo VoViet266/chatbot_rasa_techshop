@@ -1,61 +1,70 @@
 version: "3.1"
 
 rules:
-  # Rule chào hỏi
+  # Chào hỏi / tạm biệt
   - rule: Say hello anytime the user greets
     steps:
       - intent: greet
       - action: utter_greet
 
-  # Rule tạm biệt
   - rule: Say goodbye anytime the user says goodbye
     steps:
       - intent: goodbye
       - action: utter_goodbye
 
-  # Rule kích hoạt form đặt hàng
+  # Thông tin sản phẩm / cửa hàng / bảo hành / đơn hàng
+  - rule: Provide product info when user asks
+    steps:
+      - intent: ask_product_info
+      - action: action_provide_product_info
+
+  - rule: Provide warranty info when user asks
+    steps:
+      - intent: ask_warranty
+      - action: action_provide_warranty_info
+
+  - rule: Provide store info when user asks
+    steps:
+      - intent: ask_store
+      - action: action_provide_store_info
+
+  - rule: Provide order info when user asks
+    steps:
+      - intent: ask_order
+      - action: action_provide_order_info
+
+  # Xử lý ngoài phạm vi / NLU fallback
+  - rule: Handle out of scope
+    steps:
+      - intent: out_of_scope
+      - action: utter_fallback
+
+  - rule: Handle NLU fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_fallback
+
+  # Luồng đặt hàng (form)
   - rule: Activate order form
     steps:
       - intent: order
       - action: order_form
       - active_loop: order_form
-
-  # Rule submit form khi hoàn tất
-  - rule: Submit order form
+  # Luồng đặt hàng hoàn tất
+  - rule: Submit order form when completed
     condition:
       - active_loop: order_form
     steps:
       - action: order_form
       - active_loop: null
+      - action: action_preview_order
+  # Xác nhận hoặc hủy đơn hàng sau khi xem trước
+  - rule: Confirm order after preview
+    steps:
+      - intent: confirm_order
       - action: action_submit_order
-      
-
-  # # Rule cung cấp thông tin bảo hành
-  # - rule: Provide warranty info when user asks
-  #   steps:
-  #     - intent: ask_warranty
-  #     - action: action_provide_warranty_info
-
-  # # Rule cung cấp thông tin cửa hàng
-  # - rule: Provide store info when user asks
-  #   steps:
-  #     - intent: ask_store
-  #     - action: action_provide_store_info
-
-  # # Rule cung cấp thông tin đơn hàng
-  # - rule: Provide order info when user asks
-  #   steps:
-  #     - intent: ask_order
-  #     - action: action_provide_order_info
-
-  # # Rule xử lý nội dung ngoài phạm vi
-  # - rule: Handle out of scope
-  #   steps:
-  #     - intent: out_of_scope
-  #     - action: utter_fallback
-
-  # # Rule xử lý fallback
-  # - rule: Handle nlu fallback
-  #   steps:
-  #     - intent: nlu_fallback
-  #     - action: utter_fallback
+  # Hủy đơn hàng sau khi xem trước
+  - rule: Cancel order after preview
+    steps:
+      - intent: cancel_order
+      - action: action_cancel_order
