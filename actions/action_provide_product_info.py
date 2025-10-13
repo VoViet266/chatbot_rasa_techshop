@@ -1,6 +1,7 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
+from utils.render_product_ui import render_ui
 import json
 from utils.convert_to_json import serialize_doc
 
@@ -41,11 +42,14 @@ class ActionProvideProductInfo(Action):
         # 3. Tìm variants theo _id
         variants = variants_collection.find({"_id": {"$in": variant_ids}})
         brand = brands_collection.find_one({"_id": product["brand"]})
-        brand.pop("createdAt", None)
-        brand.pop("updatedAt", None)
-        brand.pop("deletedAt", None)
+        if brand:
+            brand.pop("createdAt", None)
+            brand.pop("updatedAt", None)
+            brand.pop("deletedAt", None)
 
         variants = list(variants)
+        # print('Variant:', variants)
+        # print('Is variants empty:', len(variants) == 0)
         for v in variants:
           v.pop("createdAt", None)
           v.pop("updatedAt", None)
@@ -60,6 +64,9 @@ class ActionProvideProductInfo(Action):
         if len(variants) == 0:
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
         else:
-            product_serialized = serialize_doc(product)
-            dispatcher.utter_message(json_message=product_serialized)
+            header = f"""<div>{product["name"]} có {len(variants)} biến thể</div>"""
+            variant_html = render_ui(variants, product)
+            final_result = header + variant_html
+            # product_serialized = serialize_doc(product)
+            dispatcher.utter_message(text=final_result, html=True)
         return []
