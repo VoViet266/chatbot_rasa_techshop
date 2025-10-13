@@ -1,59 +1,152 @@
 version: "3.1"
 
 stories:
-  # Story 3: Đặt hàng hoàn chỉnh với form
-  - story: Đặt hàng hoàn chỉnh với form
+  - story: order_full_flow
     steps:
       - intent: greet
       - action: utter_greet
+
+      - intent: ask_product_info
+        entities:
+          - product: iPhone 16
+      - slot_was_set:
+          - product: iPhone 16
+      - action: action_provide_product_info
+
       - intent: order
       - action: order_form
       - active_loop: order_form
       - active_loop: null
+
+      - action: action_preview_order
+      - action: action_listen
+
+      - intent: confirm_order
       - action: action_submit_order
+      - slot_was_set:
+          - product: null
+          - variant_name: null
+          - quantity: null
+      - action: action_listen
+
       - intent: goodbye
       - action: utter_goodbye
 
-  # Story 4: Hỏi thông tin đơn hàng
-  - story: Hỏi thông tin đơn hàng
+      # 📝 Trường hợp: Đặt hàng trực tiếp không hỏi trước (nhanh)
+  - story: quick_order_flow
     steps:
       - intent: greet
       - action: utter_greet
+
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_preview_order
+
+      - intent: confirm_order
+      - action: action_submit_order
+
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # 📝 Hủy đơn sau khi xem preview
+  - story: cancel_after_preview
+    steps:
+      # Có thể bắt đầu bằng greet -> order hoặc chỉ order
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_preview_order
+      - action: action_listen
+      - intent: cancel_order
+      - action: action_cancel_order
+      - action: action_listen
+      - intent: goodbye
+      - action: utter_goodbye
+  # 📝 Hỏi thông tin đơn hàng
+  - story: ask_order_info
+    steps:
+      - intent: greet
+      - action: utter_greet
+
       - intent: ask_order
       - action: action_provide_order_info
+
       - intent: goodbye
       - action: utter_goodbye
 
-  # Story 5: Hỏi thông tin bảo hành
-  - story: Ask warranty information
+  # 📝 Hỏi thông tin bảo hành
+  - story: ask_warranty_info
     steps:
       - intent: greet
       - action: utter_greet
+
       - intent: ask_warranty
       - action: action_provide_warranty_info
+
       - intent: goodbye
       - action: utter_goodbye
 
-  # Story 6: Hỏi thông tin cửa hàng
-  - story: Ask store information
+  # 📝 Hỏi thông tin cửa hàng
+  - story: ask_store_info
     steps:
       - intent: greet
       - action: utter_greet
+
       - intent: ask_store
       - action: action_provide_store_info
+
       - intent: goodbye
       - action: utter_goodbye
 
-  # Story 10: Xử lý nội dung ngoài phạm vi
-  - story: Handle out of scope input
+  # 📝 Xử lý out of scope
+  - story: out_of_scope_handling
     steps:
       - intent: greet
       - action: utter_greet
+
       - intent: out_of_scope
       - action: utter_fallback
+
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # 📝 Chỉ hỏi thông tin sản phẩm
+  - story: ask_product_only
+    steps:
+      - intent: greet
+      - action: utter_greet
+
       - intent: ask_product_info
         entities:
-          - product
+          - product: iPhone 16
       - slot_was_set:
           - product: iPhone 16
       - action: action_provide_product_info
+
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # So sánh 2 sản phẩm
+  - story: compare_products_with_form
+    steps:
+      - intent: compare_products
+      - action: compare_products_form
+      - active_loop: compare_products_form
+      - active_loop: null
+      - action: action_compare_products
+      - action: action_listen
+
+  - story: compare_products_direct
+    steps:
+      - intent: compare_products
+        entities:
+          - product_1: "iPhone 16"
+          - product_2: "Galaxy S24"
+      - slot_was_set:
+          - product_1: "iPhone 16"
+          - product_2: "Galaxy S24"
+      - action: action_compare_products
+      - action: action_listen
