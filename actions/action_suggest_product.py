@@ -124,27 +124,34 @@ class ActionSuggestProduct(Action):
                 elif entity['entity'] == 'max_price':
                     max_price = entity['value']
 
-        if category_doc:
+        if category_doc and ("giá" or "triệu" in text):
             category_id = category_doc["_id"]
             products = products_collection.find({"category": category_id})
             variant_ids = [variant_id for product in products for variant_id in product["variants"]]
 
             result = []
-            if "dưới" or "giá rẻ" in text and max_price:
+            if "đến" in text and min_price and max_price:
                 for variant_id in variant_ids:    
                     variant = variants_collection.find_one({"_id": variant_id})
-                    if variant["price"] <= convert_price_to_number(max_price):
+                    if convert_price_to_number(min_price) <= variant["price"] and variant["price"] <= convert_price_to_number(max_price):
                         result.append(variant)
             elif "trên" in text and min_price:
                 for variant_id in variant_ids:    
                     variant = variants_collection.find_one({"_id": variant_id})
                     if variant["price"] >= convert_price_to_number(min_price):
                         result.append(variant)
+            elif "dưới" or "giá rẻ" in text and max_price:
+                for variant_id in variant_ids:    
+                    variant = variants_collection.find_one({"_id": variant_id})
+                    if variant["price"] <= convert_price_to_number(max_price):
+                        result.append(variant)
+            
             elif "đến" in text and min_price and max_price:
                 for variant_id in variant_ids:    
                     variant = variants_collection.find_one({"_id": variant_id})
-                    if convert_price_to_number(min_price) <= variant["price"] <= convert_price_to_number(max_price):
+                    if convert_price_to_number(min_price) <= variant["price"] and variant["price"] <= convert_price_to_number(max_price):
                         result.append(variant)
+
         result = render_ui(result)
         dispatcher.utter_message(text=result, html=True)
         
