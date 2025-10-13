@@ -63,8 +63,40 @@ rules:
     steps:
       - intent: confirm_order
       - action: action_submit_order
-  # Hủy đơn hàng sau khi xem trước
-  - rule: Cancel order after preview
+  
+  # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
+  - rule: Suggest products when user asks
     steps:
-      - intent: cancel_order
-      - action: action_cancel_order
+      - intent: suggest_product
+      - action: action_suggest_product
+      
+
+  # # Rule cung cấp thông tin bảo hành
+  # - rule: Provide warranty info when user asks
+  #   steps:
+  #     - intent: ask_warranty
+  #     - action: action_provide_warranty_info
+
+  # # Rule cung cấp thông tin cửa hàng
+  # - rule: Provide store info when user asks
+  #   steps:
+  #     - intent: ask_store
+  #     - action: action_provide_store_info
+
+  # # Rule cung cấp thông tin đơn hàng
+  # - rule: Provide order info when user asks
+  #   steps:
+  #     - intent: ask_order
+  #     - action: action_provide_order_info
+
+  # # Rule xử lý nội dung ngoài phạm vi
+  # - rule: Handle out of scope
+  #   steps:
+  #     - intent: out_of_scope
+  #     - action: utter_fallback
+
+  # # Rule xử lý fallback
+  # - rule: Handle nlu fallback
+  #   steps:
+  #     - intent: nlu_fallback
+  #     - action: utter_fallback

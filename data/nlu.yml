@@ -514,39 +514,89 @@ nlu:
       - hú hú
       - lalalala
       - xyz
-      - test test
-      - thử thôi
-      - đùa thôi
-      - asdfghjkl
-      - qwertyuiop
-      - 12345
-      - @@##$$
-      - hfguygffkjbhjfgf
-      - ìgsdefyuefyu
-      - ndxsjn ibcdbh
-      - bạn tên gì
-      - bạn bao nhiêu tuổi
-      - thời tiết hôm nay
-      - hát cho tôi nghe
-      - kể chuyện đi
-      - bạn là ai
-      - bạn ở đâu
-      - bot tên gì
-      - ai tạo ra bạn
-      - bạn làm việc gì
-      - bạn có yêu tôi không
-      - tôi yêu bạn
-      - bạn đẹp quá
-      - bạn xấu quá
-      - ngu vl
-      - đồ ngu
-      - ngu người
-      - dm
-      - đm
-      - cc
-      - vãi
-      - wtf
-      - fuck
-      - shit
-      - vcl
-      - vkl
+      - mày là ai
+      - tao không quan tâm
+
+  # Intent: Gợi ý sản phẩm
+  - intent: suggest_product
+    examples: |
+      - Tôi cần [laptop](category) giá dưới [10 triệu](max_price)
+      - Tôi cần [laptop](category) giá trên [15 triệu](min_price) 
+      - Tôi cần laptop giá từ [10](min_price) đến [15 triệu](max_price)
+      - Có mẫu [điện thoại](category) nào giá dưới [5 triệu](max_price) không?
+      - Tôi muốn [điện thoại](category) giá trên [10 triệu](min_price)
+      - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10](min_price) đến [15 triệu](max_price)
+      - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu](max_price)
+
+  - regex: max_price
+    examples: |
+      - \d+(\s)?triệu
+      - \d+(\s)?tr
+      - \d+(\s)?triệu đồng
+
+  - regex: min_price  
+    examples: |
+      - \d+(\s)?triệu
+      - \d+(\s)?tr
+      - \d+(\s)?triệu đồng
+
+
+  # # Synonym cho sản phẩm
+  # - synonym: iPhone
+  #   examples: |
+  #     - iPhone 16
+  #     - iPhone 15
+  #     - iPhone 14
+  #     - ip 16
+  #     - ip 15
+  #     - điện thoại iPhone
+  #     - iphone
+
+  # - synonym: Samsung
+  #   examples: |
+  #     - Samsung Galaxy
+  #     - Galaxy
+  #     - Sam Sung
+  #     - samsung
+
+  # - synonym: MacBook
+  #   examples: |
+  #     - Macbook Pro
+  #     - Macbook Air
+  #     - Mac Book
+  #     - macbook
+
+  # - synonym: iPad
+  #   examples: |
+  #     - iPad Pro
+  #     - iPad Air
+  #     - Ipad
+  #     - ipad
+
+  # # Regex cho số điện thoại Việt Nam
+  # - regex: phone_number
+  #   examples: |
+  #     - \d{10}
+  #     - 0\d{9}
+  #     - \+84\d{9}
+  #     - 84\d{9}
+
+  # # Regex cho số lượng
+  # - regex: quantity
+  #   examples: |
+  #     - \d+
+  #     - [0-9]+
+
+  # # Lookup cho phương thức thanh toán
+  # - lookup: payment_method
+  #   examples: |
+  #     - COD
+  #     - tiền mặt
+  #     - chuyển khoản
+  #     - thẻ
+  #     - thẻ tín dụng
+  #     - thẻ ATM
+  #     - momo
+  #     - zalopay
+  #     - vnpay
+  #     - banking

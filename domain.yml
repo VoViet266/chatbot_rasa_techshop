@@ -7,6 +7,11 @@ intents:
   - inform
   - ask_product_info
   - ask_warranty
+  - out_of_scope
+  - suggest_product
+  # - ask_brand
+  - confirm_order
+  - nlu_fallback
   - ask_order
   - ask_store
   - confirm_order
@@ -16,7 +21,12 @@ intents:
   - compare_products
 
 entities:
+  - product
+  - category
+  - price
   - brand
+  - min_price
+  - max_price
   - full_name
   - product
   - product_1
@@ -55,6 +65,34 @@ slots:
     mappings:
       - type: from_entity
         entity: product_2
+
+  category:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: category
+
+  price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: price
+
+  min_price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: min_price
+        
+  max_price:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: max_price
 
 forms:
   order_form:
@@ -116,7 +154,7 @@ actions:
   - utter_ask_product_2
   - utter_order_confirmed
   - action_provide_order_info
-  - action_preview_order
+  - action_suggest_product
   - action_submit_order
   - action_cancel_order
   - action_compare_products
