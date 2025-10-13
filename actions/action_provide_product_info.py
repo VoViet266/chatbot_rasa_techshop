@@ -12,9 +12,9 @@ class ActionProvideProductInfo(Action):
             tracker: Tracker,
             domain: dict):
 
-        product_name = tracker.get_slot("product")
+        product = tracker.get_slot("product")
 
-        if not product_name:
+        if not product:
             dispatcher.utter_message(text="Bạn vui lòng cho tôi biết tên sản phẩm nhé.")
             return []
 
@@ -26,10 +26,10 @@ class ActionProvideProductInfo(Action):
         brands_collection = db["brands"]
 
         # 1. Tìm product theo tên
-        product = products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
+        product = products_collection.find_one({"name": {"$regex": product, "$options": "i"}})
 
         if not product:
-            dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product_name}.")
+            dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product}.")
             return []
 
         # 2. Lấy danh sách variant IDs từ product
