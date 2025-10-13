@@ -51,8 +51,7 @@ class ActionCompareProducts(Action):
             variants1, variants2
         )
         
-        dispatcher.utter_message(text="Dưới đây là bảng so sánh chi tiết giữa hai sản phẩm:")
-        dispatcher.utter_message(text=html_content)
+        dispatcher.utter_message(text=html_content, html=True)
         
         return [AllSlotsReset()]
 
