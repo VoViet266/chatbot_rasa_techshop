@@ -319,9 +319,21 @@ nlu:
       - Bảo hành tại đâu?
       - Trung tâm bảo hành ở đâu?
 
-  # ============================================
-  # INTENT: Hỏi đơn hàng
-  # ============================================
+  - intent: compare_products
+    examples: |
+      - So sánh [iPhone 16](product_1) với [Samsung Galaxy S25 Plus](product_2)
+      - So sánh [Samsung Galaxy S25 Plus](product_1) với [iPhone 16 Pro Max](product_2)
+      - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy A55](product_2)
+      - So sánh [iPhone 16 Pro Max](product_1) với [Samsung Galaxy S25 Plus](product_2)
+      - So sánh [Samsung Galaxy S25 Plus 5G](product_1) với [iPhone 16 Pro Max 512GB](product_2)
+      - So sánh [Samsung Galaxy S25 Plus màu tím](product_1) với [iPhone 16 Pro Max màu xanh](product_2)
+      - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy S25 Ultra](product_2)
+      - So sánh [iPhone 16](product_1) và [Samsung Galaxy S25 Plus](product_2)
+      - So sánh [Samsung Galaxy S25 Plus](product_1) và [iPhone 16 Pro Max](product_2)
+      - So sánh [Samsung Galaxy S25 Plus](product_1) và [Samsung Galaxy A55](product_2)
+      - So sánh [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)
+      - So sánh [Samsung Galaxy S25 Plus 5G](product_1) và [iPhone 16 Pro Max 512GB](product_2)
+
   - intent: ask_order
     examples: |
       - Đơn hàng của tôi ra sao?

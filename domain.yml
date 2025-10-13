@@ -13,11 +13,14 @@ intents:
   - cancel_order
   - out_of_scope
   - nlu_fallback
+  - compare_products
 
 entities:
   - brand
   - full_name
   - product
+  - product_1
+  - product_2
   - variant_name
   - quantity
 
@@ -40,6 +43,18 @@ slots:
     mappings:
       - type: from_entity
         entity: quantity
+  product_1:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: product_1
+  product_2:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: product_2
 
 forms:
   order_form:
@@ -47,8 +62,18 @@ forms:
       - product
       - variant_name
       - quantity
+  compare_products_form:
+    required_slots:
+      - product_1
+      - product_2
 
 responses:
+  utter_ask_product_1:
+    - text: "Bạn muốn so sánh sản phẩm nào?"
+
+  utter_ask_product_2:
+    - text: "Bạn muốn so sánh với sản phẩm nào?"
+
   utter_ask_product_name:
     - text: "Bạn muốn đặt sản phẩm gì?"
 
@@ -87,9 +112,12 @@ actions:
   - utter_ask_quantity
   - utter_ask_variant_name
   - utter_submit_order
+  - utter_ask_product_1
+  - utter_ask_product_2
   - utter_order_confirmed
   - action_provide_order_info
   - action_preview_order
   - action_submit_order
   - action_cancel_order
+  - action_compare_products
   - utter_fallback

@@ -1,52 +1,52 @@
 version: "3.1"
 
 stories:
-  # ✅ Story chính: Đặt hàng đầy đủ từ A → Z
   - story: order_full_flow
-    steps:
-    - intent: greet
-    - action: utter_greet
-
-    - intent: ask_product_info
-      entities:
-        - product: iPhone 16
-    - slot_was_set:
-        - product: iPhone 16
-    - action: action_provide_product_info
-
-    - intent: order
-    - action: order_form
-    - active_loop: order_form
-    - active_loop: null
-
-    - action: action_preview_order
-    - action: action_listen  
-
-    - intent: confirm_order
-    - action: action_submit_order
-    - slot_was_set:
-        - product: null
-        - variant_name: null
-        - quantity: null
-    - action: action_listen  
-
-    - intent: goodbye
-    - action: utter_goodbye
-
-  # 📝 Trường hợp: Đặt hàng trực tiếp không hỏi trước (nhanh)
-    - story: quick_order_flow
     steps:
       - intent: greet
       - action: utter_greet
+
+      - intent: ask_product_info
+        entities:
+          - product: iPhone 16
+      - slot_was_set:
+          - product: iPhone 16
+      - action: action_provide_product_info
+
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+
+      - action: action_preview_order
+      - action: action_listen
+
+      - intent: confirm_order
+      - action: action_submit_order
+      - slot_was_set:
+          - product: null
+          - variant_name: null
+          - quantity: null
+      - action: action_listen
+
+      - intent: goodbye
+      - action: utter_goodbye
+
+      # 📝 Trường hợp: Đặt hàng trực tiếp không hỏi trước (nhanh)
+  - story: quick_order_flow
+    steps:
+      - intent: greet
+      - action: utter_greet
+
       - intent: order
       - action: order_form
       - active_loop: order_form
       - active_loop: null
       - action: action_preview_order
-      - action: action_listen 
+
       - intent: confirm_order
       - action: action_submit_order
-      - action: action_listen 
+
       - intent: goodbye
       - action: utter_goodbye
 
@@ -59,10 +59,10 @@ stories:
       - active_loop: order_form
       - active_loop: null
       - action: action_preview_order
-      - action: action_listen 
+      - action: action_listen
       - intent: cancel_order
       - action: action_cancel_order
-      - action: action_listen 
+      - action: action_listen
       - intent: goodbye
       - action: utter_goodbye
   # 📝 Hỏi thông tin đơn hàng
@@ -128,3 +128,25 @@ stories:
 
       - intent: goodbye
       - action: utter_goodbye
+
+  # So sánh 2 sản phẩm
+  - story: compare_products_with_form
+    steps:
+      - intent: compare_products
+      - action: compare_products_form
+      - active_loop: compare_products_form
+      - active_loop: null
+      - action: action_compare_products
+      - action: action_listen
+
+  - story: compare_products_direct
+    steps:
+      - intent: compare_products
+        entities:
+          - product_1: "iPhone 16"
+          - product_2: "Galaxy S24"
+      - slot_was_set:
+          - product_1: "iPhone 16"
+          - product_2: "Galaxy S24"
+      - action: action_compare_products
+      - action: action_listen
