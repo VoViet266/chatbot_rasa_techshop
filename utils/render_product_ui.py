@@ -1,7 +1,7 @@
 from utils.format_currentcy import format_vnd
 import re
 
-def render_ui(variants, product={}):
+def render_ui(variants):
     result = f""
     if len(variants) != 0:
       for variant in variants:
@@ -42,14 +42,14 @@ def render_ui(variants, product={}):
           {format_vnd(variant["price"])}
         </span>
         <span style="font-size:12px;color:red;line-height:1.33;">
-          {product["discount"]}%
+          {variant.get('discount', 0)}%
         </span>
       </div>
 
       <!-- Nút hành động -->
       <div role="toolbar" aria-label="Hành động" 
           style="display:flex;gap:4px;margin-top:4px;">
-          <a href="http://localhost:5173/product/{product["_id"]}">
+          <a href="http://localhost:5173/product/{variant['product_id']}">
             <button type="button" tabindex="0" role="button"
               style="display:inline-flex;align-items:center;justify-content:center;padding:6px 8px;
                     font-size:12px;color:#101519;background:transparent;border:none;cursor:pointer;
@@ -63,4 +63,4 @@ def render_ui(variants, product={}):
       cleaned_result = re.sub(r'\s+', ' ', result).strip()
       return cleaned_result
     else:
-       return "Không có biến thể cho sản phẩm này!"
+        return "Không có biến thể cho sản phẩm này!"

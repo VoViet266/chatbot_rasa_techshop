@@ -516,29 +516,16 @@ nlu:
       - mày là ai
       - tao không quan tâm
 
-  # Intent: Gợi ý sản phẩm
-  - intent: suggest_product
+  - intent: suggest_product_price
     examples: |
-      - Tôi cần [laptop](category) giá dưới [10 triệu](max_price)
-      - Tôi cần [laptop](category) giá trên [15 triệu](min_price) 
-      - Tôi cần laptop giá từ [10](min_price) đến [15 triệu](max_price)
-      - Có mẫu [điện thoại](category) nào giá dưới [5 triệu](max_price) không?
-      - Tôi muốn [điện thoại](category) giá trên [10 triệu](min_price)
-      - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10](min_price) đến [15 triệu](max_price)
-      - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu](max_price)
-
-  - regex: max_price
-    examples: |
-      - \d+(\s)?triệu
-      - \d+(\s)?tr
-      - \d+(\s)?triệu đồng
-
-  - regex: min_price  
-    examples: |
-      - \d+(\s)?triệu
-      - \d+(\s)?tr
-      - \d+(\s)?triệu đồng
-
+      - Tôi cần [laptop](category) giá dưới [10 triệu]{"entity": "price", "role": "to"}
+      - Tôi cần [laptop](category) giá trên [15 triệu]{"entity": "price", "role": "from"}
+      - Tôi cần [điện thoại](category) giá rẻ
+      - Tôi cần laptop giá từ [10 triệu]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
+      - Có mẫu [điện thoại](category) nào giá dưới [5 triệu]{"entity": "price", "role": "to"} không?
+      - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
+      - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
+      - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
 
   # # Synonym cho sản phẩm
   # - synonym: iPhone
