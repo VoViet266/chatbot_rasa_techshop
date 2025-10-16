@@ -17,6 +17,9 @@ from utils.format_currentcy import format_vnd
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
   
     user_id = tracker.sender_id
+    metadata = tracker.latest_message.get("metadata", {})
+    access_token = metadata.get("accessToken")
+    print(access_token)
     product_name = tracker.get_slot("product")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
@@ -80,7 +83,7 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
         "quantity": quantity,
         "total_price": total_price
     }
-    
+    print(validated_data)
     return None, validated_data
 
 
@@ -177,43 +180,17 @@ class ActionSubmitOrder(Action):
                 
             }],
             "totalPrice": total_price,
-            "status": "pending", 
-           
+            "shippingAddress": address,
+            "phone": phone,
+            "customerName": customer_name,
+            "status": "pending"
         }
         
-        
-        headers = {"Content-Type": "application/json"}
-        if token:
-            headers["Authorization"] = f"Bearer {token}"
-            
-        print(f"Submitting order to backend... with headers: {headers}")
-        try:
-            backend_url = "http://localhost:8080/api/v1/orders"
-            response = requests.post(
-                backend_url,
-                json=order_payload,
-                headers=headers,
-                timeout=10
-            )
-            
-            if response.status_code in [200, 201]:
-                response_data = response.json()
-                # Giả sử backend trả về orderId trong trường "id" hoặc "orderId"
-                order_id = response_data.get("data", {}).get("_id") or response_data.get("orderId", "N/A")
-                dispatcher.utter_message(text=f"🚀 Đặt hàng thành công! Mã đơn hàng của bạn là #{order_id}. Cảm ơn bạn đã tin tưởng TechShop!")
-            else:
-                dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi gửi đơn hàng đến hệ thống. Vui lòng thử lại sau.")
-                print(f"Backend error: {response.status_code} - {response.text}")
-        
-        except requests.exceptions.Timeout:
-            dispatcher.utter_message(text="Kết nối đến máy chủ bị gián đoạn. Vui lòng thử lại.")
-        except requests.exceptions.ConnectionError:
-            dispatcher.utter_message(text="Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại.")
-        except Exception as e:
-            dispatcher.utter_message(text="Đã có lỗi không mong muốn xảy ra.")
-            print(f"Error submitting order: {str(e)}")
+        print(f"Order data to submit: {json.dumps(order_payload, indent=2, ensure_ascii=False)}")
+        dispatcher.utter_message(json_message=order_payload)
             
         return [AllSlotsReset()]
+        
 
 
 class ActionCancelOrder(Action):
