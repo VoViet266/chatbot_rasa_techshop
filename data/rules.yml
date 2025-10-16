@@ -33,15 +33,18 @@ rules:
       - intent: ask_order
       - action: action_provide_order_info
 
-  # Xử lý ngoài phạm vi / NLU fallback
-  - rule: Handle out of scope
+  # Gợi ý sản phẩm
+  - rule: Suggest products when user asks
     steps:
-      - intent: out_of_scope
-      - action: utter_fallback
+      - intent: suggest_product
+      - action: action_suggest_product
 
-  - rule: Handle NLU fallback
+  # Xử lý ngoài phạm vi / NLU fallback
+  - rule: Handle out of scope or NLU fallback
     steps:
-      - intent: nlu_fallback
+      - or:
+          - intent: out_of_scope
+          - intent: nlu_fallback
       - action: utter_fallback
 
   # Luồng đặt hàng (form)
@@ -50,53 +53,18 @@ rules:
       - intent: order
       - action: order_form
       - active_loop: order_form
-  # Luồng đặt hàng hoàn tất
+
   - rule: Submit order form when completed
     condition:
-      - active_loop: order_form
+    - active_loop: order_form
     steps:
-      - action: order_form
-      - active_loop: null
-      - action: action_preview_order
-  # Xác nhận hoặc hủy đơn hàng sau khi xem trước
-  - rule: Confirm order after preview
+    - action: order_form
+    - active_loop: null
+    - slot_was_set:
+        - requested_slot: null
+    - action: action_preview_order
+
+  - rule: Submit confirmed order
     steps:
-      - intent: confirm_order
-      - action: action_submit_order
-  
-  # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
-  - rule: Suggest products when user asks
-    steps:
-      - intent: suggest_product
-      - action: action_suggest_product
-      
-
-  # # Rule cung cấp thông tin bảo hành
-  # - rule: Provide warranty info when user asks
-  #   steps:
-  #     - intent: ask_warranty
-  #     - action: action_provide_warranty_info
-
-  # # Rule cung cấp thông tin cửa hàng
-  # - rule: Provide store info when user asks
-  #   steps:
-  #     - intent: ask_store
-  #     - action: action_provide_store_info
-
-  # # Rule cung cấp thông tin đơn hàng
-  # - rule: Provide order info when user asks
-  #   steps:
-  #     - intent: ask_order
-  #     - action: action_provide_order_info
-
-  # # Rule xử lý nội dung ngoài phạm vi
-  # - rule: Handle out of scope
-  #   steps:
-  #     - intent: out_of_scope
-  #     - action: utter_fallback
-
-  # # Rule xử lý fallback
-  # - rule: Handle nlu fallback
-  #   steps:
-  #     - intent: nlu_fallback
-  #     - action: utter_fallback
+    - intent: confirm_order
+    - action: action_submit_order

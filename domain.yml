@@ -88,6 +88,48 @@ slots:
     mappings:
       - type: from_entity
         entity: max_price
+  validated_product_id:
+    type: any
+    influence_conversation: false
+    mappings: []
+
+  validated_variant_id:
+    type: any
+    influence_conversation: false
+    mappings: []
+
+  validated_quantity:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_price:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_total_price:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_address:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  validated_customer_name:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  validated_phone:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
 
 forms:
   order_form:
