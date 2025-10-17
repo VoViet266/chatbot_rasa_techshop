@@ -2,7 +2,6 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
-from utils.format_currentcy import format_vnd
 from utils.render_product_ui import render_ui
 import re
 import os
@@ -29,7 +28,6 @@ class ActionSuggestProductPrice(Action):
             tracker: Tracker,
             domain):
         
-        os.system('cls' if os.name == 'nt' else 'clear')
         text = tracker.latest_message.get("text", "").lower()
         min_price = tracker.get_slot("min_price")
         max_price = tracker.get_slot("max_price")
@@ -70,12 +68,10 @@ class ActionSuggestProductPrice(Action):
                         variant['discount'] = product.get('discount', 0)
                         variant['product_id'] = product.get('_id')
                         result.append(variant)
-                
-        for r in result:
-            print('Variant discount:', r['discount'])
-            print('Variant product id:', r['product_id'])
+        
+        # print(render_ui(result))
         # html_result = render_ui(result)
         # dispatcher.utter_message(text=html_result, html=True)
-        dispatcher.utter_message(text='Hehe')
+        dispatcher.utter_message(json_message=render_ui(result))
         
         return [SlotSet('min_price', None), SlotSet('max_price', None)]
