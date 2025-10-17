@@ -2,8 +2,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
 from utils.render_product_ui import render_ui
-import json
-from utils.convert_to_json import serialize_doc
+from utils.database import DatabaseService
 
 class ActionProvideProductInfo(Action):
     def name(self):
@@ -20,11 +19,10 @@ class ActionProvideProductInfo(Action):
             return []
 
         # Kết nối MongoDB
-        client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-        db = client["techshop_db"]
-        products_collection = db["products"]
-        variants_collection = db["variants"]
-        brands_collection = db["brands"]
+        db_service = DatabaseService()
+        products_collection = db_service["products"]
+        variants_collection = db_service["variants"]
+        brands_collection = db_service["brands"]
 
         # 1. Tìm product theo tên
         product = products_collection.find_one({"name": {"$regex": product, "$options": "i"}})

@@ -1,7 +1,11 @@
+from xmlrpc import client
 from rasa_sdk import Action, Tracker
 from bson import ObjectId
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
+from utils.database import DatabaseService
+
+
 
 class ActionProvideOrderInfo(Action):
     def name(self):
@@ -15,10 +19,9 @@ class ActionProvideOrderInfo(Action):
 
 
         # Kết nối MongoDB
-        client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-        db = client["techshop_db"]
-        orders_collections = db["orders"]
-        products_collections = db["products"]
+        db_service = DatabaseService()
+        orders_collections = db_service["orders"]
+        products_collections = db_service["products"]
         orders_info = list(orders_collections.find({"user": ObjectId(user_id)}))
 
         if(not user_id):

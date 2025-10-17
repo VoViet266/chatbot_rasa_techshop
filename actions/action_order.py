@@ -12,14 +12,10 @@ import requests
 import json
 from utils.format_currentcy import format_vnd
 
-# --- HÀM TRỢ GIÚP (HELPER FUNCTION) ---
+
 # Logic chung để lấy và xác thực thông tin đơn hàng từ DB
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
-  
     user_id = tracker.sender_id
-    metadata = tracker.latest_message.get("metadata", {})
-   
-  
     product_name = tracker.get_slot("product")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
