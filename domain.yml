@@ -18,6 +18,7 @@ intents:
 
 entities:
   - category
+  - price_qualifier
   - price:
       use_entity_roles_or_groups: True
       roles:
@@ -38,6 +39,13 @@ slots:
     mappings:
       - type: from_entity
         entity: product
+
+  price_qualifier:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: price_qualifier
 
   variant_name:
     type: text

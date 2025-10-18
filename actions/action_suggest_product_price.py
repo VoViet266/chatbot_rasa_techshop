@@ -4,7 +4,6 @@ from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
 from utils.render_product_ui import render_ui
 import re
-import os
 
 def convert_price_to_number(price_text):
     """Convert price text to integer number in VND
@@ -28,11 +27,21 @@ class ActionSuggestProductPrice(Action):
             tracker: Tracker,
             domain):
         
+        CHEAP_PRICE_THRESHOLD = '5 triệu'  # Ví dụ: 5 triệu
+        EXPENSIVE_PRICE_THRESHOLD = '20 triệu' # Ví dụ: 20 triệu
+        
         text = tracker.latest_message.get("text", "").lower()
         min_price = tracker.get_slot("min_price")
         max_price = tracker.get_slot("max_price")
         category = tracker.get_slot("category")
-        # entities = tracker.latest_message['entities']
+        price_qualifier = tracker.get_slot("price_qualifier")
+
+        print('Loại:', price_qualifier)
+
+        if price_qualifier == "cheap" and max_price is None:
+            max_price = CHEAP_PRICE_THRESHOLD
+        elif price_qualifier == "expensive" and min_price is None:
+            min_price = EXPENSIVE_PRICE_THRESHOLD
 
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
@@ -74,4 +83,4 @@ class ActionSuggestProductPrice(Action):
         # dispatcher.utter_message(text=html_result, html=True)
         dispatcher.utter_message(json_message=render_ui(result))
         
-        return [SlotSet('min_price', None), SlotSet('max_price', None)]
+        return [SlotSet('min_price', None), SlotSet('max_price', None), SlotSet('price_qualifier', None)]

@@ -518,15 +518,33 @@ nlu:
 
   - intent: suggest_product_price
     examples: |
+      - Tôi cần [điện thoại](category) [giá rẻ](price_qualifier)
+      - Tôi muốn [laptop](category) [bình dân](price_qualifier)
+      - Gợi ý [máy ảnh](category) [cao cấp](price_qualifier)
+      - Tìm [laptop](category) [giá cao](price_qualifier)
+      - Tôi cần [điện thoại](category) [xịn](price_qualifier)
+      - Có [laptop](category) nào [hàng hiệu](price_qualifier) không?
+      - Gợi ý [máy ảnh](category) [giá thấp](price_qualifier)
       - Tôi cần [laptop](category) giá dưới [10 triệu]{"entity": "price", "role": "to"}
       - Tôi cần [laptop](category) giá trên [15 triệu]{"entity": "price", "role": "from"}
-      - Tôi cần [điện thoại](category) giá rẻ
       - Tôi cần laptop giá từ [10 triệu]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Có mẫu [điện thoại](category) nào giá dưới [5 triệu]{"entity": "price", "role": "to"} không?
       - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
 
+  - synonym: cheap
+    examples: |
+      - giá rẻ
+      - bình dân
+      - giá thấp
+
+  - synonym: expensive
+    examples: |
+      - giá cao
+      - cao cấp
+      - xịn
+      - hàng hiệu
   # # Synonym cho sản phẩm
   # - synonym: iPhone
   #   examples: |

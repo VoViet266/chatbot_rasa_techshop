@@ -2,7 +2,7 @@ from utils.format_currentcy import format_vnd
 import re
 
 def render_ui(variants):
-    result = f""
+    result = f"<span>Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</span>"
     if len(variants) != 0:
       for variant in variants:
           result += f"""<div id="product-template" role="group" aria-label="Sản phẩm" 
