@@ -8,6 +8,7 @@ intents:
   - ask_product_info
   - ask_warranty
   - suggest_product_price
+  - suggest_product_ram
   - ask_order
   - ask_store
   - confirm_order
@@ -20,6 +21,12 @@ entities:
   - category
   - price_qualifier
   - price:
+      use_entity_roles_or_groups: True
+      roles:
+        - from
+        - to
+  - ram_qualifier
+  - ram:
       use_entity_roles_or_groups: True
       roles:
         - from
@@ -39,6 +46,13 @@ slots:
     mappings:
       - type: from_entity
         entity: product
+
+  ram_qualifier:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: ram_qualifier
 
   price_qualifier:
     type: text
@@ -95,6 +109,20 @@ slots:
       - type: from_entity
         entity: price
         role: to # Map slot max_price với entity price có role là to
+
+  min_ram:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ram
+        role: from # Map slot min_ram với entity ram có role là from
+
+  max_ram:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: ram
+        role: to # Map slot max_ram với entity ram có role là to
 
 forms:
   order_form:
@@ -159,6 +187,7 @@ actions:
   - action_suggest_product_price
   - action_preview_order
   - action_submit_order
+  - action_suggest_product_ram
   - action_cancel_order
   - action_compare_products
   - utter_fallback

@@ -69,6 +69,11 @@ rules:
     steps:
       - intent: suggest_product_price
       - action: action_suggest_product_price
+  
+  - rule: Suggest products when user asks by ram
+    steps:
+      - intent: suggest_product_ram
+      - action: action_suggest_product_ram
       
 
   # # Rule cung cấp thông tin bảo hành
