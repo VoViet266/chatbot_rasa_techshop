@@ -19,6 +19,8 @@ class ActionSuggestProductPrice(Action):
 
         MIN_RAM_THRESHOLD = '8 GB'  # Ví dụ: 5 GB
         MAX_RAM_THRESHOLD = '16 GB' # Ví dụ: 20 GB
+
+        MIN_BATTERY_THRESHOLD = '4000 mAh'
         
         category = tracker.get_slot("category")
         if not(category):
@@ -31,8 +33,12 @@ class ActionSuggestProductPrice(Action):
         min_ram = tracker.get_slot("min_ram")
         max_ram = tracker.get_slot("max_ram")
         
+        min_battery = tracker.get_slot("min_battery")
+        max_battery = tracker.get_slot("max_battery")
+        
         price_qualifier = tracker.get_slot("price_qualifier")
         ram_qualifier = tracker.get_slot("ram_qualifier")
+        battery_qualifier = tracker.get_slot("battery_qualifier")
 
         if price_qualifier == "cheap" and max_price is None:
             max_price = CHEAP_PRICE_THRESHOLD
@@ -43,19 +49,10 @@ class ActionSuggestProductPrice(Action):
             max_ram = MIN_RAM_THRESHOLD
         elif ram_qualifier == "high_ram" and min_ram is None:
             min_ram = MAX_RAM_THRESHOLD
-        
-        price_query = {}
-        if min_price:
-            price_query['$gte'] = convert_price_to_number(min_price)
-        if max_price:
-            price_query['$lte'] = convert_price_to_number(max_price)
-        
-        ram_query = {}
-        if min_ram:
-            ram_query['$gte'] = extract_number(min_ram)
-        if max_ram:
-            ram_query['$lte'] = extract_number(max_ram)
 
+        if battery_qualifier == "high_battery" and max_battery is None:
+            max_battery = MIN_BATTERY_THRESHOLD
+        
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
 
@@ -67,13 +64,34 @@ class ActionSuggestProductPrice(Action):
         products_model = database["products"]
         products_collection = products_model.find({"category": category_id})
         products_collection = list(products_collection)
-        
 
         query = {}
-        if price_query:
-            query['price'] = price_query
-        if ram_query:
-            query['ram'] = ram_query
+        expr_conditions = []
+        if min_price:
+            expr_conditions.append({ '$gte': ['$price', convert_price_to_number(min_price)] })
+        if max_price:
+            expr_conditions.append({ '$lte': ['$price', convert_price_to_number(max_price)] })
+        
+        if min_ram:
+            expr_conditions.append({
+                '$gte': [
+                    { '$toInt': { '$arrayElemAt': [ { '$split': ['$memory.ram', ' '] }, 0 ] } },
+                    extract_number(min_ram)
+                ]
+            })
+
+        if max_ram:
+            expr_conditions.append({
+                '$lte': [
+                    { '$toInt': { '$arrayElemAt': [ { '$split': ['$memory.ram', ' '] }, 0 ] } },
+                    extract_number(max_ram)
+                ]
+            })
+
+        if len(expr_conditions) == 1:
+            query['$expr'] = expr_conditions[0]
+        elif len(expr_conditions) > 1:
+            query['$expr'] = { '$and': expr_conditions }
 
         variants_model = database["variants"]
         variant_ids_in_category = []
@@ -83,7 +101,6 @@ class ActionSuggestProductPrice(Action):
                 variant_ids_in_category.append(variant_id)
 
         query['_id'] = {"$in": variant_ids_in_category}
-        print('Query:', query)
         variant_collection = variants_model.find(query)
         variant_collection = list(variant_collection)
 

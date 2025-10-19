@@ -8,6 +8,7 @@ intents:
   - ask_product_info
   - ask_warranty
   - suggest_product_price
+  - suggest_product_battery
   - suggest_product_ram
   - ask_order
   - ask_store
@@ -19,6 +20,12 @@ intents:
 
 entities:
   - category
+  - battery_qualifier
+  - battery:
+      use_entity_roles_or_groups: True
+      roles:
+        - from
+        - to
   - price_qualifier
   - price:
       use_entity_roles_or_groups: True

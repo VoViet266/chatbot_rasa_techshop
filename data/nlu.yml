@@ -516,23 +516,6 @@ nlu:
       - mày là ai
       - tao không quan tâm
 
-  # - intent: suggest_product_ram
-  #   examples: |
-  #     - Tôi cần [điện thoại](category) [ram ít](ram_qualifier)
-  #     - Tôi muốn [laptop](category) [ít ram](ram_qualifier)
-  #     - Gợi ý [máy ảnh](category) [ram nhiều](ram_qualifier)
-  #     - Tìm [laptop](category) [ram cao](ram_qualifier)
-  #     - Tôi cần [điện thoại](category) [xịn](ram_qualifier)
-  #     - Có [laptop](category) nào [hàng hiệu](ram_qualifier) không?
-  #     - Gợi ý [máy ảnh](category) [giá thấp](ram_qualifier)
-  #     - Tôi cần [laptop](category) ram dưới [12 GB]{"entity": "ram", "role": "to"}
-  #     - Tôi cần [laptop](category) ram trên [8 GB]{"entity": "ram", "role": "from"}
-  #     - Tôi cần [máy tính] ram từ [4 GB]{"entity": "ram", "role": "from"} đến [16 GB]{"entity": "ram", "role": "to"}
-  #     - Có mẫu [điện thoại](category) nào ram dưới [8 GB]{"entity": "ram", "role": "to"} không?
-  #     - Tôi muốn [điện thoại](category) ram trên [4 GB]{"entity": "ram", "role": "from"}
-  #     - Tôi đang có nhu cầu mua [máy tính bảng](category) ram từ [8]{"entity": "ram", "role": "from"} đến [16 GB]{"entity": "ram", "role": "to"}
-  #     - Gợi ý cho tôi vài [máy tính](category) ram dưới [20 GB]{"entity": "ram", "role": "to"}
-
   - intent: suggest_product_price
     examples: |
       - Tôi cần [điện thoại](category) [giá rẻ](price_qualifier)
@@ -549,7 +532,9 @@ nlu:
       - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
-
+  
+  - intent: suggest_product_ram
+    examples: |
       - Tôi cần [điện thoại](category) [ram ít](ram_qualifier)
       - Tôi muốn [laptop](category) [ít ram](ram_qualifier)
       - Gợi ý [máy ảnh](category) [ram nhiều](ram_qualifier)
@@ -564,6 +549,26 @@ nlu:
       - Tôi muốn [điện thoại](category) ram trên [4 GB]{"entity": "ram", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) ram từ [8]{"entity": "ram", "role": "from"} đến [16 GB]{"entity": "ram", "role": "to"}
       - Gợi ý cho tôi vài [máy tính](category) ram dưới [20 GB]{"entity": "ram", "role": "to"}
+
+  - intent: suggest_product_battery
+    examples: |
+      - Tôi cần [điện thoại](category) [pin trâu](battery_qualifier)
+      - Gợi ý [laptop](category) [pin khỏe](battery_qualifier)
+      - Có [máy ảnh](category) nào [pin tốt](battery_qualifier) không?
+      - Tôi muốn [điện thoại](category) [pin khủng](battery_qualifier)
+      - Gợi ý [điện thoại](category) có pin dưới [4000 mAh]{"entity": "battery", "role": "to"}
+      - Có [điện thoại](category) nào pin trên [5000 mAh]{"entity": "battery", "role": "from"} không?
+      - Tôi cần [laptop](category) pin từ [4000 mAh]{"entity": "battery", "role": "from"} đến [6000 mAh]{"entity": "battery", "role": "to"}
+      - Tôi muốn [máy tính bảng](category) pin dưới [3000 mAh]{"entity": "battery", "role": "to"}
+      - Tôi cần [điện thoại](category) pin trên [6000 mAh]{"entity": "battery", "role": "from"}
+      - Gợi ý cho tôi vài [laptop](category) pin từ [5000 mAh]{"entity": "battery", "role": "from"} đến [7000 mAh]{"entity": "battery", "role": "to"}
+      - Có mẫu [điện thoại](category) nào pin dưới [4500 mAh]{"entity": "battery", "role": "to"} không?
+      - Tôi muốn tìm [điện thoại](category) pin trên [8000 mAh]{"entity": "battery", "role": "from"}
+
+  - intent: suggest_product_price_and_ram
+    examples: |
+      - Tôi cần [điện thoại](category) giá trên [5 triệu]{"entity": "price", "role": "from"} và ram trên [8 GB]{"entity": "ram", "role": "from"}
+      - Có [laptop](category) nào giá dưới [10 triệu]{"entity": "price", "role": "to"} và ram trên [16 GB]{"entity": "ram", "role": "from"} không?
 
   - synonym: cheap
     examples: |
@@ -589,6 +594,13 @@ nlu:
       - ram cao
       - ram nhiều
       - nhiều ram
+  
+  - synonym: high_battery
+    examples: |
+      - pin trâu
+      - pin khỏe
+      - pin tốt
+      - pin khủng
 
   # # Synonym cho sản phẩm
   # - synonym: iPhone
