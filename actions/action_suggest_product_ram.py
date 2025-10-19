@@ -28,13 +28,6 @@ class ActionSuggestProductRam(Action):
         elif ram_qualifier == "high_ram" and min_ram is None:
             min_ram = MAX_RAM_THRESHOLD
 
-        print('Min ram:', min_ram)
-        print('Max ram:', max_ram)
-
-        print('Min ram extracted:', extract_number(min_ram))
-        print('Max ram extracted:', extract_number(max_ram))
-        print('Ram qualifier:', ram_qualifier)
-
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
 
