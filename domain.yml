@@ -7,6 +7,7 @@ intents:
   - inform
   - ask_product_info
   - ask_warranty
+  - suggest_product_price_and_ram
   - suggest_product_price
   - suggest_product_battery
   - suggest_product_ram
@@ -53,6 +54,13 @@ slots:
     mappings:
       - type: from_entity
         entity: product
+
+  battery_qualifier:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: battery_qualifier
 
   ram_qualifier:
     type: text
@@ -102,6 +110,13 @@ slots:
     mappings:
       - type: from_entity
         entity: category
+
+  min_battery:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: battery
+        role: from # Map slot min_battery với entity battery có role là from
 
   min_price:
     type: text
@@ -191,10 +206,9 @@ actions:
   - utter_ask_product_2
   - utter_order_confirmed
   - action_provide_order_info
-  - action_suggest_product_price
+  - action_suggest_product
   - action_preview_order
   - action_submit_order
-  - action_suggest_product_ram
   - action_cancel_order
   - action_compare_products
   - utter_fallback

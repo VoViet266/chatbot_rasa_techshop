@@ -32,7 +32,7 @@ def render_ui(variants):
       <p aria-live="polite" 
         style="font-size:14px;color:#dc2626;font-weight:600;white-space:nowrap;text-overflow:ellipsis;
                 overflow:hidden;margin:0 0 6px 0;line-height:1.33;">
-        {format_vnd(variant["price"] * (variant.get('discount', 0)/100))}
+        { format_vnd(variant["price"] * (1 - variant.get('discount', 0)/100)) }
       </p>
 
       <!-- Giá gốc và giảm giá -->
@@ -49,11 +49,19 @@ def render_ui(variants):
       <!-- RAM và bộ nhớ trong -->
       <div aria-hidden="true" 
           style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
-        <span style="font-size:12px;color:#767676;text-decoration:line-through;line-height:1.33;">
+        <span style="font-size:12px;color:#767676;line-height:1.33;">
           RAM {variant['memory']['ram']}
         </span>
         <span style="font-size:12px;color:red;line-height:1.33;">
           Bộ nhớ trong {variant['memory']['storage']}
+        </span>
+      </div>
+
+      <!-- Dung lượng pin -->
+      <div aria-hidden="true" 
+          style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
+        <span style="font-size:12px;color:#767676;line-height:1.33;">
+          Pin {variant.get('battery', 'Không rõ')}
         </span>
       </div>
 

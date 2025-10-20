@@ -6,9 +6,9 @@ from utils.extract_number import extract_number
 from rasa_sdk.executor import CollectingDispatcher
 from utils.convert_price_to_number import convert_price_to_number
 
-class ActionSuggestProductPrice(Action):
+class ActionSuggestProduct(Action):
     def name(self):
-        return "action_suggest_product_price"
+        return "action_suggest_product"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
@@ -34,7 +34,6 @@ class ActionSuggestProductPrice(Action):
         max_ram = tracker.get_slot("max_ram")
         
         min_battery = tracker.get_slot("min_battery")
-        max_battery = tracker.get_slot("max_battery")
         
         price_qualifier = tracker.get_slot("price_qualifier")
         ram_qualifier = tracker.get_slot("ram_qualifier")
@@ -50,8 +49,8 @@ class ActionSuggestProductPrice(Action):
         elif ram_qualifier == "high_ram" and min_ram is None:
             min_ram = MAX_RAM_THRESHOLD
 
-        if battery_qualifier == "high_battery" and max_battery is None:
-            max_battery = MIN_BATTERY_THRESHOLD
+        if battery_qualifier == "high_battery":
+            min_battery = MIN_BATTERY_THRESHOLD
         
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
@@ -62,7 +61,38 @@ class ActionSuggestProductPrice(Action):
         category_id = category_document["_id"]
         
         products_model = database["products"]
-        products_collection = products_model.find({"category": category_id})
+        query = {
+            "category": category_id
+        }
+
+        battery_conditions = []
+
+        if min_battery:
+            battery_conditions.append({
+                '$gte': [
+                    {
+                        '$convert': {
+                            'input': {
+                                '$arrayElemAt': [
+                                    { '$split': ['$attributes.batteryCapacity', ' '] },
+                                    0
+                                ]
+                            },
+                            'to': 'int',
+                            'onError': 0,
+                            'onNull': 0
+                        }
+                    },
+                    extract_number(min_battery)
+                ]
+            })
+
+        if len(battery_conditions) == 1:
+            query['$expr'] = battery_conditions[0]
+        elif len(battery_conditions) == 2:
+            query['$expr'] = { '$and': battery_conditions }
+
+        products_collection = products_model.find(query)
         products_collection = list(products_collection)
 
         query = {}
@@ -109,6 +139,9 @@ class ActionSuggestProductPrice(Action):
             product = products_model.find_one({ "variants": variant['_id'] })
             if product:
                 variant['discount'] = product.get('discount', 0)
+                battery_capacity = product.get('attributes', {}).get('batteryCapacity')
+                if battery_capacity:
+                    variant['battery'] = battery_capacity
                 variant['product_id'] = product.get('_id')
 
         if not variant_collection:
@@ -116,4 +149,4 @@ class ActionSuggestProductPrice(Action):
         else:
             dispatcher.utter_message(text=render_ui(variant_collection))
         
-        return [SlotSet('min_price', None), SlotSet('max_price', None), SlotSet('min_ram', None), SlotSet('max_ram', None), SlotSet('price_qualifier', None), SlotSet('ram_qualifier', None)]
+        return [SlotSet('min_price', None), SlotSet('max_price', None), SlotSet('min_ram', None), SlotSet('max_ram', None), SlotSet('price_qualifier', None), SlotSet('ram_qualifier', None), SlotSet('battery_qualifier', None), SlotSet('min_battery', None)]

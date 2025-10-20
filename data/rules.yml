@@ -68,22 +68,22 @@ rules:
   - rule: Suggest products when user asks
     steps:
       - intent: suggest_product_price
-      - action: action_suggest_product_price
+      - action: action_suggest_product
   
   - rule: Suggest products when user asks by ram
     steps:
       - intent: suggest_product_ram
-      - action: action_suggest_product_price
+      - action: action_suggest_product
   
   - rule: Suggest products by price and RAM
     steps:
       - intent: suggest_product_price_and_ram
-      - action: action_suggest_product_price
+      - action: action_suggest_product
 
   - rule: Suggest products by battery
     steps:
       - intent: suggest_product_battery
-      - action: action_suggest_product_price
+      - action: action_suggest_product
 
 
   # # Rule cung cấp thông tin bảo hành
