@@ -12,7 +12,7 @@ import requests
 import json
 from utils.format_currentcy import format_vnd
 
-# --- HÀM TRỢ GIÚP (HELPER FUNCTION) ---
+
 # Logic chung để lấy và xác thực thông tin đơn hàng từ DB
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
   
@@ -87,7 +87,6 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
     return None, validated_data
 
 
-# --- CÁC ACTIONS ĐÃ ĐƯỢC TÁI CẤU TRÚC ---
 
 class ActionReviewOrder(Action):
     def name(self) -> Text:
@@ -185,12 +184,25 @@ class ActionSubmitOrder(Action):
             "status": "pending"
         }
         
-        print(f"Order data to submit: {json.dumps(order_payload, indent=2, ensure_ascii=False)}")
-        dispatcher.utter_message(json_message=order_payload)
+            
+        headers = {"Content-Type": "application/json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+            
+        print(f"Submitting order payload:\n{json.dumps(order_payload, indent=2, ensure_ascii=False)}")
+        try:
+            response = requests.post("http://localhost:8080/api/v1/orders", json=order_payload, headers=headers, timeout=10)
+            if response.status_code in [200, 201]:
+                order_id = response.json().get("data", {}).get("_id", "N/A")
+                dispatcher.utter_message(text=f" Đặt hàng thành công! Mã đơn hàng của bạn là #{order_id}.")
+            else:
+                dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi gửi đơn hàng đến hệ thống.")
+                print(f"Backend error: {response.status_code} - {response.text}")
+        except Exception as e:
+            dispatcher.utter_message(text="Đã có lỗi kết nối đến máy chủ. Vui lòng thử lại sau.")
+            print(f"Error submitting order: {str(e)}")
             
         return [AllSlotsReset()]
-        
-
 
 class ActionCancelOrder(Action):
     def name(self) -> Text:

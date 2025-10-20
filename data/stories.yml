@@ -41,6 +41,22 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
+  - story: Happy path - Direct order with product
+    steps:
+      - intent: order
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_preview_order
+      - intent: confirm_order
+      - action: action_submit_order
+      - intent: goodbye
+      - action: utter_goodbye
+
   - story: Unhappy path - Cancel order after preview
     steps:
       - intent: order

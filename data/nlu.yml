@@ -37,9 +37,6 @@ nlu:
       - good afternoon
       - good evening
 
-  # ============================================
-  # INTENT: Tạm biệt (Goodbyes)
-  # ============================================
   - intent: goodbye
     examples: |
       - tạm biệt
@@ -69,13 +66,15 @@ nlu:
       - hẹn gặp lại nhé
       - chào tạm biệt nhé
 
-  # ============================================
-  # INTENT: Đặt hàng (Order Intent)
-  # ============================================
   - intent: order
     examples: |
+      - Tôi muốn đặt mua [iPhone 16](product)
+      - Tôi muốn mua [Samsung S24](product)
+      - Mua [MacBook Air M3](product)
+      - Đặt [iPad Pro](product) cho tôi
+      - Cho tôi mua [Galaxy Z Fold 6](product)
+      - Mình muốn mua [AirPods Pro](product)
       - Tôi muốn đặt hàng
-      
       - Tôi muốn mua hàng
       - Tôi muốn mua sản phẩm
       - Đặt hàng
@@ -118,9 +117,6 @@ nlu:
       - Tôi muốn mua ngay
       - Đặt ngay
 
-  # ============================================
-  # INTENT: Cung cấp thông tin (Inform)
-  # ============================================
   - intent: inform
     examples: |
       - [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
@@ -223,11 +219,9 @@ nlu:
       - Mua [2](quantity) cái nha
       - Đặt [3](quantity) chiếc
 
-  # ============================================
-  # INTENT: Hỏi thông tin sản phẩm
-  # ============================================
   - intent: ask_product_info
     examples: |
+      - Cho tôi thông tin về [iphone 16] 
       - Giá [iPhone 16](product) bao nhiêu?
       - [iPhone 16](product) giá bao nhiêu?
       - Cho tôi biết giá [Macbook Air M3](product)
