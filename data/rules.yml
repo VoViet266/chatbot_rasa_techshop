@@ -58,11 +58,41 @@ rules:
     condition:
     - active_loop: order_form
     steps:
-    - action: order_form
-    - active_loop: null
-    - slot_was_set:
-        - requested_slot: null
-    - action: action_preview_order
+      - intent: confirm_order
+      - action: action_submit_order
+  
+  # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
+  - rule: Suggest products when user asks
+    steps:
+      - intent: suggest_product_price
+      - action: action_suggest_product
+  
+  - rule: Suggest products when user asks by ram
+    steps:
+      - intent: suggest_product_ram
+      - action: action_suggest_product
+  
+  - rule: Suggest products by price and RAM
+    steps:
+      - intent: suggest_product_combine
+      - action: action_suggest_product
+
+  - rule: Suggest products by battery
+    steps:
+      - intent: suggest_product_battery
+      - action: action_suggest_product
+
+  - rule: Suggest products by storage
+    steps:
+      - intent: suggest_product_storage
+      - action: action_suggest_product
+
+
+  # # Rule cung cấp thông tin bảo hành
+  # - rule: Provide warranty info when user asks
+  #   steps:
+  #     - intent: ask_warranty
+  #     - action: action_provide_warranty_info
 
   - rule: Submit confirmed order
     steps:
