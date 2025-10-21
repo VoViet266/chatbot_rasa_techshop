@@ -69,22 +69,22 @@ slots:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: battery_qualifier
+      - type: from_entity
+        entity: battery_qualifier
 
   ram_qualifier:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: ram_qualifier
+      - type: from_entity
+        entity: ram_qualifier
 
   price_qualifier:
     type: text
     influence_conversation: false
     mappings:
-    - type: from_entity
-      entity: price_qualifier
+      - type: from_entity
+        entity: price_qualifier
 
   variant_name:
     type: text
@@ -92,6 +92,12 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
+  variant_color:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: variant_color
 
   quantity:
     type: float
@@ -169,7 +175,7 @@ slots:
       - type: from_entity
         entity: ram
         role: to # Map slot max_ram với entity ram có role là to
-        entity: max_price
+
   validated_product_id:
     type: any
     influence_conversation: false

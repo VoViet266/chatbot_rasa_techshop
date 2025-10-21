@@ -259,6 +259,10 @@ nlu:
       - Mấy giờ cửa hàng mở cửa?
       - Cửa hàng có làm việc cuối tuần không?
 
+  # - intent: add_to_cart
+  #   examples: 
+  #     - Tôi muốn thêm sản phẩm này vào giỏ hàng
+  #     - tôi thêm 
   # ============================================
   # INTENT: Xác nhận đơn hàng
   # ============================================
