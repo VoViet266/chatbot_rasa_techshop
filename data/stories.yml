@@ -136,3 +136,46 @@ stories:
           - product_1: "iPhone 16"
           - product_2: "Galaxy S24"
       - action: action_compare_products
+
+  - story: User asks for a specific order
+    steps:
+      - intent: ask_order
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: action_provide_order_info
+
+  - story: User checks stock for a product
+    steps:
+      - intent: check_stock
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: action_check_stock
+
+  # trong file stories.yml
+  - story: User checks stock for product with spec and color
+    steps:
+      - intent: check_stock
+        entities:
+          - product: "Macbook Air"
+          - variant_spec: "256GB"
+          - variant_color: "bạc"
+      - slot_was_set:
+          - product: "Macbook Air"
+          - variant_name: "256GB"
+          - variant_color: "bạc"
+      - action: action_check_stock
+
+  - story: User checks stock for product with only spec
+    steps:
+      - intent: check_stock
+        entities:
+          - product: "iPhone 16"
+          - variant_name: "256GB"
+      - slot_was_set:
+          - product: "iPhone 16"
+          - variant_name: "256GB"
+      - action: action_check_stock

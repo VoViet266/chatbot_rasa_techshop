@@ -15,6 +15,7 @@ intents:
   - out_of_scope
   - nlu_fallback
   - compare_products
+  - check_stock
 
 entities:
   - category
@@ -26,8 +27,10 @@ entities:
   - product
   - product_1
   - product_2
-  - variant_name
   - quantity
+  - order_id
+  - variant_name
+  - variant_color
 
 slots:
   product:
@@ -42,6 +45,13 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
+
+  variant_color:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: variant_color
   quantity:
     type: float
     influence_conversation: true
@@ -131,6 +141,13 @@ slots:
       - type: from_text
         intent: None
 
+  order_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: order_id
+
 forms:
   order_form:
     required_slots:
@@ -196,4 +213,5 @@ actions:
   - action_submit_order
   - action_cancel_order
   - action_compare_products
+  - action_check_stock
   - utter_fallback
