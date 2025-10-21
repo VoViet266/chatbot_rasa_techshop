@@ -2,10 +2,10 @@ version: "3.1"
 
 rules:
   # Chào hỏi / tạm biệt
-  - rule: Say hello anytime the user greets
+  - rule: Chào hỏi và lấy thông tin người dùng
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
 
   - rule: Say goodbye anytime the user says goodbye
     steps:
@@ -56,22 +56,22 @@ rules:
 
   - rule: Submit order form when completed
     condition:
-    - active_loop: order_form
+      - active_loop: order_form
     steps:
       - intent: confirm_order
       - action: action_submit_order
-  
+
   # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
   - rule: Suggest products when user asks
     steps:
       - intent: suggest_product_price
       - action: action_suggest_product
-  
+
   - rule: Suggest products when user asks by ram
     steps:
       - intent: suggest_product_ram
       - action: action_suggest_product
-  
+
   - rule: Suggest products by price and RAM
     steps:
       - intent: suggest_product_combine
@@ -87,7 +87,6 @@ rules:
       - intent: suggest_product_storage
       - action: action_suggest_product
 
-
   # # Rule cung cấp thông tin bảo hành
   # - rule: Provide warranty info when user asks
   #   steps:
@@ -96,5 +95,5 @@ rules:
 
   - rule: Submit confirmed order
     steps:
-    - intent: confirm_order
-    - action: action_submit_order
+      - intent: confirm_order
+      - action: action_submit_order

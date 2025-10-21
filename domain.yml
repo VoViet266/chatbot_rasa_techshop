@@ -58,6 +58,12 @@ entities:
   - variant_color
 
 slots:
+  user_name:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+
   product:
     type: text
     influence_conversation: true
@@ -175,7 +181,7 @@ slots:
       - type: from_entity
         entity: ram
         role: to # Map slot max_ram với entity ram có role là to
-        
+
   validated_product_id:
     type: any
     influence_conversation: false
@@ -256,6 +262,9 @@ responses:
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
 
+  utter_greet_personalized:
+    - text: "Chào {user_name}, rất vui được gặp lại! Bạn cần tôi hỗ trợ gì hôm nay?"
+
   utter_goodbye:
     - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
 
@@ -273,11 +282,9 @@ responses:
 
 actions:
   - utter_greet
+  - utter_greet_personalized
   - utter_goodbye
   - utter_ask_product_info
-  - action_provide_product_info
-  - action_provide_warranty_info
-  - action_provide_store_info
   - utter_ask_product_name
   - utter_ask_quantity
   - utter_ask_variant_name
@@ -285,6 +292,10 @@ actions:
   - utter_ask_product_1
   - utter_ask_product_2
   - utter_order_confirmed
+  - action_provide_product_info
+  - action_provide_warranty_info
+  - action_provide_store_info
+  - action_get_user_info
   - action_provide_order_info
   - action_suggest_product
   - action_preview_order
@@ -293,3 +304,7 @@ actions:
   - action_compare_products
   - action_check_stock
   - utter_fallback
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

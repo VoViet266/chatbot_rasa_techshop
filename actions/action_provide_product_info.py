@@ -15,7 +15,7 @@ class ActionProvideProductInfo(Action):
         product = tracker.get_slot("product")
 
         if not product:
-            dispatcher.utter_message(text="Bạn vui lòng cho tôi biết tên sản phẩm nhé.")
+            dispatcher.utter_message(text="Bạn muốn biết thông tin sản phẩm nào?")
             return []
 
         # Kết nối MongoDB
@@ -64,7 +64,7 @@ class ActionProvideProductInfo(Action):
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
         else:
             header = f"""<div>Hiện {product["name"]} có {len(variants)} biến thể</div>"""
-            variant_html = render_ui(variants, product)
+            variant_html = render_ui(variants)
             final_result = header + variant_html
             # product_serialized = serialize_doc(product)
             dispatcher.utter_message(text=final_result, html=True)

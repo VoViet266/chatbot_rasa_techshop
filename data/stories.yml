@@ -4,7 +4,7 @@ stories:
   - story: Happy path - Full order flow
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: ask_product_info
         entities:
           - product: "iPhone 16"
@@ -30,7 +30,7 @@ stories:
   - story: Happy path - Quick order flow
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: order
       - action: order_form
       - active_loop: order_form
@@ -72,7 +72,7 @@ stories:
   - story: Interaction - Ask about order
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: ask_order
       - action: action_provide_order_info
       - intent: goodbye
@@ -81,7 +81,7 @@ stories:
   - story: Interaction - Ask about warranty
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: ask_warranty
       - action: action_provide_warranty_info
       - intent: goodbye
@@ -90,7 +90,7 @@ stories:
   - story: Interaction - Ask about store
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: ask_store
       - action: action_provide_store_info
       - intent: goodbye
@@ -99,7 +99,7 @@ stories:
   - story: Interaction - Handle out of scope
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: out_of_scope
       - action: utter_fallback
       - intent: goodbye
@@ -108,7 +108,7 @@ stories:
   - story: Interaction - Ask about product only
     steps:
       - intent: greet
-      - action: utter_greet
+      - action: action_get_user_info
       - intent: ask_product_info
         entities:
           - product: "iPhone 16"
@@ -155,7 +155,6 @@ stories:
           - product: "iPhone 16"
       - action: action_check_stock
 
-  # trong file stories.yml
   - story: User checks stock for product with spec and color
     steps:
       - intent: check_stock
