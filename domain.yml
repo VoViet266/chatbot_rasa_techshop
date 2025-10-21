@@ -169,7 +169,7 @@ slots:
       - type: from_entity
         entity: ram
         role: to # Map slot max_ram với entity ram có role là to
-        entity: max_price
+        
   validated_product_id:
     type: any
     influence_conversation: false
