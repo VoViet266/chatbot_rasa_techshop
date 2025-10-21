@@ -566,10 +566,31 @@ nlu:
       - Có mẫu [điện thoại](category) nào pin dưới [4500 mAh]{"entity": "battery", "role": "to"} không?
       - Tôi muốn tìm [điện thoại](category) pin trên [8000 mAh]{"entity": "battery", "role": "from"}
 
-  - intent: suggest_product_price_and_ram
+  - intent: suggest_product_storage
+    examples: |
+      - Tôi cần [điện thoại](category) [bộ nhớ tốt](storage_qualifier)
+      - Gợi ý [laptop](category) [bộ nhớ khỏe](storage_qualifier)
+      - Tôi muốn [điện thoại](category) [bộ nhớ khủng](storage_qualifier)
+      - Gợi ý [điện thoại](category) có bộ nhớ khoảng [4 GB]{"entity": "storage", "role": "from"}
+      - Gợi ý [điện thoại](category) có bộ nhớ cở [4 GB]{"entity": "storage", "role": "from"}
+      - Có [điện thoại](category) nào bộ nhớ trên [5 GB]{"entity": "storage", "role": "from"} không?
+      - Tôi cần [laptop](category) bộ nhớ từ [4 GB]{"entity": "storage", "role": "from"} đến [6 GB]{"entity": "storage", "role": "to"}
+      - Tôi muốn [máy tính bảng](category) bộ nhớ dưới [3 GB]{"entity": "storage", "role": "to"}
+      - Tôi cần [điện thoại](category) bộ nhớ trên [6 GB]{"entity": "storage", "role": "from"}
+      - Gợi ý cho tôi vài [laptop](category) bộ nhớ từ [5 GB]{"entity": "storage", "role": "from"} đến [7 GB]{"entity": "storage", "role": "to"}
+      - Có mẫu [điện thoại](category) nào bộ nhớ dưới [4 GB]{"entity": "storage", "role": "to"} không?
+      - Tôi muốn tìm [điện thoại](category) bộ nhớ trên [8 GB]{"entity": "storage", "role": "from"}
+
+  - intent: suggest_product_combine
     examples: |
       - Tôi cần [điện thoại](category) giá trên [5 triệu]{"entity": "price", "role": "from"} và ram trên [8 GB]{"entity": "ram", "role": "from"}
       - Có [laptop](category) nào giá dưới [10 triệu]{"entity": "price", "role": "to"} và ram trên [16 GB]{"entity": "ram", "role": "from"} không?
+
+  - synonym: high_storage
+    examples: |
+      - bộ nhớ tốt
+      - bộ nhớ khỏe
+      - bộ nhớ khủng
 
   - synonym: cheap
     examples: |

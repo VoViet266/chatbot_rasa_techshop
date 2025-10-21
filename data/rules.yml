@@ -77,12 +77,17 @@ rules:
   
   - rule: Suggest products by price and RAM
     steps:
-      - intent: suggest_product_price_and_ram
+      - intent: suggest_product_combine
       - action: action_suggest_product
 
   - rule: Suggest products by battery
     steps:
       - intent: suggest_product_battery
+      - action: action_suggest_product
+
+  - rule: Suggest products by storage
+    steps:
+      - intent: suggest_product_storage
       - action: action_suggest_product
 
 

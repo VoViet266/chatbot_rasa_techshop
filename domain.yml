@@ -7,9 +7,10 @@ intents:
   - inform
   - ask_product_info
   - ask_warranty
-  - suggest_product_price_and_ram
+  - suggest_product_combine
   - suggest_product_price
   - suggest_product_battery
+  - suggest_product_storage
   - suggest_product_ram
   - ask_order
   - ask_store
@@ -21,6 +22,12 @@ intents:
 
 entities:
   - category
+  - storage_qualifier
+  - storage:
+      use_entity_roles_or_groups: True
+      roles:
+        - from
+        - to
   - battery_qualifier
   - battery:
       use_entity_roles_or_groups: True
@@ -131,6 +138,20 @@ slots:
       - type: from_entity
         entity: price
         role: to # Map slot max_price với entity price có role là to
+
+  min_storage:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: storage
+        role: from # Map slot min_storage với entity storage có role là from
+
+  max_storage:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: storage
+        role: to # Map slot max_storage với entity storage có role là to
 
   min_ram:
     type: text

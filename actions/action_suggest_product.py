@@ -21,6 +21,8 @@ class ActionSuggestProduct(Action):
         MAX_RAM_THRESHOLD = '16 GB' # Ví dụ: 20 GB
 
         MIN_BATTERY_THRESHOLD = '4000 mAh'
+
+        MIN_STORAGE_THRESHOLD = '32 GB'
         
         category = tracker.get_slot("category")
         if not(category):
@@ -32,6 +34,9 @@ class ActionSuggestProduct(Action):
         
         min_ram = tracker.get_slot("min_ram")
         max_ram = tracker.get_slot("max_ram")
+
+        min_storage = tracker.get_slot("min_storage")
+        max_storage = tracker.get_slot("max_storage")
         
         min_battery = tracker.get_slot("min_battery")
         
@@ -51,6 +56,9 @@ class ActionSuggestProduct(Action):
 
         if battery_qualifier == "high_battery":
             min_battery = MIN_BATTERY_THRESHOLD
+
+        if battery_qualifier == "high_storage":
+            min_battery = MIN_STORAGE_THRESHOLD
         
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
@@ -99,6 +107,7 @@ class ActionSuggestProduct(Action):
         expr_conditions = []
         if min_price:
             expr_conditions.append({ '$gte': ['$price', convert_price_to_number(min_price)] })
+        
         if max_price:
             expr_conditions.append({ '$lte': ['$price', convert_price_to_number(max_price)] })
         
@@ -115,6 +124,22 @@ class ActionSuggestProduct(Action):
                 '$lte': [
                     { '$toInt': { '$arrayElemAt': [ { '$split': ['$memory.ram', ' '] }, 0 ] } },
                     extract_number(max_ram)
+                ]
+            })
+
+        if min_storage:
+            expr_conditions.append({
+                '$gte': [
+                    { '$toInt': { '$arrayElemAt': [ { '$split': ['$memory.storage', ' '] }, 0 ] } },
+                    extract_number(min_storage)
+                ]
+            })
+
+        if max_storage:
+            expr_conditions.append({
+                '$lte': [
+                    { '$toInt': { '$arrayElemAt': [ { '$split': ['$memory.storage', ' '] }, 0 ] } },
+                    extract_number(max_storage)
                 ]
             })
 
