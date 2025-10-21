@@ -1,5 +1,6 @@
 # actions/actions.py
 
+from importlib.metadata import metadata
 from typing import Any, Text, Dict, List, Tuple, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -11,14 +12,14 @@ import requests
 import json
 from utils.format_currentcy import format_vnd
 
-# --- HÀM TRỢ GIÚP (HELPER FUNCTION) ---
+
 # Logic chung để lấy và xác thực thông tin đơn hàng từ DB
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
   
     user_id = tracker.sender_id
     metadata = tracker.latest_message.get("metadata", {})
-    access_token = metadata.get("accessToken")
-    print(access_token)
+   
+  
     product_name = tracker.get_slot("product")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
@@ -86,7 +87,6 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
     return None, validated_data
 
 
-# --- CÁC ACTIONS ĐÃ ĐƯỢC TÁI CẤU TRÚC ---
 
 class ActionReviewOrder(Action):
     def name(self) -> Text:
@@ -106,11 +106,11 @@ class ActionReviewOrder(Action):
 
         # Nếu không có lỗi, hiển thị thông tin và lưu vào slot để action_submit_order sử dụng
         summary_message = (
-            f"Vui lòng xác nhận lại thông tin đơn hàng của bạn:\n"
+            f"**Vui lòng xác nhận lại thông tin đơn hàng của bạn:\n"
             f"- Sản phẩm: **{order_data['product_name']}**\n"
             f"- Phiên bản: **{order_data['variant_name']}**\n"
             f"- Số lượng: **{order_data['quantity']}**\n"
-            f"- Tổng cộng: **{format_vnd(order_data['total_price'])}**\n\n"
+            f"- Tổng cộng: **{format_vnd(order_data['total_price'])}**\n"
             f"**Thông tin giao hàng:**\n"
             f"- Người nhận: {order_data['full_name']}\n"
             f"- Số điện thoại: {order_data['phone_number']}\n"
@@ -118,12 +118,13 @@ class ActionReviewOrder(Action):
             f"Bạn có muốn xác nhận đặt hàng không?"
         )
         dispatcher.utter_message(text=summary_message)
-        
+        print(f"Validated order data: {json.dumps(order_data, indent=2, ensure_ascii=False)}")
         # Lưu các thông tin quan trọng đã được xác thực vào slot
         return [
             SlotSet("validated_product_id", order_data["product_id"]),
             SlotSet("validated_variant_id", order_data["variant_id"]),
             SlotSet("validated_quantity", order_data["quantity"]),
+            SlotSet("validated_price", order_data["variant_price"]),
             SlotSet("validated_total_price", order_data["total_price"]),
             SlotSet("validated_address", order_data["address"]),
             SlotSet("validated_customer_name", order_data["full_name"]),
@@ -140,8 +141,12 @@ class ActionSubmitOrder(Action):
         
         # Lấy toàn bộ thông tin đã được xác thực từ slots
         user_id = tracker.sender_id
+        metadata = tracker.latest_message.get("metadata", {})
+        token = metadata.get("accessToken")
+
         product_id = tracker.get_slot("validated_product_id")
         variant_id = tracker.get_slot("validated_variant_id")
+        price = tracker.get_slot("validated_price")
         quantity = tracker.get_slot("validated_quantity")
         total_price = tracker.get_slot("validated_total_price")
         address = tracker.get_slot("validated_address")
@@ -154,11 +159,23 @@ class ActionSubmitOrder(Action):
             return [AllSlotsReset()]
 
         order_payload = {
-            "userId": user_id,
+            "user": user_id,
+            "recipient": {
+                "name": customer_name,
+                "phone": phone,
+                "address": address,
+                # "note": "" # Có thể thêm nếu cần
+            },
+            "buyer": { 
+                "name": customer_name,
+                "phone": phone,
+            },
             "items": [{
-                "productId": product_id,
-                "variantId": variant_id,
-                "quantity": quantity
+                "product": product_id,
+                "variant": variant_id,
+                "quantity": quantity,
+                "price": price,
+                
             }],
             "totalPrice": total_price,
             "shippingAddress": address,
@@ -166,37 +183,26 @@ class ActionSubmitOrder(Action):
             "customerName": customer_name,
             "status": "pending"
         }
-        print(order_payload)
-        try:
-            backend_url = "http://localhost:8080/api/v1/orders"
-            response = requests.post(
-                backend_url,
-                json=order_payload,
-                headers={"Content-Type": "application/json"},
-                timeout=10
-            )
-            
-            if response.status_code in [200, 201]:
-                response_data = response.json()
-                # Giả sử backend trả về orderId trong trường "id" hoặc "orderId"
-                order_id = response_data.get("data", {}).get("_id") or response_data.get("orderId", "N/A")
-                dispatcher.utter_message(text=f"🚀 Đặt hàng thành công! Mã đơn hàng của bạn là #{order_id}. Cảm ơn bạn đã tin tưởng TechShop!")
-            else:
-                dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi gửi đơn hàng đến hệ thống. Vui lòng thử lại sau.")
-                print(f"Backend error: {response.status_code} - {response.text}")
-            print(f"Order data to submit: {json.dumps(order_payload, indent=2, ensure_ascii=False)}")
         
-        except requests.exceptions.Timeout:
-            dispatcher.utter_message(text="Kết nối đến máy chủ bị gián đoạn. Vui lòng thử lại.")
-        except requests.exceptions.ConnectionError:
-            dispatcher.utter_message(text="Không thể kết nối đến máy chủ. Vui lòng kiểm tra lại.")
+            
+        headers = {"Content-Type": "application/json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+            
+        print(f"Submitting order payload:\n{json.dumps(order_payload, indent=2, ensure_ascii=False)}")
+        try:
+            response = requests.post("http://localhost:8080/api/v1/orders", json=order_payload, headers=headers, timeout=10)
+            if response.status_code in [200, 201]:
+                order_id = response.json().get("data", {}).get("_id", "N/A")
+                dispatcher.utter_message(text=f" Đặt hàng thành công! Mã đơn hàng của bạn là #{order_id}.")
+            else:
+                dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi gửi đơn hàng đến hệ thống.")
+                print(f"Backend error: {response.status_code} - {response.text}")
         except Exception as e:
-            dispatcher.utter_message(text="Đã có lỗi không mong muốn xảy ra.")
+            dispatcher.utter_message(text="Đã có lỗi kết nối đến máy chủ. Vui lòng thử lại sau.")
             print(f"Error submitting order: {str(e)}")
             
         return [AllSlotsReset()]
-        
-
 
 class ActionCancelOrder(Action):
     def name(self) -> Text:

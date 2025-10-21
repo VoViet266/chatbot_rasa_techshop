@@ -11,26 +11,24 @@ nlu:
       - hello
       - hi
       - chào
-      - xin chào bạn
+      - có ai ở đó không?
+      - shop ơi
+      - ad ơi
+      - ê shop
+      - bắt đầu chat
+      - tôi có thể bắt đầu không?
       - chào buổi sáng
       - chào buổi chiều
       - chào buổi tối
       - hey
       - hi bạn
-      - hello bạn
-      - chào nhé
-      - xin chào nhé
       - chào admin
       - hế lô
       - chào shop
       - chào cửa hàng
       - alo
-      - ê
       - alo shop
       - xin chào shop
-      - chào em
-      - chào anh
-      - chào chị
       - hi shop
       - hello shop
       - good morning
@@ -38,7 +36,7 @@ nlu:
       - good evening
 
   # ============================================
-  # INTENT: Tạm biệt (Goodbyes)
+  # INTENT: Chào tạm biệt (Goodbye)
   # ============================================
   - intent: goodbye
     examples: |
@@ -47,33 +45,36 @@ nlu:
       - hẹn gặp lại
       - bye
       - goodbye
-      - tạm biệt nhé
-      - chào bạn nhé
-      - hẹn gặp lại bạn
+      - cảm ơn và tạm biệt
+      - ok cảm ơn shop
+      - cảm ơn, thế thôi
+      - xong rồi, cảm ơn
+      - vậy thôi nhé
+      - mình chỉ hỏi vậy thôi
       - bye bye
       - see you
       - thôi tạm biệt
       - chào tạm biệt
-      - hẹn gặp lại sau
-      - cảm ơn và tạm biệt
-      - ok bye
-      - thanks bye
       - cảm ơn nhé
       - thôi nhé
-      - tạm biệt bạn
-      - see you later
-      - cảm ơn bạn
       - cảm ơn shop
       - ok tạm biệt
       - thế thôi nhé
       - hẹn gặp lại nhé
-      - chào tạm biệt nhé
 
   # ============================================
-  # INTENT: Đặt hàng (Order Intent)
+  # INTENT: Đặt hàng (Order)
   # ============================================
   - intent: order
     examples: |
+      - Tôi muốn đặt mua [iPhone 16](product)
+      - Tôi muốn mua [Samsung S24](product)
+      - Mua [MacBook Air M3](product)
+      - Đặt [iPad Pro](product) cho tôi
+      - Cho tôi mua [Galaxy Z Fold 6](product)
+      - Mình muốn mua [AirPods Pro](product)
+      - Lấy cho mình con [Dell XPS 13](product)
+      - Chốt đơn [iPhone 16](product)
       - Tôi muốn đặt hàng
       - Tôi muốn mua hàng
       - Tôi muốn mua sản phẩm
@@ -91,27 +92,12 @@ nlu:
       - Mua thôi
       - Đặt luôn
       - Cho tôi mua
-      - Tôi muốn thanh toán
-      - Thanh toán
       - Mua hàng thôi
       - Đặt hàng nào
       - Tôi muốn đặt
-      - Đặt mua hàng
       - Cho tôi order
-      - Mình muốn đặt hàng
       - Mình muốn mua
       - Đặt sản phẩm
-      - Mua sản phẩm
-      - Tôi đặt hàng
-      - Tôi mua
-      - Cho mình đặt hàng
-      - Giúp mình đặt hàng
-      - Mình cần đặt
-      - Tôi cần mua
-      - Đặt hàng giúp tôi
-      - Mua hàng giúp tôi
-      - Order cho tôi
-      - Cho tôi đặt mua
       - Đặt hàng ngay
       - Mua ngay
       - Tôi muốn mua ngay
@@ -122,167 +108,68 @@ nlu:
   # ============================================
   - intent: inform
     examples: |
+      - Tôi muốn mua [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
       - [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
       - [iPhone 16](product) [bản thường](variant_name) [1](quantity) chiếc
       - Tôi muốn [Macbook Air M3](product) [bản 256GB](variant_name) [1](quantity) chiếc
       - Đặt [Samsung S24](product) [bản tiêu chuẩn](variant_name) [3](quantity) cái
       - [iPad Pro](product) [11 inch WiFi 128GB](variant_name) [1](quantity)
-      - [Dell XPS 13](product) [bản i7](variant_name) [2](quantity)
-      - [Galaxy A55](product) [bản 128GB](variant_name) [1](quantity)
+      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_name) [2](quantity) cái đi
       - [Sony WH-1000XM5](product) [màu đen](variant_name) [1](quantity)
-      - [Samsung Galaxy Z Fold 6](product) [bản cao cấp 1TB](variant_name) [1](quantity)
-      - [Galaxy S25 Ultra](product) [bản thường](variant_name) [2](quantity)
-      - [AirPods Pro](product) [thế hệ 2](variant_name) [2](quantity)
-      - [Galaxy Z Fold 6](product) [bản cao cấp](variant_name) [1](quantity)
-      - [Tai nghe Sony WH-1000XM5](product) [bản bạc](variant_name) [1](quantity)
-      - [Extra Bass MDR-EX15AP](product) [màu đen](variant_name) [1](quantity)
-      - [Sony Extra Bass MDR-EX15AP](product) [bản trắng](variant_name) [2](quantity)
-      - [Sony Inzone H3](product) [màu xanh dương](variant_name) [1](quantity)
-      - [Z Fold 6](product) [bản cao cấp nhất](variant_name) [1](quantity)
       - [iPhone 16](product)
-      - [Samsung S24](product)
-      - [MacBook Air M3](product)
-      - [iPad Pro](product)
-      - [Galaxy Z Fold 6](product)
-      - [AirPods Pro](product)
-      - [Sony WH-1000XM5](product)
-      - [Dell XPS 13](product)
+      - Cụ thể là con [Samsung S24](product)
+      - Mình đang nói về [MacBook Air M3](product)
       - Tôi muốn [iPhone 16](product)
       - Cho tôi [Samsung S24](product)
       - Mình lấy [MacBook Air](product)
-      - Em muốn [iPad Pro](product)
-      - Tôi chọn [Galaxy S24](product)
       - [màu xanh 256GB](variant_name)
       - [bản 512GB](variant_name)
-      - [màu đen](variant_name)
-      - [128GB](variant_name)
+      - cứ lấy [màu đen](variant_name) đi
+      - loại [128GB](variant_name)
       - [bản cao cấp](variant_name)
-      - [bản tiêu chuẩn](variant_name)
-      - [11 inch WiFi](variant_name)
-      - [M3 Pro 512GB](variant_name)
-      - [Pro Max 1TB](variant_name)
-      - [256GB](variant_name)
-      - [512GB](variant_name)
-      - [1TB](variant_name)
-      - [màu trắng](variant_name)
-      - [màu đỏ](variant_name)
-      - [màu vàng](variant_name)
-      - [màu tím](variant_name)
-      - [màu hồng](variant_name)
-      - [màu xám](variant_name)
+      - chọn [bản tiêu chuẩn](variant_name)
       - Tôi chọn [màu xanh 256GB](variant_name)
       - [bản 512GB màu tím](variant_name) ạ
       - Em lấy [bản thường](variant_name)
       - [Màu trắng](variant_name) nhé
-      - Cho tôi [bản 16GB RAM](variant_name)
-      - [Bản không dây](variant_name)
-      - [512GB SSD](variant_name) ạ
-      - [Thế hệ 2](variant_name) nhé
-      - [11 inch](variant_name) thôi
-      - [Màu bạc](variant_name)
-      - [Bản cao cấp nhất](variant_name)
-      - Mình chọn [bản 256GB](variant_name)
-      - Tôi lấy [màu đen](variant_name)
-      - Em chọn [128GB](variant_name)
-      - Cho em [bản tiêu chuẩn](variant_name)
-      - [bản 8GB RAM](variant_name)
-      - [phiên bản 256GB](variant_name)
-      - [loại 512GB](variant_name)
       - [1](quantity)
       - [2](quantity)
       - [3](quantity)
-      - [5](quantity)
-      - [10](quantity)
-      - [1](quantity) cái
-      - [2](quantity) chiếc
-      - [3](quantity) cái ạ
-      - [4](quantity) sản phẩm
-      - [6](quantity) cái
-      - [7](quantity) chiếc
-      - [8](quantity) cái
-      - [9](quantity) chiếc
-      - Tôi mua [1](quantity)
-      - [2](quantity) cái nhé
-      - Em lấy [1](quantity) chiếc
-      - Cho tôi [3](quantity)
-      - [1](quantity) thôi
-      - [2](quantity) cái thôi ạ
-      - Mua [5](quantity) cái
-      - [1](quantity) cái được rồi
-      - [2](quantity) chiếc ạ
-      - [10](quantity) sản phẩm
-      - Lấy [1](quantity)
-      - [3](quantity) cái nhé
-      - Mình lấy [2](quantity)
-      - Cho mình [1](quantity) cái
-      - Em mua [1](quantity) chiếc
-      - Tôi chỉ lấy [1](quantity)
-      - Chỉ [1](quantity) thôi
-      - [1](quantity) cái thôi nhé
-      - Mua [2](quantity) cái nha
-      - Đặt [3](quantity) chiếc
+      - lấy [1](quantity) cái
+      - cho mình [2](quantity) chiếc
+      - số lượng là [3](quantity) nhé
+      - chỉ [1](quantity) thôi
+      - mua [2](quantity)
+      - tôi lấy [1](quantity) cái
 
   # ============================================
-  # INTENT: Hỏi thông tin sản phẩm
+  # INTENT: Hỏi thông tin sản phẩm (Ask Product Info)
   # ============================================
   - intent: ask_product_info
     examples: |
+      - Cho tôi thông tin về [iphone 16](product)
+      - Tôi cần biết về [iphone 16](product)
       - Giá [iPhone 16](product) bao nhiêu?
-      - [iPhone 16](product) giá bao nhiêu?
-      - Cho tôi biết giá [Macbook Air M3](product)
+      - [iPhone 16](product) giá sao shop?
+      - con [Macbook Air M3](product) này có gì hay?
       - [Samsung S24](product) bao nhiêu tiền?
       - Giá [iPad Pro](product) thế nào?
-      - Tôi muốn biết giá [Dell XPS 13](product)
-      - Thông tin [Galaxy A55](product) là gì?
-      - [Sony WH-1000XM5](product) giá bao nhiêu?
-      - [Samsung Galaxy Z Fold 6](product) có giá như thế nào?
-      - [Galaxy S25 Ultra](product) giá sao?
+      - Bên mình có bán [Dell XPS 13](product) không?
+      - Thông số của [Galaxy A55](product) là gì?
+      - [Sony WH-1000XM5](product) còn hàng không?
+      - [Samsung Galaxy Z Fold 6](product) có mấy màu?
+      - [Galaxy S25 Ultra](product) khi nào về hàng?
       - Có [WH-1000XM5](product) không?
-      - [Sony WH-1000XM5](product) giá thế nào?
-      - [Extra Bass MDR-EX15AP](product) bao nhiêu?
-      - [Sony Extra Bass MDR-EX15AP](product) giá ra sao?
-      - [Sony Inzone H3](product) có không?
       - [Z Fold 6](product) giá bao nhiêu?
-      - [Tai nghe gaming Sony](product) thế nào?
-      - [Galaxy M55](product) giá sao?
-      - [Samsung M55](product) có sẵn không?
-      - [Sony MDR](product) giá bao nhiêu?
-      - [S25 Ultra](product) có trong kho không?
-      - [Samsung Galaxy Tab S9](product) thông tin như thế nào?
-      - Cho tôi xem thông tin [MacBook](product)
-      - Tôi cần biết giá [AirPods](product)
-      - [Laptop](product) có loại nào?
-      - [Điện thoại](product) giá bao nhiêu?
-      - [Máy tính bảng](product) giá thế nào?
-      - Có [iPhone 15](product) không?
-      - Xem giá [Samsung](product)
-      - Cho tôi biết thông tin sản phẩm
-      - Tôi muốn xem sản phẩm
-      - Có những sản phẩm gì?
-      - Giá sản phẩm là bao nhiêu?
-      - [iPhone 16](product) giá thế nào?
-      - Bao nhiêu tiền [MacBook](product)?
-      - [Samsung S24](product) giá mấy?
-      - Cho tôi xem [iPad Pro](product)
-      - Tôi muốn xem [Galaxy Z Fold](product)
-      - Thông tin về [AirPods](product)
-      - [Sony WH-1000XM5](product) có sẵn không?
-      - Có [iPhone 16](product) không ạ?
+      - Shop có những loại [điện thoại](product) nào?
+      - Kể tên vài mẫu [laptop gaming](product) xem
       - Xem thông tin [MacBook Air](product)
-      - [Samsung](product) có gì?
+      - [Samsung](product) có gì mới?
       - [iPhone](product) có mẫu nào?
       - Giới thiệu [Galaxy S24](product)
-      - [iPad](product) có phiên bản nào?
-      - [MacBook](product) giá ra sao?
+      - tư vấn cho tôi về [máy tính bảng](product)
       - Cho biết giá [AirPods Pro](product)
       - [Tai nghe Sony](product) giá thế nào?
-      - [Laptop Dell](product) bao nhiêu?
-      - [Điện thoại Samsung](product) giá mấy?
-      - Xem giá của [iPhone](product)
-      - Giá của [MacBook](product) là bao nhiêu?
-      - [Galaxy](product) có loại nào?
-      - Tôi muốn biết về [iPad](product)
-      - Cho tôi biết về [AirPods](product)
 
   # ============================================
   # INTENT: Hỏi bảo hành
@@ -292,109 +179,85 @@ nlu:
       - Chính sách bảo hành thế nào?
       - Bảo hành như thế nào?
       - Sản phẩm bảo hành bao lâu?
-      - Có bảo hành không?
+      - Nếu hỏng thì bảo hành ở đâu?
       - Thời gian bảo hành là bao lâu?
-      - Bảo hành bao nhiêu tháng?
       - Quy định bảo hành ra sao?
       - Điều kiện bảo hành là gì?
-      - Chính sách bảo hành của shop
-      - Tôi muốn biết về bảo hành
-      - Cho tôi biết chính sách bảo hành
-      - Hệ thống có chính sách bảo hành nào?
-      - Bảo hành sản phẩm thế nào?
+      - Cho tôi biết về chính sách bảo hành
       - Sản phẩm có được bảo hành không?
-      - Bảo hành có tốt không?
-      - Bảo hành miễn phí không?
-      - Bảo hành ở đâu?
-      - Làm sao để bảo hành?
-      - Bảo hành bao lâu?
-      - Thời hạn bảo hành?
+      - Bảo hành có mất phí không?
+      - Thủ tục bảo hành có phức tạp không?
       - Chế độ bảo hành?
-      - Quy trình bảo hành?
-      - Bảo hành như nào?
-      - Có chính sách bảo hành gì không?
-      - Shop bảo hành thế nào?
-      - Điều khoản bảo hành?
-      - Bảo hành tại đâu?
-      - Trung tâm bảo hành ở đâu?
 
+  # ============================================
+  # INTENT: So sánh sản phẩm
+  # ============================================
   - intent: compare_products
     examples: |
       - So sánh [iPhone 16](product_1) với [Samsung Galaxy S25 Plus](product_2)
-      - So sánh [Samsung Galaxy S25 Plus](product_1) với [iPhone 16 Pro Max](product_2)
-      - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy A55](product_2)
-      - So sánh [iPhone 16 Pro Max](product_1) với [Samsung Galaxy S25 Plus](product_2)
-      - So sánh [Samsung Galaxy S25 Plus 5G](product_1) với [iPhone 16 Pro Max 512GB](product_2)
-      - So sánh [Samsung Galaxy S25 Plus màu tím](product_1) với [iPhone 16 Pro Max màu xanh](product_2)
+      - Giữa [iPhone 16](product_1) và [Samsung S24](product_2) thì nên chọn cái nào?
+      - [iPhone 16](product_1) khác gì [iPhone 15](product_2)?
+      - So sánh [Macbook Air](product_1) và [Macbook Pro](product_2) giúp tôi
       - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy S25 Ultra](product_2)
       - So sánh [iPhone 16](product_1) và [Samsung Galaxy S25 Plus](product_2)
-      - So sánh [Samsung Galaxy S25 Plus](product_1) và [iPhone 16 Pro Max](product_2)
-      - So sánh [Samsung Galaxy S25 Plus](product_1) và [Samsung Galaxy A55](product_2)
-      - So sánh [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)
-      - So sánh [Samsung Galaxy S25 Plus 5G](product_1) và [iPhone 16 Pro Max 512GB](product_2)
+      - Nên mua [iPhone 16 Pro Max](product_1) hay [Samsung Galaxy S25 Plus](product_2)?
+      - Cho tôi sự khác nhau giữa  [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)
 
+  # ============================================
+  # INTENT: Hỏi về đơn hàng đã đặt
+  # ============================================
   - intent: ask_order
     examples: |
+      - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - kiểm tra đơn hàng có mã [6673f8a7e0965e26f63111ee](order_id)
+      - cho tôi xem thông tin của order [6673f8a7e0965e26f63111ef](order_id)
+      - tình trạng đơn [6673f8a7e0965e26f63111f0](order_id) thế nào rồi
+      - check order [6673f8a7e0965e26f63111f1](order_id)
       - Đơn hàng của tôi ra sao?
       - Xem đơn hàng
       - Kiểm tra đơn hàng
-      - Thông tin đơn hàng
-      - Tôi muốn xem đơn hàng
-      - Cho tôi xem đơn hàng của tôi
-      - Đơn hàng của tôi như thế nào?
-      - Tôi đã đặt hàng gì?
-      - Những đơn hàng của tôi
-      - Đơn hàng nào của tôi?
+      - Thông tin đơn hàng của tôi
+      - Đơn hàng của tôi đang ở đâu rồi?
+      - Bao giờ thì tôi nhận được hàng?
+      - Check đơn hàng
       - Tình trạng đơn hàng
-      - Đơn hàng đang ở đâu?
       - Kiểm tra order
       - Order của tôi thế nào?
-      - Tôi có đơn hàng nào?
+      - Tôi có đơn hàng nào không?
       - Lịch sử đơn hàng
-      - Xem lại đơn hàng
-      - Đơn đặt hàng của tôi
-      - Cho tôi xem order
-      - Xem lại order
-      - Kiểm tra lại đơn hàng
-      - Đơn hàng mình đặt
-      - Mình đã order gì?
-      - Xem đơn đặt hàng
-      - Kiểm tra đơn đặt hàng
-      - Order của mình
-      - Đơn hàng của mình
-      - Xem lại đơn đặt
-      - Các đơn hàng của tôi
+      - Xem lại các đơn đã đặt
+      - Cho tôi mã vận đơn
 
-  # ============================================
-  # INTENT: Hỏi cửa hàng
-  # ============================================
+  - intent: check_stock
+    examples: |
+      - [iPhone 16](product) còn hàng không?
+      - [iPhone 16](product) bản [256GB](variant_name) còn hàng không?
+      - cho hỏi shop còn [Macbook Air M3](product) không?
+      - kiểm tra giúp mình [Samsung S24](product) còn không? 
+      - khi nào có hàng lại vậy shop?
+      - sản phẩm này còn hàng chứ?
+      - [Dell XPS 13](product) [bản i7](variant_name) còn không shop?
+      - [iPhone 16 Pro Max](product) [256GB](variant_name) [xanh titan](variant_color) còn hàng không?
+      - còn [Macbook Air](product) [M3](variant_name) [màu bạc](variant_color) không?
+      - check giúp mình [Samsung S24](product) [bản Plus](variant_name)
+      - shop còn [iPhone 16](product) [màu hồng](variant_color) không?
+      - [Dell XPS](product) [15 inch](variant_name) còn hàng chứ?
+      - [iPhone 16](product) [256GB](variant_name) còn những màu nào?
+
   - intent: ask_store
     examples: |
       - Cửa hàng ở đâu?
       - Địa chỉ cửa hàng
-      - Có bao nhiêu cửa hàng?
+      - Shop có chi nhánh nào ở Cần Thơ không?
       - Hệ thống có mấy cửa hàng?
       - Thông tin cửa hàng
       - Cho tôi biết địa chỉ cửa hàng
-      - Cửa hàng gần tôi ở đâu?
-      - Cửa hàng gần nhất
-      - Có cửa hàng nào gần không?
-      - Danh sách cửa hàng
-      - Các chi nhánh
-      - Có mấy chi nhánh?
-      - Chi nhánh cửa hàng ở đâu?
-      - Tôi muốn mua trực tiếp tại cửa hàng
-      - Tôi cần tìm cửa hàng
-      - Cửa hàng nào gần nhất?
-      - Địa chỉ chi nhánh
+      - Cửa hàng gần tôi nhất ở đâu?
+      - Danh sách chi nhánh
       - Shop ở đâu?
       - Địa chỉ shop
-      - Cửa hàng có ở đâu?
-      - Mấy chi nhánh?
-      - Chi nhánh ở đâu?
-      - Tìm cửa hàng
-      - Cửa hàng gần đây
-      - Shop gần nhất
+      - Mấy giờ cửa hàng mở cửa?
+      - Cửa hàng có làm việc cuối tuần không?
 
   # ============================================
   # INTENT: Xác nhận đơn hàng
@@ -406,49 +269,23 @@ nlu:
       - Xác nhận
       - Đồng ý
       - Tôi đồng ý
-      - Tôi xác nhận
+      - Oke chốt
+      - Chuẩn rồi, đặt đi
+      - Ừ, đúng thông tin rồi
       - Được rồi
       - Ok
-      - OK
-      - Oke
-      - Okie
       - Yes
       - Vâng
       - Ừ
       - Đúng
       - Chắc chắn
-      - Hoàn toàn đồng ý
       - Xác nhận đặt hàng
       - Đặt hàng đi
       - Đặt luôn
       - Hoàn tất đơn hàng
-      - Xác nhận thông tin
-      - Thông tin đúng rồi
-      - Chuẩn rồi
-      - Chính xác rồi
-      - Không sai
-      - Đồng ý đặt
-      - Đồng ý mua
-      - Xác nhận mua
-      - Mua luôn
-      - Đặt thôi
       - Ok đặt
-      - Ok mua
-      - Được
-      - Đúng vậy
-      - Ừ đúng rồi
-      - Ừ chính xác
-      - Vâng ạ
-      - Đồng ý ạ
-      - Ok nhé
-      - Được ạ
-      - Chắc chắn rồi
-      - Đúng rồi đó
-      - Chuẩn
-      - Đặt nha
-      - Mua nha
-      - Xác nhận nha
-      - Đồng ý nha
+      - Mua luôn
+      - Chốt đơn
 
   # ============================================
   # INTENT: Hủy đơn hàng
@@ -459,41 +296,21 @@ nlu:
       - Tôi muốn hủy đơn hàng
       - Hủy đặt hàng
       - Không đặt nữa
-      - Thôi không đặt nữa
+      - Thôi không mua nữa
       - Tôi không muốn đặt nữa
       - Hủy đi
-      - Bỏ qua đơn hàng
       - Thôi hủy đi
-      - Không cần đặt nữa
-      - Tôi đổi ý
+      - Tôi đổi ý rồi
       - Tôi không muốn mua nữa
       - Hủy đơn này
-      - Hủy luôn
       - Thôi hủy luôn
       - Hủy
       - Bỏ qua
       - Đổi ý
-      - Không đặt nữa nhé
       - Thôi không mua
-      - Không mua nữa
       - Hủy order
-      - Bỏ đơn hàng
-      - Thôi hủy
-      - Hủy bỏ
-      - Không cần nữa
+      - Khoan đã, đừng đặt vội
       - Thôi khỏi đặt
-      - Khỏi đặt
-      - Khỏi mua
-      - Bỏ qua đi
-      - Thôi bỏ qua
-      - Đổi ý rồi
-      - Mình đổi ý
-      - Tôi không muốn nữa
-      - Không muốn đặt
-      - Không muốn mua
-      - Hủy đơn đi
-      - Hủy đơn hàng đi
-      - Hủy order đi
 
   # ============================================
   # INTENT: Nội dung ngoài phạm vi
@@ -503,18 +320,15 @@ nlu:
       - ê bộ giỡn mặt đó hả
       - con chó
       - mày là ai
-      - tao không quan tâm
-      - cái gì vậy trời
-      - vô nghĩa quá
+      - kể chuyện cười đi
+      - thời tiết hôm nay thế nào?
+      - 1 + 1 bằng mấy?
       - nói tào lao
       - không liên quan
       - blabla
-      - ahihi
-      - hú hú
-      - lalalala
-      - xyz
-      - mày là ai
-      - tao không quan tâm
+      - asdfghjkl
+      - bạn có thông minh không?
+      - mày là bot à?
 
   - intent: suggest_product_price
     examples: |

@@ -19,6 +19,7 @@ intents:
   - out_of_scope
   - nlu_fallback
   - compare_products
+  - check_stock
 
 entities:
   - category
@@ -51,8 +52,10 @@ entities:
   - product
   - product_1
   - product_2
-  - variant_name
   - quantity
+  - order_id
+  - variant_name
+  - variant_color
 
 slots:
   product:
@@ -166,6 +169,56 @@ slots:
       - type: from_entity
         entity: ram
         role: to # Map slot max_ram với entity ram có role là to
+        entity: max_price
+  validated_product_id:
+    type: any
+    influence_conversation: false
+    mappings: []
+
+  validated_variant_id:
+    type: any
+    influence_conversation: false
+    mappings: []
+
+  validated_quantity:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_price:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_total_price:
+    type: float
+    initial_value: null
+    influence_conversation: false
+    mappings: []
+  validated_address:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  validated_customer_name:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  validated_phone:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  order_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: order_id
 
 forms:
   order_form:
@@ -232,4 +285,5 @@ actions:
   - action_submit_order
   - action_cancel_order
   - action_compare_products
+  - action_check_stock
   - utter_fallback
