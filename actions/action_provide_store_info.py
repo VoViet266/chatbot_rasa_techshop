@@ -14,7 +14,7 @@ class ActionProvideStoreInfo(Action):
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         db = client["techshop_db"]
         branches_collections = db["branches"]
-        branches_info = list(branches_collections.find())
+        branches_info = list(branches_collections.find({"isDeleted": False}))
 
         if len(branches_info) == 0:
             dispatcher.utter_message(text=f"Xin lỗi! Hiện chưa có bất kỳ chi nhánh nào.")
