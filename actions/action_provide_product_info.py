@@ -47,8 +47,6 @@ class ActionProvideProductInfo(Action):
             brand.pop("deletedAt", None)
 
         variants = list(variants)
-        # print('Variant:', variants)
-        # print('Is variants empty:', len(variants) == 0)
         for v in variants:
           v.pop("createdAt", None)
           v.pop("updatedAt", None)
@@ -59,6 +57,15 @@ class ActionProvideProductInfo(Action):
         product.pop("createdAt", None)
         product.pop("updatedAt", None)
         product.pop("deletedAt", None)
+
+        for variant in variants:
+            product = products_collection.find_one({ "variants": variant['_id'] })
+            if product:
+                variant['discount'] = product.get('discount', 0)
+                battery_capacity = product.get('attributes', {}).get('batteryCapacity')
+                if battery_capacity:
+                    variant['battery'] = battery_capacity
+                variant['product_id'] = product.get('_id')
 
         if len(variants) == 0:
             dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
