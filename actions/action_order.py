@@ -17,22 +17,25 @@ from utils.format_currentcy import format_vnd
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
   
     user_id = tracker.sender_id
-    metadata = tracker.latest_message.get("metadata", {})
    
-  
     product_name = tracker.get_slot("product")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
 
     # 1. Xác thực người dùng
+    
+    if not user_id or not ObjectId.is_valid(user_id):
+        return "Để mua hàng, vui lòng đăng nhập.", None
+    
+    # Chỉ truy vấn khi user_id đã hợp lệ
     user_info = db_service.users_collection.find_one({"_id": ObjectId(user_id)})
+    
+    # Kiểm tra xem có tìm thấy người dùng trong DB không
     if not user_info:
-        return "Bạn cần phải đăng nhập để đặt hàng.", None
-
+        return "Không tìm thấy thông tin người dùng. Vui lòng thử đăng nhập lại.", None
     phone_number = user_info.get("phone", "")
     if not regex.match(r'^(0|\+84)(3[2-9]|5[6|8|9]|7[0|6-9]|8[1-5]|9[0-4|6-9])[0-9]{7}$', phone_number):
         return "Số điện thoại của bạn không hợp lệ. Vui lòng cập nhật lại thông tin cá nhân.", None
-
     # 2. Xác thực sản phẩm
     product_data = db_service.products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
     if not product_data:
@@ -118,7 +121,7 @@ class ActionReviewOrder(Action):
             f"Bạn có muốn xác nhận đặt hàng không?"
         )
         dispatcher.utter_message(text=summary_message)
-        print(f"Validated order data: {json.dumps(order_data, indent=2, ensure_ascii=False)}")
+       
         # Lưu các thông tin quan trọng đã được xác thực vào slot
         return [
             SlotSet("validated_product_id", order_data["product_id"]),
@@ -189,7 +192,6 @@ class ActionSubmitOrder(Action):
         if token:
             headers["Authorization"] = f"Bearer {token}"
             
-        print(f"Submitting order payload:\n{json.dumps(order_payload, indent=2, ensure_ascii=False)}")
         try:
             response = requests.post("http://localhost:8080/api/v1/orders", json=order_payload, headers=headers, timeout=10)
             if response.status_code in [200, 201]:

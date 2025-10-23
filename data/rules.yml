@@ -1,6 +1,11 @@
 version: "3.1"
 
 rules:
+  - rule: restart_slot
+    steps:
+      - intent: restart_slot
+      - action: action_restart_slot
+
   # Chào hỏi / tạm biệt
   - rule: Chào hỏi và lấy thông tin người dùng
     steps:

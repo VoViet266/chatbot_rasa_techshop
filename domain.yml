@@ -20,6 +20,7 @@ intents:
   - nlu_fallback
   - compare_products
   - check_stock
+  - restart_slot
 
 entities:
   - category
@@ -304,6 +305,7 @@ actions:
   - action_compare_products
   - action_check_stock
   - utter_fallback
+  - action_restart_slot
 
 session_config:
   session_expiration_time: 60

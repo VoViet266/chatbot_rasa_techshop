@@ -63,8 +63,8 @@ nlu:
       - hẹn gặp lại nhé
 
   # ============================================
-  # INTENT: Đặt hàng (Order)
-  # ============================================
+  #   INTENT: Đặt hàng (Order)
+  #   ============================================
   - intent: order
     examples: |
       - Tôi muốn đặt mua [iPhone 16](product)
@@ -104,7 +104,7 @@ nlu:
       - Đặt ngay
 
   # ============================================
-  # INTENT: Cung cấp thông tin (Inform)
+  # INTENT: Cung cấp thông tin chi tiết (khi bot hỏi)
   # ============================================
   - intent: inform
     examples: |
@@ -119,9 +119,6 @@ nlu:
       - [iPhone 16](product)
       - Cụ thể là con [Samsung S24](product)
       - Mình đang nói về [MacBook Air M3](product)
-      - Tôi muốn [iPhone 16](product)
-      - Cho tôi [Samsung S24](product)
-      - Mình lấy [MacBook Air](product)
       - [màu xanh 256GB](variant_name)
       - [bản 512GB](variant_name)
       - cứ lấy [màu đen](variant_name) đi
@@ -134,7 +131,6 @@ nlu:
       - [Màu trắng](variant_name) nhé
       - [1](quantity)
       - [2](quantity)
-      - [3](quantity)
       - lấy [1](quantity) cái
       - cho mình [2](quantity) chiếc
       - số lượng là [3](quantity) nhé
@@ -260,9 +256,9 @@ nlu:
       - Cửa hàng có làm việc cuối tuần không?
 
   # - intent: add_to_cart
-  #   examples: 
+  #   examples:
   #     - Tôi muốn thêm sản phẩm này vào giỏ hàng
-  #     - tôi thêm 
+  #     - tôi thêm
   # ============================================
   # INTENT: Xác nhận đơn hàng
   # ============================================
@@ -350,7 +346,7 @@ nlu:
       - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
-  
+
   - intent: suggest_product_ram
     examples: |
       - Tôi cần [điện thoại](category) [ram ít](ram_qualifier)
@@ -404,6 +400,10 @@ nlu:
       - Tôi cần [điện thoại](category) giá trên [5 triệu]{"entity": "price", "role": "from"} và ram trên [8 GB]{"entity": "ram", "role": "from"}
       - Có [laptop](category) nào giá dưới [10 triệu]{"entity": "price", "role": "to"} và ram trên [16 GB]{"entity": "ram", "role": "from"} không?
 
+  - intent: restart_slot
+    examples: |
+      - /restart
+
   - synonym: high_storage
     examples: |
       - bộ nhớ tốt
@@ -434,7 +434,7 @@ nlu:
       - ram cao
       - ram nhiều
       - nhiều ram
-  
+
   - synonym: high_battery
     examples: |
       - pin trâu
