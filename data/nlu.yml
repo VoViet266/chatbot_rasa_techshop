@@ -332,6 +332,7 @@ nlu:
 
   - intent: suggest_product_price
     examples: |
+      - [laptop](category)[giá rẻ](price_qualifier)2
       - Tôi cần [điện thoại](category) [giá rẻ](price_qualifier)
       - Tôi muốn [laptop](category) [bình dân](price_qualifier)
       - Gợi ý [máy ảnh](category) [cao cấp](price_qualifier)

@@ -26,6 +26,21 @@ stories:
           - quantity: null
       - intent: goodbye
       - action: utter_goodbye
+  - story: Xử lý đặt hàng thành công sau khi form hoàn tất
+    steps:
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_preview_order
+      - intent: confirm_order
+      - action: action_submit_order
+      - slot_was_set:
+          - product: null
+          - variant_name: null
+          - quantity: null
+      - intent: goodbye
+      - action: utter_goodbye
 
   - story: Happy path - Quick order flow
     steps:

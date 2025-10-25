@@ -17,15 +17,16 @@ from utils.format_currentcy import format_vnd
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
   
     user_id = tracker.sender_id
-   
+    # 1. Xác thực người dùng
+    if not user_id or not ObjectId.is_valid(user_id):
+        return "Để mua hàng, vui lòng đăng nhập.", None
     product_name = tracker.get_slot("product")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
 
-    # 1. Xác thực người dùng
+
     
-    if not user_id or not ObjectId.is_valid(user_id):
-        return "Để mua hàng, vui lòng đăng nhập.", None
+   
     
     # Chỉ truy vấn khi user_id đã hợp lệ
     user_info = db_service.users_collection.find_one({"_id": ObjectId(user_id)})
