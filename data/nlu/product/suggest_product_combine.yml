@@ -1,0 +1,7 @@
+version: "3.1"
+
+nlu:
+  - intent: suggest_product_combine
+    examples: |
+      - Tôi cần [điện thoại](category) giá trên [5 triệu]{"entity": "price", "role": "from"} và ram trên [8 GB]{"entity": "ram", "role": "from"}
+      - Có [laptop](category) nào giá dưới [10 triệu]{"entity": "price", "role": "to"} và ram trên [16 GB]{"entity": "ram", "role": "from"} không?

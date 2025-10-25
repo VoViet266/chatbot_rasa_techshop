@@ -1,0 +1,34 @@
+version: "3.1"
+
+nlu:
+  - intent: inform
+    examples: |
+      - Tôi muốn mua [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
+      - [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
+      - [iPhone 16](product) [bản thường](variant_name) [1](quantity) chiếc
+      - Tôi muốn [Macbook Air M3](product) [bản 256GB](variant_name) [1](quantity) chiếc
+      - Đặt [Samsung S24](product) [bản tiêu chuẩn](variant_name) [3](quantity) cái
+      - [iPad Pro](product) [11 inch WiFi 128GB](variant_name) [1](quantity)
+      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_name) [2](quantity) cái đi
+      - [Sony WH-1000XM5](product) [màu đen](variant_name) [1](quantity)
+      - [iPhone 16](product)
+      - Cụ thể là con [Samsung S24](product)
+      - Mình đang nói về [MacBook Air M3](product)
+      - [màu xanh 256GB](variant_name)
+      - [bản 512GB](variant_name)
+      - cứ lấy [màu đen](variant_name) đi
+      - loại [128GB](variant_name)
+      - [bản cao cấp](variant_name)
+      - chọn [bản tiêu chuẩn](variant_name)
+      - Tôi chọn [màu xanh 256GB](variant_name)
+      - [bản 512GB màu tím](variant_name) ạ
+      - Em lấy [bản thường](variant_name)
+      - [Màu trắng](variant_name) nhé
+      - [1](quantity)
+      - [2](quantity)
+      - lấy [1](quantity) cái
+      - cho mình [2](quantity) chiếc
+      - số lượng là [3](quantity) nhé
+      - chỉ [1](quantity) thôi
+      - mua [2](quantity)
+      - tôi lấy [1](quantity) cái

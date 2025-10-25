@@ -1,0 +1,31 @@
+version: "3.1"
+
+nlu:
+  - intent: suggest_product_ram
+    examples: |
+      - Tôi cần [điện thoại](category) [ram ít](ram_qualifier)
+      - Tôi muốn [laptop](category) [ít ram](ram_qualifier)
+      - Gợi ý [máy ảnh](category) [ram nhiều](ram_qualifier)
+      - Tìm [laptop](category) [ram cao](ram_qualifier)
+      - Tôi cần [điện thoại](category) [xịn](ram_qualifier)
+      - Có [laptop](category) nào [hàng hiệu](ram_qualifier) không?
+      - Gợi ý [máy ảnh](category) [giá thấp](ram_qualifier)
+      - Tôi cần [laptop](category) ram dưới [12 GB]{"entity": "ram", "role": "to"}
+      - Tôi cần [laptop](category) ram trên [8 GB]{"entity": "ram", "role": "from"}
+      - Tôi cần [máy tính] ram từ [4 GB]{"entity": "ram", "role": "from"} đến [16 GB]{"entity": "ram", "role": "to"}
+      - Có mẫu [điện thoại](category) nào ram dưới [8 GB]{"entity": "ram", "role": "to"} không?
+      - Tôi muốn [điện thoại](category) ram trên [4 GB]{"entity": "ram", "role": "from"}
+      - Tôi đang có nhu cầu mua [máy tính bảng](category) ram từ [8]{"entity": "ram", "role": "from"} đến [16 GB]{"entity": "ram", "role": "to"}
+      - Gợi ý cho tôi vài [máy tính](category) ram dưới [20 GB]{"entity": "ram", "role": "to"}
+  
+  - synonym: low_ram
+    examples: |
+      - ram ít
+      - ít ram
+      - ram thấp
+
+  - synonym: high_ram
+    examples: |
+      - ram cao
+      - ram nhiều
+      - nhiều ram
