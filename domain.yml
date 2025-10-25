@@ -4,6 +4,7 @@ intents:
   - greet
   - goodbye
   - order
+  - add_to_cart
   - inform
   - ask_product_info
   - ask_warranty
@@ -56,9 +57,15 @@ entities:
   - quantity
   - order_id
   - variant_name
+  - variant_name_add
   - variant_color
 
 slots:
+  # requested_slot:
+  # type: text
+  # influence_conversation: false
+  # mappings: []
+
   user_name:
     type: text
     influence_conversation: false
@@ -99,6 +106,14 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
+
+  variant_name_add:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: variant_name_add
+
   variant_color:
     type: text
     influence_conversation: true
@@ -139,49 +154,49 @@ slots:
     mappings:
       - type: from_entity
         entity: battery
-        role: from # Map slot min_battery với entity battery có role là from
+        role: from
 
   min_price:
     type: text
     mappings:
       - type: from_entity
         entity: price
-        role: from # Map slot min_price với entity price có role là from
+        role: from
 
   max_price:
     type: text
     mappings:
       - type: from_entity
         entity: price
-        role: to # Map slot max_price với entity price có role là to
+        role: to
 
   min_storage:
     type: text
     mappings:
       - type: from_entity
         entity: storage
-        role: from # Map slot min_storage với entity storage có role là from
+        role: from
 
   max_storage:
     type: text
     mappings:
       - type: from_entity
         entity: storage
-        role: to # Map slot max_storage với entity storage có role là to
+        role: to
 
   min_ram:
     type: text
     mappings:
       - type: from_entity
         entity: ram
-        role: from # Map slot min_ram với entity ram có role là from
+        role: from
 
   max_ram:
     type: text
     mappings:
       - type: from_entity
         entity: ram
-        role: to # Map slot max_ram với entity ram có role là to
+        role: to
 
   validated_product_id:
     type: any
@@ -239,6 +254,7 @@ forms:
       - product
       - variant_name
       - quantity
+
   compare_products_form:
     required_slots:
       - product_1
@@ -302,6 +318,7 @@ actions:
   - action_preview_order
   - action_submit_order
   - action_cancel_order
+  - action_add_to_cart
   - action_compare_products
   - action_check_stock
   - utter_fallback

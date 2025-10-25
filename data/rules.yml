@@ -27,6 +27,11 @@ rules:
     steps:
       - intent: ask_warranty
       - action: action_provide_warranty_info
+  
+  - rule: Add product to cart
+    steps:
+      - intent: add_to_cart
+      - action: action_add_to_cart
 
   - rule: Provide store info when user asks
     steps:
