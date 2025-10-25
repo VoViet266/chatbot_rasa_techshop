@@ -1,0 +1,26 @@
+version: "3.1"
+
+nlu:
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - chào nhé
+      - hẹn gặp lại
+      - bye
+      - goodbye
+      - cảm ơn và tạm biệt
+      - ok cảm ơn shop
+      - cảm ơn, thế thôi
+      - xong rồi, cảm ơn
+      - vậy thôi nhé
+      - mình chỉ hỏi vậy thôi
+      - bye bye
+      - see you
+      - thôi tạm biệt
+      - chào tạm biệt
+      - cảm ơn nhé
+      - thôi nhé
+      - cảm ơn shop
+      - ok tạm biệt
+      - thế thôi nhé
+      - hẹn gặp lại nhé

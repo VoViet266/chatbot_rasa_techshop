@@ -1,0 +1,86 @@
+version: "3.1"
+
+nlu:
+  - intent: add_to_cart
+    examples: |
+      - Tôi muốn thêm vào giỏ hàng [iPhone 16](product) [màu xanh 256GB](variant_name_add) [2](quantity) cái
+      - [iPhone 16](product) [màu xanh 256GB](variant_name_add) [2](quantity) cái
+      - [iPhone 16](product) [bản thường](variant_name_add) [1](quantity) chiếc
+      - Tôi muốn [Macbook Air M3](product) [bản 256GB](variant_name_add) [1](quantity) chiếc
+      - Đặt [Samsung S24](product) [bản tiêu chuẩn](variant_name_add) [3](quantity) cái
+      - [iPad Pro](product) [11 inch WiFi 128GB](variant_name_add) [1](quantity)
+      - Cứ thêm vào giỏ hàng [Dell XPS 13](product) [bản i7](variant_name_add) [2](quantity) cái đi
+      - [Sony WH-1000XM5](product) [màu đen](variant_name_add) [1](quantity)
+      - [màu xanh 256GB](variant_name_add)
+      - [bản 512GB](variant_name_add)
+      - cứ lấy [màu đen](variant_name_add) đi
+      - loại [128GB](variant_name_add)
+      - [bản cao cấp](variant_name_add)
+      - Tôi chọn phiên bản [256GB](variant_name_add) nhé
+      - chọn [bản tiêu chuẩn](variant_name_add)
+
+      - [iPhone 16](product)
+      - Cụ thể là con [Samsung S24](product)
+      - Mình đang nói về [MacBook Air M3](product)
+      
+      - Tôi chọn [màu xanh 256GB](variant_color)
+      - [bản 512GB](variant_name_add) màu tím](variant_color) ạ
+      - Em lấy [bản thường](variant_name_add)
+      - [Màu trắng](variant_color) nhé
+      - [Màu titan](variant_color)
+      - Tôi chọn [màu xanh](variant_color)
+      - Tôi chọn phiên bản [256GB](variant_name_add)
+      - [1](quantity)
+      - [2](quantity)
+      - lấy [1](quantity) cái
+      - cho mình [2](quantity) chiếc
+      - số lượng là [3](quantity) nhé
+      - chỉ [1](quantity) thôi
+      - mua [2](quantity)
+      - tôi muốn thêm [1](quantity) cái
+
+      - Thêm vào giỏ hàng [MacBook Air M3](product_name)
+      - Thêm vào giỏ hàng [iPad Pro](product_name) cho tôi
+      - Tôi muốn thêm vào giỏ hàng [iPhone 16](product_name)
+      - Tôi muốn thêm vào giỏ hàng [Samsung S24](product_name)
+      - Mình muốn thêm vào giỏ hàng [AirPods Pro](product_name)
+      - Cho tôi thêm vào giỏ hàng [Galaxy Z Fold 6](product_name)
+
+      - Tôi chọn [phiên bản 256GB](variant_name_add)
+      - [Bản tiêu chuẩn](variant_name_add) nhé
+      - [Bản cao cấp](variant_name_add)
+      - Tôi muốn bản [512GB](variant_name_add)
+      - Chọn [phiên bản 128GB](variant_name_add)
+      - Lấy [bản thường](variant_name_add)
+      - Mình chọn [phiên bản 256GB](variant_name_add)
+      - [256GB](variant_name_add)
+      - [512GB](variant_name_add)
+      - [Bản thường](variant_name_add) thôi
+
+      - Cart
+      - Thêm luôn
+      - Add to cart
+      - Thêm vào giỏ hàng
+      - Add product to cart
+      - Thêm vào giỏ hàng nào
+      - Thêm vào giỏ hàng ngay
+      - Thêm vào giỏ hàng thôi
+      - Thêm vào giỏ hàng cho tôi
+      - Cho tôi Thêm vào giỏ hàng
+      - Tôi cần thêm vào giỏ hàng
+      - Tôi muốn thêm vào giỏ hàng
+      - Tôi muốn thêm vào giỏ hàng
+      - Giúp tôi thêm vào giỏ hàng
+      - Tôi muốn thêm sản phẩm vào giỏ hàng
+  
+  - lookup: variant_name
+    examples: |
+      - 128GB
+      - 256GB
+      - 512GB
+      - bản tiêu chuẩn
+      - bản cao cấp
+      - bản thường
+      - phiên bản 128GB
+      - phiên bản 256GB
+      - phiên bản 512GB

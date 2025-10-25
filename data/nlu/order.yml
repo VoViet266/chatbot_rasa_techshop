@@ -1,0 +1,123 @@
+version: "3.1"
+
+nlu:
+  - intent: order
+    examples: |
+      - Tôi muốn đặt mua [iPhone 16](product)
+      - Tôi muốn mua [Samsung S24](product)
+      - Mua [MacBook Air M3](product)
+      - Đặt [iPad Pro](product) cho tôi
+      - Cho tôi mua [Galaxy Z Fold 6](product)
+      - Mình muốn mua [AirPods Pro](product)
+      - Lấy cho mình con [Dell XPS 13](product)
+      - Chốt đơn [iPhone 16](product)
+      - Tôi muốn đặt hàng
+      - Tôi muốn mua hàng
+      - Tôi muốn mua sản phẩm
+      - Đặt hàng
+      - Mua hàng
+      - Order
+      - Đặt mua
+      - Cho tôi đặt hàng
+      - Giúp tôi đặt hàng
+      - Tôi cần đặt hàng
+      - Tôi cần mua hàng
+      - Tôi muốn order
+      - Order đi
+      - Đặt hàng cho tôi
+      - Mua thôi
+      - Đặt luôn
+      - Cho tôi mua
+      - Mua hàng thôi
+      - Đặt hàng nào
+      - Tôi muốn đặt
+      - Cho tôi order
+      - Mình muốn mua
+      - Đặt sản phẩm
+      - Đặt hàng ngay
+      - Mua ngay
+      - Tôi muốn mua ngay
+      - Đặt ngay
+
+  - intent: confirm_order
+    examples: |
+      - Đúng rồi
+      - Chính xác
+      - Xác nhận
+      - Đồng ý
+      - Tôi đồng ý
+      - Oke chốt
+      - Chuẩn rồi, đặt đi
+      - Ừ, đúng thông tin rồi
+      - Được rồi
+      - Ok
+      - Yes
+      - Vâng
+      - Ừ
+      - Đúng
+      - Chắc chắn
+      - Xác nhận đặt hàng
+      - Đặt hàng đi
+      - Đặt luôn
+      - Hoàn tất đơn hàng
+      - Ok đặt
+      - Mua luôn
+      - Chốt đơn
+
+  - intent: cancel_order
+    examples: |
+      - Hủy đơn hàng
+      - Tôi muốn hủy đơn hàng
+      - Hủy đặt hàng
+      - Không đặt nữa
+      - Thôi không mua nữa
+      - Tôi không muốn đặt nữa
+      - Hủy đi
+      - Thôi hủy đi
+      - Tôi đổi ý rồi
+      - Tôi không muốn mua nữa
+      - Hủy đơn này
+      - Thôi hủy luôn
+      - Hủy
+      - Bỏ qua
+      - Đổi ý
+      - Thôi không mua
+      - Hủy order
+      - Khoan đã, đừng đặt vội
+      - Thôi khỏi đặt
+
+  - intent: restart_slot
+    examples: |
+      - /restart
+
+  - intent: inform
+    examples: |
+      - Tôi muốn mua [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
+      - [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
+      - [iPhone 16](product) [bản thường](variant_name) [1](quantity) chiếc
+      - Tôi muốn [Macbook Air M3](product) [bản 256GB](variant_name) [1](quantity) chiếc
+      - Đặt [Samsung S24](product) [bản tiêu chuẩn](variant_name) [3](quantity) cái
+      - [iPad Pro](product) [11 inch WiFi 128GB](variant_name) [1](quantity)
+      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_name) [2](quantity) cái đi
+      - [Sony WH-1000XM5](product) [màu đen](variant_name) [1](quantity)
+      - [iPhone 16](product)
+      - Cụ thể là con [Samsung S24](product)
+      - Mình đang nói về [MacBook Air M3](product)
+      - [màu xanh 256GB](variant_name)
+      - [bản 512GB](variant_name)
+      - cứ lấy [màu đen](variant_name) đi
+      - loại [128GB](variant_name)
+      - [bản cao cấp](variant_name)
+      - chọn [bản tiêu chuẩn](variant_name)
+      - Tôi chọn [màu xanh 256GB](variant_name)
+      - [bản 512GB màu tím](variant_name) ạ
+      - Em lấy [bản thường](variant_name)
+      - [Màu trắng](variant_name) nhé
+      - [1](quantity)
+      - [2](quantity)
+      - lấy [1](quantity) cái
+      - cho mình [2](quantity) chiếc
+      - số lượng là [3](quantity) nhé
+      - chỉ [1](quantity) thôi
+      - mua [2](quantity)
+      - tôi lấy [1](quantity) cái

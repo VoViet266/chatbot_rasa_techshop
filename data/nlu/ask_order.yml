@@ -1,0 +1,24 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_order
+    examples: |
+      - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - kiểm tra đơn hàng có mã [6673f8a7e0965e26f63111ee](order_id)
+      - cho tôi xem thông tin của order [6673f8a7e0965e26f63111ef](order_id)
+      - tình trạng đơn [6673f8a7e0965e26f63111f0](order_id) thế nào rồi
+      - check order [6673f8a7e0965e26f63111f1](order_id)
+      - Đơn hàng của tôi ra sao?
+      - Xem đơn hàng
+      - Kiểm tra đơn hàng
+      - Thông tin đơn hàng của tôi
+      - Đơn hàng của tôi đang ở đâu rồi?
+      - Bao giờ thì tôi nhận được hàng?
+      - Check đơn hàng
+      - Tình trạng đơn hàng
+      - Kiểm tra order
+      - Order của tôi thế nào?
+      - Tôi có đơn hàng nào không?
+      - Lịch sử đơn hàng
+      - Xem lại các đơn đã đặt
+      - Cho tôi mã vận đơn

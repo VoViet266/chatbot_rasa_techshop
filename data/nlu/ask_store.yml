@@ -1,0 +1,17 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_store
+    examples: |
+      - Cửa hàng ở đâu?
+      - Địa chỉ cửa hàng
+      - Shop có chi nhánh nào ở Cần Thơ không?
+      - Hệ thống có mấy cửa hàng?
+      - Thông tin cửa hàng
+      - Cho tôi biết địa chỉ cửa hàng
+      - Cửa hàng gần tôi nhất ở đâu?
+      - Danh sách chi nhánh
+      - Shop ở đâu?
+      - Địa chỉ shop
+      - Mấy giờ cửa hàng mở cửa?
+      - Cửa hàng có làm việc cuối tuần không?
