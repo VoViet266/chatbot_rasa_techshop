@@ -26,3 +26,4 @@ nlu:
   - intent: restart_slot
     examples: |
       - /restart
+      - /reset_slot

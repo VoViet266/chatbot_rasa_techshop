@@ -8,6 +8,22 @@ nlu:
       - cho tôi xem thông tin của order [6673f8a7e0965e26f63111ef](order_id)
       - tình trạng đơn [6673f8a7e0965e26f63111f0](order_id) thế nào rồi
       - check order [6673f8a7e0965e26f63111f1](order_id)
+      - Đơn hàng của tôi [a1b2c3d4e5f6a1b2c3d4e5f6](order_id) thì sao?
+      - Đơn hàng [b2c3d4e5f6a1b2c3d4e5f6a1](order_id)
+      - Đơn hàng [c3d4e5f6a1b2c3d4e5f6a1b2](order_id) đang ở đâu?
+      - Đơn hàng [d4e5f6a1b2c3d4e5f6a1b2c3](order_id) đã được gửi chưa?
+      - [e5f6a1b2c3d4e5f6a1b2c3d4](order_id)
+      - [f6a1b2c3d4e5f6a1b2c3d4e5](order_id) là đơn hàng nào?
+      - check giùm mình đơn [1234567890abcdef12345678](order_id)
+      - tình trạng của [abcdef1234567890abcdef12](order_id)
+      - mã vận đơn [fedcba0987654321fedcba09](order_id) đang ở đâu
+      - đơn [a1a2b3b4c5c6a1a2b3b4c5c6](order_id)
+      - tra cứu đơn [b2b3c4c5d6d7b2b3c4c5d6d7](order_id)
+      - thông tin đơn [c3c4d5d6e7e8c3c4d5d6e7e8](order_id)
+      - đơn hàng của tôi [d4d5e6e7f8f9d4d5e6e7f8f9](order_id) đã xử lý xong chưa
+      - xem tình trạng đơn hàng [e5e6f7f8a9a0e5e6f7f8a9a0](order_id)
+      - cho mình hỏi về đơn [f6f7a8a9b0b1f6f7a8a9b0b1](order_id)
+      - đơn [a7a8b9b0c1c2a7a8b9b0c1c2](order_id) của tôi
       - Đơn hàng của tôi ra sao?
       - Xem đơn hàng
       - Kiểm tra đơn hàng
@@ -22,3 +38,7 @@ nlu:
       - Lịch sử đơn hàng
       - Xem lại các đơn đã đặt
       - Cho tôi mã vận đơn
+
+regex:
+  - name: order_id
+    pattern: "[0-9a-f]{24}"

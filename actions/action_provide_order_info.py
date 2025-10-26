@@ -1,5 +1,6 @@
 from rasa_sdk import Action, Tracker
 from bson import ObjectId
+from rasa_sdk.events import SlotSet
 from bson.errors import InvalidId
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
@@ -14,56 +15,57 @@ class ActionProvideOrderInfo(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         user_id = tracker.sender_id
-        # Lấy order_id từ slot
-        order_id_from_slot = tracker.get_slot("order_id")
-
-        # Kiểm tra user_id (giả định sender_id là id trong DB)
+        order_id = tracker.get_slot("order_id")
+        print('Order id:', order_id)
         if not user_id:
             dispatcher.utter_message(text="Xin lỗi! Bạn cần phải đăng nhập để xem được thông tin đơn hàng của mình.")
             return []
 
         try:
-            # Chuyển đổi user_id sang ObjectId
-            user_object_id = ObjectId(user_id)
+            user_id = ObjectId(user_id)
         except InvalidId:
-            dispatcher.utter_message(text=f"ID người dùng không hợp lệ: {user_id}")
+            dispatcher.utter_message(text="Xin lỗi! Bạn cần phải đăng nhập để xem được thông tin đơn hàng của mình.")
             return []
             
-        # Kết nối MongoDB
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         db = client["techshop_db"]
         orders_collections = db["orders"]
         products_collections = db["products"]
 
         # Kịch bản 1: Người dùng cung cấp mã đơn hàng
-        if order_id_from_slot:
+        if order_id:
             try:
                 # Tìm chính xác đơn hàng theo _id và user_id (để bảo mật)
                 order = orders_collections.find_one({
-                    "_id": ObjectId(order_id_from_slot), 
-                    "user": user_object_id
+                    "_id": ObjectId(order_id), 
+                    "user": user_id
+                })
+
+                print({
+                    "_id": ObjectId(order_id), 
+                    "user": user_id
                 })
 
                 if not order:
-                    dispatcher.utter_message(text=f"Không tìm thấy đơn hàng có mã '{order_id_from_slot}' hoặc đơn hàng này không phải của bạn.")
+                    dispatcher.utter_message(text=f"Không tìm thấy đơn hàng có mã '{order_id}' hoặc đơn hàng này không phải của bạn.")
                     return []
                 
                 # Xây dựng message cho đơn hàng cụ thể
-                message = f"""<p class="text-base">Đây là thông tin đơn hàng <strong>#{order_id_from_slot}</strong> của bạn:</p>"""
+                message = f"""<p class="text-base">Đây là thông tin đơn hàng <strong>#{order_id}</strong> của bạn:</p>"""
                 message += """<div class="flex flex-col gap-8">"""
                 message += self.build_order_html(order, products_collections)
                 message += """</div>"""
                 dispatcher.utter_message(text=message)
 
             except InvalidId:
-                dispatcher.utter_message(text=f"Mã đơn hàng '{order_id_from_slot}' không hợp lệ. Vui lòng kiểm tra lại.")
+                dispatcher.utter_message(text=f"Mã đơn hàng '{order_id}' không hợp lệ. Vui lòng kiểm tra lại.")
             finally:
                 client.close()
-                return []
+                return [SlotSet('order_id', None)]
         
         # Kịch bản 2: Người dùng không cung cấp mã đơn hàng, hiển thị tất cả
         else:
-            orders_info = list(orders_collections.find({"user": user_object_id}))
+            orders_info = list(orders_collections.find({"user": user_id}))
 
             if not orders_info:
                 dispatcher.utter_message(text="Bạn chưa có đơn hàng nào, hãy mua hàng và trải nghiệm dịch vụ của hệ thống nhé!")
@@ -77,7 +79,7 @@ class ActionProvideOrderInfo(Action):
             message += """</div>"""
             dispatcher.utter_message(text=message)
             client.close()
-            return []
+            return [SlotSet('order_id', None)]
 
     def build_order_html(self, order: Dict, products_collections) -> str:
         """Hàm trợ giúp để xây dựng HTML cho một đơn hàng."""
