@@ -1,0 +1,17 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_warranty
+    examples: |
+      - Chính sách bảo hành thế nào?
+      - Bảo hành như thế nào?
+      - Sản phẩm bảo hành bao lâu?
+      - Nếu hỏng thì bảo hành ở đâu?
+      - Thời gian bảo hành là bao lâu?
+      - Quy định bảo hành ra sao?
+      - Điều kiện bảo hành là gì?
+      - Cho tôi biết về chính sách bảo hành
+      - Sản phẩm có được bảo hành không?
+      - Bảo hành có mất phí không?
+      - Thủ tục bảo hành có phức tạp không?
+      - Chế độ bảo hành?

@@ -1,0 +1,13 @@
+version: "3.1"
+
+nlu:
+  - intent: compare_products
+    examples: |
+      - So sánh [iPhone 16](product_1) với [Samsung Galaxy S25 Plus](product_2)
+      - Giữa [iPhone 16](product_1) và [Samsung S24](product_2) thì nên chọn cái nào?
+      - [iPhone 16](product_1) khác gì [iPhone 15](product_2)?
+      - So sánh [Macbook Air](product_1) và [Macbook Pro](product_2) giúp tôi
+      - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy S25 Ultra](product_2)
+      - So sánh [iPhone 16](product_1) và [Samsung Galaxy S25 Plus](product_2)
+      - Nên mua [iPhone 16 Pro Max](product_1) hay [Samsung Galaxy S25 Plus](product_2)?
+      - Cho tôi sự khác nhau giữa  [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)

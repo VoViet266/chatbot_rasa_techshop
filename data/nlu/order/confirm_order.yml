@@ -1,0 +1,27 @@
+version: "3.1"
+
+nlu:
+  - intent: confirm_order
+    examples: |
+      - Đúng rồi
+      - Chính xác
+      - Xác nhận
+      - Đồng ý
+      - Tôi đồng ý
+      - Oke chốt
+      - Chuẩn rồi, đặt đi
+      - Ừ, đúng thông tin rồi
+      - Được rồi
+      - Ok
+      - Yes
+      - Vâng
+      - Ừ
+      - Đúng
+      - Chắc chắn
+      - Xác nhận đặt hàng
+      - Đặt hàng đi
+      - Đặt luôn
+      - Hoàn tất đơn hàng
+      - Ok đặt
+      - Mua luôn
+      - Chốt đơn

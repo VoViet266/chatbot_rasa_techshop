@@ -1,0 +1,40 @@
+version: "3.1"
+
+nlu:
+  - intent: order
+    examples: |
+      - Tôi muốn đặt mua [iPhone 16](product)
+      - Tôi muốn mua [Samsung S24](product)
+      - Mua [MacBook Air M3](product)
+      - Đặt [iPad Pro](product) cho tôi
+      - Cho tôi mua [Galaxy Z Fold 6](product)
+      - Mình muốn mua [AirPods Pro](product)
+      - Lấy cho mình con [Dell XPS 13](product)
+      - Chốt đơn [iPhone 16](product)
+      - Tôi muốn đặt hàng
+      - Tôi muốn mua hàng
+      - Tôi muốn mua sản phẩm
+      - Đặt hàng
+      - Mua hàng
+      - Order
+      - Đặt mua
+      - Cho tôi đặt hàng
+      - Giúp tôi đặt hàng
+      - Tôi cần đặt hàng
+      - Tôi cần mua hàng
+      - Tôi muốn order
+      - Order đi
+      - Đặt hàng cho tôi
+      - Mua thôi
+      - Đặt luôn
+      - Cho tôi mua
+      - Mua hàng thôi
+      - Đặt hàng nào
+      - Tôi muốn đặt
+      - Cho tôi order
+      - Mình muốn mua
+      - Đặt sản phẩm
+      - Đặt hàng ngay
+      - Mua ngay
+      - Tôi muốn mua ngay
+      - Đặt ngay

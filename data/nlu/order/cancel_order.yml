@@ -1,0 +1,29 @@
+version: "3.1"
+
+nlu:
+  - intent: cancel_order
+    examples: |
+      - Hủy đơn hàng
+      - Tôi muốn hủy đơn hàng
+      - Hủy đặt hàng
+      - Không đặt nữa
+      - Thôi không mua nữa
+      - Tôi không muốn đặt nữa
+      - Hủy đi
+      - Thôi hủy đi
+      - Tôi đổi ý rồi
+      - Tôi không muốn mua nữa
+      - Hủy đơn này
+      - Thôi hủy luôn
+      - Hủy
+      - Bỏ qua
+      - Đổi ý
+      - Thôi không mua
+      - Hủy order
+      - Khoan đã, đừng đặt vội
+      - Thôi khỏi đặt
+  
+  - intent: restart_slot
+    examples: |
+      - /restart
+      - /reset_slot

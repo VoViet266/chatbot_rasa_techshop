@@ -1,0 +1,28 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_product_info
+    examples: |
+      - Cho tôi thông tin về [iphone 16](product)
+      - Tôi cần biết về [iphone 16](product)
+      - Giá [iPhone 16](product) bao nhiêu?
+      - [iPhone 16](product) giá sao shop?
+      - con [Macbook Air M3](product) này có gì hay?
+      - [Samsung S24](product) bao nhiêu tiền?
+      - Giá [iPad Pro](product) thế nào?
+      - Bên mình có bán [Dell XPS 13](product) không?
+      - Thông số của [Galaxy A55](product) là gì?
+      - [Sony WH-1000XM5](product) còn hàng không?
+      - [Samsung Galaxy Z Fold 6](product) có mấy màu?
+      - [Galaxy S25 Ultra](product) khi nào về hàng?
+      - Có [WH-1000XM5](product) không?
+      - [Z Fold 6](product) giá bao nhiêu?
+      - Shop có những loại [điện thoại](product) nào?
+      - Kể tên vài mẫu [laptop gaming](product) xem
+      - Xem thông tin [MacBook Air](product)
+      - [Samsung](product) có gì mới?
+      - [iPhone](product) có mẫu nào?
+      - Giới thiệu [Galaxy S24](product)
+      - tư vấn cho tôi về [máy tính bảng](product)
+      - Cho biết giá [AirPods Pro](product)
+      - [Tai nghe Sony](product) giá thế nào?

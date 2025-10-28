@@ -1,0 +1,33 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - xin chào
+      - chào bạn
+      - hello
+      - hi
+      - chào
+      - có ai ở đó không?
+      - shop ơi
+      - ad ơi
+      - ê shop
+      - bắt đầu chat
+      - tôi có thể bắt đầu không?
+      - chào buổi sáng
+      - chào buổi chiều
+      - chào buổi tối
+      - hey
+      - hi bạn
+      - chào admin
+      - hế lô
+      - chào shop
+      - chào cửa hàng
+      - alo
+      - alo shop
+      - xin chào shop
+      - hi shop
+      - hello shop
+      - good morning
+      - good afternoon
+      - good evening

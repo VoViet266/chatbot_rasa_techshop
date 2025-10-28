@@ -1,0 +1,18 @@
+version: "3.1"
+
+nlu:
+  - intent: check_stock
+    examples: |
+      - [iPhone 16](product) còn hàng không?
+      - [iPhone 16](product) bản [256GB](variant_name) còn hàng không?
+      - cho hỏi shop còn [Macbook Air M3](product) không?
+      - kiểm tra giúp mình [Samsung S24](product) còn không? 
+      - khi nào có hàng lại vậy shop?
+      - sản phẩm này còn hàng chứ?
+      - [Dell XPS 13](product) [bản i7](variant_name) còn không shop?
+      - [iPhone 16 Pro Max](product) [256GB](variant_name) [xanh titan](variant_color) còn hàng không?
+      - còn [Macbook Air](product) [M3](variant_name) [màu bạc](variant_color) không?
+      - check giúp mình [Samsung S24](product) [bản Plus](variant_name)
+      - shop còn [iPhone 16](product) [màu hồng](variant_color) không?
+      - [Dell XPS](product) [15 inch](variant_name) còn hàng chứ?
+      - [iPhone 16](product) [256GB](variant_name) còn những màu nào?

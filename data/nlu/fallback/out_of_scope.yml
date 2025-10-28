@@ -1,0 +1,17 @@
+version: "3.1"
+
+nlu:
+  - intent: out_of_scope
+    examples: |
+      - ê bộ giỡn mặt đó hả
+      - con chó
+      - mày là ai
+      - kể chuyện cười đi
+      - thời tiết hôm nay thế nào?
+      - 1 + 1 bằng mấy?
+      - nói tào lao
+      - không liên quan
+      - blabla
+      - asdfghjkl
+      - bạn có thông minh không?
+      - mày là bot à?
