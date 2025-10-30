@@ -19,6 +19,9 @@ class ActionAddToCart(Action):
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
 
+        print('Variant name:', variant_name)
+        print('Variant color:', variant_color)
+
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         database = client["techshop_db"]
         product_model = database["products"]

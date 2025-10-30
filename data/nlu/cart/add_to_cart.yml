@@ -12,7 +12,7 @@ nlu:
       - Cứ thêm vào giỏ hàng [Dell XPS 13](product) [bản i7](variant_name_add) [2](quantity) cái đi
       - [Sony WH-1000XM5](product) [màu trắng](variant_name_add) [1](quantity)
       - [bản 512GB](variant_name_add)
-      - Chọn [màu đen](variant_name_add) đi
+      - Chọn [màu đen](variant_color) đi
       - Lấy cho tôi loại [128GB](variant_name_add)
       - Lấy [bản cao cấp](variant_name_add) đi
       - Tôi chọn phiên bản [256GB](variant_name_add) nhé
