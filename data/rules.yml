@@ -133,3 +133,8 @@ rules:
     steps:
       - intent: confirm_order
       - action: action_submit_order
+
+  - rule: Handle user just looking
+    steps:
+      - intent: chitchat/just_looking
+      - action: utter_chitchat/just_looking

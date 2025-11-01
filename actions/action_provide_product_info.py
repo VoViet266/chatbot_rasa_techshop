@@ -1,6 +1,6 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from pymongo import MongoClient
+from utils.database import DatabaseService
 from utils.render_product_ui import render_ui
 
 class ActionProvideProductInfo(Action):
@@ -12,7 +12,7 @@ class ActionProvideProductInfo(Action):
             domain: dict):
 
         product_name_slot = tracker.get_slot("product")
-
+        db = DatabaseService()
         if not product_name_slot:
             dispatcher.utter_message(text="Bạn muốn biết thông tin sản phẩm nào?")
             return []
@@ -56,22 +56,16 @@ class ActionProvideProductInfo(Action):
             "name": 1,
             "brand": "$brand_info.name",
             "category": "$category_info.name",
-            "discount": 1
+            "discount": 1,
+            "variants": 1
         }
     },
     { "$limit": 5 }
 ]
         
- 
-        client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-        db = client["techshop_db"]
-        products_collection = db["products"]
-        variants_collection = db["variants"]
-        brands_collection = db["brands"]
-
         # Tìm product theo $search (Atlas Search)
         # dùng .aggregate() thay vì .find()
-        product_cursor = products_collection.aggregate(search_pipeline)
+        product_cursor = db.products_collection.aggregate(search_pipeline)
      
         try:
             product_from_db = next(product_cursor)
@@ -89,8 +83,8 @@ class ActionProvideProductInfo(Action):
             return []
 
     
-        variants = variants_collection.find({"_id": {"$in": variant_ids}})
-        brand = brands_collection.find_one({"_id": product_from_db["brand"]})
+        variants = db.variants_collection.find({"_id": {"$in": variant_ids}})
+        brand = db.brands_collection.find_one({"_id": product_from_db["brand"]})
         if brand:
             brand.pop("createdAt", None)
             brand.pop("updatedAt", None)
@@ -109,7 +103,7 @@ class ActionProvideProductInfo(Action):
         product_from_db.pop("deletedAt", None)
 
         for variant in variants:
-            product = products_collection.find_one({ "variants": variant['_id'] })
+            product = db.products_collection.find_one({ "variants": variant['_id'] })
             if product:
                 variant['discount'] = product.get('discount', 0)
                 battery_capacity = product.get('attributes', {}).get('batteryCapacity')
@@ -125,4 +119,61 @@ class ActionProvideProductInfo(Action):
             final_result = header + variant_html
             dispatcher.utter_message(text=final_result, html=True)
             
+        return []
+
+class ActionProvideProductPrice(Action):
+    def name(self):
+        return "action_provide_product_price"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: dict):
+        db = DatabaseService()
+    
+        product_name_slot = tracker.get_slot("product")
+        if not product_name_slot:
+            dispatcher.utter_message(text="Bạn muốn hỏi giá sản phẩm nào ạ?")
+            return []
+
+        product_data = db.products_collection.find_one({"name": product_name_slot})
+
+        if not product_data:
+            dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy sản phẩm {product_name_slot}.")
+            return []
+
+        variants_id = product_data.get("variants", [])
+        product_name = product_data.get("name", product_name_slot)
+        discount = product_data.get("discount", 0)
+
+        variants = list(db.variants_collection.find({"_id": {"$in": variants_id}}))
+        if not variants:
+            dispatcher.utter_message(text=f"Sản phẩm {product_name} chưa có thông tin giá. Bạn vui lòng liên hệ sau ạ.")
+            return []
+
+        prices = [v.get('price') for v in variants if v.get('price') is not None and v.get('price') > 0]
+        
+        if not prices:
+            dispatcher.utter_message(text=f"Sản phẩm {product_name} chưa có thông tin giá. Bạn vui lòng liên hệ sau ạ.")
+            return []
+
+        min_price = min(prices)
+        max_price = max(prices)
+
+        if discount > 0:
+            min_price_final = min_price * (1 - discount / 100)
+            max_price_final = max_price * (1 - discount / 100)
+            
+            if min_price == max_price:
+                message = (f"Dạ, {product_name} đang có giá <strike>{min_price:,.0f} VNĐ</strike>, "
+                           f"được giảm {discount}% chỉ còn <b>{min_price_final:,.0f} VNĐ</b> ạ.")
+            else:
+                message = (f"Dạ, {product_name} có nhiều phiên bản, giá gốc từ <strike>{min_price:,.0f}</strike> đến <strike>{max_price:,.0f} VNĐ</strike>. "
+                           f"Hiện đang giảm {discount}%, nên giá chỉ còn từ <b>{min_price_final:,.0f}</b> đến <b>{max_price_final:,.0f} VNĐ</b> ạ.")
+        else:
+            if min_price == max_price:
+                message = f"Dạ, {product_name} có giá <b>{min_price:,.0f} VNĐ</b> ạ."
+            else:
+                message = f"Dạ, {product_name} có nhiều phiên bản, giá dao động từ <b>{min_price:,.0f}</b> đến <b>{max_price:,.0f} VNĐ</b> ạ."
+            
+        dispatcher.utter_message(text=message)
         return []

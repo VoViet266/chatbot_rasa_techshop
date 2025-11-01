@@ -26,6 +26,7 @@ stories:
           - quantity: null
       - intent: goodbye
       - action: utter_goodbye
+
   - story: Xử lý đặt hàng thành công sau khi form hoàn tất
     steps:
       - intent: order
@@ -61,13 +62,13 @@ stories:
       - action: action_check_order_specific
       - slot_was_set:
           - order_id: "1234567890abcdef12345678"
-          
+
   - story: Hỏi đơn hàng (có chỉ số)
     steps:
-      - intent: ask_order_general # "đơn hàng mới thứ 2"
+      - intent: ask_order_general
         entities:
           - order_direction: "newest"
-          - order_index: "2" 
+          - order_index: "2"
       - action: action_check_order_general
       - slot_was_set:
           - order_direction: "newest"
@@ -76,7 +77,7 @@ stories:
 
   - story: Hỏi đơn hàng (mới nhất)
     steps:
-      - intent: ask_order_general 
+      - intent: ask_order_general
         entities:
           - order_direction: "newest"
           - order_index: "1"
@@ -88,10 +89,10 @@ stories:
 
   - story: Hỏi lọc theo trạng thái
     steps:
-      - intent: ask_order_filter # "xem các đơn đang giao"
+      - intent: ask_order_filter
         entities:
           - order_status: "đang giao"
-      - action: action_check_order_filter # Bot lọc các đơn "đang giao"
+      - action: action_check_order_filter
       - slot_was_set:
           - order_status: "đang giao"
 
@@ -104,7 +105,7 @@ stories:
       - slot_was_set:
           - time: "hôm qua"
 
-  - story: Happy path - Quick order flow
+  - story: đặt hàng nhanh
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -118,7 +119,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Happy path - Direct order with product
+  - story: đặt hàng nhanh nói thẳng sản phẩm
     steps:
       - intent: order
         entities:
@@ -134,7 +135,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Unhappy path - Cancel order after preview
+  - story: Hủy đặt hàng
     steps:
       - intent: order
       - action: order_form
@@ -146,7 +147,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Interaction - Ask about order
+  - story: Hỏi về đơn
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -155,7 +156,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Interaction - Ask about warranty
+  - story: hỏi về chính sách bảo hành
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -164,7 +165,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Interaction - Ask about store
+  - story: Hỏi về cửa hàng
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -182,7 +183,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Interaction - Ask about product only
+  - story: Hỏi về sản phẩm nêu thẳng tên
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -255,3 +256,24 @@ stories:
           - product: "iPhone 16"
           - variant_name: "256GB"
       - action: action_check_stock
+
+  - story: Ask order filter by time and status
+    steps:
+      - intent: ask_order_filter
+        entities:
+          - time: "tuần trước"
+          - order_status: "đã giao"
+      - slot_was_set:
+          - time: "tuần trước"
+          - order_status: "đã giao"
+      - action: action_check_order_filter
+
+  - story: User asks for price, then decides to just look
+    steps:
+      - intent: ask_product_price
+        entities:
+          - product: "iPhone 16"
+      - action: action_provide_product_price
+      - action: utter_ask_if_want_to_order
+      - intent: chitchat/just_looking
+      - action: utter_chitchat/just_looking

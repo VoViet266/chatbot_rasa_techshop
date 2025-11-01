@@ -33,6 +33,13 @@ intents:
       use_entities:
         - order_direction
         - order_index
+  - ask_product_price
+  - chitchat
+  - chitchat/just_looking
+  - chitchat/compliment
+  - chitchat/deny
+  - chitchat/greet
+  - chitchat/thanks
 entities:
   - branch_name
   - selected_branch_id
@@ -503,6 +510,57 @@ responses:
     - text: "Dạ cho em hỏi anh/chị đang sử dụng thiết bị gì ạ? Chuột không dây, tai nghe bluetooth, hay sản phẩm nào khác?"
     - text: "Dạ anh/chị cho em biết thiết bị nào đang bị lỗi kết nối để em hỗ trợ chính xác hơn được không ạ?"
 
+  utter_chitchat/just_looking:
+    - text: "Không sao, bạn cứ tham khảo thoải mái nhé!"
+    - text: "Dạ, bạn cứ xem thử nha, chưa cần mua vội đâu!"
+    - text: "Thoải mái tìm hiểu thêm, khi nào cần thì mình hỗ trợ nhé!"
+
+  utter_chitchat/compliment:
+    - text: "Cảm ơn nha, mình cố gắng hết sức rồi đó."
+    - text: "Hihi, cảm ơn bạn khen nha!"
+
+  utter_chitchat/deny:
+    - text: "Dạ, mình hiểu rồi. Khi nào cần thì gọi mình nhé."
+
+  utter_chitchat/greet:
+    - text: "Xin chào! Mình có thể giúp gì cho bạn hôm nay?"
+
+  utter_chitchat/thanks:
+    - text: "Không có gì, rất vui được hỗ trợ bạn!"
+
+  utter_ask_if_want_to_order:
+    - text: "Bạn có muốn đặt hàng sản phẩm này không ạ?"
+      buttons:
+        - title: "Có, đặt hàng"
+          payload: "/order" # Kích hoạt intent 'order'
+        - title: "Chỉ tham khảo thôi"
+          payload: "/chitchat/just_looking" # Kích hoạt intent 'chitchat/just_looking'
+
+    - text: "Bạn có muốn mình lên đơn cho bạn luôn không?"
+      buttons:
+        - title: "OK, lên đơn"
+          payload: "/order"
+        - title: "Để mình xem thêm"
+          payload: "/chitchat/just_looking"
+
+    - text: "Mình tiến hành đặt hàng cho bạn luôn nhé?"
+      buttons:
+        - title: "Đồng ý"
+          payload: "/confirm"
+        - title: "Không, cảm ơn"
+          payload: "/deny"
+
+    - text: "Bạn có muốn đặt hàng ngay để mình giữ sản phẩm cho bạn không?"
+      buttons:
+        - title: "Giữ hàng cho mình"
+          payload: "/order"
+        - title: "Không, mình chỉ hỏi giá"
+          payload: "/chitchat/just_looking"
+
+    - text: "Bạn có muốn đặt mua sản phẩm này luôn không ạ?"
+    - text: "Bạn đặt hàng luôn chứ ạ?"
+    - text: "Bạn có muốn mình hỗ trợ bạn đặt hàng ngay bây giờ không?"
+
 actions:
   - utter_greet
   - utter_greet_personalized
@@ -535,7 +593,17 @@ actions:
   - action_check_order_specific
   - action_check_order_general
   - action_check_order_filter
-
+  - action_provide_product_price
+  - utter_ask_order_id
+  - utter_order_not_found
+  - utter_no_orders_found
+  - utter_ask_if_want_to_order
+  - utter_chitchat/just_looking
+  - utter_chitchat/compliment
+  - utter_chitchat/deny
+  - utter_chitchat/greet
+  - utter_chitchat/thanks
+  
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true

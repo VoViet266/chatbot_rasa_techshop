@@ -10,7 +10,6 @@ from dateparser.search import search_dates
 from utils.database import DatabaseService
 
 
-# --- Kiểm tra người dùng đăng nhập ---
 def _validate_user(tracker: Tracker, dispatcher: CollectingDispatcher) -> ObjectId:
     try:
         return ObjectId(tracker.sender_id)
@@ -19,11 +18,8 @@ def _validate_user(tracker: Tracker, dispatcher: CollectingDispatcher) -> Object
         return None
 
 
-# --- Map trạng thái tiếng Việt -> mã trong DB (CẢI TIẾN) ---
+
 def _map_status_to_db(status_nlu: str) -> str:
-    """
-    Map từ tiếng Việt sang status code trong database
-    """
     if not status_nlu:
         return None
     
@@ -70,8 +66,7 @@ def _get_time_query(time_str: str) -> Dict:
     if not time_str:
         return None
 
-    import dateparser
-    from dateparser.search import search_dates
+
     
     time_str = time_str.strip()
     now = datetime.now()

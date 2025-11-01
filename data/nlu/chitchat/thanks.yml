@@ -1,0 +1,12 @@
+version: "3.1"
+
+nlu:
+  - intent: chitchat/thanks
+    examples: |
+      - Cảm ơn nha
+      - Cảm ơn nhiều
+      - Thanks
+      - Cảm ơn shop
+      - Cảm ơn bạn
+      - Ok cảm ơn
+      - Biết ơn nha
