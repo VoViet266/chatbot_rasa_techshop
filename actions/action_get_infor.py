@@ -17,7 +17,7 @@ class ActionGetInformation(Action):
         
         user_id = tracker.sender_id
         db_service = DatabaseService()
-       
+        print('cdxc  ',user_id)
         if user_id != 'default':
             user_infor=db_service.users_collection.find_one({"_id": ObjectId(user_id)})
             user_name= user_infor.get("name")

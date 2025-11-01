@@ -1,0 +1,37 @@
+version: "3.1"
+nlu:
+  - lookup: product
+    examples: |
+      - Apple AirPods Pro (Gen 2)
+      - Apple AirPods Pro 2 USB-C
+      - Beats Fit Pro
+      - Samsung Galaxy A55
+      - Samsung Galaxy Buds2 Pro
+      - Samsung Galaxy M55
+      - Samsung Galaxy S23 Ultra
+      - Samsung Galaxy S24
+      - Samsung Galaxy S25 Plus 5G 12GB 256GB
+      - Samsung Galaxy Z Fold 6
+      - Sony WF-1000XM5
+      - Sony WH-1000XM5
+      - Tai nghe Apple EarPods 2023 MYQY3ZA/A
+      - Tai nghe chụp tai Gaming Sony Inzone H3
+      - Tai nghe gaming Sony MDR - ZX110AP có mic
+      - Tai nghe nhét tai Sony Extra Bass MDR-EX15AP
+      - iPhone 15 Pro
+      - iPhone 15 Pro Max
+      - iPhone 16
+      - iPhone 16 Pro Max
+  - lookup: brand
+    examples: |
+      - Apple
+      - Samsung
+      - Sony
+  - lookup: category
+    examples: |
+      - Máy tính
+      - Máy tính bảng
+      - Tai nghe có dây
+      - Tai nghe không dây
+      - Điện thoại
+      - Đồng hồ

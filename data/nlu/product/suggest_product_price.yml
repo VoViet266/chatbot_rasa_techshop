@@ -7,9 +7,15 @@ nlu:
       - Tôi muốn [laptop](category) [bình dân](price_qualifier)
       - Gợi ý [máy ảnh](category) [cao cấp](price_qualifier)
       - Tìm [laptop](category) [giá cao](price_qualifier)
-      - Tôi cần [điện thoại](category) [xịn](price_qualifier)
       - Có [laptop](category) nào [hàng hiệu](price_qualifier) không?
       - Gợi ý [máy ảnh](category) [giá thấp](price_qualifier)
+      - Tôi cần [laptop](category) [cho sinh viên](price_qualifier)
+      - Có [điện thoại](category) nào [hợp túi tiền](price_qualifier) không?
+      - Gợi ý [laptop](category) [tầm cao](price_qualifier) chơi game
+      - Cho xem [điện thoại](category) [giá hạt dẻ](price_qualifier)
+      - Tôi cần [máy tính](category) [giá tốt](price_qualifier)
+      - Tìm [điện thoại](category) [sang chảnh](price_qualifier) chút
+      - Tôi muốn xem [máy ảnh](category) [flagship](price_qualifier)
       - Tôi cần [laptop](category) giá dưới [10 triệu]{"entity": "price", "role": "to"}
       - Tôi cần [laptop](category) giá trên [15 triệu]{"entity": "price", "role": "from"}
       - Tôi cần laptop giá từ [10 triệu]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
@@ -17,12 +23,23 @@ nlu:
       - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
-  
   - synonym: cheap
     examples: |
       - giá rẻ
       - bình dân
       - giá thấp
+      - sinh viên
+      - học sinh
+      - giá mềm
+      - giá tốt
+      - tiết kiệm
+      - hợp túi tiền
+      - phải chăng
+      - tầm thấp
+      - giá hạt dẻ
+      - rẻ
+      - cho người mới
+      - kinh tế
 
   - synonym: expensive
     examples: |
@@ -30,3 +47,15 @@ nlu:
       - cao cấp
       - xịn
       - hàng hiệu
+      - đắt tiền
+      - đắt
+      - sang
+      - sang chảnh
+      - flagship
+      - đầu bảng
+      - xịn sò
+      - tầm cao
+      - phân khúc cao
+      - chất lượng cao
+      - hàng khủng
+      - xịn nhất

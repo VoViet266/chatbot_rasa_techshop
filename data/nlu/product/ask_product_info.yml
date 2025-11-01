@@ -3,6 +3,15 @@ version: "3.1"
 nlu:
   - intent: ask_product_info
     examples: |
+      - [Samsung Galaxy S25 Plus]
+      - [AirPods Pro](product) này
+      - Cho xem [Galaxy Z Fold 6](product)
+      - Tôi đang tìm [Dell XPS 13](product)
+      - Mình cần [Sony WH-1000XM5](product)
+      - Tôi muốn [iPhone 16](product)
+      - Tôi quan tâm [Samsung S24](product)
+      - Cho tôi xem [MacBook Air M3](product)
+      - Tôi thích [iPad Pro](product)
       - Cho tôi thông tin về [iphone 16](product)
       - Tôi cần biết về [iphone 16](product)
       - Giá [iPhone 16](product) bao nhiêu?

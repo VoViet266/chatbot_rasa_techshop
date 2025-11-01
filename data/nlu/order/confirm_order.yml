@@ -8,20 +8,38 @@ nlu:
       - Xác nhận
       - Đồng ý
       - Tôi đồng ý
-      - Oke chốt
-      - Chuẩn rồi, đặt đi
-      - Ừ, đúng thông tin rồi
-      - Được rồi
       - Ok
+      - Oke
       - Yes
       - Vâng
       - Ừ
       - Đúng
+      - Chuẩn
       - Chắc chắn
+      - Được rồi
+      - Oke chốt
+      - Chuẩn rồi, đặt đi
+      - Ừ, đúng thông tin rồi
       - Xác nhận đặt hàng
-      - Đặt hàng đi
-      - Đặt luôn
-      - Hoàn tất đơn hàng
       - Ok đặt
-      - Mua luôn
-      - Chốt đơn
+      - Hoàn tất đơn hàng
+      - Chốt đơn này
+      - Xác nhận thông tin
+      - Thông tin đúng rồi
+      - Ok, chốt đơn
+      - Cứ thế mà đặt
+      - Đúng rồi, tiếp tục đi
+      - Uh
+      - Ukm
+      - Dc
+      - Oke la
+      - Chốt
+      - Chuẩn
+      - Duyệt
+      - Lấy
+      - Tôi xác nhận đơn hàng
+      - Tôi đồng ý đặt hàng
+      - Các thông tin đều đúng rồi
+      - Không có gì thay đổi, đặt hàng đi
+      - Cứ tiến hành đặt hàng đi
+      - Ok, bạn đặt hàng giúp tôi

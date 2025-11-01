@@ -2,7 +2,6 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from pymongo import MongoClient
 from utils.render_product_ui import render_ui
-import json
 
 class ActionProvideProductInfo(Action):
     def name(self):
@@ -12,35 +11,86 @@ class ActionProvideProductInfo(Action):
             tracker: Tracker,
             domain: dict):
 
-        product = tracker.get_slot("product")
+        product_name_slot = tracker.get_slot("product")
 
-        if not product:
+        if not product_name_slot:
             dispatcher.utter_message(text="Bạn muốn biết thông tin sản phẩm nào?")
             return []
 
-        # Kết nối MongoDB
+        search_pipeline = [
+            {
+                "$search": {
+                    "index": "tech_ai_search", 
+                    "text": {
+                        "query": product_name_slot,
+                        "path": "name", 
+                        "fuzzy": {
+                            # Cho phép tối đa 2 lỗi chính tả
+                            "maxEdits": 2, 
+                            # Yêu cầu 2 chữ cái đầu phải đúng, tránh sai lệch quá
+                            "prefixLength": 2 
+                        }
+                    }
+                }
+            },
+             {
+        "$lookup": {
+            "from": "brands",
+            "localField": "brand",
+            "foreignField": "_id",
+            "as": "brand_info"
+        }
+    },
+    { "$unwind": { "path": "$brand_info", "preserveNullAndEmptyArrays": True } },
+    {
+        "$lookup": {
+            "from": "categories",
+            "localField": "category",
+            "foreignField": "_id",
+            "as": "category_info"
+        }
+    },
+    { "$unwind": { "path": "$category_info", "preserveNullAndEmptyArrays": True } },
+    {
+        "$project": {
+            "name": 1,
+            "brand": "$brand_info.name",
+            "category": "$category_info.name",
+            "discount": 1
+        }
+    },
+    { "$limit": 5 }
+]
+        
+ 
         client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         db = client["techshop_db"]
         products_collection = db["products"]
         variants_collection = db["variants"]
         brands_collection = db["brands"]
 
-        # 1. Tìm product theo tên
-        product = products_collection.find_one({"name": {"$regex": product, "$options": "i"}})
+        # Tìm product theo $search (Atlas Search)
+        # dùng .aggregate() thay vì .find()
+        product_cursor = products_collection.aggregate(search_pipeline)
+     
+        try:
+            product_from_db = next(product_cursor)
+        except StopIteration:
+            product_from_db = None # Không tìm thấy
 
-        if not product:
-            dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product}.")
+        if not product_from_db:
+            dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product_name_slot}.")
             return []
 
-        # 2. Lấy danh sách variant IDs từ product
-        variant_ids = product.get("variants", [])
+    
+        variant_ids = product_from_db.get("variants", [])
         if not variant_ids:
-            dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
+            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin.")
             return []
 
-        # 3. Tìm variants theo _id
+    
         variants = variants_collection.find({"_id": {"$in": variant_ids}})
-        brand = brands_collection.find_one({"_id": product["brand"]})
+        brand = brands_collection.find_one({"_id": product_from_db["brand"]})
         if brand:
             brand.pop("createdAt", None)
             brand.pop("updatedAt", None)
@@ -48,15 +98,15 @@ class ActionProvideProductInfo(Action):
 
         variants = list(variants)
         for v in variants:
-          v.pop("createdAt", None)
-          v.pop("updatedAt", None)
-          v.pop("deletedAt", None)
+            v.pop("createdAt", None)
+            v.pop("updatedAt", None)
+            v.pop("deletedAt", None)
 
-        product["brand"] = brand["name"] if brand else "N/A"
-        product["variants"] = variants
-        product.pop("createdAt", None)
-        product.pop("updatedAt", None)
-        product.pop("deletedAt", None)
+        product_from_db["brand"] = brand["name"] if brand else "N/A"
+        product_from_db["variants"] = variants
+        product_from_db.pop("createdAt", None)
+        product_from_db.pop("updatedAt", None)
+        product_from_db.pop("deletedAt", None)
 
         for variant in variants:
             product = products_collection.find_one({ "variants": variant['_id'] })
@@ -68,11 +118,11 @@ class ActionProvideProductInfo(Action):
                 variant['product_id'] = product.get('_id')
 
         if len(variants) == 0:
-            dispatcher.utter_message(text=f"Sản phẩm {product['name']} hiện chưa có thông tin.")
+            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin.")
         else:
-            header = f"""<div>Hiện {product["name"]} có {len(variants)} biến thể</div>"""
+            header = f"""<div>Hiện {product_from_db["name"]} có {len(variants)} biến thể</div>"""
             variant_html = render_ui(variants)
             final_result = header + variant_html
-            # product_serialized = serialize_doc(product)
             dispatcher.utter_message(text=final_result, html=True)
+            
         return []

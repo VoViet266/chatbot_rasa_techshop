@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-  - intent: ask_order
+  - intent: ask_order_specific
     examples: |
       - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
       - kiểm tra đơn hàng có mã [6673f8a7e0965e26f63111ee](order_id)
@@ -24,21 +24,177 @@ nlu:
       - xem tình trạng đơn hàng [e5e6f7f8a9a0e5e6f7f8a9a0](order_id)
       - cho mình hỏi về đơn [f6f7a8a9b0b1f6f7a8a9b0b1](order_id)
       - đơn [a7a8b9b0c1c2a7a8b9b0c1c2](order_id) của tôi
-      - Đơn hàng của tôi ra sao?
-      - Xem đơn hàng
-      - Kiểm tra đơn hàng
-      - Thông tin đơn hàng của tôi
-      - Đơn hàng của tôi đang ở đâu rồi?
-      - Bao giờ thì tôi nhận được hàng?
-      - Check đơn hàng
-      - Tình trạng đơn hàng
-      - Kiểm tra order
-      - Order của tôi thế nào?
-      - Tôi có đơn hàng nào không?
-      - Lịch sử đơn hàng
-      - Xem lại các đơn đã đặt
-      - Cho tôi mã vận đơn
 
+  - intent: ask_order_general
+    examples: |
+      - xem đơn [mới](order_direction:newest) [nhất](order_index:1) của tôi
+      - đơn hàng [gần đây](order_direction:newest) nhất là gì 
+      - cho tôi xem đơn hàng [cũ](order_direction:oldest) [nhất](order_index:1)
+      - tìm đơn [đầu tiên](order_direction:oldest)
+      - cho tôi đơn hàng [cũ nhất](order_direction:oldest)
+      - cho tôi xem đơn [mới](order_direction:newest) [thứ 2](order_index:2)
+      - tìm đơn hàng [cũ](order_direction:oldest) [thứ 3](order_index:3)
+      - đơn [mới](order_direction:newest) [thứ 5](order_index:5)
+      - đơn [mới](order_direction:newest) [2](order_index:2)
+      - [cũ](order_direction:oldest) [thứ 4](order_index:4)
+
+  - intent: ask_order_filter
+    examples: |
+      - Cho tôi xem đơn hàng [hôm qua](time)
+      - Các đơn hàng [hôm nay](time)
+      - Hiển thị đơn hàng [tuần này](time)
+      - Cho tôi xem đơn hàng [tuần trước](time)
+      - Đơn hàng tôi đặt [tháng này](time)
+      - Liệt kê đơn hàng [tháng trước](time)
+      - Các đơn hàng [đang giao](order_status)
+      - Tôi có đơn nào [đã huỷ](order_status) không?
+      - Cho tôi xem đơn hàng [đang xử lý](order_status)
+      - Các đơn hàng [chờ thanh toán](order_status)
+      - Xem đơn [đang giao](order_status) [hôm qua](time)
+      - Đơn hàng [đã giao](order_status) [tuần này](time)
+      - Có đơn nào [đã huỷ](order_status) [tháng này](time) không
+      - Kiểm tra đơn [chờ xác nhận](order_status)
+      - Đơn nào đang [chờ thanh toán](order_status)
+      - Cho xem đơn [hôm qua](time) đi
+      - Xem đơn [ngày 25/10](time)
+      - Đơn hàng [25/10/2024](time)
+      - Các đơn [3 ngày trước](time)
+      - Đơn hàng trong [7 ngày qua](time)
+      - Đơn [tuần trước](time) có gì
+      - Check đơn [đang giao](order_status) giúp tôi
+      - Tất cả đơn [đã giao](order_status)
+      - Có bao nhiêu đơn [đã huỷ](order_status)
+
+# Regex để nhận diện order_id (24 ký tự hex)
 regex:
   - name: order_id
     pattern: "[0-9a-f]{24}"
+
+
+lookup:
+  - name: order_status
+    examples: |
+      - đang giao
+      - đang giao hàng
+      - đã giao
+      - đã giao hàng
+      - đã huỷ
+      - đã hủy
+      - bị hủy
+      - đang xử lý
+      - đang được xử lý
+      - chờ xác nhận
+      - chờ duyệt
+      - đã xác nhận
+      - đã duyệt
+      - đã thanh toán
+      - chờ thanh toán
+      - chưa thanh toán
+
+  - name: order_specifier
+    examples: |
+      - mới nhất
+      - cũ nhất
+      - gần đây nhất
+      - gần nhất
+      - đầu tiên
+      - cuối cùng
+      - mới đây
+
+  - name: time
+    examples: |
+      - hôm qua
+      - hôm nay
+      - ngày hôm qua
+      - ngày hôm nay
+      - hôm kia
+      - ngày kia
+      - tuần này
+      - trong tuần này
+      - từ đầu tuần
+      - cuối tuần này
+      - tuần trước
+      - tuần vừa rồi
+      - tuần ngoái
+      - trong tuần trước
+      - tháng này
+      - trong tháng này
+      - đầu tháng này
+      - tháng trước
+      - tháng vừa rồi
+      - tháng ngoái
+      - năm nay
+      - năm trước
+      - 3 ngày trước
+      - 7 ngày qua
+      - 1 tuần trước
+      - 2 tuần trước
+      - 1 tháng trước
+
+synonym:
+  - synonym: hôm nay
+    examples: |
+      - ngày hôm nay
+      - trong hôm nay
+      - hôm ni
+
+  - synonym: hôm qua
+    examples: |
+      - ngày hôm qua
+      - hôm qua đó
+      - hôm qua nè
+      - qua
+
+  - synonym: tuần này
+    examples: |
+      - trong tuần này
+      - tuần hiện tại
+      - từ đầu tuần
+
+  - synonym: tuần trước
+    examples: |
+      - trong tuần trước
+      - tuần vừa rồi
+      - tuần ngoái
+
+  - synonym: tháng này
+    examples: |
+      - trong tháng này
+      - tháng hiện tại
+      - đầu tháng này
+
+  - synonym: tháng trước
+    examples: |
+      - trong tháng trước
+      - tháng vừa rồi
+      - tháng ngoái
+
+  - synonym: đang giao
+    examples: |
+      - đang giao hàng
+      - đang vận chuyển
+      - đang ship
+
+  - synonym: đã giao
+    examples: |
+      - đã giao hàng
+      - đã nhận
+      - hoàn thành
+
+  - synonym: đã huỷ
+    examples: |
+      - đã hủy
+      - bị hủy
+      - bị huỷ
+
+  - synonym: newest
+    examples: |
+      - mới nhất
+      - gần đây nhất
+      - đơn vừa đặt
+
+  - synonym: oldest
+    examples: |
+      - cũ nhất
+      - đầu tiên
+      - đơn hàng xa nhất

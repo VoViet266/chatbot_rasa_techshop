@@ -13,3 +13,5 @@ class DatabaseService:
         self.variants_collection = self.db["variants"]
         self.brands_collection = self.db["brands"]
         self.categories_collection = self.db["categories"]
+        self.inventories_collection = self.db["inventories"]
+        self.branches_collection = self.db["branches"]

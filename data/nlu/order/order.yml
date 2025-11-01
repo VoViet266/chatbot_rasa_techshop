@@ -8,12 +8,11 @@ nlu:
       - Mua [MacBook Air M3](product)
       - Đặt [iPad Pro](product) cho tôi
       - Cho tôi mua [Galaxy Z Fold 6](product)
-      - Mình muốn mua [AirPods Pro](product)
       - Lấy cho mình con [Dell XPS 13](product)
       - Chốt đơn [iPhone 16](product)
+      - Tôi lấy con [Macbook Pro M4](product)
       - Tôi muốn đặt hàng
       - Tôi muốn mua hàng
-      - Tôi muốn mua sản phẩm
       - Đặt hàng
       - Mua hàng
       - Order
@@ -21,20 +20,18 @@ nlu:
       - Cho tôi đặt hàng
       - Giúp tôi đặt hàng
       - Tôi cần đặt hàng
-      - Tôi cần mua hàng
-      - Tôi muốn order
-      - Order đi
-      - Đặt hàng cho tôi
       - Mua thôi
       - Đặt luôn
       - Cho tôi mua
       - Mua hàng thôi
-      - Đặt hàng nào
-      - Tôi muốn đặt
-      - Cho tôi order
-      - Mình muốn mua
-      - Đặt sản phẩm
-      - Đặt hàng ngay
       - Mua ngay
       - Tôi muốn mua ngay
       - Đặt ngay
+      - Tôi muốn chốt đơn
+      - Tôi muốn mua [iPhone 16](product) [bản 256GB màu xanh](variant_name)
+      - Đặt cho tôi [2](quantity) chiếc [Samsung S24](product) [bản 512GB](variant_name)
+      - Mua ngay [MacBook Air M3](product) [16GB RAM](variant_name) [1](quantity) cái
+      - Chốt đơn [iPad Pro](product) [M4 13 inch 1TB](variant_name)
+      - Lấy cho mình [1](quantity) con [Dell XPS 13](product) [bản core i7 16GB](variant_name)
+      - Tôi muốn đặt [2](quantity) cái [AirPods Pro](product) [bản USB-C](variant_name)
+      - Bán cho tôi [1](quantity) [iPhone 16](product) [màu titan 512GB](variant_name)

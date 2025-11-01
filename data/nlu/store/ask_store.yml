@@ -15,3 +15,11 @@ nlu:
       - Địa chỉ shop
       - Mấy giờ cửa hàng mở cửa?
       - Cửa hàng có làm việc cuối tuần không?
+        
+  - intent: select_branch
+    examples: |
+      - [Hà Nội](branch_name)
+      - [Cửa hàng Cần Thơ](branch_name)
+      - [Cửa hàng Hà Nội](branch_name)
+      - [TP. Hồ Chí Minh](branch_name)
+      - [Đà Nẵng](branch_name)

@@ -16,7 +16,6 @@ nlu:
       - Gợi ý cho tôi vài [laptop](category) pin từ [5000 mAh]{"entity": "battery", "role": "from"} đến [7000 mAh]{"entity": "battery", "role": "to"}
       - Có mẫu [điện thoại](category) nào pin dưới [4500 mAh]{"entity": "battery", "role": "to"} không?
       - Tôi muốn tìm [điện thoại](category) pin trên [8000 mAh]{"entity": "battery", "role": "from"}
-
   - synonym: high_battery
     examples: |
       - pin trâu

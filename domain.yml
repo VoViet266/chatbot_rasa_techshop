@@ -22,8 +22,20 @@ intents:
   - compare_products
   - check_stock
   - restart_slot
-
+  - select_branch:
+      use_entities:
+        - selected_branch_id
+  - faq_overheating
+  - faq_connection_issue
+  - ask_order_specific
+  - ask_order_filter
+  - ask_order_general:
+      use_entities:
+        - order_direction
+        - order_index
 entities:
+  - branch_name
+  - selected_branch_id
   - category
   - storage_qualifier
   - storage:
@@ -56,6 +68,10 @@ entities:
   - product_2
   - quantity
   - order_id
+  - order_status
+  - order_direction
+  - order_index
+  - time
   - variant_name
   - variant_name_add
   - variant_color
@@ -65,6 +81,58 @@ slots:
   # type: text
   # influence_conversation: false
   # mappings: []
+  order_status:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: order_status
+
+  order_direction:
+    type: categorical
+    values:
+      - newest
+      - oldest
+    mappings:
+      - type: from_entity
+        entity: order_direction
+
+  order_index:
+    type: categorical
+    values:
+      - "1"
+      - "2"
+      - "3"
+      - "4"
+      - "5"
+    mappings:
+      - type: from_entity
+        entity: order_index
+  time:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: time
+
+  brand:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: brand
+
+  branch_name:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: branch_name
+
+  validated_branch_id:
+    type: text
+    mappings:
+      - type: custom
 
   user_name:
     type: text
@@ -92,6 +160,12 @@ slots:
     mappings:
       - type: from_entity
         entity: ram_qualifier
+
+  storage_qualifier:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: storage_qualifier
 
   price_qualifier:
     type: text
@@ -198,6 +272,13 @@ slots:
         entity: ram
         role: to
 
+  selected_branch_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: selected_branch_id
+
   validated_product_id:
     type: any
     influence_conversation: false
@@ -213,16 +294,19 @@ slots:
     initial_value: null
     influence_conversation: false
     mappings: []
+
   validated_price:
     type: float
     initial_value: null
     influence_conversation: false
     mappings: []
+
   validated_total_price:
     type: float
     initial_value: null
     influence_conversation: false
     mappings: []
+
   validated_address:
     type: text
     mappings:
@@ -263,39 +347,161 @@ forms:
 responses:
   utter_ask_product_1:
     - text: "Bạn muốn so sánh sản phẩm nào?"
+    - text: "Dạ anh/chị cho em biết sản phẩm đầu tiên muốn so sánh ạ?"
+    - text: "Dạ em xin hỏi sản phẩm thứ nhất anh/chị muốn so sánh là gì ạ?"
 
   utter_ask_product_2:
     - text: "Bạn muốn so sánh với sản phẩm nào?"
+    - text: "Dạ anh/chị muốn so sánh với sản phẩm nào ạ?"
+    - text: "Dạ sản phẩm thứ hai để so sánh là gì ạ?"
 
   utter_ask_product_name:
     - text: "Bạn muốn đặt sản phẩm gì?"
+    - text: "Dạ anh/chị muốn đặt sản phẩm nào ạ?"
+    - text: "Dạ em xin hỏi anh/chị cần đặt sản phẩm gì ạ?"
+    - text: "Dạ cho em biết tên sản phẩm anh/chị muốn đặt nhé?"
 
   utter_ask_quantity:
     - text: "Bạn muốn đặt bao nhiêu sản phẩm?"
+    - text: "Dạ anh/chị muốn đặt mấy sản phẩm ạ?"
+    - text: "Dạ em xin hỏi số lượng anh/chị cần đặt là bao nhiêu ạ?"
+    - text: "Dạ anh/chị đặt bao nhiêu chiếc ạ?"
 
   utter_ask_variant_name:
     - text: "Bạn muốn phiên bản nào?"
+    - text: "Dạ anh/chị chọn phiên bản nào ạ?"
+    - text: "Dạ em xin hỏi anh/chị cần phiên bản nào ạ?"
+    - text: "Dạ anh/chị muốn dung lượng/cấu hình nào ạ?"
 
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
+    - text: "Chào anh/chị! Em có thể hỗ trợ gì cho anh/chị ạ?"
+    - text: "Dạ chào anh/chị! Em là tư vấn viên TechShop, rất vui được phục vụ anh/chị!"
+    - text: "Xin chào anh/chị! Anh/chị cần tư vấn sản phẩm hay dịch vụ gì ạ?"
+    - text: "Chào mừng anh/chị đến với TechShop! Em có thể giúp gì cho anh/chị hôm nay?"
 
   utter_greet_personalized:
     - text: "Chào {user_name}, rất vui được gặp lại! Bạn cần tôi hỗ trợ gì hôm nay?"
+    - text: "Dạ chào anh/chị {user_name}! Em rất vui được gặp lại. Hôm nay anh/chị cần em hỗ trợ gì ạ?"
+    - text: "Chào {user_name}! Hôm nay em có thể giúp gì cho anh/chị ạ?"
+    - text: "Dạ {user_name} thân mến! Rất vui được phục vụ anh/chị lần nữa. Anh/chị cần tư vấn gì ạ?"
 
   utter_goodbye:
     - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
+    - text: "Dạ cảm ơn anh/chị! Chúc anh/chị một ngày tốt lành. Hẹn gặp lại ạ!"
+    - text: "Cảm ơn anh/chị đã tin tưởng TechShop. Hẹn gặp lại anh/chị!"
+    - text: "Dạ em cảm ơn anh/chị! Nếu cần hỗ trợ gì thêm, anh/chị cứ liên hệ em nhé!"
+    - text: "Cảm ơn anh/chị! Chúc anh/chị sử dụng sản phẩm vui vẻ. Hẹn gặp lại!"
 
   utter_ask_product_info:
     - text: "Bạn muốn xem giá hoặc thông tin của sản phẩm nào ạ?"
+    - text: "Dạ anh/chị cần xem thông tin sản phẩm nào ạ?"
+    - text: "Dạ em xin hỏi anh/chị muốn tìm hiểu về sản phẩm gì ạ?"
+    - text: "Dạ anh/chị cho em biết tên sản phẩm cần xem thông tin nhé?"
 
   utter_submit_order:
     - text: "Cảm ơn bạn đã cung cấp thông tin. Đơn hàng của bạn đã được ghi nhận và sẽ được xử lý sớm nhất."
+    - text: "Dạ em đã ghi nhận đơn hàng của anh/chị. Chúng em sẽ xử lý và liên hệ lại sớm nhất ạ!"
+    - text: "Cảm ơn anh/chị! Đơn hàng đã được gửi đi và bộ phận của em sẽ liên hệ xác nhận trong thời gian sớm nhất."
+    - text: "Dạ đơn hàng của anh/chị đã được tiếp nhận thành công. Em sẽ theo dõi và cập nhật cho anh/chị ạ!"
 
   utter_order_confirmed:
     - text: "Đơn hàng của bạn đã được xác nhận! Chúng tôi sẽ liên hệ với bạn sớm để hoàn tất quá trình."
+    - text: "Dạ đơn hàng đã xác nhận thành công! Bộ phận giao hàng sẽ liên hệ anh/chị trong thời gian sớm nhất ạ."
+    - text: "Cảm ơn anh/chị! Đơn hàng đã được xác nhận. Em sẽ theo dõi và thông báo khi có cập nhật mới."
+    - text: "Dạ đơn của anh/chị đã được xác nhận rồi ạ. Chúng em sẽ liên hệ để hoàn tất thủ tục giao hàng nhé!"
 
+  utter_ask_order_id:
+    - text: "Bạn vui lòng cung cấp mã đơn hàng (gồm 24 ký tự) để tôi kiểm tra nhé."
+    - text: "Bạn muốn kiểm tra đơn hàng nào? Vui lòng cho tôi mã đơn hàng."
+
+  utter_order_not_found:
+    - text: "Tôi không tìm thấy đơn hàng nào với mã {order_id}."
+    - text: "Rất tiếc, mã đơn hàng {order_id} không tồn tại."
+
+  utter_no_orders_found:
+    - text: "Hiện tại bạn không có đơn hàng nào."
+    - text: "Tôi không tìm thấy đơn hàng nào phù hợp với yêu cầu của bạn."
   utter_fallback:
     - text: "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn được không?"
+    - text: "Dạ em xin lỗi, em chưa hiểu rõ ý anh/chị. Anh/chị có thể nói rõ hơn được không ạ?"
+    - text: "Em xin lỗi, em chưa nắm được yêu cầu của anh/chị. Anh/chị vui lòng diễn đạt lại giúp em nhé?"
+    - text: "Dạ em chưa rõ anh/chị muốn hỏi về vấn đề gì. Anh/chị có thể nói cụ thể hơn được không ạ?"
+
+  utter_faq_overheating:
+    - condition:
+        - type: slot
+          name: category
+          value: "điện thoại"
+      text: "Dạ, điện thoại bị nóng có thể do:\n1. Tắt ứng dụng chạy ngầm.\n2. Giảm độ sáng màn hình.\n3. Tháo ốp lưng...\nNếu vẫn không hết, anh/chị vui lòng mang máy đến cửa hàng Tech gần nhất nhé."
+    - condition:
+        - type: slot
+          name: category
+          value: "điện thoại"
+      text: "Dạ với điện thoại bị nóng, anh/chị thử các cách sau:\n1. Đóng các app đang chạy nền.\n2. Giảm độ sáng màn hình xuống.\n3. Tháo ốp lưng ra để thoáng nhiệt hơn.\nNếu vẫn nóng bất thường, anh/chị mang máy đến TechShop để kiểm tra nhé."
+    - condition:
+        - type: slot
+          name: category
+          value: "điện thoại"
+      text: "Dạ em hướng dẫn xử lý điện thoại nóng:\n1. Tắt các ứng dụng không cần thiết.\n2. Chỉnh độ sáng thấp hơn.\n3. Tháo case/ốp ra.\nNếu không khắc phục được, anh/chị ghé cửa hàng Tech để được hỗ trợ kỹ thuật ạ."
+
+    - condition:
+        - type: slot
+          name: category
+          value: "laptop"
+      text: "Dạ, laptop bị nóng có thể do bụi bẩn hoặc quạt tản nhiệt. Anh/chị thử:\n1. Đảm bảo khe tản nhiệt không bị bịt...\n2. Anh/chị nên mang đến cửa hàng Tech để được hỗ trợ vệ sinh và tra keo tản nhiệt ạ."
+    - condition:
+        - type: slot
+          name: category
+          value: "laptop"
+      text: "Dạ với laptop bị nóng, anh/chị cần:\n1. Kiểm tra xem khe gió tản nhiệt có bị bụi bẩn không.\n2. Đặt laptop trên bề mặt cứng, thoáng khí.\n3. Nếu vẫn nóng, anh/chị nên mang đến TechShop để vệ sinh và thay keo tản nhiệt ạ."
+    - condition:
+        - type: slot
+          name: category
+          value: "laptop"
+      text: "Dạ em gợi ý cách xử lý laptop nóng:\n1. Vệ sinh khe tản nhiệt, loại bỏ bụi bẩn.\n2. Sử dụng trên mặt phẳng, tránh đặt trên chăn gối.\n3. Ghé TechShop để được vệ sinh chuyên nghiệp và thay keo tản nhiệt nếu cần ạ."
+
+    - text: "Dạ, máy bị nóng có thể do nhiều nguyên nhân. Anh/chị đang nói về điện thoại hay laptop ạ?"
+    - text: "Dạ tình trạng nóng máy có nhiều nguyên nhân khác nhau tùy thiết bị. Anh/chị cho em biết đang dùng điện thoại, laptop, máy tính bảng hay sản phẩm gì để em tư vấn cụ thể hơn ạ?"
+    - text: "Dạ em xin hỏi anh/chị đang gặp vấn đề nóng máy với thiết bị nào ạ? Điện thoại, laptop, hay máy tính bảng? Để em có thể hỗ trợ đúng cách nhất."
+
+  utter_faq_connection_issue:
+    - condition:
+        - type: slot
+          name: category
+          value: "chuột"
+      text: "Dạ, với chuột không dây, anh/chị thử:\n1. Thay pin mới (nếu là chuột pin rời).\n2. Rút USB Receiver ra cắm lại vào cổng USB khác..."
+    - condition:
+        - type: slot
+          name: category
+          value: "chuột"
+      text: "Dạ với trường hợp chuột không dây bị mất kết nối, anh/chị có thể:\n1. Kiểm tra và thay pin mới nếu cần.\n2. Thử cắm USB Receiver sang cổng USB khác trên máy tính..."
+    - condition:
+        - type: slot
+          name: category
+          value: "chuột"
+      text: "Dạ em hướng dẫn anh/chị xử lý chuột không dây nhé:\n1. Nếu dùng pin rời, hãy thay pin mới.\n2. Cắm lại USB Receiver vào cổng USB khác để thử..."
+
+    - condition:
+        - type: slot
+          name: category
+          value: "tai nghe"
+      text: "Dạ, với tai nghe bluetooth, anh/chị thử:\n1. Đảm bảo tai nghe đã được sạc đầy pin...\n2. Thử 'Quên thiết bị này' và tiến hành ghép nối lại..."
+    - condition:
+        - type: slot
+          name: category
+          value: "tai nghe"
+      text: "Dạ với tai nghe bluetooth bị lỗi kết nối, anh/chị làm theo nhé:\n1. Kiểm tra xem tai nghe còn đủ pin không.\n2. Vào cài đặt Bluetooth, chọn 'Quên thiết bị' rồi kết nối lại từ đầu..."
+    - condition:
+        - type: slot
+          name: category
+          value: "tai nghe"
+      text: "Dạ em gợi ý anh/chị một số bước với tai nghe bluetooth:\n1. Sạc đầy pin cho tai nghe trước.\n2. Xóa kết nối cũ và ghép nối lại..."
+
+    - text: "Dạ, anh/chị đang gặp vấn đề kết nối với chuột, tai nghe hay thiết bị nào ạ?"
+    - text: "Dạ em xin hỏi anh/chị đang gặp lỗi kết nối ở thiết bị nào ạ? Chuột, tai nghe, hay thiết bị khác?"
+    - text: "Dạ cho em hỏi anh/chị đang sử dụng thiết bị gì ạ? Chuột không dây, tai nghe bluetooth, hay sản phẩm nào khác?"
+    - text: "Dạ anh/chị cho em biết thiết bị nào đang bị lỗi kết nối để em hỗ trợ chính xác hơn được không ạ?"
 
 actions:
   - utter_greet
@@ -310,6 +516,7 @@ actions:
   - utter_ask_product_2
   - utter_order_confirmed
   - action_provide_product_info
+  - action_confirm_after_branch
   - action_provide_warranty_info
   - action_provide_store_info
   - action_get_user_info
@@ -323,6 +530,11 @@ actions:
   - action_check_stock
   - utter_fallback
   - action_restart_slot
+  - utter_faq_overheating
+  - utter_faq_connection_issue
+  - action_check_order_specific
+  - action_check_order_general
+  - action_check_order_filter
 
 session_config:
   session_expiration_time: 60

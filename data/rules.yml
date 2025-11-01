@@ -5,7 +5,19 @@ rules:
     steps:
       - intent: restart_slot
       - action: action_restart_slot
+  - rule: Respond to ANY overheating FAQ
+    condition:
+      - active_loop: null
+    steps:
+      - intent: faq_overheating
+      - action: utter_faq_overheating
 
+  - rule: Respond to ANY connection issue FAQ
+    condition:
+      - active_loop: null
+    steps:
+      - intent: faq_connection_issue
+      - action: utter_faq_connection_issue #
   # Chào hỏi / tạm biệt
   - rule: Chào hỏi và lấy thông tin người dùng
     steps:
@@ -27,7 +39,21 @@ rules:
     steps:
       - intent: ask_warranty
       - action: action_provide_warranty_info
-  
+
+  - rule: Handle branch selection and re-confirm
+    steps:
+      - intent: select_branch
+      - slot_was_set:
+          - selected_branch_id: null
+      - action: action_confirm_after_branch
+
+  - rule: User selects branch after preview
+    steps:
+      # Và user trả lời bằng intent select_branch
+      - intent: select_branch
+      # Thì chạy action xác nhận
+      - action: action_confirm_after_branch
+
   - rule: Add product to cart
     steps:
       - intent: add_to_cart

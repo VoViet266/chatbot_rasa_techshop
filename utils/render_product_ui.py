@@ -2,84 +2,33 @@ from utils.format_currentcy import format_vnd
 import re
 
 def render_ui(variants):
-    result = f"<span>Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</span>"
-    if len(variants) != 0:
-      for variant in variants:
-          result += f"""<div id="product-template" role="group" aria-label="Sản phẩm" 
-    style="display:flex;justify-content:flex-start;align-items:flex-start;box-sizing:border-box;
-          padding:0;margin:0;gap:8px;max-width:520px;border-radius:6px;font-family:Arial,Helvetica,sans-serif; border: 1px solid #ececec; padding: 8px;">
-
-    <!-- Ảnh sản phẩm -->
-    <div dir="ltr" 
-      style="display:flex;flex-direction:column;justify-content:flex-start;align-items:center;flex:0 0 auto;
-            padding:0;margin:0;">
-      <img src="{variant["color"][0]["images"][0]}" alt="[Tên sản phẩm]" 
-          style="width:80px;height:70px;object-fit:contain;object-position:center;">
+    if not variants:
+        return "Không có sản phẩm phù hợp với nhu cầu của bạn."
+    
+    result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</p>'
+    
+    for variant in variants:
+        discount = variant.get('discount', 0)
+        discounted_price = variant["price"] * (1 - discount/100)
+        
+        result += f'''<div style="display:flex;gap:12px;padding:12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;transition:box-shadow 0.2s;">
+    <img src="{variant["color"][0]["images"][0]}" alt="{variant["name"]}" style="width:90px;height:90px;object-fit:contain;flex-shrink:0;border-radius:4px;">
+    <div style="flex:1;min-width:0;">
+        <h3 style="margin:0 0 8px;font-size:14px;font-weight:500;line-height:1.4;color:#1a1a1a;">{variant["name"]}</h3>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
+            <span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(discounted_price)}</span>
+            {f'<span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;">{format_vnd(variant["price"])}</span>' if discount > 0 else ''}
+            {f'<span style="font-size:12px;color:#d32f2f;font-weight:500;">-{discount}%</span>' if discount > 0 else ''}
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">RAM {variant['memory']['ram']}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">ROM {variant['memory']['storage']}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Pin {variant.get('battery', 'N/A')}</span>
+        </div>
+        <a href="http://localhost:5173/product/{variant['product_id']}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
     </div>
-
-    <!-- Nội dung sản phẩm -->
-    <div dir="ltr" 
-      style="display:flex;flex-direction:column;justify-content:flex-start;flex:1 1 50px;
-            padding:0;margin:0;min-width:0;">
-
-      <!-- Tên sản phẩm -->
-      <p aria-hidden="false" 
-        style="font-size:12px;color:#101519;line-height:1.33;margin:0 0 4px 0;overflow-wrap:break-word;">
-        {variant["name"]}
-      </p>
-
-      <!-- Giá tiền hiện tại -->
-      <p aria-live="polite" 
-        style="font-size:14px;color:#dc2626;font-weight:600;white-space:nowrap;text-overflow:ellipsis;
-                overflow:hidden;margin:0 0 6px 0;line-height:1.33;">
-        { format_vnd(variant["price"] * (1 - variant.get('discount', 0)/100)) }
-      </p>
-
-      <!-- Giá gốc và giảm giá -->
-      <div aria-hidden="true" 
-          style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
-        <span style="font-size:12px;color:#767676;text-decoration:line-through;line-height:1.33;">
-          {format_vnd(variant["price"])}
-        </span>
-        <span style="font-size:12px;color:red;line-height:1.33;">
-          {variant.get('discount', 0)}%
-        </span>
-      </div>
-
-      <!-- RAM và bộ nhớ trong -->
-      <div aria-hidden="true" 
-          style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
-        <span style="font-size:12px;color:#767676;line-height:1.33;">
-          RAM {variant['memory']['ram']}
-        </span>
-        <span style="font-size:12px;color:red;line-height:1.33;">
-          Bộ nhớ trong {variant['memory']['storage']}
-        </span>
-      </div>
-
-      <!-- Dung lượng pin -->
-      <div aria-hidden="true" 
-          style="display:flex;align-items:center;gap:4px;margin-bottom:6px;">
-        <span style="font-size:12px;color:#767676;line-height:1.33;">
-          Pin {variant.get('battery', 'Không rõ')}
-        </span>
-      </div>
-
-      <!-- Nút hành động -->
-      <div role="toolbar" aria-label="Hành động" 
-          style="display:flex;gap:4px;margin-top:4px;">
-          <a href="http://localhost:5173/product/{variant['product_id']}">
-            <button type="button" tabindex="0" role="button"
-              style="display:inline-flex;align-items:center;justify-content:center;padding:6px 8px;
-                    font-size:12px;color:#101519;background:transparent;border:none;cursor:pointer;
-                    border-radius:4px;user-select:none;">
-              Chọn mua
-            </button>
-          </a>
-      </div>
-    </div>
-  </div>"""
-      cleaned_result = re.sub(r'\s+', ' ', result).strip()
-      return cleaned_result
-    else:
-        return "Không có biến thể cho sản phẩm này!"
+</div>'''
+    
+    result += '</div>'
+    cleaned_result = re.sub(r'\s+', ' ', result).strip()
+    return cleaned_result

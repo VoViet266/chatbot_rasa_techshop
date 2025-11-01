@@ -2,3 +2,9 @@
 /actions/__pycache__
 /models
 **/**.pyc
+
+venv/
+.venv/
+env/
+.env
+credentials.yml

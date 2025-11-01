@@ -42,6 +42,68 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
+  - story: Happy path - Người dùng cung cấp ID ngay
+    steps:
+      - intent: ask_order_specific
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: action_check_order_specific
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+
+  - story: Hỏi chung chung, bot hỏi lại ID
+    steps:
+      - intent: ask_order_general
+      - action: utter_ask_order_id
+      - intent: ask_order_specific
+        entities:
+          - order_id: "1234567890abcdef12345678"
+      - action: action_check_order_specific
+      - slot_was_set:
+          - order_id: "1234567890abcdef12345678"
+          
+  - story: Hỏi đơn hàng (có chỉ số)
+    steps:
+      - intent: ask_order_general # "đơn hàng mới thứ 2"
+        entities:
+          - order_direction: "newest"
+          - order_index: "2" 
+      - action: action_check_order_general
+      - slot_was_set:
+          - order_direction: "newest"
+      - slot_was_set:
+          - order_index: "2"
+
+  - story: Hỏi đơn hàng (mới nhất)
+    steps:
+      - intent: ask_order_general 
+        entities:
+          - order_direction: "newest"
+          - order_index: "1"
+      - action: action_check_order_general
+      - slot_was_set:
+          - order_direction: "newest"
+      - slot_was_set:
+          - order_index: "1"
+
+  - story: Hỏi lọc theo trạng thái
+    steps:
+      - intent: ask_order_filter # "xem các đơn đang giao"
+        entities:
+          - order_status: "đang giao"
+      - action: action_check_order_filter # Bot lọc các đơn "đang giao"
+      - slot_was_set:
+          - order_status: "đang giao"
+
+  - story: Hỏi lọc theo ngày
+    steps:
+      - intent: ask_order_filter # "đơn hàng hôm qua"
+        entities:
+          - time: "hôm qua"
+      - action: action_check_order_filter # Bot lọc các đơn "hôm qua"
+      - slot_was_set:
+          - time: "hôm qua"
+
   - story: Happy path - Quick order flow
     steps:
       - intent: greet
