@@ -31,6 +31,7 @@ pipeline:
 
   - name: ResponseSelector
     epochs: 100
+    retrieval_intent: chitchat
 
     constrain_similarities: true
   - name: FallbackClassifier

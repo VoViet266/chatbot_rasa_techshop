@@ -1,0 +1,45 @@
+version: "3.1"
+
+nlu:
+
+  # 2. Cảm ơn
+  - intent: chitchat/thanks
+    examples: |
+      - cảm ơn nha
+      - cảm ơn bạn
+      - ok cảm ơn
+      - thanks
+      - cảm ơn shop
+      - biết ơn nha
+
+  # 3. Từ chối hỗ trợ
+  - intent: chitchat/deny
+    examples: |
+      - không cần đâu
+      - thôi khỏi
+      - không muốn đâu
+      - không nhé
+      - thôi, để sau đi
+      - không cần hỗ trợ
+
+  # 4. Chỉ xem, chưa mua
+  - intent: chitchat/just_looking
+    examples: |
+      - tôi chỉ xem thôi
+      - mình đang tham khảo thôi
+      - xem thử hàng thôi
+      - chưa có ý định mua đâu
+      - chỉ hỏi giá thôi, chưa mua
+      - mới xem qua thôi
+      - cảm ơn, mình đang tham khảo
+
+ 
+
+  # 6. Lời khen / small talk
+  - intent: chitchat/compliment
+    examples: |
+      - bạn dễ thương ghê
+      - bot thông minh quá
+      - trả lời hay ghê
+      - bạn vui tính đó
+      - mình thích cách bạn trả lời

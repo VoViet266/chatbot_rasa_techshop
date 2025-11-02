@@ -1,7 +1,20 @@
 version: "3.1"
 
 stories:
-  - story: Happy path - Full order flow
+  # 1. CHÀO HỎI & GIAO TIẾP
+  - story: Người dùng chào bot
+    steps:
+      - intent: greet
+      - action: action_get_user_info
+      - action: utter_greet
+
+  - story: Người dùng tạm biệt
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # 2. HỎI THÔNG TIN SẢN PHẨM
+  - story: Hỏi thông tin sản phẩm (nêu rõ tên)
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -11,6 +24,32 @@ stories:
       - slot_was_set:
           - product: "iPhone 16"
       - action: action_provide_product_info
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Hỏi giá sản phẩm rồi chỉ xem
+    steps:
+      - intent: ask_product_price
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: action_provide_product_price
+      - action: utter_ask_if_want_to_order
+      - intent: chitchat/just_looking
+      - action: utter_chitchat/just_looking
+      - slot_was_set:
+          - product: null
+
+  - story: Hỏi giá sản phẩm rồi quyết định mua
+    steps:
+      - intent: ask_product_price
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: action_provide_product_price
+      - action: utter_ask_if_want_to_order
       - intent: order
       - action: order_form
       - active_loop: order_form
@@ -27,8 +66,35 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Xử lý đặt hàng thành công sau khi form hoàn tất
+  - story: Hỏi chính sách bảo hành
     steps:
+      - intent: greet
+      - action: action_get_user_info
+      - intent: ask_warranty
+      - action: action_provide_warranty_info
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: Hỏi thông tin cửa hàng
+    steps:
+      - intent: greet
+      - action: action_get_user_info
+      - intent: ask_store
+      - action: action_provide_store_info
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # 3. ĐẶT HÀNG
+  - story: Quy trình đặt hàng đầy đủ (Full Happy Path)
+    steps:
+      - intent: greet
+      - action: action_get_user_info
+      - intent: ask_product_info
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: action_provide_product_info
       - intent: order
       - action: order_form
       - active_loop: order_form
@@ -43,69 +109,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Happy path - Người dùng cung cấp ID ngay
-    steps:
-      - intent: ask_order_specific
-        entities:
-          - order_id: "6673f8a7e0965e26f63111ed"
-      - action: action_check_order_specific
-      - slot_was_set:
-          - order_id: "6673f8a7e0965e26f63111ed"
-
-  - story: Hỏi chung chung, bot hỏi lại ID
-    steps:
-      - intent: ask_order_general
-      - action: utter_ask_order_id
-      - intent: ask_order_specific
-        entities:
-          - order_id: "1234567890abcdef12345678"
-      - action: action_check_order_specific
-      - slot_was_set:
-          - order_id: "1234567890abcdef12345678"
-
-  - story: Hỏi đơn hàng (có chỉ số)
-    steps:
-      - intent: ask_order_general
-        entities:
-          - order_direction: "newest"
-          - order_index: "2"
-      - action: action_check_order_general
-      - slot_was_set:
-          - order_direction: "newest"
-      - slot_was_set:
-          - order_index: "2"
-
-  - story: Hỏi đơn hàng (mới nhất)
-    steps:
-      - intent: ask_order_general
-        entities:
-          - order_direction: "newest"
-          - order_index: "1"
-      - action: action_check_order_general
-      - slot_was_set:
-          - order_direction: "newest"
-      - slot_was_set:
-          - order_index: "1"
-
-  - story: Hỏi lọc theo trạng thái
-    steps:
-      - intent: ask_order_filter
-        entities:
-          - order_status: "đang giao"
-      - action: action_check_order_filter
-      - slot_was_set:
-          - order_status: "đang giao"
-
-  - story: Hỏi lọc theo ngày
-    steps:
-      - intent: ask_order_filter # "đơn hàng hôm qua"
-        entities:
-          - time: "hôm qua"
-      - action: action_check_order_filter # Bot lọc các đơn "hôm qua"
-      - slot_was_set:
-          - time: "hôm qua"
-
-  - story: đặt hàng nhanh
+  - story: Đặt hàng nhanh
     steps:
       - intent: greet
       - action: action_get_user_info
@@ -119,7 +123,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: đặt hàng nhanh nói thẳng sản phẩm
+  - story: Đặt hàng nhanh (nêu thẳng sản phẩm)
     steps:
       - intent: order
         entities:
@@ -135,7 +139,7 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Hủy đặt hàng
+  - story: Hủy đặt hàng sau khi xem trước đơn
     steps:
       - intent: order
       - action: order_form
@@ -147,56 +151,69 @@ stories:
       - intent: goodbye
       - action: utter_goodbye
 
-  - story: Hỏi về đơn
+  # 4. TRA CỨU ĐƠN HÀNG
+  - story: Tra đơn hàng bằng ID (người dùng nhập sẵn)
     steps:
-      - intent: greet
-      - action: action_get_user_info
-      - intent: ask_order
-      - action: action_provide_order_info
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - story: hỏi về chính sách bảo hành
-    steps:
-      - intent: greet
-      - action: action_get_user_info
-      - intent: ask_warranty
-      - action: action_provide_warranty_info
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - story: Hỏi về cửa hàng
-    steps:
-      - intent: greet
-      - action: action_get_user_info
-      - intent: ask_store
-      - action: action_provide_store_info
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - story: Interaction - Handle out of scope
-    steps:
-      - intent: greet
-      - action: action_get_user_info
-      - intent: out_of_scope
-      - action: utter_fallback
-      - intent: goodbye
-      - action: utter_goodbye
-
-  - story: Hỏi về sản phẩm nêu thẳng tên
-    steps:
-      - intent: greet
-      - action: action_get_user_info
-      - intent: ask_product_info
+      - intent: ask_order_specific
         entities:
-          - product: "iPhone 16"
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: action_check_order_specific
       - slot_was_set:
-          - product: "iPhone 16"
-      - action: action_provide_product_info
-      - intent: goodbye
-      - action: utter_goodbye
+          - order_id: "6673f8a7e0965e26f63111ed"
 
-  - story: Interaction - Compare products with form
+  - story: Tra đơn hàng khi chưa nhập ID
+    steps:
+      - intent: ask_order_general
+      - action: utter_ask_order_id
+      - intent: ask_order_specific
+        entities:
+          - order_id: "1234567890abcdef12345678"
+      - action: action_check_order_specific
+      - slot_was_set:
+          - order_id: "1234567890abcdef12345678"
+
+  - story: Tra đơn hàng theo thứ tự (đơn mới nhất)
+    steps:
+      - intent: ask_order_general
+        entities:
+          - order_direction: "newest"
+          - order_index: "1"
+      - slot_was_set:
+          - order_direction: "newest"
+          - order_index: "1"
+      - action: action_check_order_general
+
+  - story: Tra đơn hàng theo trạng thái
+    steps:
+      - intent: ask_order_filter
+        entities:
+          - order_status: "đang giao"
+      - slot_was_set:
+          - order_status: "đang giao"
+      - action: action_check_order_filter
+
+  - story: Tra đơn hàng theo thời gian
+    steps:
+      - intent: ask_order_filter
+        entities:
+          - time: "hôm qua"
+      - slot_was_set:
+          - time: "hôm qua"
+      - action: action_check_order_filter
+
+  - story: Tra đơn hàng theo thời gian và trạng thái
+    steps:
+      - intent: ask_order_filter
+        entities:
+          - time: "tuần trước"
+          - order_status: "đã giao"
+      - slot_was_set:
+          - time: "tuần trước"
+          - order_status: "đã giao"
+      - action: action_check_order_filter
+
+  # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
+  - story: So sánh sản phẩm qua form
     steps:
       - intent: compare_products
       - action: compare_products_form
@@ -204,7 +221,7 @@ stories:
       - active_loop: null
       - action: action_compare_products
 
-  - story: Interaction - Compare products directly
+  - story: So sánh trực tiếp hai sản phẩm
     steps:
       - intent: compare_products
         entities:
@@ -215,16 +232,7 @@ stories:
           - product_2: "Galaxy S24"
       - action: action_compare_products
 
-  - story: User asks for a specific order
-    steps:
-      - intent: ask_order
-        entities:
-          - order_id: "6673f8a7e0965e26f63111ed"
-      - slot_was_set:
-          - order_id: "6673f8a7e0965e26f63111ed"
-      - action: action_provide_order_info
-
-  - story: User checks stock for a product
+  - story: Kiểm tra hàng tồn (chỉ có tên)
     steps:
       - intent: check_stock
         entities:
@@ -233,7 +241,7 @@ stories:
           - product: "iPhone 16"
       - action: action_check_stock
 
-  - story: User checks stock for product with spec and color
+  - story: Kiểm tra hàng tồn (kèm dung lượng & màu)
     steps:
       - intent: check_stock
         entities:
@@ -246,34 +254,12 @@ stories:
           - variant_color: "bạc"
       - action: action_check_stock
 
-  - story: User checks stock for product with only spec
+  # 6. NGOÀI PHẠM VI / FALLBACK
+  - story: Xử lý câu hỏi ngoài phạm vi
     steps:
-      - intent: check_stock
-        entities:
-          - product: "iPhone 16"
-          - variant_name: "256GB"
-      - slot_was_set:
-          - product: "iPhone 16"
-          - variant_name: "256GB"
-      - action: action_check_stock
-
-  - story: Ask order filter by time and status
-    steps:
-      - intent: ask_order_filter
-        entities:
-          - time: "tuần trước"
-          - order_status: "đã giao"
-      - slot_was_set:
-          - time: "tuần trước"
-          - order_status: "đã giao"
-      - action: action_check_order_filter
-
-  - story: User asks for price, then decides to just look
-    steps:
-      - intent: ask_product_price
-        entities:
-          - product: "iPhone 16"
-      - action: action_provide_product_price
-      - action: utter_ask_if_want_to_order
-      - intent: chitchat/just_looking
-      - action: utter_chitchat/just_looking
+      - intent: greet
+      - action: action_get_user_info
+      - intent: out_of_scope
+      - action: utter_fallback
+      - intent: goodbye
+      - action: utter_goodbye

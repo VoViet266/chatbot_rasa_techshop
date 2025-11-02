@@ -1,89 +1,90 @@
 version: "3.1"
 
 rules:
-  - rule: restart_slot
+  ############################################
+  # 1. Khởi động & slot
+  ############################################
+  - rule: Restart slot
     steps:
       - intent: restart_slot
       - action: action_restart_slot
-  - rule: Respond to ANY overheating FAQ
+
+  ############################################
+  # 2. FAQ
+  ############################################
+  - rule: Respond to overheating FAQ
     condition:
       - active_loop: null
     steps:
       - intent: faq_overheating
       - action: utter_faq_overheating
 
-  - rule: Respond to ANY connection issue FAQ
+  - rule: Respond to connection issue FAQ
     condition:
       - active_loop: null
     steps:
       - intent: faq_connection_issue
-      - action: utter_faq_connection_issue #
-  # Chào hỏi / tạm biệt
-  - rule: Chào hỏi và lấy thông tin người dùng
-    steps:
-      - intent: greet
-      - action: action_get_user_info
+      - action: utter_faq_connection_issue
 
-  - rule: Say goodbye anytime the user says goodbye
+  - rule: Handle goodbye
     steps:
       - intent: goodbye
       - action: utter_goodbye
 
-  # Thông tin sản phẩm / cửa hàng / bảo hành / đơn hàng
-  - rule: Provide product info when user asks
+  ############################################
+  # 3. Thông tin sản phẩm / cửa hàng / đơn hàng
+  ############################################
+  - rule: Provide product info
     steps:
       - intent: ask_product_info
       - action: action_provide_product_info
 
-  - rule: Provide warranty info when user asks
+  - rule: Provide warranty info
     steps:
       - intent: ask_warranty
       - action: action_provide_warranty_info
 
-  - rule: Handle branch selection and re-confirm
-    steps:
-      - intent: select_branch
-      - slot_was_set:
-          - selected_branch_id: null
-      - action: action_confirm_after_branch
-
-  - rule: User selects branch after preview
-    steps:
-      # Và user trả lời bằng intent select_branch
-      - intent: select_branch
-      # Thì chạy action xác nhận
-      - action: action_confirm_after_branch
-
-  - rule: Add product to cart
-    steps:
-      - intent: add_to_cart
-      - action: action_add_to_cart
-
-  - rule: Provide store info when user asks
+  - rule: Provide store info
     steps:
       - intent: ask_store
       - action: action_provide_store_info
 
-  - rule: Provide order info when user asks
+  - rule: Provide order info
     steps:
       - intent: ask_order
       - action: action_provide_order_info
 
-  # Gợi ý sản phẩm
-  # - rule: Suggest products when user asks
-  #   steps:
-  #     - intent: suggest_product
-  #     - action: action_suggest_product
-
-  # Xử lý ngoài phạm vi / NLU fallback
-  - rule: Handle out of scope or NLU fallback
+  ############################################
+  # 4. Gợi ý sản phẩm
+  ############################################
+  - rule: Suggest products by price
     steps:
-      - or:
-          - intent: out_of_scope
-          - intent: nlu_fallback
-      - action: utter_fallback
+      - intent: suggest_product_price
+      - action: action_suggest_product
 
-  # Luồng đặt hàng (form)
+  - rule: Suggest products by RAM
+    steps:
+      - intent: suggest_product_ram
+      - action: action_suggest_product
+
+  - rule: Suggest products by battery
+    steps:
+      - intent: suggest_product_battery
+      - action: action_suggest_product
+
+  - rule: Suggest products by storage
+    steps:
+      - intent: suggest_product_storage
+      - action: action_suggest_product
+
+  - rule: Suggest products by price and RAM
+    steps:
+      - intent: suggest_product_combine
+      - action: action_suggest_product
+
+  ############################################
+  # 5. Đặt hàng (form)
+  ############################################
   - rule: Activate order form
     steps:
       - intent: order
@@ -97,44 +98,12 @@ rules:
       - intent: confirm_order
       - action: action_submit_order
 
-  # Rule gợi ý sản phẩm khi người dùng hỏi về sản phẩm
-  - rule: Suggest products when user asks
+  ############################################
+  # 6. Xử lý lỗi hoặc ngoài phạm vi
+  ############################################
+  - rule: Handle out of scope or fallback
     steps:
-      - intent: suggest_product_price
-      - action: action_suggest_product
-
-  - rule: Suggest products when user asks by ram
-    steps:
-      - intent: suggest_product_ram
-      - action: action_suggest_product
-
-  - rule: Suggest products by price and RAM
-    steps:
-      - intent: suggest_product_combine
-      - action: action_suggest_product
-
-  - rule: Suggest products by battery
-    steps:
-      - intent: suggest_product_battery
-      - action: action_suggest_product
-
-  - rule: Suggest products by storage
-    steps:
-      - intent: suggest_product_storage
-      - action: action_suggest_product
-
-  # # Rule cung cấp thông tin bảo hành
-  # - rule: Provide warranty info when user asks
-  #   steps:
-  #     - intent: ask_warranty
-  #     - action: action_provide_warranty_info
-
-  - rule: Submit confirmed order
-    steps:
-      - intent: confirm_order
-      - action: action_submit_order
-
-  - rule: Handle user just looking
-    steps:
-      - intent: chitchat/just_looking
-      - action: utter_chitchat/just_looking
+      - or:
+          - intent: out_of_scope
+          - intent: nlu_fallback
+      - action: utter_fallback
