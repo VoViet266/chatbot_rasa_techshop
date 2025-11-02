@@ -1,7 +1,9 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from utils.database import DatabaseService
-from utils.render_product_ui import render_ui
+from utils.render_product_ui import render_product_card #
+from bson import ObjectId
+import json
 
 class ActionProvideProductInfo(Action):
     def name(self):
@@ -17,6 +19,7 @@ class ActionProvideProductInfo(Action):
             dispatcher.utter_message(text="Bạn muốn biết thông tin sản phẩm nào?")
             return []
 
+        # 1. Pipeline tìm kiếm sản phẩm (giữ nguyên)
         search_pipeline = [
             {
                 "$search": {
@@ -24,103 +27,75 @@ class ActionProvideProductInfo(Action):
                     "text": {
                         "query": product_name_slot,
                         "path": "name", 
-                        "fuzzy": {
-                            # Cho phép tối đa 2 lỗi chính tả
-                            "maxEdits": 2, 
-                            # Yêu cầu 2 chữ cái đầu phải đúng, tránh sai lệch quá
-                            "prefixLength": 2 
-                        }
+                        "fuzzy": {"maxEdits": 2, "prefixLength": 2 }
                     }
                 }
             },
-             {
-        "$lookup": {
-            "from": "brands",
-            "localField": "brand",
-            "foreignField": "_id",
-            "as": "brand_info"
-        }
-    },
-    { "$unwind": { "path": "$brand_info", "preserveNullAndEmptyArrays": True } },
-    {
-        "$lookup": {
-            "from": "categories",
-            "localField": "category",
-            "foreignField": "_id",
-            "as": "category_info"
-        }
-    },
-    { "$unwind": { "path": "$category_info", "preserveNullAndEmptyArrays": True } },
-    {
-        "$project": {
-            "name": 1,
-            "brand": "$brand_info.name",
-            "category": "$category_info.name",
-            "discount": 1,
-            "variants": 1
-        }
-    },
-    { "$limit": 5 }
-]
+            {"$lookup": {"from": "brands", "localField": "brand", "foreignField": "_id", "as": "brand_info"}},
+            {"$unwind": { "path": "$brand_info", "preserveNullAndEmptyArrays": True } },
+            {"$lookup": {"from": "categories", "localField": "category", "foreignField": "_id", "as": "category_info"}},
+            {"$unwind": { "path": "$category_info", "preserveNullAndEmptyArrays": True } },
+            {
+                "$project": {
+                    "name": 1,
+                    "brand": "$brand_info.name",
+                    "category": "$category_info.name",
+                    "discount": 1,
+                    "variants": 1,
+                    "attributes": 1
+                }
+            },
+            { "$limit": 1 }
+        ]
         
-        # Tìm product theo $search (Atlas Search)
-        # dùng .aggregate() thay vì .find()
         product_cursor = db.products_collection.aggregate(search_pipeline)
-     
+    
         try:
             product_from_db = next(product_cursor)
         except StopIteration:
-            product_from_db = None # Không tìm thấy
+            product_from_db = None
 
         if not product_from_db:
             dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy thông tin cho sản phẩm {product_name_slot}.")
             return []
 
-    
+        # 2. Lấy danh sách variants (giữ nguyên)
         variant_ids = product_from_db.get("variants", [])
         if not variant_ids:
-            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin.")
+            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin biến thể.")
             return []
 
-    
-        variants = db.variants_collection.find({"_id": {"$in": variant_ids}})
-        brand = db.brands_collection.find_one({"_id": product_from_db["brand"]})
-        if brand:
-            brand.pop("createdAt", None)
-            brand.pop("updatedAt", None)
-            brand.pop("deletedAt", None)
+        object_id_variants = [ObjectId(v_id) for v_id in variant_ids]
+        variants = list(db.variants_collection.find({"_id": {"$in": object_id_variants}}))
+        
+        if not variants:
+            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin biến thể.")
+            return []
 
-        variants = list(variants)
+
+        product_html_card = render_product_card(product_from_db, variants)
+        buttons = []
+        text_variant_list = [] 
         for v in variants:
-            v.pop("createdAt", None)
-            v.pop("updatedAt", None)
-            v.pop("deletedAt", None)
-
-        product_from_db["brand"] = brand["name"] if brand else "N/A"
-        product_from_db["variants"] = variants
-        product_from_db.pop("createdAt", None)
-        product_from_db.pop("updatedAt", None)
-        product_from_db.pop("deletedAt", None)
-
-        for variant in variants:
-            product = db.products_collection.find_one({ "variants": variant['_id'] })
-            if product:
-                variant['discount'] = product.get('discount', 0)
-                battery_capacity = product.get('attributes', {}).get('batteryCapacity')
-                if battery_capacity:
-                    variant['battery'] = battery_capacity
-                variant['product_id'] = product.get('_id')
-
-        if len(variants) == 0:
-            dispatcher.utter_message(text=f"Sản phẩm {product_from_db['name']} hiện chưa có thông tin.")
-        else:
-            header = f"""<div>Hiện {product_from_db["name"]} có {len(variants)} biến thể</div>"""
-            variant_html = render_ui(variants)
-            final_result = header + variant_html
-            dispatcher.utter_message(text=final_result, html=True)
+            button_title = v.get("name", "Chọn")
             
+            # Thêm vào danh sách text
+            text_variant_list.append(f"  •  {button_title}")
+
+            # Tạo payload cho button
+            payload_data = {
+                "variant_id": str(v.get('_id')),
+                "variant_name": v.get("name")
+            }
+            buttons.append({
+                "title": button_title[:64], # Giới hạn độ dài title
+                "payload": f"/select_variant{json.dumps(payload_data)}"
+            })
+
+        dispatcher.utter_message(text=product_html_card, html=True, buttons=buttons)
         return []
 
+# --- ActionProvideProductPrice (Không thay đổi) ---
 class ActionProvideProductPrice(Action):
     def name(self):
         return "action_provide_product_price"
@@ -128,13 +103,16 @@ class ActionProvideProductPrice(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: dict):
+        
+        # ... (Giữ nguyên logic của bạn)
         db = DatabaseService()
-    
         product_name_slot = tracker.get_slot("product")
         if not product_name_slot:
             dispatcher.utter_message(text="Bạn muốn hỏi giá sản phẩm nào ạ?")
             return []
+        # ... (Phần còn lại giữ nguyên)
 
+        # (Code gốc của bạn cho ActionProvideProductPrice)
         product_data = db.products_collection.find_one({"name": product_name_slot})
 
         if not product_data:
@@ -145,7 +123,13 @@ class ActionProvideProductPrice(Action):
         product_name = product_data.get("name", product_name_slot)
         discount = product_data.get("discount", 0)
 
-        variants = list(db.variants_collection.find({"_id": {"$in": variants_id}}))
+        # Chuyển đổi ID sang ObjectId nếu cần
+        try:
+            object_id_variants = [ObjectId(v_id) for v_id in variants_id]
+            variants = list(db.variants_collection.find({"_id": {"$in": object_id_variants}}))
+        except:
+             variants = list(db.variants_collection.find({"_id": {"$in": variants_id}}))
+
         if not variants:
             dispatcher.utter_message(text=f"Sản phẩm {product_name} chưa có thông tin giá. Bạn vui lòng liên hệ sau ạ.")
             return []
