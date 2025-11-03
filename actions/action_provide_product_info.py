@@ -1,5 +1,6 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet, AllSlotsReset
 from utils.database import DatabaseService
 from utils.render_product_ui import render_product_card #
 from bson import ObjectId
@@ -74,12 +75,12 @@ class ActionProvideProductInfo(Action):
 
 
         product_html_card = render_product_card(product_from_db, variants)
+        dispatcher.utter_message(text=product_html_card, html=True)
+        
         buttons = []
         text_variant_list = [] 
         for v in variants:
             button_title = v.get("name", "Chọn")
-            
-            # Thêm vào danh sách text
             text_variant_list.append(f"  •  {button_title}")
 
             # Tạo payload cho button
@@ -88,13 +89,65 @@ class ActionProvideProductInfo(Action):
                 "variant_name": v.get("name")
             }
             buttons.append({
-                "title": button_title[:64], # Giới hạn độ dài title
-                "payload": f"/select_variant{json.dumps(payload_data)}"
-            })
-
-        dispatcher.utter_message(text=product_html_card, html=True, buttons=buttons)
+                "title": button_title[:64],
+                "payload": f"/show_variant_details {json.dumps(payload_data)}"})
+        
+        if buttons:
+            dispatcher.utter_message(
+                text="Bạn có thể chọn nhanh một phiên bản:",
+                buttons=buttons[:10] 
+            )
+            
         return []
+class ActionShowVariantDetails(Action):
+    def name(self):
+        return "action_show_variant_details"
 
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: dict):
+
+        # 1. Lấy slot như cũ
+        variant_id_str = tracker.get_slot("variant_id")
+        variant_name = tracker.get_slot("variant_name")
+
+        if not variant_id_str:
+            dispatcher.utter_message(text="Có lỗi, tôi không nhận được thông tin phiên bản.")
+            return []
+
+        # 2. Lấy sender_id để biết là user nào
+        # Chúng ta set nó vào slot để các action sau (như add_to_cart) có thể dùng
+        user_id = tracker.sender_id
+        
+        # 3. Tạo payload data (chứa cả variant_id và user_id)
+        # Chúng ta truyền thông tin này cho action tiếp theo
+        payload_data = json.dumps({
+            "variant_id": variant_id_str,
+            "user_id": user_id 
+        })
+
+        # 4. Tạo các nút bấm cho action mới
+        buttons = [
+            {
+                "title": "🛒 Thêm vào giỏ hàng",
+                "payload": f"/action_add_to_cart{payload_data}" 
+            },
+            {
+                "title": "💰 Đặt hàng ngay",
+                # Payload này gọi action "action_start_order"
+                "payload": f"/order{payload_data}" 
+            }
+        ]
+        
+        # 5. Gửi tin nhắn xác nhận VÀ các nút bấm mới
+        dispatcher.utter_message(
+            text=f"✅ Bạn đã chọn **{variant_name}**. Bạn muốn làm gì tiếp theo?",
+            buttons=buttons
+        )
+
+        # 6. (Quan trọng) Lưu user_id vào slot
+        return [SlotSet("user_id", user_id)]
+    
 # --- ActionProvideProductPrice (Không thay đổi) ---
 class ActionProvideProductPrice(Action):
     def name(self):

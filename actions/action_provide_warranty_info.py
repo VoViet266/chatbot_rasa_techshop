@@ -26,7 +26,6 @@ class ActionProvideWarrantyInfo(Action):
             
             
             for w in warranties_info:
-               
                 name = w.get("name", "Chính sách không tên")
                 description = w.get("description", "Không có mô tả chi tiết.")
                 

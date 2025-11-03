@@ -1,8 +1,35 @@
 version: "3.1"
 
 nlu:
+  # 1. Chào hỏi
+  - intent: greet
+    examples: |
+      - chào
+      - chào shop
+      - hello
+      - hi
+      - shop ơi
+      - có ai ở đó không?
+      - xin chào
+      - ad ơi
+      - ê bot
+      - bạn ơi
 
-  # 2. Cảm ơn
+  # 2. Tạm biệt
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - bye
+      - bai bai
+      - hẹn gặp lại
+      - bai shop
+      - chào tạm biệt
+      - tôi đi đây
+      - bye nha
+      - ok
+      - vậy thôi
+
+  # 3. Cảm ơn
   - intent: chitchat/thanks
     examples: |
       - cảm ơn nha
@@ -11,8 +38,10 @@ nlu:
       - thanks
       - cảm ơn shop
       - biết ơn nha
+      - tuyệt, cảm ơn
+      - cảm ơn sự hỗ trợ
 
-  # 3. Từ chối hỗ trợ
+  # 4. Từ chối hỗ trợ
   - intent: chitchat/deny
     examples: |
       - không cần đâu
@@ -21,8 +50,11 @@ nlu:
       - không nhé
       - thôi, để sau đi
       - không cần hỗ trợ
+      - không
+      - để sau
+      - không, cảm ơn
 
-  # 4. Chỉ xem, chưa mua
+  # 5. Chỉ xem, chưa mua
   - intent: chitchat/just_looking
     examples: |
       - tôi chỉ xem thôi
@@ -32,8 +64,9 @@ nlu:
       - chỉ hỏi giá thôi, chưa mua
       - mới xem qua thôi
       - cảm ơn, mình đang tham khảo
-
- 
+      - mình xem giá trước
+      - để mình suy nghĩ thêm
+      - mình tham khảo giá
 
   # 6. Lời khen / small talk
   - intent: chitchat/compliment
@@ -43,3 +76,71 @@ nlu:
       - trả lời hay ghê
       - bạn vui tính đó
       - mình thích cách bạn trả lời
+      - xịn
+      - đỉnh
+      - tốt quá
+      - okela
+      - tuyệt vời
+
+  # 7. Phản hồi tích cực
+  - intent: chitchat/positive_feedback
+    examples: |
+      - được đó
+      - tốt
+      - hay
+      - oke
+      - ok
+      - vâng
+      - ừ
+      - đúng rồi
+      - chính xác
+      - đồng ý
+
+  # 8. Hỏi thăm sức khỏe bot
+  - intent: chitchat/ask_how_are_you
+    examples: |
+      - bạn khoẻ không?
+      - dạo này thế nào?
+      - hôm nay sao rồi?
+      - bạn có ổn không?
+      - khoẻ không?
+
+  # 9. Xác nhận là bot
+  - intent: chitchat/ask_are_you_a_bot
+    examples: |
+      - bạn là bot à?
+      - bạn là robot phải không?
+      - bạn có phải người máy không?
+      - tôi đang nói chuyện với bot?
+      - bạn là ai?
+      - đây là bot hay người?
+      - bạn là cái gì?
+
+  # 10. Hỏi khả năng
+  - intent: chitchat/ask_what_can_you_do
+    examples: |
+      - bạn làm được gì?
+      - bạn có thể làm gì?
+      - nói cho tôi biết bạn có thể làm gì
+      - bạn giúp được gì?
+      - khả năng của bạn là gì?
+
+  # 11. Chê bai / Xúc phạm
+  - intent: chitchat/insult
+    examples: |
+      - bot ngu
+      - bot dở tệ
+      - trả lời chán
+      - nói gì không hiểu
+      - dở
+      - chán thế
+      - bot ngáo
+
+  # 12. Xin lỗi
+  - intent: chitchat/apologize
+    examples: |
+      - xin lỗi
+      - mình xin lỗi
+      - xin lỗi nha
+      - sr
+      - sorry

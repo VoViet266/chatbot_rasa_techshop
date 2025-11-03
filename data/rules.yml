@@ -1,107 +1,131 @@
 version: "3.1"
 
 rules:
-  ############################################
-  # 1. Khởi động & slot
-  ############################################
-  - rule: Restart slot
+  - rule: Xử lý chào hỏi
+    steps:
+      - intent: greet
+      - action: action_get_user_info
+      - action: utter_greet
+
+  - rule: Xử lý tạm biệt
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # - rule: Chitchat - Cảm ơn
+  #   steps:
+  #     - intent: chitchat/thanks
+  #     - action: utter_chitchat/thanks
+
+  # - rule: Chitchat - Từ chối
+  #   steps:
+  #     - intent: chitchat/deny
+  #     - action: utter_chitchat/deny
+
+  # - rule: Chitchat - Chỉ xem
+  #   steps:
+  #     - intent: chitchat/just_looking
+  #     - action: utter_chitchat/just_looking
+
+  # - rule: Chitchat - Khen
+  #   steps:
+  #     - intent: chitchat/compliment
+  #     - action: utter_chitchat/compliment
+
+  # - rule: Chitchat - Phản hồi tích cực
+  #   steps:
+  #     - intent: chitchat/positive_feedback
+  #     - action: utter_chitchat/positive_feedback
+
+  - rule: Khởi động lại slot
     steps:
       - intent: restart_slot
       - action: action_restart_slot
 
-  ############################################
-  # 2. FAQ
-  ############################################
-  - rule: Respond to overheating FAQ
+  - rule: FAQ - Máy nóng
     condition:
       - active_loop: null
     steps:
       - intent: faq_overheating
       - action: utter_faq_overheating
 
-  - rule: Respond to connection issue FAQ
+  - rule: FAQ - Lỗi kết nối
     condition:
       - active_loop: null
     steps:
       - intent: faq_connection_issue
       - action: utter_faq_connection_issue
 
-  - rule: Handle goodbye
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-
-  ############################################
-  # 3. Thông tin sản phẩm / cửa hàng / đơn hàng
-  ############################################
-  - rule: Provide product info
+  - rule: Cung cấp thông tin sản phẩm
     steps:
       - intent: ask_product_info
       - action: action_provide_product_info
 
-  - rule: Provide warranty info
+  - rule: Cung cấp thông tin bảo hành
     steps:
       - intent: ask_warranty
       - action: action_provide_warranty_info
 
-  - rule: Provide store info
+  - rule: Cung cấp thông tin cửa hàng
     steps:
       - intent: ask_store
       - action: action_provide_store_info
 
-  - rule: Provide order info
+  - rule: Cung cấp thông tin (chung chung) về đơn hàng
     steps:
       - intent: ask_order
       - action: action_provide_order_info
 
-  ############################################
-  # 4. Gợi ý sản phẩm
-  ############################################
-  - rule: Suggest products by price
+  - rule: Gợi ý sản phẩm theo giá
     steps:
       - intent: suggest_product_price
       - action: action_suggest_product
 
-  - rule: Suggest products by RAM
+  - rule: Gợi ý sản phẩm theo RAM
     steps:
       - intent: suggest_product_ram
       - action: action_suggest_product
 
-  - rule: Suggest products by battery
+  - rule: Gợi ý sản phẩm theo Pin
     steps:
       - intent: suggest_product_battery
       - action: action_suggest_product
 
-  - rule: Suggest products by storage
+  - rule: Gợi ý sản phẩm theo dung lượng
     steps:
       - intent: suggest_product_storage
       - action: action_suggest_product
 
-  - rule: Suggest products by price and RAM
+  - rule: Gợi ý sản phẩm (kết hợp)
     steps:
       - intent: suggest_product_combine
       - action: action_suggest_product
 
-  ############################################
-  # 5. Đặt hàng (form)
-  ############################################
-  - rule: Activate order form
+  - rule: Kích hoạt form đặt hàng
     steps:
       - intent: order
       - action: order_form
       - active_loop: order_form
 
-  - rule: Submit order form when completed
+  - rule: Gửi form đặt hàng khi hoàn tất
     condition:
       - active_loop: order_form
     steps:
       - intent: confirm_order
       - action: action_submit_order
+      - active_loop: null
+  - rule: Người dùng chọn chi nhánh
+    steps:
+      # Và user trả lời bằng intent select_branch
+      - intent: select_branch
+      # Thì chạy action xác nhận
+      - action: action_confirm_after_branch
+  - rule: Show variant
+    steps:
+      - intent: show_variant_details
+      - action: action_show_variant_details
 
-  ############################################
-  # 6. Xử lý lỗi hoặc ngoài phạm vi
-  ############################################
-  - rule: Handle out of scope or fallback
+  - rule: Xử lý ngoài phạm vi hoặc không hiểu
     steps:
       - or:
           - intent: out_of_scope

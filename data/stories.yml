@@ -1,31 +1,15 @@
 version: "3.1"
 
 stories:
-  # 1. CHÀO HỎI & GIAO TIẾP
-  - story: Người dùng chào bot
-    steps:
-      - intent: greet
-      - action: action_get_user_info
-      - action: utter_greet
-
-  - story: Người dùng tạm biệt
-    steps:
-      - intent: goodbye
-      - action: utter_goodbye
-
   # 2. HỎI THÔNG TIN SẢN PHẨM
   - story: Hỏi thông tin sản phẩm (nêu rõ tên)
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: ask_product_info
         entities:
           - product: "iPhone 16"
       - slot_was_set:
           - product: "iPhone 16"
       - action: action_provide_product_info
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Hỏi giá sản phẩm rồi chỉ xem
     steps:
@@ -63,32 +47,20 @@ stories:
           - product: null
           - variant_name: null
           - quantity: null
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Hỏi chính sách bảo hành
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: ask_warranty
       - action: action_provide_warranty_info
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Hỏi thông tin cửa hàng
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: ask_store
       - action: action_provide_store_info
-      - intent: goodbye
-      - action: utter_goodbye
 
   # 3. ĐẶT HÀNG
   - story: Quy trình đặt hàng đầy đủ (Full Happy Path)
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: ask_product_info
         entities:
           - product: "iPhone 16"
@@ -106,13 +78,9 @@ stories:
           - product: null
           - variant_name: null
           - quantity: null
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Đặt hàng nhanh
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: order
       - action: order_form
       - active_loop: order_form
@@ -120,8 +88,6 @@ stories:
       - action: action_preview_order
       - intent: confirm_order
       - action: action_submit_order
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Đặt hàng nhanh (nêu thẳng sản phẩm)
     steps:
@@ -136,8 +102,6 @@ stories:
       - action: action_preview_order
       - intent: confirm_order
       - action: action_submit_order
-      - intent: goodbye
-      - action: utter_goodbye
 
   - story: Hủy đặt hàng sau khi xem trước đơn
     steps:
@@ -148,8 +112,6 @@ stories:
       - action: action_preview_order
       - intent: cancel_order
       - action: action_cancel_order
-      - intent: goodbye
-      - action: utter_goodbye
 
   # 4. TRA CỨU ĐƠN HÀNG
   - story: Tra đơn hàng bằng ID (người dùng nhập sẵn)
@@ -257,9 +219,5 @@ stories:
   # 6. NGOÀI PHẠM VI / FALLBACK
   - story: Xử lý câu hỏi ngoài phạm vi
     steps:
-      - intent: greet
-      - action: action_get_user_info
       - intent: out_of_scope
       - action: utter_fallback
-      - intent: goodbye
-      - action: utter_goodbye
