@@ -81,17 +81,9 @@ entities:
   - variant_id
   - user_id
   - variant_name
-  - variant_name_add
   - variant_color
 
 slots:
-  #   requested_slot:
-  #     type: text
-  #     influence_conversation: false
-  #     mappings:
-  #       - type: from_entity
-  #         entity: requested_slot
-
   user_id:
     type: text
     influence_conversation: true
@@ -152,6 +144,11 @@ slots:
     mappings:
       - type: custom
 
+  validated_variant_color:
+    type: text
+    mappings:
+      - type: custom
+
   user_name:
     type: text
     influence_conversation: false
@@ -198,14 +195,6 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
-
-  variant_name_add:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: variant_name_add
-
   variant_color:
     type: text
     influence_conversation: true
@@ -575,9 +564,9 @@ responses:
     - text: "Bạn có muốn đặt hàng sản phẩm này không ạ?"
       buttons:
         - title: "Có, đặt hàng"
-          payload: "/order" # Kích hoạt intent 'order'
+          payload: "/order"
         - title: "Chỉ tham khảo thôi"
-          payload: "/chitchat" # Kích hoạt intent 'chitchat/just_looking'
+          payload: "/chitchat"
 
     - text: "Bạn có muốn mình lên đơn cho bạn luôn không?"
       buttons:
@@ -599,10 +588,6 @@ responses:
           payload: "/order"
         - title: "Không, mình chỉ hỏi giá"
           payload: "/chitchat/just_looking"
-
-    # - text: "Bạn có muốn đặt mua sản phẩm này luôn không ạ?"
-    # - text: "Bạn đặt hàng luôn chứ ạ?"
-    # - text: "Bạn có muốn mình hỗ trợ bạn đặt hàng ngay bây giờ không?"
 
 actions:
   - utter_greet

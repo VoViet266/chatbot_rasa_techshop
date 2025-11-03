@@ -3,7 +3,6 @@ version: "3.1"
 nlu:
   - intent: ask_product_price
     examples: |
-      # 1. Dạng câu hỏi trực tiếp (Sản phẩm + Từ khóa giá)
       - [iPhone 16](product) giá bao nhiêu?
       - Giá của [iPhone 16](product) là bao nhiêu?
       - Báo giá cho mình con [iPhone 16](product)

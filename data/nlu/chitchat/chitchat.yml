@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-  # 1. Chào hỏi
+
   - intent: greet
     examples: |
       - chào
@@ -15,7 +15,7 @@ nlu:
       - ê bot
       - bạn ơi
 
-  # 2. Tạm biệt
+
   - intent: goodbye
     examples: |
       - tạm biệt
@@ -29,7 +29,7 @@ nlu:
       - ok
       - vậy thôi
 
-  # 3. Cảm ơn
+ 
   - intent: chitchat/thanks
     examples: |
       - cảm ơn nha
@@ -41,7 +41,7 @@ nlu:
       - tuyệt, cảm ơn
       - cảm ơn sự hỗ trợ
 
-  # 4. Từ chối hỗ trợ
+
   - intent: chitchat/deny
     examples: |
       - không cần đâu
@@ -54,7 +54,6 @@ nlu:
       - để sau
       - không, cảm ơn
 
-  # 5. Chỉ xem, chưa mua
   - intent: chitchat/just_looking
     examples: |
       - tôi chỉ xem thôi
@@ -68,7 +67,6 @@ nlu:
       - để mình suy nghĩ thêm
       - mình tham khảo giá
 
-  # 6. Lời khen / small talk
   - intent: chitchat/compliment
     examples: |
       - bạn dễ thương ghê
@@ -82,7 +80,7 @@ nlu:
       - okela
       - tuyệt vời
 
-  # 7. Phản hồi tích cực
+
   - intent: chitchat/positive_feedback
     examples: |
       - được đó
@@ -96,7 +94,6 @@ nlu:
       - chính xác
       - đồng ý
 
-  # 8. Hỏi thăm sức khỏe bot
   - intent: chitchat/ask_how_are_you
     examples: |
       - bạn khoẻ không?
@@ -105,7 +102,7 @@ nlu:
       - bạn có ổn không?
       - khoẻ không?
 
-  # 9. Xác nhận là bot
+
   - intent: chitchat/ask_are_you_a_bot
     examples: |
       - bạn là bot à?
@@ -116,7 +113,7 @@ nlu:
       - đây là bot hay người?
       - bạn là cái gì?
 
-  # 10. Hỏi khả năng
+
   - intent: chitchat/ask_what_can_you_do
     examples: |
       - bạn làm được gì?
@@ -125,7 +122,7 @@ nlu:
       - bạn giúp được gì?
       - khả năng của bạn là gì?
 
-  # 11. Chê bai / Xúc phạm
+
   - intent: chitchat/insult
     examples: |
       - bot ngu
@@ -136,7 +133,7 @@ nlu:
       - chán thế
       - bot ngáo
 
-  # 12. Xin lỗi
+
   - intent: chitchat/apologize
     examples: |
       - xin lỗi

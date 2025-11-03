@@ -10,7 +10,6 @@ def render_variants_list(variants):
     
     for variant in variants:
         discount = variant.get('discount', 0)
-      
         price = variant.get("price", 0)
         discounted_price = price * (1 - discount/100)
         
@@ -56,7 +55,7 @@ def render_product_card(product, variants):
         prices = [v.get('price') for v in variants if v.get('price') is not None and v.get('price') > 0]
         min_price = min(prices) if prices else 0
         max_price = max(prices) if prices else 0
-        discount = product.get('discount', 0) # Lấy discount chung của product
+        discount = product.get('discount', 0) 
 
         if not prices:
             price_html = '<span style="font-size:14px;color:#616161;">Chưa có thông tin giá</span>'
@@ -65,15 +64,16 @@ def render_product_card(product, variants):
             max_final = max_price * (1 - discount / 100)
             if min_price == max_price:
                 price_html = f'''<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_final)}</span>
-                                 <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;">{format_vnd(min_price)}</span>'''
+                                <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;">{format_vnd(min_price)}</span>'''
             else:
-                 price_html = f'''<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_final)} - {format_vnd(max_final)}</span>
-                                 <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;margin-left:8px;">{format_vnd(min_price)} - {format_vnd(max_price)}</span>'''
+                price_html = f'''<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_final)} - {format_vnd(max_final)}</span>
+                                <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;margin-left:8px;">{format_vnd(min_price)} - {format_vnd(max_price)}</span>'''
         else:
             if min_price == max_price:
                 price_html = f'<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_price)}</span>'
             else:
                 price_html = f'<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_price)} - {format_vnd(max_price)}</span>'
+    
     variants_html_list = ""
     if variants:
         variants_html_list += '<div style="margin-top:12px;border-top:1px solid #eee;padding-top:12px;">'
@@ -83,17 +83,13 @@ def render_product_card(product, variants):
         
         for v in variants:
             variant_name = v.get("name", "Phiên bản")
-            
-            # Lấy giá
             price = v.get('price', 0)
             final_price = price * (1 - product_discount / 100)
             
-            # Hiển thị giá
             price_display_html = f'<span style="font-size:13px;font-weight:500;color:#d32f2f;">{format_vnd(final_price)}</span>'
             if product_discount > 0:
                 price_display_html += f'<span style="font-size:12px;color:#9e9e9e;text-decoration:line-through;margin-left:5px;">{format_vnd(price)}</span>'
 
-            # Tạo 1 dòng HTML cho variant
             variants_html_list += f'''
 <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f5f5f5;">
     <span style="font-size:13px;color:#333;padding-right:10px;">{variant_name}</span>
@@ -103,8 +99,12 @@ def render_product_card(product, variants):
         
         variants_html_list += '</div>'
 
+    product_url = f"http://localhost:5173/product/{str(product.get('_id', ''))}"
+
     card_html = f'''<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1a1a1a;max-width:400px;">
 <p style="margin:0 0 16px;font-size:14px;font-weight:500;">Đây là sản phẩm bạn tìm: {product["name"]}</p>
+
+<a href="{product_url}" style="display:block; text-decoration:none; color:inherit;">
 <div style="padding:12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;">
     
     <div style="display:flex;gap:12px;">
@@ -125,7 +125,6 @@ def render_product_card(product, variants):
     {variants_html_list}
 
 </div>
-</div>'''
-    
+</a> </div>'''
     cleaned_result = re.sub(r'\s+', ' ', card_html).strip()
     return cleaned_result

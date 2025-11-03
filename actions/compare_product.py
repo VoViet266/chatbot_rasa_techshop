@@ -4,7 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
 from utils.database import DatabaseService
 from utils.format_currentcy import format_vnd
-
+from utils.product_pipelines import build_search_pipeline
 
 class ActionCompareProducts(Action):
     def name(self) -> Text:
@@ -16,10 +16,9 @@ class ActionCompareProducts(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-
+        
         product_1 = tracker.get_slot("product_1")
         product_2 = tracker.get_slot("product_2")
-        print(product_1, product_2)
         
         if not product_1 or not product_2:
             dispatcher.utter_message(
@@ -29,8 +28,8 @@ class ActionCompareProducts(Action):
 
         db = DatabaseService()
 
-        product_1_info = db.products_collection.find_one({"name": {"$regex": product_1, "$options": "i"}})
-        product_2_info = db.products_collection.find_one({"name": {"$regex": product_2, "$options": "i"}})
+        product_1_info = db.products_collection.aggregate(build_search_pipeline(product_1))
+        product_2_info = db.products_collection.aggregate(build_search_pipeline(product_2))
 
         if not product_1_info:
             dispatcher.utter_message(text=f"Không tìm thấy thông tin của sản phẩm {product_1}")

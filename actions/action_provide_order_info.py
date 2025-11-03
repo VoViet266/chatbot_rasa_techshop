@@ -62,11 +62,8 @@ def _map_status_to_db(status_nlu: str) -> str:
     return None
 
 def _get_time_query(time_str: str) -> Dict:
-   
     if not time_str:
         return None
-
-
     
     time_str = time_str.strip()
     now = datetime.now()
@@ -80,7 +77,6 @@ def _get_time_query(time_str: str) -> Dict:
     }
 
     special_cases = {
-       
         'hôm nay': (today_start, today_end),
         'ngày hôm nay': (today_start, today_end),
         'hôm qua': (today_start - timedelta(days=1), today_start - timedelta(seconds=1)),
@@ -110,7 +106,6 @@ def _get_time_query(time_str: str) -> Dict:
         if key in time_lower:
             return {"createdAt": {"$gte": start, "$lte": end}}
 
-  
     try:
         # Tìm ngày trong chuỗi
         dates_found = search_dates(time_str, languages=['vi'], settings=settings)
@@ -345,53 +340,42 @@ class ActionCheckOrderGeneral(Action):
         if not user_id:
             return []
 
-        # 1. Lấy 2 slot
         direction = tracker.get_slot("order_direction")
-        
-        # --- (PHẦN THAY ĐỔI) ---
-        # index_val_str bây giờ là string (ví dụ: "1", "2") hoặc None
         index_val_str = tracker.get_slot("order_index") 
 
         query = {"user": user_id}
         
-        # 2. Xác định hướng sắp xếp
+    
         if direction == "oldest":
             sort_order = [("createdAt", 1)] 
             title_direction = "cũ"
         else:
-            # Mặc định là "mới"
             sort_order = [("createdAt", -1)]
             title_direction = "mới"
 
-        # 3. Xác định chỉ số (index/skip)
-        
-        # --- (PHẦN THAY ĐỔI) ---
-        index_num = 1 # Mặc định là "thứ 1" (nhất)
+        index_num = 1 
         if index_val_str:
             try:
-                # Chuyển string (vd: "2") về int (vd: 2)
+
                 index_num = int(index_val_str)
-                if index_num <= 0: # Đảm bảo số là dương
+                if index_num <= 0: 
                     index_num = 1
             except (ValueError, TypeError):
-                # Nếu slot có giá trị không phải số (hiếm)
                 index_num = 1 
         
-        # Logic còn lại giữ nguyên
         index_to_skip = index_num - 1
-        
-        # 4. Tạo tiêu đề
+
         if index_num == 1:
             title_index = "nhất"
         else:
             title_index = f"thứ {index_num}"
 
-        title = f"{title_direction} {title_index}" # Ví dụ: "mới nhất", "cũ thứ 2"
+        title = f"{title_direction} {title_index}" 
 
         try:
             # 5. Query MongoDB bằng .skip() và .limit()
             cursor = db.orders_collection.find(query).sort(sort_order).skip(index_to_skip).limit(1)
-            order = next(cursor, None) # Lấy phần tử đầu tiên, hoặc None
+            order = next(cursor, None) 
 
             if not order:
                 if index_num == 1:
@@ -399,7 +383,6 @@ class ActionCheckOrderGeneral(Action):
                 else:
                     dispatcher.utter_message(text=f"Không tìm thấy đơn hàng {title} (thứ {index_num}) của bạn.")
             else:
-                # Nếu tìm thấy, build HTML và gửi
                 message = f"<p class='text-base font-medium mb-3'>Đây là đơn hàng {title} của bạn:</p>"
                 message += build_order_html(order, db.products_collection)
                 dispatcher.utter_message(text=message)
@@ -409,5 +392,4 @@ class ActionCheckOrderGeneral(Action):
             traceback.print_exc()
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng. Vui lòng thử lại sau.")
 
-        # Xóa các slot sau khi hoàn thành
         return [SlotSet("order_direction", None), SlotSet("order_index", None)]

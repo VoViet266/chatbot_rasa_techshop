@@ -1,14 +1,14 @@
 from pymongo import MongoClient
 from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker
-# THAY ĐỔI IMPORT: Import hàm render danh sách variants
+from utils.database import DatabaseService
 from utils.render_product_ui import render_variants_list 
 from utils.extract_number import extract_number
 from rasa_sdk.executor import CollectingDispatcher
 from utils.convert_price_to_number import convert_price_to_number
 from typing import Any, Text, Dict, List
 
-# --- CÁC NGƯỠNG SỐ (nên dùng số thay vì string) ---
+
 CHEAP_PRICE_THRESHOLD = 5000000 
 EXPENSIVE_PRICE_THRESHOLD = 20000000 
 MIN_RAM_THRESHOLD = 8 
@@ -18,29 +18,20 @@ MIN_STORAGE_THRESHOLD = 128
 
 class ActionSuggestProduct(Action):
     
-    # Khởi tạo DB (Giữ nguyên)
-    def __init__(self):
-        self.client = MongoClient("mongodb+srv://VieDev:durNBv9YO1TvPvtJ@cluster0.h4trl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
-        self.database = self.client["techshop_db"]
-        self.categories_model = self.database["categories"]
-        self.products_model = self.database["products"]
-        self.variants_model = self.database["variants"]
-
     def name(self) -> Text:
         return "action_suggest_product"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        
-        # (Giữ nguyên toàn bộ logic lấy slot và xử lý category...)
+        db = DatabaseService()
         category_name = tracker.get_slot("category")
         if not category_name:
             dispatcher.utter_message(text='Quý khách vui lòng cung cấp thông tin thể loại để hệ thống có thể đưa ra những gợi ý phù hợp nhất với bạn nhé!')
             return []
         
         try:
-            category_document = self.categories_model.find_one({"name": {"$regex": category_name, "$options": "i"}})
+            category_document = db.categories_collection.find_one({"name": {"$regex": category_name, "$options": "i"}})
             if not category_document:
                 dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy danh mục sản phẩm: {category_name}")
                 return []
@@ -83,7 +74,6 @@ class ActionSuggestProduct(Action):
         if storage_qualifier == "high_storage" and min_storage_num is None:
             min_storage_num = MIN_STORAGE_THRESHOLD
 
-        # (Giữ nguyên toàn bộ pipeline...)
         pipeline = []
         match_conditions = []
         pipeline.append({'$match': { 'category': category_id }})
@@ -145,9 +135,7 @@ class ActionSuggestProduct(Action):
             })
         if match_conditions:
             pipeline.append({'$match': { '$and': match_conditions }})
-        
-        # Pipeline này trả về một LIST CÁC BIẾN THỂ (variants)
-        pipeline.append({
+            pipeline.append({
             '$replaceRoot': {
                 'newRoot': {
                     '$mergeObjects': [
@@ -161,24 +149,16 @@ class ActionSuggestProduct(Action):
                 }
             }
         })
-        
         try:
-            # results là một LIST CÁC BIẾN THỂ
-            results = list(self.products_model.aggregate(pipeline))
+            results = list(db.products_collection.aggregate(pipeline))
             
             if not results:
                 dispatcher.utter_message(text="Rất tiếc, không có sản phẩm nào phù hợp với yêu cầu của bạn")
             else:
-                # *** THAY ĐỔI DUY NHẤT ***
-                # Gọi hàm render_variants_list (thay vì render_ui)
-                # Hàm này nhận vào một danh sách các biến thể và render tất cả
-                dispatcher.utter_message(text=render_variants_list(results), html=True) 
-                
+                dispatcher.utter_message(text=render_variants_list(results), html=True)  
         except Exception as e:
             print(f"Lỗi khi aggregate: {e}")
             dispatcher.utter_message(text="Đã có lỗi xảy ra trong quá trình tìm kiếm sản phẩm.")
-            
-        # Reset slots (Giữ nguyên)
         return [
             SlotSet('min_price', None), SlotSet('max_price', None),
             SlotSet('min_ram', None), SlotSet('max_ram', None),
