@@ -42,13 +42,16 @@ class ActionAddToCart(Action):
         # Tìm sản phẩm
         pipeline_search = build_search_pipeline(product_name)
         product_data = list(db_service.products_collection.aggregate(pipeline_search))
+
         if not product_data:
             dispatcher.utter_message(
                 text=f"Sản phẩm '{product_name}' không tồn tại. Vui lòng chọn sản phẩm khác."
             )
             return [AllSlotsReset()]
+        
         product_data = product_data[0]
         variant_ids = product_data.get("variants", [])
+        
         if not variant_ids:
             dispatcher.utter_message(
                 text=f"Sản phẩm {product_name} hiện không có phiên bản nào."

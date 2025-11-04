@@ -112,6 +112,7 @@ stories:
       - action: action_preview_order
       - intent: cancel_order
       - action: action_cancel_order
+      
   # Thêm sản phẩm vào giỏ hàng
   - story: quy trình thêm giỏ hàng
     steps:

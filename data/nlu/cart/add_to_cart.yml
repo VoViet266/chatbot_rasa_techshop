@@ -10,7 +10,6 @@ nlu:
       - Bỏ vào giỏ [iPad Pro](product_name) [13 inch WiFi 128GB](variant_name) [1](quantity) cái
       - Lưu vào giỏ [Galaxy Z Fold 6](product_name) [màu titan](variant_color) [2](quantity) cái
 
-
       - Thêm vào giỏ hàng [iPhone 16](product_name)
       - Cho vào giỏ [Samsung S24](product_name)
       - Add to cart [MacBook Air M3](product_name)
@@ -31,19 +30,27 @@ nlu:
       - Tôi muốn thêm sản phẩm vào giỏ hàng
       - Thêm sản phẩm vào giỏ hàng giúp tôi
 
-
-      - Cho [màu xanh](variant_color) vào giỏ
-      - Thêm [màu đỏ](variant_color) vào giỏ hàng
+      - Màu [xanh](variant_color) nhe
+      - Thêm màu [đỏ](variant_color) nhé
+      - Cho màu [tím](variant_color) vào giỏ
+      - Thêm màu [đỏ](variant_color) vào giỏ hàng
       - Bỏ [màu đen](variant_color) vào giỏ
       - Lưu [màu trắng](variant_color) vào giỏ hàng
       - Màu [titan](variant_color) đi
+      - Màu [hồng](variant_color) nhé
+      - Màu [titan](variant_color) cho tôi
+      - Lấy màu [vàng](variant_color)
 
-      - Cho [256GB](variant_name) vào giỏ
-      - Thêm [bản 256GB](variant_name) vào giỏ
+      - Tôi chọn phiên bản [256GB](variant_name)
+      - [128 GB](variant_name)
+      - Tôi chọn [128GB](variant_name)
+      - Thêm bản [256GB](variant_name) vào giỏ đi
       - Thêm [bản cao cấp](variant_name) vào giỏ hàng
 
       - Thêm [2](quantity) cái vào giỏ
       - Cho [3](quantity) chiếc vào giỏ hàng
       - Bỏ [1](quantity) sản phẩm vào giỏ
       - Lưu [4](quantity) cái vào giỏ hàng
+      - [2](quantity) cái nhé
+      - Lấy [3](quantity) cái đi
       - [5](quantity) chiếc đi
