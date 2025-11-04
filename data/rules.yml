@@ -107,11 +107,11 @@ rules:
           - intent: nlu_fallback
       - action: utter_fallback
 
-  - rule: Bắt đầu quy trình thêm vào giỏ hàng
-    steps:
-      - intent: add_to_cart
-      - action: add_to_cart_form
-      - active_loop: add_to_cart_form
+  # - rule: Bắt đầu quy trình thêm vào giỏ hàng
+  #   steps:
+  #     - intent: add_to_cart
+  #     - action: add_to_cart_form
+  #     - active_loop: add_to_cart_form
 
   - rule: Hoàn tất form và gọi action_add_to_cart
     condition:

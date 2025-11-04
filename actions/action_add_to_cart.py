@@ -69,7 +69,7 @@ class ActionAddToCart(Action):
                 buttons.append(
                     {
                         "title": f"{variant_name}",
-                        "payload": f'/inform{{"variant_name": "{variant_name}"}}',
+                        "payload": f'/cart_variant_name{{"variant_name": "{variant_name}"}}',
                     }
                 )
 

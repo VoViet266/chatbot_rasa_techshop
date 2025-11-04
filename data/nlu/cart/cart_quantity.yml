@@ -1,0 +1,15 @@
+version: "3.1"
+
+nlu:
+  - intent: cart_quantity
+    examples: |
+
+      - Thêm [2](quantity) cái vào giỏ
+      - Cho [3](quantity) chiếc vào giỏ hàng
+      - Bỏ [1](quantity) sản phẩm vào giỏ
+      - Lưu [4](quantity) cái vào giỏ hàng
+      - [2](quantity) cái nhé
+      - Lấy [3](quantity) cái đi
+      - [5](quantity) chiếc đi
+      - Tôi muốn thêm [6](quantity) cái
+      - Thêm vào giỏ hàng [7](quantity) cái
