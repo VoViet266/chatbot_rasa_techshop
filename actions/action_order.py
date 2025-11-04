@@ -170,8 +170,6 @@ class ActionReviewOrder(Action):
             # Tạo buttons để chọn chi nhánh
             buttons = []
             for branch in available_branches:
-                stock_info = branch.get('variant_stock', 0)
-                branch_address = branch.get('branch_address', '')
                 buttons.append({
                     "title": f"{branch['branch_name']}",
                     "payload": f'/select_branch{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
@@ -216,7 +214,13 @@ class ActionReviewOrder(Action):
                 f"- Địa chỉ: {order_data['address']}\n\n"
                 f"Bạn có muốn xác nhận đặt hàng không?"
             )
-            dispatcher.utter_message(text=summary_message)
+            dispatcher.utter_message(text=summary_message, buttons={
+                {
+                    "title": f"Xác nhận đơn hàng",
+                    "payload": f'/confirm_order',
+                }
+                
+            })
             
             return [
                 SlotSet("validated_product_id", order_data["product_id"]),
@@ -245,10 +249,9 @@ class ActionConfirmAfterBranch(Action):
         
         # Lấy branch_id từ slot hoặc entity
         branch_id = tracker.get_slot("selected_branch_id")
-       
+        print(branch_id)
         if not branch_id:
-            branch_id = next(tracker.get_latest_entity_values("selected_branch_id"), None)
-             
+            branch_id = next(tracker.get_latest_entity_values("selected_branch_id"), None)     
         if not branch_id:
             dispatcher.utter_message(text="Đã có lỗi xảy ra khi chọn chi nhánh. Vui lòng thử lại.")
             return []
@@ -276,11 +279,17 @@ class ActionConfirmAfterBranch(Action):
     f"- Số điện thoại: {tracker.get_slot('validated_phone')}<br>"
     f"- Địa chỉ: {tracker.get_slot('validated_address')}<br><br>"
     "Bạn có muốn xác nhận đặt hàng không?"
-)
-        dispatcher.utter_message(text=summary_message)
-
-
-        
+    )
+        dispatcher.utter_message(text=summary_message,buttons=[
+            {
+                "title": "Tôi xác nhận đơn hàng",
+                "payload": f'/confirm_order',
+            }, 
+            {
+                "title": "Tôi muốn hủy đơn hàng",
+                "payload": f'/cancel_order',
+            }
+        ])
         return [SlotSet("validated_branch_id", branch_id)]
 
 
@@ -306,9 +315,6 @@ class ActionSubmitOrder(Action):
         customer_name = tracker.get_slot("validated_customer_name")
         phone = tracker.get_slot("validated_phone")
         branch_id = tracker.get_slot("validated_branch_id")
-        print(branch_id)
-        print(product_id)
-        print(variant_id)
         
         # Kiểm tra thông tin đầy đủ
         if not all([product_id, variant_id, quantity, branch_id]):

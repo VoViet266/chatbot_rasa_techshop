@@ -22,8 +22,3 @@ nlu:
       - Hủy order
       - Khoan đã, đừng đặt vội
       - Thôi khỏi đặt
-  
-  - intent: restart_slot
-    examples: |
-      - /restart
-      - /reset_slot

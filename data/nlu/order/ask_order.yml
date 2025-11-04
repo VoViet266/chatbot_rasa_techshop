@@ -65,7 +65,6 @@ nlu:
       - Tất cả đơn [đã giao](order_status)
       - Có bao nhiêu đơn [đã huỷ](order_status)
 
-# Regex để nhận diện order_id (24 ký tự hex)
 regex:
   - name: order_id
     pattern: "[0-9a-f]{24}"

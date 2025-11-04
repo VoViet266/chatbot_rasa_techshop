@@ -1,0 +1,143 @@
+version: "3.1"
+
+nlu:
+
+  - intent: greet
+    examples: |
+      - chào
+      - chào shop
+      - hello
+      - hi
+      - shop ơi
+      - có ai ở đó không?
+      - xin chào
+      - ad ơi
+      - ê bot
+      - bạn ơi
+
+
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - bye
+      - bai bai
+      - hẹn gặp lại
+      - bai shop
+      - chào tạm biệt
+      - tôi đi đây
+      - bye nha
+      - ok
+      - vậy thôi
+
+ 
+  - intent: chitchat/thanks
+    examples: |
+      - cảm ơn nha
+      - cảm ơn bạn
+      - ok cảm ơn
+      - thanks
+      - cảm ơn shop
+      - biết ơn nha
+      - tuyệt, cảm ơn
+      - cảm ơn sự hỗ trợ
+
+
+  - intent: chitchat/deny
+    examples: |
+      - không cần đâu
+      - thôi khỏi
+      - không muốn đâu
+      - không nhé
+      - thôi, để sau đi
+      - không cần hỗ trợ
+      - không
+      - để sau
+      - không, cảm ơn
+
+  - intent: chitchat/just_looking
+    examples: |
+      - tôi chỉ xem thôi
+      - mình đang tham khảo thôi
+      - xem thử hàng thôi
+      - chưa có ý định mua đâu
+      - chỉ hỏi giá thôi, chưa mua
+      - mới xem qua thôi
+      - cảm ơn, mình đang tham khảo
+      - mình xem giá trước
+      - để mình suy nghĩ thêm
+      - mình tham khảo giá
+
+  - intent: chitchat/compliment
+    examples: |
+      - bạn dễ thương ghê
+      - bot thông minh quá
+      - trả lời hay ghê
+      - bạn vui tính đó
+      - mình thích cách bạn trả lời
+      - xịn
+      - đỉnh
+      - tốt quá
+      - okela
+      - tuyệt vời
+
+
+  - intent: chitchat/positive_feedback
+    examples: |
+      - được đó
+      - tốt
+      - hay
+      - oke
+      - ok
+      - vâng
+      - ừ
+      - đúng rồi
+      - chính xác
+      - đồng ý
+
+  - intent: chitchat/ask_how_are_you
+    examples: |
+      - bạn khoẻ không?
+      - dạo này thế nào?
+      - hôm nay sao rồi?
+      - bạn có ổn không?
+      - khoẻ không?
+
+
+  - intent: chitchat/ask_are_you_a_bot
+    examples: |
+      - bạn là bot à?
+      - bạn là robot phải không?
+      - bạn có phải người máy không?
+      - tôi đang nói chuyện với bot?
+      - bạn là ai?
+      - đây là bot hay người?
+      - bạn là cái gì?
+
+
+  - intent: chitchat/ask_what_can_you_do
+    examples: |
+      - bạn làm được gì?
+      - bạn có thể làm gì?
+      - nói cho tôi biết bạn có thể làm gì
+      - bạn giúp được gì?
+      - khả năng của bạn là gì?
+
+
+  - intent: chitchat/insult
+    examples: |
+      - bot ngu
+      - bot dở tệ
+      - trả lời chán
+      - nói gì không hiểu
+      - dở
+      - chán thế
+      - bot ngáo
+
+
+  - intent: chitchat/apologize
+    examples: |
+      - xin lỗi
+      - mình xin lỗi
+      - xin lỗi nha
+      - sr
+      - sorry

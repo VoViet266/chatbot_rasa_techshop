@@ -1,95 +1,84 @@
 version: "3.1"
+language: vi
 
 nlu:
-  - intent: inform
+  # ----- INTENTS -----
+  - intent: inform_product
     examples: |
       - [iPhone 16](product)
       - con [Samsung S24](product) đó
       - Mình đang nói về [MacBook Air M3](product)
-      - [laptop gaming](product)     
-      - [màu xanh 256GB](variant_name)
-      - [bản 512GB](variant_name)
-      - [màu đen](variant_name)
-      - loại [1TB](variant_name)
-      - Tôi chọn [màu xanh](variant_name)
-      - Em lấy [bản thường](variant_name)
-      - [Màu trắng](variant_name) nhé    
+      - [laptop gaming](product)
+      - [Dell XPS 13](product)
+      - [Sony WH-1000XM5](product)
 
+  - intent: order_product
+    examples: |
+      - [iPhone 16](product) [màu xanh](color) [256GB](storage) [2](quantity) cái
+      - [iPhone 16](product) [màu xanh](color)
+      - [iPhone 16](product) [2](quantity) cái
+      - [màu đen](color) [1](quantity) cái
+      - [bản 256GB](storage) [2](quantity)
+      - Tôi muốn [MacBook Air M3](product) [bản 256GB](storage)
+      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_other) [1](quantity) cái đi
+      - [Sony WH-1000XM5](product) [màu đen](color)
+      - Lấy [iPhone 16](product) [bản 512GB](storage) [màu trắng](color)
+      - [iPhone 16](product) [2](quantity) cái [màu đỏ](color)
+
+  - intent: select_variant
+    examples: |
+      - Tôi chọn [bản 256GB](storage)
+      - Mình lấy [màu xanh](color)
+      - Chọn [phiên bản 512GB](storage)
+      - Lấy [bản cao cấp](variant_other)
+      - Em chọn [màu titan](color)
+      - Tôi muốn [bản thường](variant_other)
+      - [256GB](storage)
+      - [512GB](storage)
+      - [Màu xanh](color)
+      - [Màu trắng](color)
+      - [Bản tiêu chuẩn](variant_other)
+      - [Bản cao cấp](variant_other)
+      - [Màu xanh](color) [128GB](storage)
+      - [Bản 512GB](storage) [màu trắng](color)
+      - [Màu titan](color) [256GB](storage)
+      - [Bản i7](variant_other)
+      - [màu xanh 256GB](color) [256GB](storage)
+
+  - intent: select_quantity
+    examples: |
       - [1](quantity)
       - [2](quantity)
-      - [3](quantity) cái
-      - lấy [1](quantity) cái
-      - cho mình [2](quantity) chiếc
-      - số lượng là [3](quantity) nhé
-      - chỉ [1](quantity) thôi  
-      - [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
-      - [iPhone 16](product) [màu xanh](variant_name)
-      - [iPhone 16](product) [2](quantity) cái
-      - [màu đen](variant_name) [1](quantity) cái
-      - [bản 256GB](variant_name) [2](quantity)
-      - Tôi muốn [Macbook Air M3](product) [bản 256GB](variant_name)
-      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_name) [1](quantity) cái đi
-      - [Sony WH-1000XM5](product) [màu đen](variant_name)
-  # - intent: select_variant
-  #   examples: |
-  #     # Chọn biến thể đầy đủ
-  #     - Tôi chọn [bản 256GB](variant_name)
-  #     - Mình lấy [màu xanh](variant_color)
-  #     - Chọn [phiên bản 512GB](variant_name)
-  #     - Lấy [bản cao cấp](variant_name)
-  #     - Em chọn [màu titan](variant_color)
-  #     - Tôi muốn [bản thường](variant_name)
+      - [3](quantity)
+      - [5](quantity)
+      - [10](quantity)
+      - Lấy [1](quantity) cái
+      - Cho mình [2](quantity) chiếc
+      - Số lượng là [3](quantity) nhé
+      - Chỉ [1](quantity) thôi
+      - Mua [2](quantity)
+      - Tôi muốn [4](quantity) cái
+      - Đặt [5](quantity) chiếc
+      - [10](quantity) sản phẩm
 
-  #     # Chỉ nói tên biến thể
-  #     - [256GB](variant_name)
-  #     - [512GB](variant_name)
-  #     - [Màu xanh](variant_color)
-  #     - [Màu trắng](variant_color)
-  #     - [Bản tiêu chuẩn](variant_name)
-  #     - [Bản cao cấp](variant_name)
-  #     - [Bản thường](variant_name)
-
-  #     # Câu dài
-  #     - Tôi chọn phiên bản [256GB](variant_name) nhé
-  #     - Mình lấy loại [128GB](variant_name)
-  #     - Chọn [màu đen](variant_color) đi
-  #     - Lấy cho tôi [bản 512GB](variant_name)
-
-  #     # Kết hợp màu + dung lượng
-  #     - [Màu xanh 128GB](variant_name)
-  #     - [Bản 512GB màu trắng](variant_name)
-  #     - [Màu titan 256GB](variant_name)
-
-  # # Intent 4: Chọn số lượng
-  # - intent: select_quantity
-  #   examples: |
-  #     # Số lượng rõ ràng
-  #     - [1](quantity)
-  #     - [2](quantity)
-  #     - [3](quantity)
-  #     - [5](quantity)
-  #     - [10](quantity)
-
-  #     # Câu đầy đủ
-  #     - Lấy [1](quantity) cái
-  #     - Cho mình [2](quantity) chiếc
-  #     - Số lượng là [3](quantity) nhé
-  #     - Chỉ [1](quantity) thôi
-  #     - Mua [2](quantity)
-  #     - Tôi muốn [4](quantity) cái
-  #     - Đặt [5](quantity) chiếc
-  #     - [10](quantity) sản phẩm
-
-
-
-  # Lookup: Màu sắc
-  - lookup: variant_color
+  # ----- LOOKUP TABLE -----
+  - lookup: color
     examples: |
+      - đen
+      - trắng
+      - xanh
+      - xanh dương
+      - xanh lá
+      - đỏ
+      - hồng
+      - vàng
+      - bạc
+      - xám
+      - titan
+      - gold
       - màu đen
       - màu trắng
       - màu xanh
-      - màu xanh dương
-      - màu xanh lá
       - màu đỏ
       - màu hồng
       - màu vàng
@@ -97,17 +86,9 @@ nlu:
       - màu xám
       - màu titan
       - màu gold
-      - đen
-      - trắng
-      - xanh
-      - đỏ
-      - hồng
-      - vàng
-      - bạc
-      - xám
-      - titan
 
-
+  # ----- SYNONYMS -----
+  # Quantity
   - synonym: "1"
     examples: |
       - một
@@ -129,6 +110,15 @@ nlu:
       - ba cái
       - ba chiếc
 
+  # Storage
+  - synonym: "128GB"
+    examples: |
+      - 128GB
+      - 128 GB
+      - bản 128GB
+      - phiên bản 128GB
+      - loại 128GB
+
   - synonym: "256GB"
     examples: |
       - 256GB
@@ -145,26 +135,55 @@ nlu:
       - phiên bản 512GB
       - loại 512GB
 
-  - synonym: "màu đen"
+  - synonym: "1TB"
+    examples: |
+      - 1TB
+      - 1 TB
+      - bản 1TB
+      - phiên bản 1TB
+      - loại 1TB
+
+  # Colors
+  - synonym: "đen"
     examples: |
       - đen
       - màu đen
       - black
       - màu black
 
-  - synonym: "màu trắng"
+  - synonym: "trắng"
     examples: |
       - trắng
       - màu trắng
       - white
       - màu white
-  - regex: quantity
-    examples: |
-      - \d+
-      - [0-9]+
 
-  - regex: variant_storage
+  - synonym: "xanh"
     examples: |
-      - \d+GB
-      - \d+TB
-      - [0-9]+(GB|TB)
+      - xanh
+      - màu xanh
+      - blue
+      - màu blue
+      - xanh dương
+      - màu xanh dương
+
+  - synonym: "đỏ"
+    examples: |
+      - đỏ
+      - màu đỏ
+      - red
+      - màu red
+
+  - synonym: "vàng"
+    examples: |
+      - vàng
+      - màu vàng
+      - gold
+      - màu gold
+
+  - synonym: "titan"
+    examples: |
+      - titan
+      - màu titan
+      - titanium
+      - màu titanium

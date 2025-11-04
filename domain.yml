@@ -1,4 +1,4 @@
-version: "3.1"
+﻿version: "3.1"
 
 intents:
   - greet
@@ -22,6 +22,8 @@ intents:
   - compare_products
   - check_stock
   - restart_slot
+  - select_quantity
+  - select_variant
   - select_branch:
       use_entities:
         - selected_branch_id
@@ -33,6 +35,10 @@ intents:
       use_entities:
         - order_direction
         - order_index
+  - ask_product_price
+  - chitchat
+  - show_variant_details
+
 entities:
   - branch_name
   - selected_branch_id
@@ -72,15 +78,19 @@ entities:
   - order_direction
   - order_index
   - time
+  - variant_id
+  - user_id
   - variant_name
-  - variant_name_add
   - variant_color
 
 slots:
-  # requested_slot:
-  # type: text
-  # influence_conversation: false
-  # mappings: []
+  user_id:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: user_id
+
   order_status:
     type: text
     influence_conversation: true
@@ -134,6 +144,11 @@ slots:
     mappings:
       - type: custom
 
+  validated_variant_color:
+    type: text
+    mappings:
+      - type: custom
+
   user_name:
     type: text
     influence_conversation: false
@@ -180,14 +195,6 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
-
-  variant_name_add:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: variant_name_add
-
   variant_color:
     type: text
     influence_conversation: true
@@ -289,6 +296,13 @@ slots:
     influence_conversation: false
     mappings: []
 
+  variant_id:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: variant_id
+
   validated_quantity:
     type: float
     initial_value: null
@@ -371,7 +385,6 @@ responses:
     - text: "Bạn muốn phiên bản nào?"
     - text: "Dạ anh/chị chọn phiên bản nào ạ?"
     - text: "Dạ em xin hỏi anh/chị cần phiên bản nào ạ?"
-    - text: "Dạ anh/chị muốn dung lượng/cấu hình nào ạ?"
 
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
@@ -422,6 +435,7 @@ responses:
   utter_no_orders_found:
     - text: "Hiện tại bạn không có đơn hàng nào."
     - text: "Tôi không tìm thấy đơn hàng nào phù hợp với yêu cầu của bạn."
+
   utter_fallback:
     - text: "Xin lỗi, tôi chưa hiểu ý bạn. Bạn có thể nói lại rõ hơn được không?"
     - text: "Dạ em xin lỗi, em chưa hiểu rõ ý anh/chị. Anh/chị có thể nói rõ hơn được không ạ?"
@@ -444,7 +458,6 @@ responses:
           name: category
           value: "điện thoại"
       text: "Dạ em hướng dẫn xử lý điện thoại nóng:\n1. Tắt các ứng dụng không cần thiết.\n2. Chỉnh độ sáng thấp hơn.\n3. Tháo case/ốp ra.\nNếu không khắc phục được, anh/chị ghé cửa hàng Tech để được hỗ trợ kỹ thuật ạ."
-
     - condition:
         - type: slot
           name: category
@@ -503,6 +516,79 @@ responses:
     - text: "Dạ cho em hỏi anh/chị đang sử dụng thiết bị gì ạ? Chuột không dây, tai nghe bluetooth, hay sản phẩm nào khác?"
     - text: "Dạ anh/chị cho em biết thiết bị nào đang bị lỗi kết nối để em hỗ trợ chính xác hơn được không ạ?"
 
+  utter_chitchat/deny:
+    - text: "Không sao, khi nào cần thì cứ nói nhé."
+
+  utter_chitchat/thanks:
+    - text: "Rất vui được giúp bạn!"
+
+  utter_chitchat/just_looking:
+    - text: "Không sao đâu, bạn cứ xem thoải mái nhé."
+
+  utter_chitchat/goodbye:
+    - text: "Tạm biệt nhé, hẹn gặp lại!"
+
+  utter_chitchat/greet:
+    - text: "Xin chào, mình ở đây để giúp bạn."
+
+  utter_chitchat/compliment:
+    - text: "Cảm ơn nha, bạn nói vậy mình ngại ghê!"
+  # dán vào mục responses: trong domain.yml
+
+  utter_chitchat/positive_feedback:
+    - text: "Dạ vâng!"
+    - text: "Tuyệt vời!"
+
+  utter_chitchat/ask_how_are_you:
+    - text: "Tôi là bot nên lúc nào cũng khoẻ. Cảm ơn bạn đã hỏi thăm! Bạn cần hỗ trợ gì ạ?"
+    - text: "Em vẫn ổn ạ. Em có thể giúp gì cho anh/chị?"
+
+  utter_chitchat/ask_are_you_a_bot:
+    - text: "Đúng vậy, tôi là một trợ lý ảo được lập trình để hỗ trợ bạn."
+    - text: "Em là bot tư vấn của TechShop. Em có thể hỗ trợ anh/chị 24/7 ạ."
+
+  utter_chitchat/ask_what_can_you_do:
+    - text: "Tôi có thể giúp bạn tìm sản phẩm, tra cứu đơn hàng, tư vấn kỹ thuật và đặt hàng."
+    - text: "Em có thể tư vấn sản phẩm, báo giá, kiểm tra tình trạng đơn hàng và hỗ trợ đặt hàng cho anh/chị ạ."
+
+  utter_chitchat/insult:
+    - text: "Tôi xin lỗi nếu đã làm bạn không hài lòng. Tôi sẽ cố gắng cải thiện."
+    - text: "Em xin ghi nhận góp ý của anh/chị ạ."
+    - text: "Em xin lỗi vì trải nghiệm chưa tốt. Anh/chị có thể nói rõ vấn đề em hỗ trợ lại được không ạ?"
+
+  utter_chitchat/apologize:
+    - text: "Không sao đâu ạ."
+    - text: "Dạ không có gì ạ."
+
+  utter_ask_if_want_to_order:
+    - text: "Bạn có muốn đặt hàng sản phẩm này không ạ?"
+      buttons:
+        - title: "Có, đặt hàng"
+          payload: "/order"
+        - title: "Chỉ tham khảo thôi"
+          payload: "/chitchat"
+
+    - text: "Bạn có muốn mình lên đơn cho bạn luôn không?"
+      buttons:
+        - title: "OK, lên đơn"
+          payload: "/order"
+        - title: "Để mình xem thêm"
+          payload: "/chitchat/just_looking"
+
+    - text: "Mình tiến hành đặt hàng cho bạn luôn nhé?"
+      buttons:
+        - title: "Đồng ý"
+          payload: "/order"
+        - title: "Không, cảm ơn"
+          payload: "/chitchat/just_looking"
+
+    - text: "Bạn có muốn đặt hàng ngay để mình giữ sản phẩm cho bạn không?"
+      buttons:
+        - title: "Giữ hàng cho mình"
+          payload: "/order"
+        - title: "Không, mình chỉ hỏi giá"
+          payload: "/chitchat/just_looking"
+
 actions:
   - utter_greet
   - utter_greet_personalized
@@ -535,6 +621,12 @@ actions:
   - action_check_order_specific
   - action_check_order_general
   - action_check_order_filter
+  - action_provide_product_price
+  - action_show_variant_details
+  - utter_ask_order_id
+  - utter_order_not_found
+  - utter_no_orders_found
+  - utter_ask_if_want_to_order
 
 session_config:
   session_expiration_time: 60
