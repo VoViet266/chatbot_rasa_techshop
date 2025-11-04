@@ -36,8 +36,6 @@ class ActionProvideStoreInfo(Action):
                     name = br.get("name", "N/A")
                     phone = br.get("phone", "N/A")
                     email = br.get("email", "N/A")
-                    
-                 
                     address_text = br.get("address", "N/A") 
                     location = br.get("location")
                     

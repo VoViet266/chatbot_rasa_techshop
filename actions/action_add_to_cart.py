@@ -7,7 +7,7 @@ from typing import Any, Text, Dict, List, Tuple, Optional
 from bson import ObjectId
 from utils.product_pipelines import build_search_pipeline
 
-# Giả định bạn có các file utils này giống như file trước
+
 from utils.database import DatabaseService
 from utils.format_currentcy import format_vnd
 

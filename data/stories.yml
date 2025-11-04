@@ -115,8 +115,9 @@ stories:
   # Thêm sản phẩm vào giỏ hàng
   - story: Thêm sản phẩm vào giỏ hàng
     steps:
-    - intent: add_to_cart
-    - action: action_add_to_cart
+      - intent: add_to_cart
+      - action: action_add_to_cart
+
   # 4. TRA CỨU ĐƠN HÀNG
   - story: Tra đơn hàng bằng ID (người dùng nhập sẵn)
     steps:
@@ -177,6 +178,33 @@ stories:
           - time: "tuần trước"
           - order_status: "đã giao"
       - action: action_check_order_filter
+
+  # 1️⃣ Tra đơn hàng theo sản phẩm
+  - story: Tra đơn hàng theo sản phẩm
+    steps:
+      - intent: ask_order_by_product
+        entities:
+          - product: "iPhone 16"
+      - slot_was_set:
+          - product: "iPhone 16"
+      - action: action_check_order_by_product
+      - slot_was_set:
+          - product: null
+
+  - story: Tra đơn hàng chưa thanh toán
+    steps:
+      - intent: ask_unpaid_orders
+      - action: action_check_unpaid_or_unshipped_orders
+
+  - story: Tra đơn hàng đang giao
+    steps:
+      - intent: ask_unshipped_orders
+      - action: action_check_unpaid_or_unshipped_orders
+
+  - story: Xem các đơn hàng gần đây
+    steps:
+      - intent: ask_recent_orders
+      - action: action_list_recent_orders
 
   # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
   - story: So sánh sản phẩm qua form

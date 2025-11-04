@@ -393,3 +393,141 @@ class ActionCheckOrderGeneral(Action):
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng. Vui lòng thử lại sau.")
 
         return [SlotSet("order_direction", None), SlotSet("order_index", None)]
+    
+class ActionCheckOrderByProduct(Action):
+    def name(self) -> Text:
+        return "action_check_order_by_product"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        db = DatabaseService()
+        user_id = _validate_user(tracker, dispatcher)
+        if not user_id:
+            return []
+
+        product_name = tracker.get_slot("product")
+        if not product_name:
+            dispatcher.utter_message(text="Bạn muốn xem đơn hàng của sản phẩm nào vậy?")
+            return []
+
+        try:
+            # Tìm sản phẩm
+            product = db.products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
+            if not product:
+                dispatcher.utter_message(text=f"Tôi không tìm thấy sản phẩm nào tên '{product_name}'.")
+                return [SlotSet("product", None)]
+            
+            product_id = product["_id"]
+
+            # Tìm đơn hàng chứa sản phẩm đó
+            query = {"user": user_id, "items.product": product_id}
+            orders = list(db.orders_collection.find(query).sort("createdAt", -1))
+
+            if not orders:
+                dispatcher.utter_message(text=f"Không tìm thấy đơn hàng nào của bạn có chứa sản phẩm '{product_name}'.")
+                return [SlotSet("product", None)]
+
+            message = f"<p class='text-base font-medium mb-3'>Đây là các đơn hàng của bạn có chứa sản phẩm '{product_name}' ({len(orders)} đơn):</p>"
+            message += "<div class='flex flex-col gap-4'>"
+            for o in orders:
+                message += build_order_html(o, db.products_collection)
+            message += "</div>"
+            dispatcher.utter_message(text=message)
+
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng.")
+
+        return [SlotSet("product", None)]
+    
+class ActionCheckUnpaidOrUnshippedOrders(Action):
+    def name(self) -> Text:
+        return "action_check_unpaid_or_unshipped_orders"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        db = DatabaseService()
+        user_id = _validate_user(tracker, dispatcher)
+        if not user_id:
+            return []
+
+        text = (tracker.latest_message.get("text") or "").lower()
+
+        # Xác định loại lọc tự động
+        if "chưa thanh toán" in text or "chờ thanh toán" in text:
+            status = "PENDING_PAYMENT"
+            label = "chưa thanh toán"
+        elif "đang giao" in text or "chưa nhận" in text:
+            status = "SHIPPING"
+            label = "đang giao"
+        else:
+            dispatcher.utter_message(text="Bạn muốn xem đơn chưa thanh toán hay đơn đang giao?")
+            return []
+
+        try:
+            query = {"user": user_id, "status": status}
+            orders = list(db.orders_collection.find(query).sort("createdAt", -1))
+
+            if not orders:
+                dispatcher.utter_message(text=f"Bạn không có đơn hàng nào {label}.")
+                return []
+
+            message = f"<p class='text-base font-medium mb-3'>Đây là các đơn hàng {label} của bạn:</p>"
+            message += "<div class='flex flex-col gap-4'>"
+            for o in orders:
+                message += build_order_html(o, db.products_collection)
+            message += "</div>"
+            dispatcher.utter_message(text=message)
+
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            dispatcher.utter_message(text="Đã xảy ra lỗi khi kiểm tra đơn hàng.")
+
+        return []
+class ActionListRecentOrders(Action):
+    def name(self) -> Text:
+        return "action_list_recent_orders"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        db = DatabaseService()
+        user_id = _validate_user(tracker, dispatcher)
+        if not user_id:
+            return []
+
+        limit_val = tracker.get_slot("order_limit")
+        try:
+            limit = int(limit_val) if limit_val else 5
+            if limit <= 0:
+                limit = 5
+        except (TypeError, ValueError):
+            limit = 5
+
+        try:
+            orders = list(db.orders_collection.find({"user": user_id}).sort("createdAt", -1).limit(limit))
+
+            if not orders:
+                dispatcher.utter_message(text="Bạn chưa có đơn hàng nào.")
+                return []
+
+            message = f"<p class='text-base font-medium mb-3'>Đây là {limit} đơn hàng gần đây của bạn:</p>"
+            message += "<div class='flex flex-col gap-4'>"
+            for o in orders:
+                message += build_order_html(o, db.products_collection)
+            message += "</div>"
+            dispatcher.utter_message(text=message)
+
+        except Exception:
+            import traceback
+            traceback.print_exc()
+            dispatcher.utter_message(text="Đã có lỗi khi truy xuất danh sách đơn hàng.")
+
+        return [SlotSet("order_limit", None)]
