@@ -94,7 +94,7 @@ rules:
     steps:
       - intent: select_branch
       - action: action_confirm_after_branch
-  
+
   - rule: Show variant
     steps:
       - intent: show_variant_details
@@ -106,3 +106,17 @@ rules:
           - intent: out_of_scope
           - intent: nlu_fallback
       - action: utter_fallback
+
+  - rule: Bắt đầu quy trình thêm vào giỏ hàng
+    steps:
+      - intent: add_to_cart
+      - action: add_to_cart_form
+      - active_loop: add_to_cart_form
+
+  - rule: Hoàn tất form và gọi action_add_to_cart
+    condition:
+      - active_loop: add_to_cart_form
+    steps:
+      - action: add_to_cart_form
+      - active_loop: null
+      - action: action_add_to_cart

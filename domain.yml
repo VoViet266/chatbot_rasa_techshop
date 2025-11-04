@@ -70,6 +70,7 @@ entities:
   - brand
   - full_name
   - product
+  - product_name
   - product_1
   - product_2
   - quantity
@@ -118,6 +119,7 @@ slots:
     mappings:
       - type: from_entity
         entity: order_index
+
   time:
     type: text
     influence_conversation: true
@@ -162,6 +164,13 @@ slots:
       - type: from_entity
         entity: product
 
+  product_name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: product_name
+
   battery_qualifier:
     type: text
     influence_conversation: false
@@ -195,6 +204,7 @@ slots:
     mappings:
       - type: from_entity
         entity: variant_name
+
   variant_color:
     type: text
     influence_conversation: true
@@ -353,6 +363,13 @@ forms:
       - variant_name
       - quantity
 
+  add_to_cart_form:
+    required_slots:
+      - product_name
+      - variant_name
+      - variant_color
+      - quantity
+
   compare_products_form:
     required_slots:
       - product_1
@@ -385,6 +402,11 @@ responses:
     - text: "Bạn muốn phiên bản nào?"
     - text: "Dạ anh/chị chọn phiên bản nào ạ?"
     - text: "Dạ em xin hỏi anh/chị cần phiên bản nào ạ?"
+
+  utter_ask_variant_color:
+    - text: "Bạn muốn màu sắc nào?"
+    - text: "Dạ anh/chị chọn màu gì ạ?"
+    - text: "Dạ em xin hỏi anh/chị cần màu sắc nào ạ?"
 
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"

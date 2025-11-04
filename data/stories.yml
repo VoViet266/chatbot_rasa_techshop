@@ -113,10 +113,13 @@ stories:
       - intent: cancel_order
       - action: action_cancel_order
   # Thêm sản phẩm vào giỏ hàng
-  - story: Thêm sản phẩm vào giỏ hàng
+  - story: quy trình thêm giỏ hàng
     steps:
-    - intent: add_to_cart
-    - action: action_add_to_cart
+      - intent: add_to_cart
+      - action: add_to_cart_form
+      - active_loop: add_to_cart_form
+      - active_loop: null
+      - action: action_add_to_cart
   # 4. TRA CỨU ĐƠN HÀNG
   - story: Tra đơn hàng bằng ID (người dùng nhập sẵn)
     steps:
