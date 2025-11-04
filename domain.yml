@@ -42,6 +42,10 @@ intents:
   - ask_product_price
   - chitchat
   - show_variant_details
+  - ask_order_by_product
+  - ask_unpaid_orders
+  - ask_unshipped_orders
+  - ask_recent_orders
 
 entities:
   - branch_name
@@ -79,6 +83,7 @@ entities:
   - product_2
   - quantity
   - order_id
+  - order_limit
   - order_status
   - order_direction
   - order_index
@@ -95,6 +100,12 @@ slots:
     mappings:
       - type: from_entity
         entity: user_id
+
+  order_limit:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: order_limit
 
   order_status:
     type: text
@@ -627,6 +638,13 @@ actions:
   - utter_ask_product_1
   - utter_ask_product_2
   - utter_order_confirmed
+  - utter_faq_overheating
+  - utter_faq_connection_issue
+  - utter_ask_order_id
+  - utter_order_not_found
+  - utter_no_orders_found
+  - utter_ask_if_want_to_order
+  - utter_fallback
   - action_provide_product_info
   - action_confirm_after_branch
   - action_provide_warranty_info
@@ -640,19 +658,15 @@ actions:
   - action_add_to_cart
   - action_compare_products
   - action_check_stock
-  - utter_fallback
   - action_restart_slot
-  - utter_faq_overheating
-  - utter_faq_connection_issue
   - action_check_order_specific
   - action_check_order_general
   - action_check_order_filter
   - action_provide_product_price
   - action_show_variant_details
-  - utter_ask_order_id
-  - utter_order_not_found
-  - utter_no_orders_found
-  - utter_ask_if_want_to_order
+  - action_check_order_by_product
+  - action_check_unpaid_or_unshipped_orders
+  - action_list_recent_orders
 
 session_config:
   session_expiration_time: 60

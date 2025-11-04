@@ -134,13 +134,15 @@ class ActionProvideProductPrice(Action):
             return []
         
         pipeline_search = build_search_pipeline(product_name_slot)
-        product_data = db.products_collection.aggregate(pipeline_search)
+        product_data = list(db.products_collection.aggregate(pipeline_search))
+        
+        
         
 
         if not product_data:
             dispatcher.utter_message(text=f"Xin lỗi, tôi không tìm thấy sản phẩm {product_name_slot}.")
             return []
-
+        product_data = product_data[0]
         variants_id = product_data.get("variants", [])
         product_name = product_data.get("name", product_name_slot)
         discount = product_data.get("discount", 0) 

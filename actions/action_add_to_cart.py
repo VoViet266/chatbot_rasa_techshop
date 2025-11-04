@@ -5,7 +5,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from bson import ObjectId
 from utils.product_pipelines import build_search_pipeline
 
-# Giả định bạn có các file utils này giống như file trước
+
 from utils.database import DatabaseService
 
 

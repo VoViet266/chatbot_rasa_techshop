@@ -268,19 +268,19 @@ class ActionConfirmAfterBranch(Action):
         branch_name = branch_info.get("name") if branch_info else "Chi nhánh đã chọn"
 
         summary_message = (
-    "<b>Vui lòng xác nhận lại thông tin đơn hàng của bạn:</b><br><br>"
-    f"- Sản phẩm: <b>{product_name}</b><br>"
-    f"- Phiên bản: <b>{variant_name}</b><br>"
-    f"- Số lượng: <b>{quantity}</b><br>"
-    f"- Đặt từ chi nhánh: <b>{branch_name}</b><br>"
-    f"- Tổng cộng: <b>{format_vnd(total_price)}</b><br><br>"
-    "<b>Thông tin giao hàng:</b><br>"
-    f"- Người nhận: {tracker.get_slot('validated_customer_name')}<br>"
-    f"- Số điện thoại: {tracker.get_slot('validated_phone')}<br>"
-    f"- Địa chỉ: {tracker.get_slot('validated_address')}<br><br>"
-    "Bạn có muốn xác nhận đặt hàng không?"
-    )
-        dispatcher.utter_message(text=summary_message,buttons=[
+            "<b>Vui lòng xác nhận lại thông tin đơn hàng của bạn:</b><br><br>"
+            f"- Sản phẩm: <b>{product_name}</b><br>"
+            f"- Phiên bản: <b>{variant_name}</b><br>"
+            f"- Số lượng: <b>{quantity}</b><br>"
+            f"- Đặt từ chi nhánh: <b>{branch_name}</b><br>"
+            f"- Tổng cộng: <b>{format_vnd(total_price)}</b><br><br>"
+            "<b>Thông tin giao hàng:</b><br>"
+            f"- Người nhận: {tracker.get_slot('validated_customer_name')}<br>"
+            f"- Số điện thoại: {tracker.get_slot('validated_phone')}<br>"
+            f"- Địa chỉ: {tracker.get_slot('validated_address')}<br><br>"
+            "Bạn có muốn xác nhận đặt hàng không?"
+        )
+        dispatcher.utter_message(text=summary_message,  buttons=[
             {
                 "title": "Tôi xác nhận đơn hàng",
                 "payload": f'/confirm_order',
