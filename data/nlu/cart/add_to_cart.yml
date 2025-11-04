@@ -4,42 +4,53 @@ nlu:
   - intent: add_to_cart
     examples: |
 
-      - Thêm vào giỏ hàng [iPhone 16](product) [màu xanh 256GB](variant_name) [2](quantity) cái
-      - Cho vào giỏ [Samsung S24](product) [bản tiêu chuẩn](variant_name) [1](quantity) chiếc
-      - Add to cart [MacBook Air M3](product) [bản 256GB](variant_name) [1](quantity) cái
-      - Bỏ vào giỏ [iPad Pro](product) [13 inch WiFi 128GB](variant_name) [1](quantity) cái
-      - Lưu vào giỏ [Galaxy Z Fold 6](product) [màu titan](variant_name) [2](quantity) cái
+      - Thêm vào giỏ hàng [iPhone 16](product_name) [màu xanh](variant_color) [256GB](variant_name) [2](quantity) cái
+      - Cho vào giỏ [Samsung S24](product_name) bản [tiêu chuẩn](variant_name) [1](quantity) chiếc
+      - Add to cart [MacBook Air M3](product_name) [bản 256GB](variant_name) [1](quantity) cái
+      - Bỏ vào giỏ [iPad Pro](product_name) [13 inch WiFi 128GB](variant_name) [1](quantity) cái
+      - Lưu vào giỏ [Galaxy Z Fold 6](product_name) [màu titan](variant_color) [2](quantity) cái
 
+      - Thêm vào giỏ hàng [iPhone 16](product_name)
+      - Cho vào giỏ [Samsung S24](product_name)
+      - Add to cart [MacBook Air M3](product_name)
+      - Bỏ vào giỏ [iPad Pro](product_name)
+      - Để vào giỏ hàng [AirPods Pro](product_name)
+      - Lưu vào giỏ [Dell XPS 13](product_name)
+      - Thêm [Sony WH-1000XM5](product_name) vào giỏ
+      - Giỏ hàng thêm [Galaxy Watch](product_name)
 
-      - Thêm vào giỏ hàng [iPhone 16](product)
-      - Cho vào giỏ [Samsung S24](product)
-      - Add to cart [MacBook Air M3](product)
-      - Bỏ vào giỏ [iPad Pro](product)
-      - Để vào giỏ hàng [AirPods Pro](product)
-      - Lưu vào giỏ [Dell XPS 13](product)
-      - Thêm [Sony WH-1000XM5](product) vào giỏ
-      - Giỏ hàng thêm [Galaxy Watch](product)
-
-      - Tôi muốn thêm [iPhone 16](product) vào giỏ hàng
-      - Cho tôi thêm [Samsung S24](product) vào giỏ
-      - Giúp tôi thêm [MacBook Air](product) vào giỏ hàng
-      - Mình muốn cho [iPad Pro](product) vào giỏ
-      - Tôi cần thêm [AirPods Pro](product) vào giỏ hàng
+      - Tôi muốn thêm [iPhone 16](product_name) vào giỏ hàng
+      - Cho tôi thêm [Samsung S24](product_name) vào giỏ
+      - Giúp tôi thêm [MacBook Air](product_name) vào giỏ hàng
+      - Mình muốn cho [iPad Pro](product_name) vào giỏ
+      - Tôi cần thêm [AirPods Pro](product_name) vào giỏ hàng
 
       - Thêm vào giỏ hàng
-      - Cho vào giỏ
-      - Add to cart
-      - Thêm vào giỏ
-      - Bỏ vào giỏ hàng
-      - Cart
-      - Thêm luôn
-      - Thêm vào giỏ hàng nào
-      - Thêm vào giỏ hàng thôi
+      - Tôi cần thêm vào giỏ hàng
+      - Tôi muốn thêm sản phẩm vào giỏ hàng
+      - Thêm sản phẩm vào giỏ hàng giúp tôi
 
+      - Màu [xanh](variant_color) nhe
+      - Thêm màu [đỏ](variant_color) nhé
+      - Cho màu [tím](variant_color) vào giỏ
+      - Thêm màu [đỏ](variant_color) vào giỏ hàng
+      - Bỏ [màu đen](variant_color) vào giỏ
+      - Lưu [màu trắng](variant_color) vào giỏ hàng
+      - Màu [titan](variant_color) đi
+      - Màu [hồng](variant_color) nhé
+      - Màu [titan](variant_color) cho tôi
+      - Lấy màu [vàng](variant_color)
 
-      - Thêm [bản 256GB](variant_name) vào giỏ
-      - Cho [màu xanh](variant_color) vào giỏ
+      - Tôi chọn phiên bản [256GB](variant_name)
+      - [128 GB](variant_name)
+      - Tôi chọn [128GB](variant_name)
+      - Thêm bản [256GB](variant_name) vào giỏ đi
       - Thêm [bản cao cấp](variant_name) vào giỏ hàng
 
       - Thêm [2](quantity) cái vào giỏ
       - Cho [3](quantity) chiếc vào giỏ hàng
+      - Bỏ [1](quantity) sản phẩm vào giỏ
+      - Lưu [4](quantity) cái vào giỏ hàng
+      - [2](quantity) cái nhé
+      - Lấy [3](quantity) cái đi
+      - [5](quantity) chiếc đi
