@@ -90,11 +90,6 @@ rules:
       - action: action_submit_order
       - active_loop: null
 
-  - rule: Người dùng chọn chi nhánh
-    steps:
-      - intent: select_branch
-      - action: action_confirm_after_branch
-
   - rule: Show variant
     steps:
       - intent: show_variant_details

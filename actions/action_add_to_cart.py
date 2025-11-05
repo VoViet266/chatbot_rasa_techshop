@@ -141,7 +141,7 @@ class ActionAddToCart(Action):
                 buttons = [
                     {
                         "title": branch["branch_name"],
-                        "payload": f'/inform{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
+                        "payload": f'/select_branch{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
                     }
                     for branch in available_branches
                 ]
