@@ -14,5 +14,66 @@ nlu:
       - Tôi cần thêm vào giỏ hàng
       - Tôi muốn thêm sản phẩm vào giỏ hàng
       - Thêm sản phẩm vào giỏ hàng giúp tôi
+      
+      # product_name
+      - Thêm vào giỏ hàng [iPhone 16](product_name)
+      - Cho vào giỏ [Samsung S24](product_name)
+      - Add to cart [MacBook Air M3](product_name)
+      - Bỏ vào giỏ [iPad Pro](product_name)
+      - Để vào giỏ hàng [AirPods Pro](product_name)
+      - Lưu vào giỏ [Dell XPS 13](product_name)
+      - Thêm [Sony WH-1000XM5](product_name) vào giỏ
+      - Giỏ hàng thêm [Galaxy Watch](product_name)
+      - Tôi muốn thêm [iPhone 16](product_name) vào giỏ hàng
+      - Cho tôi thêm [Samsung S24](product_name) vào giỏ
+      - Giúp tôi thêm [MacBook Air](product_name) vào giỏ hàng
+      - Mình muốn cho [iPad Pro](product_name) vào giỏ
+      - Tôi cần thêm [AirPods Pro](product_name) vào giỏ hàng
+
+      # quantity
+      - Thêm [2](quantity) cái vào giỏ
+      - Cho [3](quantity) chiếc vào giỏ hàng
+      - Bỏ [1](quantity) sản phẩm vào giỏ
+      - Lưu [4](quantity) cái vào giỏ hàng
+      - [2](quantity) cái nhé
+      - Lấy [3](quantity) cái đi
+      - [5](quantity) chiếc đi
+      - Tôi muốn thêm [6](quantity) cái
+      - Thêm vào giỏ hàng [7](quantity) cái
+
+      # variant_name
+      - Tôi chọn phiên bản [256GB](variant_name)
+      - [128 GB](variant_name)
+      - Tôi chọn [128GB](variant_name)
+      - Thêm bản [256GB](variant_name) vào giỏ đi
+      - Thêm [bản cao cấp](variant_name) vào giỏ hàng
+      - [iPhone 16 Pro Max 256GB](variant_name) nhé
+      - [Samsung Galaxy S23 Ultra 256GB](variant_name)
+      - [iPhone 16 128GB](variant_name)
+      - [iPhone 15 Pro (Trắng)](variant_name)
+      - [MacBook Air M2 512GB](variant_name)
+      - [Samsung Galaxy A55 5G](variant_name)
+
+      # variant_color
+      - Màu [xanh](variant_color) nhe
+      - Thêm màu [đỏ](variant_color) nhé
+      - Cho màu [tím](variant_color) vào giỏ
+      - Thêm màu [đỏ](variant_color) vào giỏ hàng
+      - Bỏ [màu đen](variant_color) vào giỏ
+      - Lưu [màu trắng](variant_color) vào giỏ hàng
+      - Màu [titan](variant_color) đi
+      - Màu [hồng](variant_color) nhé
+      - Màu [titan](variant_color) cho tôi
+      - Lấy màu [vàng](variant_color)
+      - Chọn màu [xanh lá](variant_color)
+      - [Titan trắng](variant_color)
+      - [Đen bóng](variant_color)
+      - [Hồng vàng](variant_color)
+      - [Titan mạ](variant_color)
+      - [Xanh dương](variant_color)
+      - [Đỏ ruby](variant_color)
+      - [Trắng ngọc trai](variant_color)
+      - [Đen](variant_color)
+      - [Bạc](variant_color)
 
       

@@ -1,11 +1,8 @@
 import requests
-from rasa_sdk.events import SlotSet, AllSlotsReset
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet, AllSlotsReset
 from bson import ObjectId
-from utils.product_pipelines import build_search_pipeline
-
-
 from utils.database import DatabaseService
 
 
@@ -34,14 +31,10 @@ class ActionAddToCart(Action):
             )
             return []
 
-        # 2. KỊCH BẢN 1: Chưa có SẢN PHẨM
-        if not product_name:
-            dispatcher.utter_message(text="Bạn muốn thêm sản phẩm nào vào giỏ hàng?")
-            return []
-
-        # Tìm sản phẩm
-        pipeline_search = build_search_pipeline(product_name)
-        product_data = list(db_service.products_collection.aggregate(pipeline_search))
+        # 2. Tìm sản phẩm theo tên
+        product_data = db_service.products_collection.find_one(
+            {"name": {"$regex": f"{product_name}", "$options": "i"}}
+        )
 
         if not product_data:
             dispatcher.utter_message(
@@ -49,112 +42,49 @@ class ActionAddToCart(Action):
             )
             return [AllSlotsReset()]
 
-        product_data = product_data[0]
+        # 3. Lấy danh sách variant ID
         variant_ids = product_data.get("variants", [])
-
         if not variant_ids:
             dispatcher.utter_message(
                 text=f"Sản phẩm {product_name} hiện không có phiên bản nào."
             )
             return [AllSlotsReset()]
 
-        # 3. KỊCH BẢN 2: Chưa có PHIÊN BẢN
-        if not variant_name:
-            available_groups = db_service.variants_collection.distinct(
-                "name", {"_id": {"$in": variant_ids}}
-            )
+        # 4. Tìm variant theo tên
+        variant = db_service.variants_collection.find_one(
+            {
+                "_id": {"$in": variant_ids},
+                "name": {"$regex": f"{variant_name}", "$options": "i"},
+            }
+        )
 
-            buttons = []
-            for variant_name in available_groups:
-                buttons.append(
-                    {
-                        "title": f"{variant_name}",
-                        "payload": f'/cart_variant_name{{"variant_name": "{variant_name}"}}',
-                    }
-                )
-
+        if not variant:
             dispatcher.utter_message(
-                text=f"Bạn muốn thêm phiên bản nào của <b>{product_name}</b> vào giỏ?",
-                buttons=buttons,
+                text=f"Phiên bản {variant_name} của sản phẩm {product_name} không tồn tại."
             )
-            # Giữ lại product_name và chờ người dùng chọn
             return [SlotSet("product_name", product_name)]
 
-        # 4. KỊCH BẢN 3: Chưa có MÀU SẮC (variant_color)
-        if not variant_color:
-            try:
-                available_colors_docs = db_service.variants_collection.find(
-                    {"_id": {"$in": variant_ids}, "name": variant_name},
-                    {"color": 1, "_id": 0},
-                )
+        # 5. Kiểm tra màu trong variant
+        color_match = next(
+            (
+                c
+                for c in variant.get("color", [])
+                if c.get("colorName", "").strip().lower()
+                == variant_color.strip().lower()
+            ),
+            None,
+        )
 
-                available_colors = set()
-                for doc in available_colors_docs:
-                    for color_obj in doc.get("color", []):
-                        if color_obj.get("colorName"):
-                            available_colors.add(color_obj["colorName"])
-
-            except Exception as e:
-                print(f"Error querying distinct colors: {e}")
-                dispatcher.utter_message(
-                    text="Đã có lỗi khi tải các màu của phiên bản."
-                )
-                return [AllSlotsReset()]
-
-            if not available_colors:
-                dispatcher.utter_message(
-                    text=f"Phiên bản {variant_name} không tìm thấy màu nào."
-                )
-                return [AllSlotsReset()]
-
-            if len(available_colors) == 1:
-                selected_color = list(available_colors)[0]
-                dispatcher.utter_message(
-                    text=f"Bạn đã chọn {variant_name}. hiện tại {selected_color} là màu duy nhất bạn nhé."
-                )
-                return [SlotSet("variant_color", selected_color)]
-
-            buttons = []
-            for color_name in available_colors:
-                buttons.append(
-                    {
-                        "title": f"{color_name}",
-                        "payload": f'/inform{{"variant_color": "{color_name}"}}',
-                    }
-                )
-
+        if not color_match:
             dispatcher.utter_message(
-                text=f"Bạn đã chọn <b>{variant_name}</b>. Vui lòng chọn màu sắc:",
-                buttons=buttons,
+                text=f"Phiên bản {variant_name} không có màu {variant_color}."
             )
             return [
                 SlotSet("product_name", product_name),
                 SlotSet("variant_name", variant_name),
             ]
 
-        # 5. KỊCH BẢN 4: CHƯA CÓ CHI NHÁNH
-        found_variant = db_service.variants_collection.find_one(
-            {
-                "_id": {"$in": variant_ids},
-                "name": {"$regex": f"{variant_name}", "$options": "i"},
-                "color": {
-                    "$elemMatch": {
-                        "colorName": {"$regex": f"{variant_color}", "$options": "i"}
-                    }
-                },
-            }
-        )
-
-        if not found_variant:
-            dispatcher.utter_message(
-                text=f"Xin lỗi, tôi không tìm thấy phiên bản {variant_name} - {variant_color}."
-            )
-            return [AllSlotsReset()]
-
-        variant_id = found_variant["_id"]
-        variant_price = found_variant.get("price", 0)
-
-        # 5.2. Parse số lượng (lấy từ slot "quantity", default là 1)
+        # 6. Parse số lượng
         try:
             quantity = int(float(quantity_str))
             if quantity <= 0:
@@ -162,6 +92,7 @@ class ActionAddToCart(Action):
         except (ValueError, TypeError):
             quantity = 1
 
+        # 7. Nếu chưa có chi nhánh, chọn hoặc hỏi người dùng
         if not branch_id:
             pipeline = [
                 {
@@ -170,8 +101,8 @@ class ActionAddToCart(Action):
                         "isActive": True,
                         "variants": {
                             "$elemMatch": {
-                                "variantId": variant_id,
-                                "stock": {"$gte": quantity},  # Kiểm tra đủ số lượng
+                                "variantId": variant["_id"],
+                                "stock": {"$gte": quantity},
                             }
                         },
                     }
@@ -193,6 +124,7 @@ class ActionAddToCart(Action):
                     }
                 },
             ]
+
             available_branches = list(
                 db_service.inventories_collection.aggregate(pipeline)
             )
@@ -206,20 +138,19 @@ class ActionAddToCart(Action):
             if len(available_branches) == 1:
                 branch_id = str(available_branches[0]["branch_id"])
             else:
-                # Hiển thị buttons chọn chi nhánh
-                buttons = []
-                for branch in available_branches:
-                    buttons.append(
-                        {
-                            "title": f"{branch['branch_name']}",
-                            "payload": f'/inform{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
-                        }
-                    )
+                buttons = [
+                    {
+                        "title": branch["branch_name"],
+                        "payload": f'/inform{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
+                    }
+                    for branch in available_branches
+                ]
 
                 dispatcher.utter_message(
                     text="Sản phẩm này có sẵn tại các chi nhánh sau. Bạn muốn thêm vào giỏ hàng từ chi nhánh nào?",
                     buttons=buttons,
                 )
+
                 return [
                     SlotSet("product_name", product_name),
                     SlotSet("variant_name", variant_name),
@@ -227,18 +158,23 @@ class ActionAddToCart(Action):
                     SlotSet("quantity", quantity),
                 ]
 
+        # 8. Gửi dữ liệu đến API backend (đoạn này cậu tự viết logic gọi API)
         payload = {
             "items": [
                 {
                     "product": str(product_data["_id"]),
-                    "variant": str(variant_id),
+                    "variant": str(variant["_id"]),
                     "color": variant_color,
                     "quantity": quantity,
-                    "price": variant_price,
+                    "price": variant["price"],
                     "branch": branch_id,
                 }
             ]
         }
+
+        dispatcher.utter_message(
+            text=f"Chuẩn bị thêm {quantity} x {product_name} ({variant_name} - {variant_color}) vào giỏ hàng."
+        )
 
         headers = {"Content-Type": "application/json"}
         if token:
