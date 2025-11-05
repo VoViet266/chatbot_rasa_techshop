@@ -380,10 +380,22 @@ forms:
 
   add_to_cart_form:
     required_slots:
-      - product_name
-      - variant_name
-      - variant_color
-      - quantity
+      product_name:
+      - type: from_entity
+        entity: product_name
+      - type: from_text
+      variant_name:
+      - type: from_entity
+        entity: variant_name
+      - type: from_text
+      variant_color:
+      - type: from_entity
+        entity: variant_color
+      - type: from_text
+      quantity:
+      - type: from_entity
+        entity: quantity
+      - type: from_text
 
   compare_products_form:
     required_slots:

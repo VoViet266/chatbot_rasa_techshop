@@ -48,10 +48,10 @@ class ActionAddToCart(Action):
                 text=f"Sản phẩm '{product_name}' không tồn tại. Vui lòng chọn sản phẩm khác."
             )
             return [AllSlotsReset()]
-        
+
         product_data = product_data[0]
         variant_ids = product_data.get("variants", [])
-        
+
         if not variant_ids:
             dispatcher.utter_message(
                 text=f"Sản phẩm {product_name} hiện không có phiên bản nào."
