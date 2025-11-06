@@ -16,6 +16,10 @@ nlu:
       - Thêm sản phẩm vào giỏ hàng giúp tôi
       
       # product_name
+      - [iPhone 16](product_name)
+      - [Samsung S24](product_name)
+      - Thêm [MacBook Air M3](product_name)
+      - [iPad Pro](product_name)
       - Thêm vào giỏ hàng [iPhone 16](product_name)
       - Cho vào giỏ [Samsung S24](product_name)
       - Add to cart [MacBook Air M3](product_name)
@@ -76,4 +80,64 @@ nlu:
       - [Đen](variant_color)
       - [Bạc](variant_color)
 
-      
+  - lookup: product_name
+    examples: |
+      - iPhone 16 Pro Max
+      - Samsung Galaxy S23 Ultra
+      - MacBook Air M3
+      - iPhone 15 Pro Max
+      - Sony WH-1000XM5
+      - Dell XPS 13
+      - Sony WH-1000XM5
+      - Samsung Galaxy Z Fold 6
+  
+  - lookup: variant_name
+    examples: |
+      - Samsung Galaxy Z Fold 6 12GB 256GB
+      - iPhone 16 Pro Max 512GB
+      - MacBook Air M3 16GB 512GB
+      - Samsung Galaxy Z Fold6 12GB 512GB
+      - Sony WH-1000XM5 (Đen)
+      - Tai nghe chụp tai Gaming Sony Inzone H3 (Trắng)
+      - iPhone 16 Pro Max 256GB
+      - Samsung Galaxy S23 Ultra 256GB
+      - iPhone 16 128GB
+      - iPhone 15 Pro (Trắng)
+      - Samsung Galaxy A55 5G
+      - Samsung Galaxy M55
+      - Samsung Galaxy S25 Plus 5G 12GB 256GB
+      - Galaxy Buds2 Pro
+      - Beats Fit Pro - Chính hãng
+      - AirPods Pro 2 (USB-C
+  
+  - lookup: variant_color
+    examples: |
+      - Đen
+      - Trắng
+      - Xanh dương
+      - Tím nhạt
+      - Đỏ
+      - Vàng
+      - Hồng
+      - Titan
+      - Bạc
+      - Xanh lá
+      - Tím
+      - Đen bóng
+      - Hồng vàng
+      - Titan mạ
+      - Đỏ ruby
+      - Trắng ngọc trai
+  
+  - lookup: quantity
+    examples: |
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
