@@ -50,29 +50,29 @@ class ActionAddToCart(Action):
             )
             return [AllSlotsReset()]
 
-        # Đoạn này mới thêm vô, lỗi phát xóa là xong
-        variants = []
-        for variant_id in variant_ids:
-            variant_data = db_service.variants_collection.find_one({"_id": variant_id})
-            if variant_data:
-                variants.append(variant_data)
+        # # Đoạn này mới thêm vô, lỗi phát xóa là xong
+        # variants = []
+        # for variant_id in variant_ids:
+        #     variant_data = db_service.variants_collection.find_one({"_id": variant_id})
+        #     if variant_data:
+        #         variants.append(variant_data)
 
-        if len(variants) > 0:
-            buttons = []
-            for variant in variants:
-                buttons.append(
-                    {
-                        "title": variant["name"],
-                        "payload": f'/add_to_cart{{"variant_name": "{variant["name"]}"}}',
-                    }
-                )
-            dispatcher.utter_message(
-                text=f"Sản phẩm {product_name} có các phiên bản sau. Vui lòng chọn phiên bản bạn muốn:",
-                buttons=buttons,
-            )
-            # Ngắt form tạm thời, đợi user chọn
-            return [ActiveLoop(None), SlotSet("product_name", product_name)]
-        # -------------------------------------------------------------------
+        # if len(variants) > 0:
+        #     buttons = []
+        #     for variant in variants:
+        #         buttons.append(
+        #             {
+        #                 "title": variant["name"],
+        #                 "payload": f'/add_to_cart{{"variant_name": "{variant["name"]}"}}',
+        #             }
+        #         )
+        #     dispatcher.utter_message(
+        #         text=f"Sản phẩm {product_name} có các phiên bản sau. Vui lòng chọn phiên bản bạn muốn:",
+        #         buttons=buttons,
+        #     )
+        #     # Ngắt form tạm thời, đợi user chọn
+        #     return [ActiveLoop(None), SlotSet("product_name", product_name)]
+        # # -------------------------------------------------------------------
 
         # 4. Tìm variant theo tên
         variant = db_service.variants_collection.find_one(

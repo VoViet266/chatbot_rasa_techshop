@@ -5,6 +5,7 @@ intents:
   - goodbye
   - order
   - add_to_cart
+  - view_cart
   - inform
   - ask_product_info
   - ask_warranty
@@ -652,6 +653,7 @@ actions:
   - action_submit_order
   - action_cancel_order
   - action_add_to_cart
+  - action_view_cart
   - action_compare_products
   - action_check_stock
   - action_restart_slot

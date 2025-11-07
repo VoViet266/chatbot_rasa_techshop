@@ -1,0 +1,17 @@
+version: "3.1"
+
+nlu:
+- intent: view_cart
+  examples: |
+    - Tôi cần xem giỏ hàng của mình
+    - Hiển thị giỏ hàng của tôi
+    - Cho tôi xem giỏ hàng
+    - Tôi muốn kiểm tra giỏ hàng
+    - Xem giỏ hàng của tôi
+    - Hiển thị các mặt hàng trong giỏ hàng
+    - Tôi muốn xem các sản phẩm trong giỏ hàng
+    - Trong giỏ hàng của tôi có gì
+    - Cho xem giỏ hàng có gì cái
+    - Giỏ hàng của tôi hiện có những gì
+    - Kiểm tra giỏ hàng giúp tôi
+    - Tôi muốn biết giỏ hàng của tôi có gì

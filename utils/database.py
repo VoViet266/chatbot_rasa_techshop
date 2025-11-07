@@ -9,6 +9,7 @@ class DatabaseService:
         self.db = self.client["techshop_db"]
         self.users_collection = self.db["users"]
         self.orders_collection = self.db["orders"]
+        self.carts_collection = self.db["carts"]
         self.products_collection = self.db["products"]
         self.variants_collection = self.db["variants"]
         self.brands_collection = self.db["brands"]

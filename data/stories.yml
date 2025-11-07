@@ -112,17 +112,29 @@ stories:
       - action: action_preview_order
       - intent: cancel_order
       - action: action_cancel_order
-      
+
   # Thêm sản phẩm vào giỏ hàng
   - story: Thêm sản phẩm vào giỏ hàng
     steps:
-    - intent: add_to_cart
-    - action: add_to_cart_form
-    - active_loop: add_to_cart_form
-    - active_loop: null
-    - action: action_add_to_cart
-    - intent: select_branch        # người dùng chọn chi nhánh
-    - action: action_add_to_cart   # gọi lại action_add_to_cart với branch_id mới
+      - intent: add_to_cart
+      - action: add_to_cart_form
+      - active_loop: add_to_cart_form
+      - active_loop: null
+      - action: action_add_to_cart
+      - intent: select_branch
+      - action: action_add_to_cart
+
+  - story: Xem giỏ hàng rồi thêm
+    steps:
+      - intent: view_cart
+      - action: action_view_cart
+      - intent: add_to_cart
+      - action: add_to_cart_form
+      - active_loop: add_to_cart_form
+      - active_loop: null
+      - action: action_add_to_cart
+      - intent: select_branch
+      - action: action_add_to_cart
 
   # - story: user adds product to cart
   #   steps:
