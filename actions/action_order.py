@@ -1,5 +1,3 @@
-# actions/actions.py
-
 from importlib.metadata import metadata
 from typing import Any, Text, Dict, List, Tuple, Optional
 from rasa_sdk import Action, Tracker
@@ -11,7 +9,7 @@ import regex
 import requests
 import json
 from utils.format_currentcy import format_vnd
-
+from utils.product_pipelines import build_search_pipeline
 
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
     user_id = tracker.sender_id
@@ -34,11 +32,13 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
         return "Số điện thoại của bạn không hợp lệ. Vui lòng cập nhật lại thông tin cá nhân.", None
     
     # 2. Xác thực sản phẩm
-    product_data = db_service.products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
+    pipeline =  build_search_pipeline(product_name)
+    product_data = db_service.products_collection.aggregate(pipeline)
     if not product_data:
         return f"Xin lỗi, tôi không tìm thấy sản phẩm '{product_name}'. Vui lòng kiểm tra lại.", None
-
-    # 3. Xác thực phiên bản (variant)
+    product_data = product_data[0]
+    print(product_data)
+    # 3. Xác thực phiên bản 
     variant_ids = product_data.get("variants", [])
     variants_cursor = db_service.variants_collection.find({"_id": {"$in": variant_ids}})
     
@@ -54,7 +54,6 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
     variant_id = found_variant["_id"]
     
     # 4. Truy vấn tồn kho và chi nhánh
-    # Pipeline đã được sửa để phù hợp với schema Inventory
     pipeline = [
         {
             "$match": {

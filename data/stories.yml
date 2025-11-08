@@ -20,7 +20,7 @@ stories:
           - product: "iPhone 16"
       - action: action_provide_product_price
       - action: utter_ask_if_want_to_order
-      - intent: chitchat/just_looking
+      - intent: chitchat
       - action: utter_chitchat/just_looking
       - slot_was_set:
           - product: null

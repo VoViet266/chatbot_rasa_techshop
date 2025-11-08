@@ -1,7 +1,6 @@
 version: "3.1"
 
 nlu:
-  # 🔹 Tra đơn hàng cụ thể bằng mã
   - intent: ask_order_specific
     examples: |
       - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
@@ -21,7 +20,7 @@ nlu:
       - check đơn [b3b4c5c6d7d8b3b4c5c6d7d8](order_id)
       - tình trạng đơn [a9b0c1d2e3f4a9b0c1d2e3f4](order_id)
 
-  # 🔹 Tra đơn hàng chung (mới nhất, cũ nhất, thứ N)
+
   - intent: ask_order_general
     examples: |
       - xem đơn [mới](order_direction:newest) [nhất](order_index:1)
@@ -81,7 +80,6 @@ nlu:
       - tôi có đặt [Oppo Reno 12](product) không
       - đơn có sản phẩm [Realme 13 Pro](product)
 
-  # 🔹 Tra đơn chưa thanh toán
   - intent: ask_unpaid_orders
     examples: |
       - tôi có đơn nào chưa thanh toán không
@@ -94,7 +92,7 @@ nlu:
       - các đơn đang [chờ thanh toán](order_status)
       - liệt kê đơn hàng chưa thanh toán của tôi
 
-  # 🔹 Tra đơn đang giao
+
   - intent: ask_unshipped_orders
     examples: |
       - tôi có đơn nào đang giao không
@@ -108,7 +106,6 @@ nlu:
       - đơn hàng đang đi đường nào rồi
       - đơn [đang giao](order_status) của tôi đâu
 
-  # 🔹 Xem danh sách đơn hàng gần đây
   - intent: ask_recent_orders
     examples: |
       - cho tôi xem các đơn hàng gần đây

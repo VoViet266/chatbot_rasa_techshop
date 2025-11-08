@@ -89,11 +89,9 @@ class ActionShowVariantDetails(Action):
             return []
 
         # 2. Lấy sender_id để biết là user nào
-        # Chúng ta set nó vào slot để các action sau (như add_to_cart) có thể dùng
         user_id = tracker.sender_id
         
         # 3. Tạo payload data (chứa cả variant_id và user_id)
-        # Chúng ta truyền thông tin này cho action tiếp theo
         payload_data = json.dumps({
             "variant_id": variant_id_str,
             "user_id": user_id 
