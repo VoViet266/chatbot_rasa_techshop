@@ -1,6 +1,7 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from bson import ObjectId
+from utils.render_product_ui import render_product_card
 from utils.database import DatabaseService
 
 
@@ -32,21 +33,22 @@ class ActionViewCart(Action):
             dispatcher.utter_message(text="Giỏ hàng của bạn hiện đang trống.")
             return []
 
-        message_lines = ["Giỏ hàng của bạn:"]
+        result = f"<p>Giỏ hàng của bạn có {len(items)} sản phẩm</p>"
         for item in items:
-            color = item.get("color", "")
-            quantity = item.get("quantity", 1)
-            price = item.get("price", 0)
-            subtotal = quantity * price
+            product = db_service.products_collection.find_one({"_id": item["product"]})
+            brand = db_service.brands_collection.find_one({"_id": product["brand"]})
+            category = db_service.categories_collection.find_one(
+                {"_id": product["category"]}
+            )
+            if brand:
+                product["brand"] = brand["name"]
 
-            # Nếu có nhiều variant hoặc màu thì ghi rõ
-            detail = f" (Màu: {color})" if color else ""
-            message_lines.append(f"- Sản phẩm {detail} x{quantity}: {subtotal:,}₫")
+            if category:
+                product["category"] = category["name"]
 
-        total_price = cart.get("totalPrice", 0)
-        total_quantity = cart.get("totalQuantity", len(items))
-        message_lines.append(f"\nTổng số lượng: {total_quantity}")
-        message_lines.append(f"Tổng cộng: {total_price:,}₫")
-
-        dispatcher.utter_message(text="\n".join(message_lines))
+            variant = list(
+                db_service.variants_collection.find({"_id": item["variant"]})
+            )
+            result += render_product_card(product=product, variants=variant)
+        dispatcher.utter_message(text=result)
         return []

@@ -1,5 +1,4 @@
 
-import pymongo
 from rasa_sdk import Action, Tracker
 from bson import ObjectId
 from rasa_sdk.executor import CollectingDispatcher

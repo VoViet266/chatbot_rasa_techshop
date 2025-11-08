@@ -1,6 +1,6 @@
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet, AllSlotsReset
+from rasa_sdk.events import SlotSet
 from utils.database import DatabaseService
 from utils.render_product_ui import render_product_card 
 from utils.product_pipelines import build_search_pipeline
