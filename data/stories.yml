@@ -121,8 +121,6 @@ stories:
       - active_loop: add_to_cart_form
       - active_loop: null
       - action: action_add_to_cart
-      - intent: select_branch
-      - action: action_add_to_cart
 
   - story: Xem giỏ hàng rồi thêm
     steps:
@@ -132,8 +130,6 @@ stories:
       - action: add_to_cart_form
       - active_loop: add_to_cart_form
       - active_loop: null
-      - action: action_add_to_cart
-      - intent: select_branch
       - action: action_add_to_cart
 
   # - story: user adds product to cart
