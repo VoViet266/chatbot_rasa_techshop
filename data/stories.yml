@@ -132,15 +132,6 @@ stories:
       - active_loop: null
       - action: action_add_to_cart
 
-  - story: Xem giỏ hàng rồi xóa sản phẩm khỏi giỏ hàng
-    steps:
-      - intent: view_cart
-      - action: action_view_cart
-      - intent: add_to_cart
-      - action: add_to_cart_form
-      - intent: delete_from_cart
-      - action: action_delete_from_cart
-
   - story: Xóa sản phẩm khỏi giỏ hàng
     steps:
       - intent: delete_from_cart
