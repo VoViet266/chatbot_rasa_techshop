@@ -6,6 +6,7 @@ intents:
   - order
   - add_to_cart
   - view_cart
+  - delete_from_cart
   - inform
   - ask_product_info
   - ask_warranty
@@ -654,6 +655,7 @@ actions:
   - action_cancel_order
   - action_add_to_cart
   - action_view_cart
+  - action_delete_from_cart
   - action_compare_products
   - action_check_stock
   - action_restart_slot

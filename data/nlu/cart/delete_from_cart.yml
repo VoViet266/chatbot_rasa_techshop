@@ -1,0 +1,13 @@
+version: "3.1"
+
+nlu:
+  - intent: delete_from_cart
+    examples: |
+      - Xóa giỏ hàng
+      - Xóa sản phẩm khỏi giỏ hàng
+      - Tôi muốn xóa sản phẩm ra khỏi giỏ hàng
+      - Tôi muốn xóa giỏ hàng
+      - Xóa sản phẩm [iphone 16](product_name) ra khỏi giỏ hàng
+      - Xóa sản phẩm [galaxy s24](product_name)
+      - Tôi muốn xóa [iphone 15](product_name) khỏi giỏ hàng
+      - Xóa cái [galaxy a55](product_name) đi
