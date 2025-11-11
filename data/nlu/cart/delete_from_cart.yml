@@ -1,13 +1,42 @@
 version: "3.1"
 
 nlu:
-  - intent: delete_from_cart
-    examples: |
-      - Xóa giỏ hàng
-      - Xóa sản phẩm khỏi giỏ hàng
-      - Tôi muốn xóa sản phẩm ra khỏi giỏ hàng
-      - Tôi muốn xóa giỏ hàng
-      - Xóa sản phẩm [iphone 16](product_name) ra khỏi giỏ hàng
-      - Xóa sản phẩm [galaxy s24](product_name)
-      - Tôi muốn xóa [iphone 15](product_name) khỏi giỏ hàng
-      - Xóa cái [galaxy a55](product_name) đi
+- intent: delete_from_cart
+  examples: |
+    - Xóa giỏ hàng
+    - Xóa sản phẩm khỏi giỏ hàng
+    - Tôi muốn xóa sản phẩm ra khỏi giỏ hàng
+    - Tôi muốn xóa giỏ hàng
+    - Bỏ sản phẩm [iphone 16](product_name) ra khỏi giỏ
+    - Xóa sản phẩm [galaxy s24](product_name) khỏi giỏ
+    - Tôi muốn xóa [iphone 15](product_name)
+    - Gỡ [galaxy a55](product_name) đi
+    - Bỏ [Samsung Galaxy S24 Ultra](product_name) khỏi giỏ
+    - Tôi muốn xóa [Xiaomi Redmi Note 12](product_name)
+    - Xóa ngay sản phẩm [MacBook Pro M3](product_name)
+    - Gỡ cái này khỏi giỏ hàng đi
+    - Hủy sản phẩm [Apple Watch Ultra 2](product_name)
+    - Tôi muốn loại bỏ [Bàn phím cơ Logitech G Pro](product_name) khỏi giỏ hàng
+    - Bỏ chiếc [iPhone 16 128GB](product_name) này đi
+    - Xóa [Laptop Gaming Asus ROG](product_name) ra
+    - Tôi không muốn mua [máy tính học sinh sinh viên](product_name) này nữa
+
+- lookup: product_name
+  examples: |
+    iphone 16
+    iphone 15
+    galaxy s24
+    galaxy a55
+    Samsung Galaxy S24 Ultra
+    Xiaomi Redmi Note 12
+    MacBook Pro M3
+    Apple Watch Ultra 2
+    Bàn phím cơ Logitech G Pro
+    Laptop Gaming Asus ROG
+    máy tính học sinh sinh viên
+    điện thoại giá rẻ
+    iPhone 16 128GB
+    Tai nghe Airpods Pro
+    Smart TV Samsung
+    Máy ảnh Sony
+    Máy chơi game PS5

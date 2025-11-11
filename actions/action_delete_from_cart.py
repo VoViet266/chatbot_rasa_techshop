@@ -37,17 +37,33 @@ class ActionViewCart(Action):
             dispatcher.utter_message(text="Bạn vui lòng cho biết tên sản phẩm cần xóa!")
             return []
 
+        print("Chạy vô đây.")
+        print("Tên sản phẩm:", product_name)
+        print("Sản phẩm trong giỏ hàng:", cart.get("items", []))
+
         items = cart.get("items", [])
         if not items:
             dispatcher.utter_message(text="Giỏ hàng của bạn hiện đang trống.")
             return []
 
+        payload = None
+        product_to_delete = None
+
         for item in items:
             product = db_service.products_collection.find_one({"_id": item["product"]})
-            if product_name in product["name"]:
-                payload = {"productId": item["product"], "variantId": item["variant"]}
-            else:
-                dispatcher.utter_message(text=f"{product_name} không tồn tại trong giỏ hàng của bạn.")
+            if product and product_name.lower() in product["name"].lower():
+                payload = {
+                    "productId": str(item["product"]),
+                    "variantId": str(item["variant"]),
+                }
+                product_to_delete = product
+                break
+
+        if not payload:
+            dispatcher.utter_message(
+                text=f"Sản phẩm '{product_name}' không tồn tại trong giỏ hàng của bạn."
+            )
+            return [AllSlotsReset()]
 
         headers = {"Content-Type": "application/json"}
         if token:
@@ -62,7 +78,7 @@ class ActionViewCart(Action):
 
             if response.status_code in [200, 201]:
                 dispatcher.utter_message(
-                    text=f"Sản phẩm {product['name']} đã được xóa khỏi giỏ hàng thành công."
+                    text=f"Sản phẩm {product_to_delete['name']} đã được xóa khỏi giỏ hàng thành công."
                 )
             else:
                 dispatcher.utter_message(
