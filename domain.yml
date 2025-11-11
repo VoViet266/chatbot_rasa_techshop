@@ -6,6 +6,8 @@ intents:
   - order
   - add_to_cart
   - view_cart
+  - update_cart_increase
+  - update_cart_decrease
   - delete_from_cart
   - inform
   - ask_product_info
@@ -98,6 +100,13 @@ slots:
     mappings:
       - type: from_entity
         entity: user_id
+
+  quantity_change:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: quantity_change
 
   order_limit:
     type: any

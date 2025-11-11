@@ -1,0 +1,13 @@
+version: "3.1"
+nlu:
+  - intent: update_cart_increase
+    examples: |
+      - thêm 1 cái [iPhone 15](product_name)
+      - tăng số lượng [Tivi Samsung](product_name) lên
+      - tôi muốn mua thêm [1](quantity_change) cái [bàn phím cơ](product_name)
+      
+  - intent: update_cart_decrease
+    examples: |
+      - bớt [áo khoác](product_name) đi
+      - giảm [2](quantity_change) cái [tai nghe](product_name)
+      - không lấy [mũ bảo hiểm](product_name) nữa
