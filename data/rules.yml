@@ -97,9 +97,7 @@ rules:
 
   - rule: Xử lý ngoài phạm vi hoặc không hiểu
     steps:
-      - or:
-          - intent: out_of_scope
-          - intent: nlu_fallback
+      - intent: out_of_scope
       - action: utter_fallback
 
   # - rule: Bắt đầu quy trình thêm vào giỏ hàng

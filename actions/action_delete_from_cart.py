@@ -6,7 +6,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
 
 
-class ActionViewCart(Action):
+class ActionDeleteFromCart(Action):
     def name(self) -> str:
         return "action_delete_from_cart"
 
@@ -37,10 +37,6 @@ class ActionViewCart(Action):
             dispatcher.utter_message(text="Bạn vui lòng cho biết tên sản phẩm cần xóa!")
             return []
 
-        print("Chạy vô đây.")
-        print("Tên sản phẩm:", product_name)
-        print("Sản phẩm trong giỏ hàng:", cart.get("items", []))
-
         items = cart.get("items", [])
         if not items:
             dispatcher.utter_message(text="Giỏ hàng của bạn hiện đang trống.")
@@ -69,7 +65,7 @@ class ActionViewCart(Action):
         if token:
             headers["Authorization"] = f"Bearer {token}"
         try:
-            response = requests.post(
+            response = requests.delete(
                 "http://localhost:8080/api/v1/carts/remove-item",
                 json=payload,
                 headers=headers,
