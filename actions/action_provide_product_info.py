@@ -148,7 +148,7 @@ class ActionProvideProductPrice(Action):
         try:
             object_id_variants = [ObjectId(v_id) for v_id in variants_id]
             variants = list(db.variants_collection.find({"_id": {"$in": object_id_variants}}))
-        except:
+        except Exception:
             variants = list(db.variants_collection.find({"_id": {"$in": variants_id}}))
 
         if not variants:

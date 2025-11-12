@@ -14,14 +14,13 @@ class ActionUpdateCart(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict
     ) -> list[SlotSet]:
         # 1. Lấy thông tin từ tracker
-        product_name = tracker.get_slot("product_name")  # Tên sản phẩm muốn cập nhật
+        product_name = tracker.get_slot("product_name")
         quantity_action = tracker.get_slot("quantity_action")
-        intent_name = tracker.latest_message.get("intent", {}).get(
-            "name"
-        )  # Lấy intent (tăng hay giảm)
         user_id = tracker.sender_id
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
+
+        print("Chạy vô đây.")
 
         # 1. Kiểm tra đăng nhập
         if not user_id or not ObjectId.is_valid(user_id):

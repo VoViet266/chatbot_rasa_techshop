@@ -146,6 +146,16 @@ stories:
       - intent: delete_from_cart
       - action: action_delete_from_cart
 
+  - story: Tăng số lượng sản phẩm trong giỏ hàng
+    steps:
+      - intent: update_cart_increase
+      - action: action_update_cart
+
+  - story: Giảm số lượng sản phẩm trong giỏ hàng
+    steps:
+      - intent: update_cart_decrease
+      - action: action_update_cart
+
   # - story: user adds product to cart
   #   steps:
   #   - intent: add_to_cart
