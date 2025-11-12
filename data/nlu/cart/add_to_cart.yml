@@ -56,8 +56,8 @@ nlu:
       - Thêm màu [đỏ](variant_color) nhé
       - Cho màu [tím](variant_color) vào giỏ
       - Thêm màu [đỏ](variant_color) vào giỏ hàng
-      - Bỏ [màu đen](variant_color) vào giỏ
-      - Lưu [màu trắng](variant_color) vào giỏ hàng
+      - Bỏ màu [đen](variant_color) vào giỏ
+      - Lưu màu [trắng](variant_color) vào giỏ hàng
       - Màu [titan](variant_color) đi
       - Màu [hồng](variant_color) nhé
       - Màu [titan](variant_color) cho tôi
