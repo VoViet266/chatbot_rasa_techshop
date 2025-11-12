@@ -1,0 +1,44 @@
+version: "3.1"
+
+nlu:
+  - intent: request_return_order
+    examples: |
+      - Tôi muốn trả hàng
+      - Làm thế nào để trả hàng
+      - Tôi cần trả lại sản phẩm
+      - Quy trình trả hàng thế nào
+      - Cho tôi hỏi về việc trả hàng
+      - Tôi muốn hoàn trả đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi không hài lòng với đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Đơn hàng [6673f8a7e0965e26f63111ed](order_id) tôi muốn trả lại
+      - Làm sao để trả lại đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Hướng dẫn trả hàng
+      - Chính sách trả hàng
+      - Tôi muốn đổi trả sản phẩm
+      - Tôi có thể trả lại hàng không?
+      - Tôi muốn hoàn trả sản phẩm đã mua
+
+  - intent: provide_return_reason
+    examples: |
+      - Sản phẩm bị lỗi
+      - Hàng không đúng như mô tả
+      - Sản phẩm không phù hợp với nhu cầu
+      - Nhận sai sản phẩm
+      - Chất lượng không đạt yêu cầu
+      - Kích thước không vừa
+      - Màu sắc khác với hình ảnh
+      - Sản phẩm bị hư hỏng trong quá trình vận chuyển
+      - Đổi ý không muốn mua nữa
+      - Sản phẩm không hoạt động được
+      - Thiếu phụ kiện đi kèm
+      - Người bán giao sai mẫu mã
+      - Phát hiện lỗi kỹ thuật
+      - Không ưng ý với sản phẩm
+      - Có vấn đề về chất lượng
+      - Pin không đúng dung lượng
+      - Máy chạy không ổn định
+      - Màn hình bị lỗi
+      - Có tiếng ồn bất thường
+      - Không đúng cấu hình như quảng cáo
+
+

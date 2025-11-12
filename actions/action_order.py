@@ -10,6 +10,7 @@ import requests
 import json
 from utils.format_currentcy import format_vnd
 from utils.product_pipelines import build_search_pipeline
+import re
 
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
     user_id = tracker.sender_id
@@ -33,11 +34,9 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
     
     # 2. Xác thực sản phẩm
     pipeline =  build_search_pipeline(product_name)
-    product_data = db_service.products_collection.aggregate(pipeline)
+    product_data = next(db_service.products_collection.aggregate(pipeline), None)
     if not product_data:
         return f"Xin lỗi, tôi không tìm thấy sản phẩm '{product_name}'. Vui lòng kiểm tra lại.", None
-    product_data = product_data[0]
-    print(product_data)
     # 3. Xác thực phiên bản 
     variant_ids = product_data.get("variants", [])
     variants_cursor = db_service.variants_collection.find({"_id": {"$in": variant_ids}})
@@ -171,7 +170,7 @@ class ActionReviewOrder(Action):
             for branch in available_branches:
                 buttons.append({
                     "title": f"{branch['branch_name']}",
-                    "payload": f'/select_branch{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
+                    "payload": f'/select_branch_order{{"selected_branch_id": "{str(branch["branch_id"])}"}}',
                 })
             
             # Gửi message kèm buttons
@@ -213,13 +212,19 @@ class ActionReviewOrder(Action):
                 f"- Địa chỉ: {order_data['address']}\n\n"
                 f"Bạn có muốn xác nhận đặt hàng không?"
             )
-            dispatcher.utter_message(text=summary_message, buttons={
+            dispatcher.utter_message(text=summary_message, buttons=[
                 {
-                    "title": f"Xác nhận đơn hàng",
+                    "title": "Tôi xác nhận đơn hàng",
                     "payload": f'/confirm_order',
+                }, 
+                {
+                    "title": "Tôi muốn hủy đơn hàng",
+                    "payload": f'/cancel',
                 }
+            ]
                 
-            })
+                
+            )
             
             return [
                 SlotSet("validated_product_id", order_data["product_id"]),
@@ -248,7 +253,6 @@ class ActionConfirmAfterBranch(Action):
         
         # Lấy branch_id từ slot hoặc entity
         branch_id = tracker.get_slot("selected_branch_id")
-        print(branch_id)
         if not branch_id:
             branch_id = next(tracker.get_latest_entity_values("selected_branch_id"), None)     
         if not branch_id:
@@ -285,8 +289,8 @@ class ActionConfirmAfterBranch(Action):
                 "payload": f'/confirm_order',
             }, 
             {
-                "title": "Tôi muốn hủy đơn hàng",
-                "payload": f'/cancel_order',
+                "title": "Tôi muốn hủy tiến trình đặt hàng",
+                "payload": f'/cancel',
             }
         ])
         return [SlotSet("validated_branch_id", branch_id)]
@@ -320,7 +324,7 @@ class ActionSubmitOrder(Action):
             dispatcher.utter_message(
                 text="Đã có lỗi xảy ra. Thông tin đơn hàng không đầy đủ. Vui lòng thử lại từ đầu."
             )
-            ##return [AllSlotsReset()]
+            return [AllSlotsReset()]
 
         # Tạo payload đơn hàng
         order_payload = {
@@ -363,7 +367,7 @@ class ActionSubmitOrder(Action):
             if response.status_code in [200, 201]:
                 order_id = response.json().get("data", {}).get("_id", "N/A")
                 dispatcher.utter_message(
-                    text=f"✅ Đặt hàng thành công! Mã đơn hàng của bạn là **#{order_id}**."
+                    text=f"Đặt hàng thành công! Mã đơn hàng của bạn là **#{order_id}**."
                 )
             else:
                 dispatcher.utter_message(
@@ -379,6 +383,19 @@ class ActionSubmitOrder(Action):
         return [AllSlotsReset()]
 
 
+class ActionCancelOrderingProcess(Action):
+    def name(self) -> Text:
+        return "action_cancel_ordering_process"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(
+            text="Đã dừng tiến trình đặt hàng. Nếu bạn muốn đặt lại, chỉ cần nói 'Tôi muốn mua hàng' nhé."
+        )
+        return [AllSlotsReset()]
+
+
 class ActionCancelOrder(Action):
     def name(self) -> Text:
         return "action_cancel_order"
@@ -386,7 +403,51 @@ class ActionCancelOrder(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        dispatcher.utter_message(
-            text="Đơn hàng của bạn đã được hủy. Nếu bạn cần hỗ trợ thêm, đừng ngần ngại cho tôi biết nhé."
-        )
-        return [AllSlotsReset()]
+        metadata = tracker.latest_message.get("metadata", {})
+        token = metadata.get("accessToken")
+        order_id = tracker.get_slot("order_id")
+        # Nếu không có mã đơn => yêu cầu người dùng nhập
+        if not order_id:
+            text = tracker.latest_message.get("text", "")
+            match = re.search(r"[0-9a-fA-F]{24}", text)
+            if match:
+                order_id = match.group(0)
+        if not order_id:
+            dispatcher.utter_message(text="Vui lòng cung cấp mã đơn hàng bạn muốn hủy.")
+            return []
+
+        db = DatabaseService()
+        order =  db.orders_collection.find_one({"_id": ObjectId(order_id)})
+
+        if not order:
+            dispatcher.utter_message(text=f"Không tìm thấy đơn hàng có mã {order_id}.")
+            return []
+
+        status = (order.get("status") or "").upper()
+        if status != "PENDING":
+            dispatcher.utter_message(
+                text=f"Đơn hàng {order_id} hiện ở trạng thái '{status}' nên không thể hủy. Chỉ đơn đang chờ xử lý (PENDING) mới được hủy."
+            )
+            return []
+        headers = {"Content-Type": "application/json"}
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+
+        try:
+            response = requests.patch(
+                f"http://localhost:8080/api/v1/orders/cancel/{order_id}",
+                headers=headers,
+                timeout=10,
+            )
+            if response.status_code in (200, 201):
+                dispatcher.utter_message(text=f"Đơn hàng {order_id} đã được hủy thành công.")
+                return [AllSlotsReset()]
+            elif response.status_code == 401:
+                dispatcher.utter_message(text="Bạn cần đăng nhập để hủy đơn hàng này.")
+            else:
+                dispatcher.utter_message(text="Không thể hủy đơn hàng lúc này. Vui lòng thử lại sau.")
+        except Exception as e:
+            print("Error cancelling order:", str(e))
+            dispatcher.utter_message(text="Không thể kết nối đến hệ thống. Vui lòng thử lại sau.")
+        
+        return []

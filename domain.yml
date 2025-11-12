@@ -3,13 +3,15 @@
 intents:
   - greet
   - goodbye
+  - order_product
   - order
   - add_to_cart
   - view_cart
   - update_cart_increase
   - update_cart_decrease
   - delete_from_cart
-  - inform
+  - inform_product
+  - inform_order_id
   - ask_product_info
   - ask_warranty
   - suggest_product_combine
@@ -21,6 +23,7 @@ intents:
   - ask_store
   - confirm_order
   - cancel_order
+  - cancel
   - out_of_scope
   - nlu_fallback
   - compare_products
@@ -28,9 +31,13 @@ intents:
   - restart_slot
   - select_quantity
   - select_variant
-  - select_branch:
+  - select_branch_order:
       use_entities:
         - selected_branch_id
+  - select_branch_cart:
+      use_entities:
+        - selected_branch_id
+  - request_return_order
   - faq_overheating
   - faq_connection_issue
   - ask_order_specific
@@ -87,12 +94,12 @@ entities:
   - order_status
   - order_direction
   - order_index
+  - provide_return_reason
   - time
   - variant_id
   - user_id
   - variant_name
   - variant_color
-
 slots:
   user_id:
     type: text
@@ -378,6 +385,16 @@ slots:
       - type: from_entity
         entity: order_id
 
+  provide_return_reason:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: provide_return_reason
+        conditions:
+          - active_loop: return_order_form
+            requested_slot: provide_return_reason
+
 forms:
   order_form:
     required_slots:
@@ -396,6 +413,11 @@ forms:
     required_slots:
       - product_1
       - product_2
+
+  return_order_form:
+    required_slots:
+      - order_id
+      - provide_return_reason
 
 responses:
   utter_ask_product_1:
@@ -429,6 +451,11 @@ responses:
     - text: "Bạn muốn màu sắc nào?"
     - text: "Dạ anh/chị chọn màu gì ạ?"
     - text: "Dạ em xin hỏi anh/chị cần màu sắc nào ạ?"
+
+  utter_ask_reason_for_return:
+    - text: "Bạn vui lòng cho biết lý do muốn trả hàng nhé."
+    - text: "Dạ anh/chị cho em biết lý do trả hàng ạ?"
+    - text: "Dạ em xin hỏi anh/chị lý do muốn trả hàng là gì ạ?"
 
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
@@ -470,7 +497,6 @@ responses:
 
   utter_ask_order_id:
     - text: "Bạn vui lòng cung cấp mã đơn hàng (gồm 24 ký tự) để tôi kiểm tra nhé."
-    - text: "Bạn muốn kiểm tra đơn hàng nào? Vui lòng cho tôi mã đơn hàng."
 
   utter_order_not_found:
     - text: "Tôi không tìm thấy đơn hàng nào với mã {order_id}."
@@ -577,7 +603,6 @@ responses:
 
   utter_chitchat/compliment:
     - text: "Cảm ơn nha, bạn nói vậy mình ngại ghê!"
-  # dán vào mục responses: trong domain.yml
 
   utter_chitchat/positive_feedback:
     - text: "Dạ vâng!"
@@ -676,6 +701,8 @@ actions:
   - action_check_order_by_product
   - action_check_unpaid_or_unshipped_orders
   - action_list_recent_orders
+  - action_process_return_request
+  - action_cancel_ordering_process
 
 session_config:
   session_expiration_time: 60

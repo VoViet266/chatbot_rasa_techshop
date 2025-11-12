@@ -3,10 +3,15 @@ language: vi
 
 pipeline:
   - name: WhitespaceTokenizer
+    intent_tokenization_flag: False
+    token_pattern: None
 
   - name: nlu.custom_featurizer.SentenceTransformerFeaturizer
     model_name: "paraphrase-multilingual-MiniLM-L12-v2"
-    
+    pooling: "mean"
+    use_gpu: True
+
+  - name: "LexicalSyntacticFeaturizer"
   - name: RegexFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: "word"
@@ -24,9 +29,10 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
+    retrieval_intent: chitchat
 
   - name: FallbackClassifier
-    threshold: 0.4
+    threshold: 0.35
     ambiguity_threshold: 0.05
 
 policies:
@@ -35,8 +41,13 @@ policies:
     core_fallback_action_name: "utter_fallback"
     core_fallback_threshold: 0.3
     enable_fallback_prediction: true
+  - name: UnexpecTEDIntentPolicy
+    max_history: 10
+    epochs: 100
+    learning_rate: 0.001
+
   - name: TEDPolicy
     max_history: 5
-    epochs: 60
+    epochs: 100
     constrain_similarities: true
-assistant_id: 20251108-121654-brass-ramp
+assistant_id: 20251031-125521-calm-halo

@@ -102,17 +102,26 @@ stories:
       - action: action_preview_order
       - intent: confirm_order
       - action: action_submit_order
-
-  - story: Hủy đặt hàng sau khi xem trước đơn
+  # 4. TRẢ HÀNG
+  - story: Trả hàng khi có mã đơn hàng
     steps:
-      - intent: order
-      - action: order_form
-      - active_loop: order_form
-      - active_loop: null
-      - action: action_preview_order
+      - intent: request_return_order
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: action_process_return_request
+  # 5. HỦY ĐƠN HÀNG
+  - story: Hủy đơn có mã (người dùng cung cấp mã ngay)
+    steps:
       - intent: cancel_order
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
       - action: action_cancel_order
 
+  #  GIỎ HÀNG
   # Thêm sản phẩm vào giỏ hàng
   - story: Thêm sản phẩm vào giỏ hàng
     steps:
@@ -207,7 +216,6 @@ stories:
           - order_status: "đã giao"
       - action: action_check_order_filter
 
-  # 1️⃣ Tra đơn hàng theo sản phẩm
   - story: Tra đơn hàng theo sản phẩm
     steps:
       - intent: ask_order_by_product
@@ -254,6 +262,7 @@ stories:
           - product_2: "Galaxy S24"
       - action: action_compare_products
 
+  # 6. KIỂM TRA HÀNG TỒN
   - story: Kiểm tra hàng tồn (chỉ có tên)
     steps:
       - intent: check_stock
