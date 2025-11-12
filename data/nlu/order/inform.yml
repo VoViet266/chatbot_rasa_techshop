@@ -87,14 +87,15 @@ nlu:
       - màu titan
       - màu gold
 
-  # ----- SYNONYMS -----
-  # Quantity
   - synonym: "1"
     examples: |
       - một
       - 1
       - một cái
       - một chiếc
+      - 1 cái
+      - 1 chiếc
+
 
   - synonym: "2"
     examples: |
@@ -102,6 +103,8 @@ nlu:
       - 2
       - hai cái
       - hai chiếc
+      - 2 cái
+      - 2 chiếc
 
   - synonym: "3"
     examples: |
@@ -109,6 +112,8 @@ nlu:
       - 3
       - ba cái
       - ba chiếc
+      - 3 cái
+      - 3 chiếc
 
   # Storage
   - synonym: "128GB"

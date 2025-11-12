@@ -3,9 +3,9 @@ version: "3.1"
 nlu:
   - intent: ask_order_specific
     examples: |
-      - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - xem đơn hàng [68fdac60da0e22b34751e6fb](order_id)
       - check giúp tôi đơn [abcdef1234567890abcdef12](order_id)
-      - tình trạng đơn [6673f8a7e0965e26f63111ef](order_id) sao rồi
+      - tình trạng đơn [68fdac60da0e22b34751e6fb](order_id) sao rồi
       - đơn hàng [d4e5f6a1b2c3d4e5f6a1b2c3](order_id) đã gửi chưa
       - tra đơn hàng [1234567890abcdef12345678](order_id)
       - đơn hàng của tôi [fedcba0987654321fedcba09](order_id)
@@ -19,7 +19,6 @@ nlu:
       - đơn [e5f6a1b2c3d4e5f6a1b2c3d4](order_id)
       - check đơn [b3b4c5c6d7d8b3b4c5c6d7d8](order_id)
       - tình trạng đơn [a9b0c1d2e3f4a9b0c1d2e3f4](order_id)
-
 
   - intent: ask_order_general
     examples: |
@@ -92,7 +91,6 @@ nlu:
       - các đơn đang [chờ thanh toán](order_status)
       - liệt kê đơn hàng chưa thanh toán của tôi
 
-
   - intent: ask_unshipped_orders
     examples: |
       - tôi có đơn nào đang giao không
@@ -125,9 +123,6 @@ nlu:
       - tôi muốn xem các đơn mới nhất
       - cho xem danh sách đơn gần đây
       - liệt kê đơn hàng mới đặt
-regex:
-  - name: order_id
-    pattern: "[0-9a-f]{24}"
 
 lookup:
   - name: order_status

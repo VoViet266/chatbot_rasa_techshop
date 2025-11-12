@@ -4,6 +4,9 @@ nlu:
   - intent: add_to_cart
     examples: |
       - Thêm vào giỏ hàng [iPhone 16](product_name) [màu xanh](variant_color) [256GB](variant_name) [2](quantity) cái
+      - tôi muốn thêm vào giỏ hàng [Samsung S24](product_name) [bản cao cấp](variant_name) [1](quantity) chiếc
+      - Cho vào giỏ hàng [MacBook Air M3](product_name) [bản 512GB](variant_name) [1](quantity) cái
+      - Bỏ vào giỏ hàng [iPad Pro](product_name) [13 inch WiFi 256GB](variant_name) [1](quantity) cái
       - Cho vào giỏ [Samsung S24](product_name) bản [tiêu chuẩn](variant_name) [1](quantity) chiếc
       - Add to cart [MacBook Air M3](product_name) [bản 256GB](variant_name) [1](quantity) cái
       - Bỏ vào giỏ [iPad Pro](product_name) [13 inch WiFi 128GB](variant_name) [1](quantity) cái
@@ -12,10 +15,10 @@ nlu:
       - Tôi cần thêm vào giỏ hàng
       - Tôi muốn thêm sản phẩm vào giỏ hàng
       - Thêm sản phẩm vào giỏ hàng giúp tôi
-      - [iPhone 16](product_name)
-      - [Samsung S24](product_name)
+      - Thêm vào [iPhone 16](product_name)
+      - Thêm vào [Samsung S24](product_name)
       - Thêm [MacBook Air M3](product_name)
-      - [iPad Pro](product_name)
+      - Thêm vào  [iPad Pro](product_name)
       - Thêm vào giỏ hàng [iPhone 16](product_name)
       - Cho vào giỏ [Samsung S24](product_name)
       - Add to cart [MacBook Air M3](product_name)
@@ -69,6 +72,9 @@ nlu:
       - [Trắng ngọc trai](variant_color)
       - [Đen](variant_color)
       - [Bạc](variant_color)
+  
+  - intent: select_branch_cart
+      - 
 
   - lookup: product_name
     examples: |

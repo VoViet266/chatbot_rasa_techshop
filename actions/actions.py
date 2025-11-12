@@ -14,6 +14,7 @@ class ActionCustomRestart(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        print("Restarting the conversation and resetting all slots.")
         return [AllSlotsReset()]
     
     

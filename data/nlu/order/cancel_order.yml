@@ -1,24 +1,55 @@
 version: "3.1"
 
 nlu:
+  - intent: cancel
+    examples: |
+      - Thôi, tôi không đặt nữa
+      - Ngưng đặt hàng
+      - Dừng lại, tôi đổi ý
+      - Tôi chưa muốn mua nữa
+      - Bỏ qua, chưa đặt đâu
+      - Đợi chút, tôi nghĩ lại rồi
+      - Khoan, tôi muốn sửa lại thông tin
+      - Thôi không xác nhận đơn nữa
+      - Ngưng thao tác đặt hàng
+      - Tôi không muốn tiếp tục đặt hàng nữa
+
   - intent: cancel_order
     examples: |
-      - Hủy đơn hàng
-      - Tôi muốn hủy đơn hàng
-      - Hủy đặt hàng
-      - Không đặt nữa
-      - Thôi không mua nữa
-      - Tôi không muốn đặt nữa
-      - Hủy đi
-      - Thôi hủy đi
-      - Tôi đổi ý rồi
-      - Tôi không muốn mua nữa
-      - Hủy đơn này
-      - Thôi hủy luôn
-      - Hủy
-      - Bỏ qua
-      - Đổi ý
-      - Thôi không mua
-      - Hủy order
-      - Khoan đã, đừng đặt vội
-      - Thôi khỏi đặt
+      - Tôi muốn hủy đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - Hủy đơn hàng mã [68fdac60da0e22b34751e6fb](order_id)
+      - Mã đơn của tôi là [68fdac60da0e22b34751e6fb](order_id), hủy đơn này  
+      - Đơn hàng tôi đã đặt, giờ muốn hủy
+      - Làm ơn hủy giúp tôi đơn hàng đã gửi
+      - Tôi muốn hủy đơn đã đặt có mã [68fdac60da0e22b34751e6fb](order_id)
+      - Hủy đơn hàng mã [68fdac60da0e22b34751e6fb](order_id)
+      - Tôi lỡ đặt rồi, giờ muốn hủy
+      - Hủy đơn hàng ngay bây giờ
+      - Tôi muốn hủy đơn hàng vừa đặt
+      - Hủy đơn hàng [68fdac60da0e22b34751e6fb](order_id) cho tôi
+      - Tôi muốn hủy đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - Mã đơn của tôi là [68fdac60da0e22b34751e6fb](order_id), hủy đơn này
+      - Đơn hàng tôi đã đặt, giờ muốn hủy
+      - Làm ơn hủy giúp tôi đơn hàng đã gửi
+      - Tôi muốn hủy đơn
+      - Tôi lỡ đặt rồi, giờ muốn hủy
+      - Hủy đơn hàng ngay bây giờ
+      - Tôi muốn hủy đơn hàng vừa đặt
+      - Hủy đơn hàng [68fdac60da0e22b34751e6fb](order_id) cho tôi
+      
+  - intent: inform_order_id
+    examples: |
+      - Mã đơn hàng là [68fdac60da0e22b34751e6fb](order_id)
+      - Đơn hàng số [68fdac60da0e22b34751e6fb](order_id) 
+      - [68fdac60da0e22b34751e6fb](order_id)
+      - Mã đơn của tôi là [68fdac60da0e22b34751e6fb](order_id)
+      - Đây là mã đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - Số đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - ID đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - Tôi có mã đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - Tôi muốn tra cứu đơn hàng [68fdac60da0e22b34751e6fb](order_id)
+      - [68fdac60da0e22b34751e6fb](order_id) là mã đơn hàng của tôi
+
+regex:
+  - name: order_id
+    pattern: "[0-9a-fA-F]{24}"

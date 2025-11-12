@@ -15,11 +15,22 @@ nlu:
       - Địa chỉ shop
       - Mấy giờ cửa hàng mở cửa?
       - Cửa hàng có làm việc cuối tuần không?
-      
-  - intent: select_branch
+
+  - intent: select_branch_order
     examples: |
-      - [Hà Nội](branch_name)
-      - [Cửa hàng Cần Thơ](branch_name)
-      - [Cửa hàng Hà Nội](branch_name)
-      - [TP. Hồ Chí Minh](branch_name)
-      - [Đà Nẵng](branch_name)
+      - Cửa hàng [Hà Nội](branch_name)
+      - Chi nhánh [Hồ Chí Minh](branch_name)
+      - Tôi muốn chọn cửa hàng [Đà Nẵng](branch_name) 
+      - Lấy chi nhánh [Cần Thơ](branch_name)
+      - Chọn cửa hàng [Hải Phòng](branch_name)
+      - Đặt hàng tại chi nhánh [Nha Trang](branch_name)
+      - Tôi muốn nhận hàng ở cửa hàng [Biên Hòa](branch_name)
+      - Giao hàng tại chi nhánh [Vũng Tàu](branch_name)
+      - Tôi sẽ lấy ở cửa hàng [Buôn Ma Thuột](branch_name)
+
+  - intent: select_branch_cart
+    examples: |
+      - Thêm vào giỏ hàng tại cửa hàng [Hà Nội](branch_name)
+      - Chọn chi nhánh [Hồ Chí Minh](branch_name) để mua
+      - Tôi muốn mua ở cửa hàng [Đà Nẵng](branch_name)
+      - Lấy sản phẩm từ chi nhánh [Cần Thơ](branch_name)
