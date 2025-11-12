@@ -1,5 +1,5 @@
 .rasa
-/actions/__pycache__
+**/__pycache__
 /models
 **/**.pyc
 
