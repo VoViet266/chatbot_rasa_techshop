@@ -67,8 +67,6 @@ class ActionAddToCart(Action):
         # 5. Kiểm tra màu trong variant
         if variant_color.startswith("màu "):
             variant_color = variant_color.replace("màu ", "", 1).strip()
-        
-        print("Variant color:", variant_color)
 
         color_match = next(
             (

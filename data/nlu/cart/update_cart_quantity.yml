@@ -2,12 +2,54 @@ version: "3.1"
 nlu:
   - intent: update_cart_increase
     examples: |
-      - thêm 1 cái [iPhone 15](product_name)
-      - tăng số lượng [Tivi Samsung](product_name) lên
-      - tôi muốn mua thêm [1](quantity_change) cái [bàn phím cơ](product_name)
-      
+      - [Thêm](quantity_action) 1 cái [iPhone 15](product_name)
+      - [Tăng](quantity_action) số lượng [Tivi Samsung](product_name) lên
+      - Tôi muốn [mua thêm](quantity_action) [1](quantity_change) cái [bàn phím cơ](product_name)
+      - [Cộng](quantity_action) thêm [1](quantity_change) cái [chuột Logitech](product_name)
+      - [Thêm](quantity_action) vào giỏ [1](quantity_change) cái [áo sơ mi](product_name)
+      - [Tăng](quantity_action) thêm [2](quantity_change) [chai nước hoa Dior](product_name)
+      - [Mua thêm](quantity_action) [1](quantity_change) chiếc [điện thoại Samsung S24](product_name)
+      - [Cộng thêm](quantity_action) [1](quantity_change) cái [tai nghe AirPods](product_name)
+      - Cho tôi [thêm](quantity_action) [1](quantity_change) cái [đồng hồ Casio](product_name)
+      - [Tăng](quantity_action) lên [3](quantity_change) cái [ly thủy tinh](product_name)
+
   - intent: update_cart_decrease
     examples: |
-      - bớt [áo khoác](product_name) đi
-      - giảm [2](quantity_change) cái [tai nghe](product_name)
-      - không lấy [mũ bảo hiểm](product_name) nữa
+      - [Bớt](quantity_action) [áo khoác](product_name) đi
+      - [Giảm](quantity_action) [2](quantity_change) cái [tai nghe](product_name)
+      - [Không lấy nữa](quantity_action) [mũ bảo hiểm](product_name)
+      - [Trừ](quantity_action) [1](quantity_change) cái [điện thoại Nokia](product_name)
+      - [Giảm](quantity_action) số lượng [áo phông](product_name)
+      - [Xóa bớt](quantity_action) [1](quantity_change) cái [chuột gaming](product_name)
+      - [Bỏ](quantity_action) [tai nghe Bluetooth](product_name) ra khỏi giỏ
+      - [Giảm xuống](quantity_action) còn [1](quantity_change) cái [iPhone 14](product_name)
+      - [Bớt](quantity_action) [1](quantity_change) cái [đồng hồ Apple Watch](product_name)
+      - [Không muốn lấy](quantity_action) [ly thủy tinh](product_name) nữa
+
+  - lookup: quantity_action
+    examples: |
+        increase
+        decrease
+
+  - synonym: increase
+    examples: |
+      - thêm
+      - tăng
+      - mua thêm
+      - cộng
+      - cộng thêm
+      - tăng lên
+      - thêm vào
+      - cộng vào
+
+  - synonym: decrease
+    examples: |
+      - bớt
+      - giảm
+      - bỏ
+      - xóa
+      - xóa bớt
+      - trừ
+      - không lấy nữa
+      - giảm xuống
+      - không muốn lấy

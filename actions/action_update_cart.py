@@ -15,6 +15,7 @@ class ActionUpdateCart(Action):
     ) -> list[SlotSet]:
         # 1. Lấy thông tin từ tracker
         product_name = tracker.get_slot("product_name")  # Tên sản phẩm muốn cập nhật
+        quantity_action = tracker.get_slot("quantity_action")
         intent_name = tracker.latest_message.get("intent", {}).get(
             "name"
         )  # Lấy intent (tăng hay giảm)
@@ -57,9 +58,10 @@ class ActionUpdateCart(Action):
         except ValueError:
             change_value = 1
 
-        # Xác định là tăng hay giảm
-        if intent_name == "update_cart_decrease":
-            change_value = -change_value  # Chuyển thành số âm nếu là giảm
+        # Sử dụng entity quantity_action để xác định tăng hay giảm
+        if quantity_action == "decrease":
+            change_value = -change_value  # Số âm nếu giảm
+        # nếu increase hoặc None → giữ nguyên
 
         payload = None
         for item in items:
