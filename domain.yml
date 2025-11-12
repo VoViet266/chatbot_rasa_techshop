@@ -6,7 +6,6 @@ intents:
   - order_product
   - order
   - add_to_cart
-  - quantity_change
   - view_cart
   - update_cart_increase
   - update_cart_decrease
@@ -90,6 +89,8 @@ entities:
   - product_1
   - product_2
   - quantity
+  - quantity_action
+  - quantity_change
   - order_id
   - order_limit
   - order_status
@@ -101,6 +102,7 @@ entities:
   - user_id
   - variant_name
   - variant_color
+
 slots:
   user_id:
     type: text
@@ -115,6 +117,13 @@ slots:
     mappings:
       - type: from_entity
         entity: quantity_change
+
+  quantity_action:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: quantity_action
 
   order_limit:
     type: any
