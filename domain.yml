@@ -53,6 +53,7 @@ intents:
   - ask_unpaid_orders
   - ask_unshipped_orders
   - ask_recent_orders
+  - provide_return_reason
 
 entities:
   - branch_name
@@ -94,7 +95,7 @@ entities:
   - order_status
   - order_direction
   - order_index
-  - provide_return_reason
+  - return_reason
   - time
   - variant_id
   - user_id
@@ -384,16 +385,16 @@ slots:
     mappings:
       - type: from_entity
         entity: order_id
+      - type: from_text
+        intent: inform_order_id
 
-  provide_return_reason:
+  return_reason:
     type: text
     influence_conversation: false
     mappings:
       - type: from_entity
-        entity: provide_return_reason
-        conditions:
-          - active_loop: return_order_form
-            requested_slot: provide_return_reason
+        entity: return_reason
+        intent: provide_return_reason
 
 forms:
   order_form:
@@ -417,7 +418,7 @@ forms:
   return_order_form:
     required_slots:
       - order_id
-      - provide_return_reason
+      - return_reason
 
 responses:
   utter_ask_product_1:
@@ -457,6 +458,11 @@ responses:
     - text: "Dạ anh/chị cho em biết lý do trả hàng ạ?"
     - text: "Dạ em xin hỏi anh/chị lý do muốn trả hàng là gì ạ?"
 
+  utter_ask_order_id:
+    - text: "Bạn vui lòng cung cấp mã đơn hàng (gồm 24 ký tự) để tôi kiểm tra nhé."
+    - text: "Bạn muốn kiểm tra đơn hàng nào? Vui lòng cho tôi mã đơn hàng."
+    - text: "Dạ anh/chị cho em biết mã đơn hàng của anh/chị ạ?"
+
   utter_greet:
     - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
     - text: "Chào anh/chị! Em có thể hỗ trợ gì cho anh/chị ạ?"
@@ -495,8 +501,10 @@ responses:
     - text: "Cảm ơn anh/chị! Đơn hàng đã được xác nhận. Em sẽ theo dõi và thông báo khi có cập nhật mới."
     - text: "Dạ đơn của anh/chị đã được xác nhận rồi ạ. Chúng em sẽ liên hệ để hoàn tất thủ tục giao hàng nhé!"
 
-  utter_ask_order_id:
-    - text: "Bạn vui lòng cung cấp mã đơn hàng (gồm 24 ký tự) để tôi kiểm tra nhé."
+  utter_ask_return_reason:
+    - text: "Bạn vui lòng cho biết lý do trả hàng nhé."
+    - text: "Dạ anh/chị cho em biết lý do trả hàng ạ?"
+    - text: "Dạ em xin hỏi anh/chị lý do muốn trả hàng là gì ạ?"
 
   utter_order_not_found:
     - text: "Tôi không tìm thấy đơn hàng nào với mã {order_id}."
@@ -675,7 +683,7 @@ actions:
   - utter_ask_order_id
   - utter_order_not_found
   - utter_no_orders_found
-  - utter_ask_if_want_to_order
+  - utter_ask_return_reason
   - utter_fallback
   - action_provide_product_info
   - action_confirm_after_branch
@@ -701,7 +709,7 @@ actions:
   - action_check_order_by_product
   - action_check_unpaid_or_unshipped_orders
   - action_list_recent_orders
-  - action_process_return_request
+  - action_return_order
   - action_cancel_ordering_process
 
 session_config:

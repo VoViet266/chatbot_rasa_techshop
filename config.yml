@@ -3,16 +3,22 @@ language: vi
 
 pipeline:
   - name: WhitespaceTokenizer
-    intent_tokenization_flag: False
-    token_pattern: None
 
   - name: nlu.custom_featurizer.SentenceTransformerFeaturizer
     model_name: "paraphrase-multilingual-MiniLM-L12-v2"
     pooling: "mean"
-    use_gpu: True
+    use_gpu: true
 
+    # Tăng cường feature extraction
   - name: "LexicalSyntacticFeaturizer"
   - name: RegexFeaturizer
+
+    # Thêm RegexEntityExtractor để bắt pattern
+  - name: RegexEntityExtractor
+    case_sensitive: false
+    use_lookup_tables: true
+    use_regexes: true
+
   - name: CountVectorsFeaturizer
     analyzer: "word"
 
@@ -21,33 +27,44 @@ pipeline:
     min_ngram: 3
     max_ngram: 5
 
+    # Tăng epochs và thêm tham số
   - name: DIETClassifier
-    epochs: 100
+    epochs: 120
     constrain_similarities: true
+    entity_recognition: true
+    intent_classification: true
+    use_masked_language_model: true
+    number_of_transformer_layers: 2
+    transformer_size: 256
+    drop_rate: 0.2
 
   - name: EntitySynonymMapper
+
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
     retrieval_intent: chitchat
 
+    # Điều chỉnh threshold
   - name: FallbackClassifier
     threshold: 0.35
-    ambiguity_threshold: 0.05
+    ambiguity_threshold: 0.10
 
 policies:
   - name: MemoizationPolicy
+
   - name: RulePolicy
     core_fallback_action_name: "utter_fallback"
-    core_fallback_threshold: 0.3
+    core_fallback_threshold: 0.4 # Tăng từ 0.3
     enable_fallback_prediction: true
+
   - name: UnexpecTEDIntentPolicy
     max_history: 10
-    epochs: 100
+    epochs: 150 # Tăng từ 100
     learning_rate: 0.001
 
   - name: TEDPolicy
     max_history: 5
-    epochs: 100
+    epochs: 150 # Tăng từ 100
     constrain_similarities: true
-assistant_id: 20251031-125521-calm-halo
+assistant_id: 20251116-110456-legacy-pot

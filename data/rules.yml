@@ -76,34 +76,50 @@ rules:
       - intent: suggest_product_combine
       - action: action_suggest_product
 
-  - rule: Kích hoạt form đặt hàng
+  - rule: Tra đơn hàng bằng ID
     steps:
-      - intent: order
-      - action: order_form
-      - active_loop: order_form
+      - intent: ask_order_specific
+      - action: action_check_order_specific
 
-  - rule: Xử lý yêu cầu trả hàng
+  - rule: Tra đơn hàng theo trạng thái
     steps:
-      - intent: request_return_order
-      - action: action_process_return_request
+      - intent: ask_order_filter
+      - action: action_check_order_filter
 
-  - rule: Gửi form đặt hàng khi hoàn tất
-    condition:
-      - active_loop: order_form
+  - rule: Tra đơn hàng theo thời gian
     steps:
-      - intent: confirm_order
-      - action: action_submit_order
-      - active_loop: null
+      - intent: ask_order_filter
+      - action: action_check_order_filter
 
-  - rule: Show variant
+  - rule: Tra đơn hàng theo thời gian + trạng thái
+    steps:
+      - intent: ask_order_filter
+      - action: action_check_order_filter
+
+  - rule: Tra đơn hàng theo sản phẩm
+    steps:
+      - intent: ask_order_by_product
+      - action: action_check_order_by_product
+
+  - rule: Tra đơn hàng chưa thanh toán
+    steps:
+      - intent: ask_unpaid_orders
+      - action: action_check_unpaid_or_unshipped_orders
+
+  - rule: Tra đơn hàng đang giao
+    steps:
+      - intent: ask_unshipped_orders
+      - action: action_check_unpaid_or_unshipped_orders
+
+  - rule: Xem các đơn hàng gần đây
+    steps:
+      - intent: ask_recent_orders
+      - action: action_list_recent_orders
+
+  - rule: Hiển thị chi tiết phiên bản sản phẩm
     steps:
       - intent: show_variant_details
       - action: action_show_variant_details
-
-  - rule: Xử lý ngoài phạm vi hoặc không hiểu
-    steps:
-      - intent: out_of_scope
-      - action: utter_fallback
 
   - rule: Người dùng chọn chi nhánh khi đặt hàng
     steps:
@@ -116,9 +132,22 @@ rules:
       - action: action_add_to_cart
 
   - rule: Hủy đơn hàng
+    condition:
+      - active_loop: null
     steps:
       - intent: cancel_order
       - action: action_cancel_order
+
+  - rule: Xử lý khi form trả hàng hoàn tất
+    condition:
+      - active_loop: return_order_form
+      - slot_was_set:
+          - order_id: true
+          - return_reason: true
+    steps:
+      - action: return_order_form
+      - active_loop: null
+      - action: action_return_order
 
   - rule: Hoàn tất form và gọi action_add_to_cart
     condition:
@@ -127,3 +156,8 @@ rules:
       - action: add_to_cart_form
       - active_loop: null
       - action: action_add_to_cart
+
+  - rule: Xử lý ngoài phạm vi hoặc không hiểu
+    steps:
+      - intent: out_of_scope
+      - action: utter_fallback

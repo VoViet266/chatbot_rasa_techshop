@@ -35,20 +35,8 @@ nlu:
       - Tôi lỡ đặt rồi, giờ muốn hủy
       - Hủy đơn hàng ngay bây giờ
       - Tôi muốn hủy đơn hàng vừa đặt
+      - Tôi muốn hủy đơn
       - Hủy đơn hàng [68fdac60da0e22b34751e6fb](order_id) cho tôi
-      
-  - intent: inform_order_id
-    examples: |
-      - Mã đơn hàng là [68fdac60da0e22b34751e6fb](order_id)
-      - Đơn hàng số [68fdac60da0e22b34751e6fb](order_id) 
-      - [68fdac60da0e22b34751e6fb](order_id)
-      - Mã đơn của tôi là [68fdac60da0e22b34751e6fb](order_id)
-      - Đây là mã đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - Số đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - ID đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - Tôi có mã đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - Tôi muốn tra cứu đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - [68fdac60da0e22b34751e6fb](order_id) là mã đơn hàng của tôi
 
 regex:
   - name: order_id

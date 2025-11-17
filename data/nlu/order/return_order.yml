@@ -6,39 +6,81 @@ nlu:
       - Tôi muốn trả hàng
       - Làm thế nào để trả hàng
       - Tôi cần trả lại sản phẩm
-      - Quy trình trả hàng thế nào
-      - Cho tôi hỏi về việc trả hàng
-      - Tôi muốn hoàn trả đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
-      - Tôi không hài lòng với đơn hàng [6673f8a7e0965e26f63111ed](order_id)
-      - Đơn hàng [6673f8a7e0965e26f63111ed](order_id) tôi muốn trả lại
-      - Làm sao để trả lại đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Trả hàng
+      - Tôi muốn hoàn trả đơn hàng
+      - Tôi muốn trả lại đơn hàng
+      - Tôi cần hoàn trả sản phẩm đã mua
       - Hướng dẫn trả hàng
-      - Chính sách trả hàng
-      - Tôi muốn đổi trả sản phẩm
-      - Tôi có thể trả lại hàng không?
-      - Tôi muốn hoàn trả sản phẩm đã mua
+      - Tôi muốn trả lại sản phẩm tôi đã mua
+      - Tôi muốn hoàn trả sản phẩm
+      - Tôi cần trả lại đơn hàng
+      - Tôi muốn trả hàng cho đơn hàng của mình
+      - Tôi muốn hoàn trả đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi muốn trả lại đơn hàng mã [6673f8a7e0965e26f63111ed](order_id)
+      - Trả hàng cho đơn [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi muốn trả đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Đơn hàng [6673f8a7e0965e26f63111ed](order_id) tôi muốn trả lại
+      - Tôi muốn trả đơn [6673f8a7e0965e26f63111ed](order_id) vì [hàng bị vỡ](return_reason)
+      - Hoàn trả đơn [6673f8a7e0965e26f63111ed](order_id), lý do là [không thích](return_reason)
+      - Trả hàng mã [6673f8a7e0965e26f63111ed](order_id) vì [sai kích cỡ](return_reason)
+      - Tôi muốn trả lại đơn hàng [6673f8a7e0965e26f63111ed](order_id) do [hàng lỗi](return_reason)
+      - Tôi cần hoàn trả đơn [6673f8a7e0965e26f63111ed](order_id) vì [giao nhầm sản phẩm](return_reason)
+      - Trả đơn [6673f8a7e0965e26f63111ed](order_id)
+      - Hoàn trả [6673f8a7e0965e26f63111ed](order_id)
+      - Đơn [6673f8a7e0965e26f63111ed](order_id) trả lại
+      - Muốn trả đơn [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi muốn hoàn trả đơn hàng số [6913e9492af0f16cc64a8f3e](order_id)
+      - Trả hàng đơn số [6913e9492af0f16cc64a8f3e](order_id)
+      - Hoàn trả đơn số [6913e9492af0f16cc64a8f3e](order_id)
+      - Tôi muốn trả đơn [6913e9492af0f16cc64a8f3e](order_id)
+      - Đơn [6913e9492af0f16cc64a8f3e](order_id) tôi muốn trả
+      - Trả lại đơn [6913e9492af0f16cc64a8f3e](order_id)
+      - [6913e9492af0f16cc64a8f3e](order_id) trả hàng
+      - Hoàn trả [6913e9492af0f16cc64a8f3e](order_id)
+      - Cần trả đơn hàng [6913e9492af0f16cc64a8f3e](order_id)
 
   - intent: provide_return_reason
     examples: |
-      - Sản phẩm bị lỗi
-      - Hàng không đúng như mô tả
-      - Sản phẩm không phù hợp với nhu cầu
-      - Nhận sai sản phẩm
-      - Chất lượng không đạt yêu cầu
-      - Kích thước không vừa
-      - Màu sắc khác với hình ảnh
-      - Sản phẩm bị hư hỏng trong quá trình vận chuyển
-      - Đổi ý không muốn mua nữa
-      - Sản phẩm không hoạt động được
-      - Thiếu phụ kiện đi kèm
-      - Người bán giao sai mẫu mã
-      - Phát hiện lỗi kỹ thuật
-      - Không ưng ý với sản phẩm
-      - Có vấn đề về chất lượng
-      - Pin không đúng dung lượng
-      - Máy chạy không ổn định
-      - Màn hình bị lỗi
-      - Có tiếng ồn bất thường
-      - Không đúng cấu hình như quảng cáo
+      - [Sản phẩm bị lỗi](return_reason)
+      - [Không đúng mô tả](return_reason)
+      - [Đổi ý không muốn mua nữa](return_reason)
+      - [Sản phẩm giao sai](return_reason)
+      - [Sản phẩm bị hư hỏng](return_reason)
+      - [Kích thước không vừa](return_reason)
+      - [Màu sắc không đúng như mong muốn](return_reason)
+      - [Tôi không thích sản phẩm này](return_reason)
+      - [Tôi muốn trả lại vì lý do cá nhân](return_reason)
+      - [Hàng bị vỡ trong quá trình vận chuyển](return_reason)
+      - [Chất lượng không tốt](return_reason)
+      - [Không giống hình](return_reason)
+      - Lý do trả hàng là [Sản phẩm bị lỗi](return_reason)
+      - Tôi muốn trả hàng vì [Không đúng mô tả](return_reason)
+      - Tôi muốn hoàn trả vì [Đổi ý không muốn mua nữa](return_reason)
+      - Tôi cần trả lại vì [Sản phẩm giao sai](return_reason)
+      - Tôi muốn trả lại vì [Sản phẩm bị hư hỏng](return_reason)
+      - Lý do trả hàng của tôi là [Kích thước không vừa](return_reason)
+      - Tôi muốn trả hàng vì [Màu sắc không đúng như mong muốn](return_reason)
+      - Tôi muốn trả lại vì [Tôi không thích sản phẩm này](return_reason)
+      - Tôi cần hoàn trả vì [Tôi muốn trả lại vì lý do cá nhân](return_reason)
+      - Tôi muốn trả lại sản phẩm vì [Sản phẩm bị lỗi](return_reason)
+      - Tôi muốn hoàn trả đơn hàng vì [Không đúng mô tả](return_reason)
+      - Tôi muốn trả hàng vì [Đổi ý không muốn mua nữa](return_reason)
+      - Tôi cần trả lại sản phẩm vì [Sản phẩm giao sai](return_reason)
+      - Lý do tôi trả hàng là [Sản phẩm bị hư hỏng](return_reason)
+      - Tôi muốn trả lại vì [Kích thước không vừa](return_reason)
+      - Tôi muốn hoàn trả vì [Màu sắc không đúng như mong muốn](return_reason)
+      - Tôi muốn trả hàng vì [Tôi không thích sản phẩm này](return_reason)
+      - Do [hàng kém chất lượng](return_reason)
+      - Vì [sản phẩm bị trầy xước](return_reason)
+      - Sản phẩm bị [hư](return_reason)
+      - Sản phẩm bị [lag](return_reason)
+      - Sản phẩm [không dùng được](return_reason)
+      - sản phẩm [không như mong đợi](return_reason)
+      - sản phẩm [bị lỗi kỹ thuật](return_reason)
+      - sản phẩm [bị hư hỏng](return_reason)
+      - [nứt màng](return_reason)
+      - [sản phẩm bị nứt](return_reason)
 
-
+  - regex: order_id
+    examples: |
+      - \b[0-9a-fA-F]{24}\b

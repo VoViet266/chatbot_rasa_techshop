@@ -1,4 +1,3 @@
-from importlib.metadata import metadata
 from typing import Any, Text, Dict, List, Tuple, Optional
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -7,7 +6,6 @@ from utils.database import DatabaseService
 from bson import ObjectId
 import regex
 import requests
-import json
 from utils.format_currentcy import format_vnd
 from utils.product_pipelines import build_search_pipeline
 import re
@@ -215,11 +213,11 @@ class ActionReviewOrder(Action):
             dispatcher.utter_message(text=summary_message, buttons=[
                 {
                     "title": "Tôi xác nhận đơn hàng",
-                    "payload": f'/confirm_order',
+                    "payload": '/confirm_order',
                 }, 
                 {
                     "title": "Tôi muốn hủy đơn hàng",
-                    "payload": f'/cancel',
+                    "payload": '/cancel',
                 }
             ]
                 
@@ -286,11 +284,11 @@ class ActionConfirmAfterBranch(Action):
         dispatcher.utter_message(text=summary_message,  buttons=[
             {
                 "title": "Tôi xác nhận đơn hàng",
-                "payload": f'/confirm_order',
+                "payload": '/confirm_order',
             }, 
             {
                 "title": "Tôi muốn hủy tiến trình đặt hàng",
-                "payload": f'/cancel',
+                "payload": '/cancel',
             }
         ])
         return [SlotSet("validated_branch_id", branch_id)]

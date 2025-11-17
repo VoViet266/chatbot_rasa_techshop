@@ -1,7 +1,6 @@
 version: "3.1"
 
 nlu:
-
   - intent: greet
     examples: |
       - chào
@@ -14,7 +13,11 @@ nlu:
       - ad ơi
       - ê bot
       - bạn ơi
-
+      - xin chào shop
+      - chào bạn
+      - xin chào bạn
+      - xin chào bạn ạ
+      - ni hào
 
   - intent: goodbye
     examples: |
@@ -26,10 +29,8 @@ nlu:
       - chào tạm biệt
       - tôi đi đây
       - bye nha
-      - ok
       - vậy thôi
 
- 
   - intent: chitchat/thanks
     examples: |
       - cảm ơn nha
@@ -40,7 +41,6 @@ nlu:
       - biết ơn nha
       - tuyệt, cảm ơn
       - cảm ơn sự hỗ trợ
-
 
   - intent: chitchat/deny
     examples: |
@@ -80,7 +80,6 @@ nlu:
       - okela
       - tuyệt vời
 
-
   - intent: chitchat/positive_feedback
     examples: |
       - được đó
@@ -102,7 +101,6 @@ nlu:
       - bạn có ổn không?
       - khoẻ không?
 
-
   - intent: chitchat/ask_are_you_a_bot
     examples: |
       - bạn là bot à?
@@ -113,7 +111,6 @@ nlu:
       - đây là bot hay người?
       - bạn là cái gì?
 
-
   - intent: chitchat/ask_what_can_you_do
     examples: |
       - bạn làm được gì?
@@ -121,7 +118,6 @@ nlu:
       - nói cho tôi biết bạn có thể làm gì
       - bạn giúp được gì?
       - khả năng của bạn là gì?
-
 
   - intent: chitchat/insult
     examples: |
@@ -132,7 +128,6 @@ nlu:
       - dở
       - chán thế
       - bot ngáo
-
 
   - intent: chitchat/apologize
     examples: |

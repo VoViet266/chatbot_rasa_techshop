@@ -72,10 +72,6 @@ nlu:
       - [Trắng ngọc trai](variant_color)
       - [Đen](variant_color)
       - [Bạc](variant_color)
-  
-  - intent: select_branch_cart
-      - 
-
   - lookup: product_name
     examples: |
       - iPhone 16 Pro Max

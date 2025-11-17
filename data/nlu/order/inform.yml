@@ -24,7 +24,20 @@ nlu:
       - [Sony WH-1000XM5](product) [màu đen](color)
       - Lấy [iPhone 16](product) [bản 512GB](storage) [màu trắng](color)
       - [iPhone 16](product) [2](quantity) cái [màu đỏ](color)
-
+  - intent: inform_order_id
+    examples: |
+      - Mã đơn hàng là [6673f8a7e0965e26f63111ed](order_id)
+      - Đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
+      - [6673f8a7e0965e26f63111ed](order_id)
+      - Mã đơn của tôi là [6673f8a7e0965e26f63111ed](order_id)
+      - Đây là mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Số đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - ID đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi có mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Mã đơn hàng [6913e9492af0f16cc64a8f3e](order_id)
+      - Đơn [6913e9492af0f16cc64a8f3e](order_id)
+      - [6913e9492af0f16cc64a8f3e](order_id)
+      - Mã của tôi là [6913e9492af0f16cc64a8f3e](order_id)
   - intent: select_variant
     examples: |
       - Tôi chọn [bản 256GB](storage)
@@ -95,7 +108,6 @@ nlu:
       - một chiếc
       - 1 cái
       - 1 chiếc
-
 
   - synonym: "2"
     examples: |

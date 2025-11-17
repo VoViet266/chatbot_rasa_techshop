@@ -102,15 +102,7 @@ stories:
       - action: action_preview_order
       - intent: confirm_order
       - action: action_submit_order
-  # 4. TRẢ HÀNG
-  - story: Trả hàng khi có mã đơn hàng
-    steps:
-      - intent: request_return_order
-        entities:
-          - order_id: "6673f8a7e0965e26f63111ed"
-      - slot_was_set:
-          - order_id: "6673f8a7e0965e26f63111ed"
-      - action: action_process_return_request
+
   # 5. HỦY ĐƠN HÀNG
   - story: Hủy đơn có mã (người dùng cung cấp mã ngay)
     steps:
@@ -120,6 +112,44 @@ stories:
       - slot_was_set:
           - order_id: "6673f8a7e0965e26f63111ed"
       - action: action_cancel_order
+
+  # 6. TRẢ HÀNG
+  - story: Yêu cầu trả hàng (chưa có mã)
+    steps:
+      - intent: request_return_order
+      - action: return_order_form
+      - active_loop: return_order_form
+      - intent: inform_order_id
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - intent: provide_return_reason
+        entities:
+          - return_reason: "hàng bị vỡ"
+      - slot_was_set:
+          - return_reason: "hàng bị vỡ"
+      - action: return_order_form
+      - active_loop: null
+      - action: action_return_order
+
+  - story: Yêu cầu trả hàng (có mã)
+    steps:
+      - intent: request_return_order
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: return_order_form
+      - active_loop: return_order_form
+      - intent: provide_return_reason
+        entities:
+          - return_reason: "hàng bị lỗi"
+      - slot_was_set:
+          - return_reason: "hàng bị lỗi"
+      - action: return_order_form
+      - active_loop: null
+      - action: action_return_order
 
   #  GIỎ HÀNG
   # Thêm sản phẩm vào giỏ hàng
@@ -175,72 +205,6 @@ stories:
       - action: action_check_order_specific
       - slot_was_set:
           - order_id: "1234567890abcdef12345678"
-
-  - story: Tra đơn hàng theo thứ tự (đơn mới nhất)
-    steps:
-      - intent: ask_order_general
-        entities:
-          - order_direction: "newest"
-          - order_index: "1"
-      - slot_was_set:
-          - order_direction: "newest"
-          - order_index: "1"
-      - action: action_check_order_general
-
-  - story: Tra đơn hàng theo trạng thái
-    steps:
-      - intent: ask_order_filter
-        entities:
-          - order_status: "đang giao"
-      - slot_was_set:
-          - order_status: "đang giao"
-      - action: action_check_order_filter
-
-  - story: Tra đơn hàng theo thời gian
-    steps:
-      - intent: ask_order_filter
-        entities:
-          - time: "hôm qua"
-      - slot_was_set:
-          - time: "hôm qua"
-      - action: action_check_order_filter
-
-  - story: Tra đơn hàng theo thời gian và trạng thái
-    steps:
-      - intent: ask_order_filter
-        entities:
-          - time: "tuần trước"
-          - order_status: "đã giao"
-      - slot_was_set:
-          - time: "tuần trước"
-          - order_status: "đã giao"
-      - action: action_check_order_filter
-
-  - story: Tra đơn hàng theo sản phẩm
-    steps:
-      - intent: ask_order_by_product
-        entities:
-          - product: "iPhone 16"
-      - slot_was_set:
-          - product: "iPhone 16"
-      - action: action_check_order_by_product
-      - slot_was_set:
-          - product: null
-
-  - story: Tra đơn hàng chưa thanh toán
-    steps:
-      - intent: ask_unpaid_orders
-      - action: action_check_unpaid_or_unshipped_orders
-
-  - story: Tra đơn hàng đang giao
-    steps:
-      - intent: ask_unshipped_orders
-      - action: action_check_unpaid_or_unshipped_orders
-
-  - story: Xem các đơn hàng gần đây
-    steps:
-      - intent: ask_recent_orders
-      - action: action_list_recent_orders
 
   # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
   - story: So sánh sản phẩm qua form
