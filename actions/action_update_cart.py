@@ -14,13 +14,13 @@ class ActionUpdateCart(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict
     ) -> list[SlotSet]:
         # 1. Lấy thông tin từ tracker
-        product_name = tracker.get_slot("product_name")  # Tên sản phẩm muốn cập nhật
-        intent_name = tracker.latest_message.get("intent", {}).get(
-            "name"
-        )  # Lấy intent (tăng hay giảm)
+        product_name = tracker.get_slot("product_name")
+        quantity_action = tracker.get_slot("quantity_action")
         user_id = tracker.sender_id
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
+
+        print("Chạy vô đây.")
 
         # 1. Kiểm tra đăng nhập
         if not user_id or not ObjectId.is_valid(user_id):
@@ -57,9 +57,10 @@ class ActionUpdateCart(Action):
         except ValueError:
             change_value = 1
 
-        # Xác định là tăng hay giảm
-        if intent_name == "update_cart_decrease":
-            change_value = -change_value  # Chuyển thành số âm nếu là giảm
+        # Sử dụng entity quantity_action để xác định tăng hay giảm
+        if quantity_action == "decrease":
+            change_value = -change_value  # Số âm nếu giảm
+        # nếu increase hoặc None → giữ nguyên
 
         payload = None
         for item in items:

@@ -3,6 +3,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset
 from bson import ObjectId
+from utils.product_pipelines import build_search_pipeline
 from utils.database import DatabaseService
 
 
@@ -32,9 +33,8 @@ class ActionAddToCart(Action):
             return []
 
         # 2. Tìm sản phẩm theo tên
-        product_data = db_service.products_collection.find_one(
-            {"name": {"$regex": f"{product_name}", "$options": "i"}}
-        )
+        pipeline = build_search_pipeline(product_name)
+        product_data = next(db_service.products_collection.aggregate(pipeline), None)
 
         if not product_data:
             dispatcher.utter_message(
@@ -67,8 +67,6 @@ class ActionAddToCart(Action):
         # 5. Kiểm tra màu trong variant
         if variant_color.startswith("màu "):
             variant_color = variant_color.replace("màu ", "", 1).strip()
-        
-        print("Variant color:", variant_color)
 
         color_match = next(
             (
@@ -177,34 +175,32 @@ class ActionAddToCart(Action):
             ]
         }
 
-        dispatcher.utter_message(
-            text=f"Chuẩn bị thêm {quantity} x {product_name} ({variant_name} - {variant_color}) vào giỏ hàng."
-        )
-
         headers = {"Content-Type": "application/json"}
         if token:
             headers["Authorization"] = f"Bearer {token}"
-        try:
-            response = requests.post(
-                "http://localhost:8080/api/v1/carts",
-                json=payload,
-                headers=headers,
-                timeout=10,
-            )
+            try:
+                response = requests.post(
+                    "http://localhost:8080/api/v1/carts",
+                    json=payload,
+                    headers=headers,
+                    timeout=10,
+                )
 
-            if response.status_code in [200, 201]:
+                if response.status_code in [200, 201]:
+                    dispatcher.utter_message(
+                        text=f"Đã thêm {quantity} x {product_name} ({variant_name} - {variant_color}) vào giỏ hàng thành công!"
+                    )
+                else:
+                    dispatcher.utter_message(
+                        text="Xin lỗi, đã có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng."
+                    )
+                    print(f"Backend error: {response.status_code} - {response.text}")
+            except Exception as e:
                 dispatcher.utter_message(
-                    text=f"Đã thêm {quantity} x {product_name} ({variant_name} - {variant_color}) vào giỏ hàng thành công!"
+                    text="Đã có lỗi kết nối đến máy chủ. Vui lòng thử lại sau."
                 )
-            else:
-                dispatcher.utter_message(
-                    text="Xin lỗi, đã có lỗi xảy ra khi thêm sản phẩm vào giỏ hàng."
-                )
-                print(f"Backend error: {response.status_code} - {response.text}")
-        except Exception as e:
-            dispatcher.utter_message(
-                text="Đã có lỗi kết nối đến máy chủ. Vui lòng thử lại sau."
-            )
-            print(f"Error calling cart API: {e}")
+                print(f"Error calling cart API: {e}")
+        else:
+            print("Quý khách vui lòng đăng nhập để sử dụng dịch vụ!")
 
         return [AllSlotsReset()]
