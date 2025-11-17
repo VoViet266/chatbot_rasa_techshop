@@ -22,7 +22,7 @@ class ActionCheckStock(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         # 1. Lấy thông tin từ các slots (3 cấp độ)
-        product_name = tracker.get_slot("product")
+        product_name = tracker.get_slot("product_name")
         variant_name_group = tracker.get_slot("variant_name") # "128GB"
         variant_color = tracker.get_slot("variant_color")   # "Xanh"
         branch_name = tracker.get_slot("branch_name") 

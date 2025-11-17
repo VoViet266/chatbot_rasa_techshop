@@ -407,7 +407,7 @@ class ActionCheckOrderByProduct(Action):
         if not user_id:
             return []
 
-        product_name = tracker.get_slot("product")
+        product_name = tracker.get_slot("product_name")
         if not product_name:
             dispatcher.utter_message(text="Bạn muốn xem đơn hàng của sản phẩm nào vậy?")
             return []

@@ -17,7 +17,7 @@ def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> 
     if not user_id or not ObjectId.is_valid(user_id):
         return "Để mua hàng, vui lòng đăng nhập.", None
     
-    product_name = tracker.get_slot("product")
+    product_name = tracker.get_slot("product_name")
     variant_name = tracker.get_slot("variant_name")
     quantity_str = tracker.get_slot("quantity")
 
@@ -216,7 +216,7 @@ class ActionReviewOrder(Action):
                     "payload": '/confirm_order',
                 }, 
                 {
-                    "title": "Tôi muốn hủy đơn hàng",
+                    "title": "Tôi muốn hủy tiến trình đặt hàng",
                     "payload": '/cancel',
                 }
             ]
@@ -258,7 +258,7 @@ class ActionConfirmAfterBranch(Action):
             return []
 
         # Lấy thông tin từ slots
-        product_name = tracker.get_slot("product")
+        product_name = tracker.get_slot("product_name")
         variant_name = tracker.get_slot("variant_name")
         quantity = tracker.get_slot("validated_quantity")
         total_price = tracker.get_slot("validated_total_price")

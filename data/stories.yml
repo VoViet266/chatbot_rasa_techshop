@@ -6,18 +6,18 @@ stories:
     steps:
       - intent: ask_product_info
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: action_provide_product_info
 
   - story: Hỏi giá sản phẩm rồi chỉ xem
     steps:
       - intent: ask_product_price
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: action_provide_product_price
       - action: utter_ask_if_want_to_order
       - intent: chitchat
@@ -29,9 +29,9 @@ stories:
     steps:
       - intent: ask_product_price
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: action_provide_product_price
       - action: utter_ask_if_want_to_order
       - intent: order
@@ -44,7 +44,7 @@ stories:
       - intent: confirm_order
       - action: action_submit_order
       - slot_was_set:
-          - product: null
+          - product_name: null
           - variant_name: null
           - quantity: null
 
@@ -63,9 +63,9 @@ stories:
     steps:
       - intent: ask_product_info
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: action_provide_product_info
       - intent: order
       - action: order_form
@@ -75,7 +75,7 @@ stories:
       - intent: confirm_order
       - action: action_submit_order
       - slot_was_set:
-          - product: null
+          - product_name: null
           - variant_name: null
           - quantity: null
 
@@ -93,9 +93,9 @@ stories:
     steps:
       - intent: order
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: order_form
       - active_loop: order_form
       - active_loop: null
@@ -241,20 +241,20 @@ stories:
     steps:
       - intent: check_stock
         entities:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - slot_was_set:
-          - product: "iPhone 16"
+          - product_name: "iPhone 16"
       - action: action_check_stock
 
   - story: Kiểm tra hàng tồn (kèm dung lượng & màu)
     steps:
       - intent: check_stock
         entities:
-          - product: "Macbook Air"
+          - product_name: "Macbook Air"
           - variant_spec: "256GB"
           - variant_color: "bạc"
       - slot_was_set:
-          - product: "Macbook Air"
+          - product_name: "Macbook Air"
           - variant_name: "256GB"
           - variant_color: "bạc"
       - action: action_check_stock

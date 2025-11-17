@@ -130,6 +130,13 @@ rules:
     steps:
       - intent: select_branch_cart
       - action: action_add_to_cart
+  
+  - rule: Hủy tiến trình đặt hàng
+    condition:
+      - active_loop: null
+    steps:
+      - intent: cancel
+      - action: action_cancel_ordering_process
 
   - rule: Hủy đơn hàng
     condition:

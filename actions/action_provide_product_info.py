@@ -15,7 +15,7 @@ class ActionProvideProductInfo(Action):
             tracker: Tracker,
             domain: dict):
 
-        product_name_slot = tracker.get_slot("product")
+        product_name_slot = tracker.get_slot("product_name")
         db = DatabaseService()
         if not product_name_slot:
             dispatcher.utter_message(text="Bạn muốn biết thông tin sản phẩm nào?")
@@ -126,7 +126,7 @@ class ActionProvideProductPrice(Action):
             domain: dict):
         
         db = DatabaseService()
-        product_name_slot = tracker.get_slot("product")
+        product_name_slot = tracker.get_slot("product_name")
         if not product_name_slot:
             dispatcher.utter_message(text="Bạn muốn hỏi giá sản phẩm nào ạ?")
             return []

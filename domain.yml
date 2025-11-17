@@ -85,7 +85,6 @@ entities:
         - to
   - brand
   - full_name
-  - product
   - product_name
   - product_1
   - product_2
@@ -196,13 +195,6 @@ slots:
     influence_conversation: false
     mappings:
       - type: custom
-
-  product:
-    type: text
-    influence_conversation: true
-    mappings:
-      - type: from_entity
-        entity: product
 
   product_name:
     type: text
@@ -409,7 +401,7 @@ slots:
 forms:
   order_form:
     required_slots:
-      - product
+      - product_name
       - variant_name
       - quantity
 
@@ -725,4 +717,4 @@ actions:
 
 session_config:
   session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  carry_over_slots_to_new_session: false
