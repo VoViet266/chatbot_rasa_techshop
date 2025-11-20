@@ -4,39 +4,31 @@ language: vi
 pipeline:
   - name: WhitespaceTokenizer
 
-  - name: nlu.custom_featurizer.SentenceTransformerFeaturizer
-    model_name: "paraphrase-multilingual-MiniLM-L12-v2"
-    pooling: "mean"
-    use_gpu: true
+  
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "FPTAI/vibert-base-cased"
+    from_pt: true
 
-    # Tăng cường feature extraction
-  - name: "LexicalSyntacticFeaturizer"
-  - name: RegexFeaturizer
-
-    # Thêm RegexEntityExtractor để bắt pattern
+    # Regex for patterns only
   - name: RegexEntityExtractor
     case_sensitive: false
     use_lookup_tables: true
     use_regexes: true
 
-  - name: CountVectorsFeaturizer
-    analyzer: "word"
-
+    # Char-level only (bền với lỗi chính tả, teencode)
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
     min_ngram: 3
     max_ngram: 5
 
-    # Tăng epochs và thêm tham số
   - name: DIETClassifier
     epochs: 120
-    constrain_similarities: true
-    entity_recognition: true
-    intent_classification: true
-    use_masked_language_model: true
-    number_of_transformer_layers: 2
-    transformer_size: 256
+    transformer_size: 64
+    number_of_transformer_layers: 1
+    use_masked_language_model: false
     drop_rate: 0.2
+    constrain_similarities: true
 
   - name: EntitySynonymMapper
 
@@ -50,27 +42,24 @@ pipeline:
     constrain_similarities: true
     retrieval_intent: chitchat
 
-
-    # Điều chỉnh threshold
   - name: FallbackClassifier
-    threshold: 0.35
-    ambiguity_threshold: 0.10
+    threshold: 0.55
+    ambiguity_threshold: 0.15
 
 policies:
   - name: MemoizationPolicy
 
   - name: RulePolicy
+    core_fallback_threshold: 0.5
     core_fallback_action_name: "utter_fallback"
-    core_fallback_threshold: 0.4 # Tăng từ 0.3
     enable_fallback_prediction: true
 
   - name: UnexpecTEDIntentPolicy
     max_history: 10
-    epochs: 150 # Tăng từ 100
-    learning_rate: 0.001
+    epochs: 120
 
   - name: TEDPolicy
     max_history: 5
-    epochs: 150 # Tăng từ 100
+    epochs: 100
     constrain_similarities: true
-assistant_id: 20251116-110456-legacy-pot
+assistant_id: 20251120-185031-rainy-rank
