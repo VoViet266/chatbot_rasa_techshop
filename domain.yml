@@ -7,8 +7,7 @@ intents:
   - order
   - add_to_cart
   - view_cart
-  - update_cart_increase
-  - update_cart_decrease
+  - update_cart_quantity
   - delete_from_cart
   - inform_product
   - inform_order_id
@@ -31,6 +30,8 @@ intents:
   - restart_slot
   - select_quantity
   - select_variant
+  - ask_product_detail_variant_infor
+  - ask_product_variant_infor
   - select_branch_order:
       use_entities:
         - selected_branch_id
@@ -38,15 +39,13 @@ intents:
       use_entities:
         - selected_branch_id
   - request_return_order
-  - faq_overheating
-  - faq_connection_issue
-  - ask_order_specific
-  - ask_order_filter
   - ask_order_general:
       use_entities:
         - order_direction
         - order_index
   - ask_product_price
+  - ask_product_spec
+  - ask_product_technical_specs
   - chitchat
   - show_variant_details
   - ask_order_by_product
@@ -54,6 +53,8 @@ intents:
   - ask_unshipped_orders
   - ask_recent_orders
   - provide_return_reason
+  - ask_order_specific
+  - ask_order_filter
 
 entities:
   - branch_name
@@ -77,6 +78,7 @@ entities:
       roles:
         - from
         - to
+
   - ram_qualifier
   - ram:
       use_entity_roles_or_groups: True
@@ -102,6 +104,7 @@ entities:
   - user_id
   - variant_name
   - variant_color
+  - spec_type
 
 slots:
   user_id:
@@ -398,6 +401,12 @@ slots:
         entity: return_reason
         intent: provide_return_reason
 
+  spec_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: spec_type
+
 forms:
   order_form:
     required_slots:
@@ -438,6 +447,15 @@ responses:
     - text: "Dạ anh/chị muốn đặt sản phẩm nào ạ?"
     - text: "Dạ em xin hỏi anh/chị cần đặt sản phẩm gì ạ?"
     - text: "Dạ cho em biết tên sản phẩm anh/chị muốn đặt nhé?"
+
+  utter_ask_which_product:
+    - text: "Bạn muốn biết thông tin về sản phẩm nào?"
+
+  utter_product_not_found:
+    - text: "Xin lỗi, tôi không tìm thấy sản phẩm {product_name}"
+
+  utter_ask_spec_type:
+    - text: "Bạn muốn biết thông số nào của sản phẩm? Ví dụ: pin, RAM, bộ nhớ, camera, màn hình, CPU, GPU."
 
   utter_ask_quantity:
     - text: "Bạn muốn đặt bao nhiêu sản phẩm?"
@@ -521,80 +539,6 @@ responses:
     - text: "Dạ em xin lỗi, em chưa hiểu rõ ý anh/chị. Anh/chị có thể nói rõ hơn được không ạ?"
     - text: "Em xin lỗi, em chưa nắm được yêu cầu của anh/chị. Anh/chị vui lòng diễn đạt lại giúp em nhé?"
     - text: "Dạ em chưa rõ anh/chị muốn hỏi về vấn đề gì. Anh/chị có thể nói cụ thể hơn được không ạ?"
-
-  utter_faq_overheating:
-    - condition:
-        - type: slot
-          name: category
-          value: "điện thoại"
-      text: "Dạ, điện thoại bị nóng có thể do:\n1. Tắt ứng dụng chạy ngầm.\n2. Giảm độ sáng màn hình.\n3. Tháo ốp lưng...\nNếu vẫn không hết, anh/chị vui lòng mang máy đến cửa hàng Tech gần nhất nhé."
-    - condition:
-        - type: slot
-          name: category
-          value: "điện thoại"
-      text: "Dạ với điện thoại bị nóng, anh/chị thử các cách sau:\n1. Đóng các app đang chạy nền.\n2. Giảm độ sáng màn hình xuống.\n3. Tháo ốp lưng ra để thoáng nhiệt hơn.\nNếu vẫn nóng bất thường, anh/chị mang máy đến TechShop để kiểm tra nhé."
-    - condition:
-        - type: slot
-          name: category
-          value: "điện thoại"
-      text: "Dạ em hướng dẫn xử lý điện thoại nóng:\n1. Tắt các ứng dụng không cần thiết.\n2. Chỉnh độ sáng thấp hơn.\n3. Tháo case/ốp ra.\nNếu không khắc phục được, anh/chị ghé cửa hàng Tech để được hỗ trợ kỹ thuật ạ."
-    - condition:
-        - type: slot
-          name: category
-          value: "laptop"
-      text: "Dạ, laptop bị nóng có thể do bụi bẩn hoặc quạt tản nhiệt. Anh/chị thử:\n1. Đảm bảo khe tản nhiệt không bị bịt...\n2. Anh/chị nên mang đến cửa hàng Tech để được hỗ trợ vệ sinh và tra keo tản nhiệt ạ."
-    - condition:
-        - type: slot
-          name: category
-          value: "laptop"
-      text: "Dạ với laptop bị nóng, anh/chị cần:\n1. Kiểm tra xem khe gió tản nhiệt có bị bụi bẩn không.\n2. Đặt laptop trên bề mặt cứng, thoáng khí.\n3. Nếu vẫn nóng, anh/chị nên mang đến TechShop để vệ sinh và thay keo tản nhiệt ạ."
-    - condition:
-        - type: slot
-          name: category
-          value: "laptop"
-      text: "Dạ em gợi ý cách xử lý laptop nóng:\n1. Vệ sinh khe tản nhiệt, loại bỏ bụi bẩn.\n2. Sử dụng trên mặt phẳng, tránh đặt trên chăn gối.\n3. Ghé TechShop để được vệ sinh chuyên nghiệp và thay keo tản nhiệt nếu cần ạ."
-
-    - text: "Dạ, máy bị nóng có thể do nhiều nguyên nhân. Anh/chị đang nói về điện thoại hay laptop ạ?"
-    - text: "Dạ tình trạng nóng máy có nhiều nguyên nhân khác nhau tùy thiết bị. Anh/chị cho em biết đang dùng điện thoại, laptop, máy tính bảng hay sản phẩm gì để em tư vấn cụ thể hơn ạ?"
-    - text: "Dạ em xin hỏi anh/chị đang gặp vấn đề nóng máy với thiết bị nào ạ? Điện thoại, laptop, hay máy tính bảng? Để em có thể hỗ trợ đúng cách nhất."
-
-  utter_faq_connection_issue:
-    - condition:
-        - type: slot
-          name: category
-          value: "chuột"
-      text: "Dạ, với chuột không dây, anh/chị thử:\n1. Thay pin mới (nếu là chuột pin rời).\n2. Rút USB Receiver ra cắm lại vào cổng USB khác..."
-    - condition:
-        - type: slot
-          name: category
-          value: "chuột"
-      text: "Dạ với trường hợp chuột không dây bị mất kết nối, anh/chị có thể:\n1. Kiểm tra và thay pin mới nếu cần.\n2. Thử cắm USB Receiver sang cổng USB khác trên máy tính..."
-    - condition:
-        - type: slot
-          name: category
-          value: "chuột"
-      text: "Dạ em hướng dẫn anh/chị xử lý chuột không dây nhé:\n1. Nếu dùng pin rời, hãy thay pin mới.\n2. Cắm lại USB Receiver vào cổng USB khác để thử..."
-
-    - condition:
-        - type: slot
-          name: category
-          value: "tai nghe"
-      text: "Dạ, với tai nghe bluetooth, anh/chị thử:\n1. Đảm bảo tai nghe đã được sạc đầy pin...\n2. Thử 'Quên thiết bị này' và tiến hành ghép nối lại..."
-    - condition:
-        - type: slot
-          name: category
-          value: "tai nghe"
-      text: "Dạ với tai nghe bluetooth bị lỗi kết nối, anh/chị làm theo nhé:\n1. Kiểm tra xem tai nghe còn đủ pin không.\n2. Vào cài đặt Bluetooth, chọn 'Quên thiết bị' rồi kết nối lại từ đầu..."
-    - condition:
-        - type: slot
-          name: category
-          value: "tai nghe"
-      text: "Dạ em gợi ý anh/chị một số bước với tai nghe bluetooth:\n1. Sạc đầy pin cho tai nghe trước.\n2. Xóa kết nối cũ và ghép nối lại..."
-
-    - text: "Dạ, anh/chị đang gặp vấn đề kết nối với chuột, tai nghe hay thiết bị nào ạ?"
-    - text: "Dạ em xin hỏi anh/chị đang gặp lỗi kết nối ở thiết bị nào ạ? Chuột, tai nghe, hay thiết bị khác?"
-    - text: "Dạ cho em hỏi anh/chị đang sử dụng thiết bị gì ạ? Chuột không dây, tai nghe bluetooth, hay sản phẩm nào khác?"
-    - text: "Dạ anh/chị cho em biết thiết bị nào đang bị lỗi kết nối để em hỗ trợ chính xác hơn được không ạ?"
 
   utter_chitchat/deny:
     - text: "Không sao, khi nào cần thì cứ nói nhé."
@@ -687,6 +631,8 @@ actions:
   - utter_no_orders_found
   - utter_ask_return_reason
   - utter_fallback
+  - utter_ask_which_product
+  - utter_product_not_found
   - action_provide_product_info
   - action_confirm_after_branch
   - action_provide_warranty_info
@@ -697,7 +643,7 @@ actions:
   - action_preview_order
   - action_submit_order
   - action_cancel_order
-  - action_update_cart
+  - action_update_cart_quantity
   - action_add_to_cart
   - action_view_cart
   - action_delete_from_cart
@@ -714,6 +660,9 @@ actions:
   - action_list_recent_orders
   - action_return_order
   - action_cancel_ordering_process
+  - action_provide_product_spec
+  - action_provide_product_technical_specs
+  - action_show_list_variants
 
 session_config:
   session_expiration_time: 60

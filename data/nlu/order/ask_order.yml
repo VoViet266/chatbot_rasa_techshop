@@ -62,22 +62,22 @@ nlu:
 
   - intent: ask_order_by_product
     examples: |
-      - đơn hàng của [iPhone 16](product)
-      - cho tôi xem đơn hàng có [Galaxy S24](product)
-      - tôi đã đặt [Macbook Air](product) chưa
-      - có đơn nào của [iPad Pro](product) không
-      - đơn chứa [iPhone 15](product) của tôi
-      - đơn hàng nào có [Apple Watch Ultra](product)
-      - xem đơn của [AirPods Pro](product)
-      - tôi mua [iPhone 16 Pro Max](product) chưa
-      - đơn hàng [MacBook Pro 2023](product) đâu rồi
-      - tôi muốn xem đơn có [Samsung Galaxy Z Flip5](product)
-      - kiểm tra đơn chứa [Asus ROG Phone 8](product)
-      - có đơn nào đặt [Dell XPS 13](product) không
-      - liệt kê đơn hàng có [iPad Air 6](product)
-      - đơn hàng tôi mua [Apple Watch SE](product) đâu
-      - tôi có đặt [Oppo Reno 12](product) không
-      - đơn có sản phẩm [Realme 13 Pro](product)
+      - đơn hàng của [iPhone 16](product_name)
+      - cho tôi xem đơn hàng có [Galaxy S24](product_name)
+      - tôi đã đặt [Macbook Air](product_name) chưa
+      - có đơn nào của [iPad Pro](product_name) không
+      - đơn chứa [iPhone 15](product_name) của tôi
+      - đơn hàng nào có [Apple Watch Ultra](product_name)
+      - xem đơn của [AirPods Pro](product_name)
+      - tôi mua [iPhone 16 Pro Max](product_name) chưa
+      - đơn hàng [MacBook Pro 2023](product_name) đâu rồi
+      - tôi muốn xem đơn có [Samsung Galaxy Z Flip5](product_name)
+      - kiểm tra đơn chứa [Asus ROG Phone 8](product_name)
+      - có đơn nào đặt [Dell XPS 13](product_name) không
+      - liệt kê đơn hàng có [iPad Air 6](product_name)
+      - đơn hàng tôi mua [Apple Watch SE](product_name) đâu
+      - tôi có đặt [Oppo Reno 12](product_name) không
+      - đơn có sản phẩm [Realme 13 Pro](product_name)
 
   - intent: ask_unpaid_orders
     examples: |

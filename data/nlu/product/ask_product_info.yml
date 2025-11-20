@@ -1,60 +1,61 @@
+# nlu.yml
 version: "3.1"
 
 nlu:
   - intent: ask_product_info
     examples: |
-      - Thông tin [iphone 16 Pro Max](product)
+      - Thông tin [iphone 16 Pro Max](product_name)
       - [Samsung Galaxy S25 Plus]
-      - [AirPods Pro](product) này
-      - Cho xem [Galaxy Z Fold 6](product)
-      - Tôi đang tìm [Dell XPS 13](product)
-      - Mình cần [Sony WH-1000XM5](product)
-      - Tôi muốn [iPhone 16](product)
-      - Tôi quan tâm [Samsung S24](product)
-      - Cho tôi xem [MacBook Air M3](product)
-      - Tôi thích [iPad Pro](product)
-      - Cho tôi thông tin về [iphone 16](product)
-      - Tôi cần biết về [iphone 16](product)
-      - [iPhone 16](product) giá sao shop?
-      - con [Macbook Air M3](product) này có gì hay?
-      - Bên mình có bán [Dell XPS 13](product) không?
-      - Thông số của [Galaxy A55](product) là gì?
-      - [Sony WH-1000XM5](product) còn hàng không?
-      - [Samsung Galaxy Z Fold 6](product) có mấy màu?
-      - [Galaxy S25 Ultra](product) khi nào về hàng?
-      - Có [WH-1000XM5](product) không?a
-      - Shop có những loại [điện thoại](product) nào?
-      - Kể tên vài mẫu [laptop gaming](product) xem
-      - Xem thông tin [MacBook Air](product)
-      - [Samsung](product) có gì mới?
-      - [iPhone](product) có mẫu nào?
-      - Giới thiệu [Galaxy S24](product)
-      - tư vấn cho tôi về [máy tính bảng](product)
-      - Chi tiết về [Apple Watch Series 10](product)
-      - Bạn có thông tin gì về [Galaxy Buds 3](product) không?
-      - Sản phẩm [bàn phím cơ](product) bên mình thế nào?
-      - Tôi đang phân vân về [Dell XPS 15](product)
-      - Tìm hiểu về [máy ảnh](product) xem
-      - Review [Macbook Pro M4](product) đi shop
-      - Đánh giá [Xiaomi 15](product)
-      - Mô tả sản phẩm [Oppo Find X7](product)
-      - [chuột không dây](product) có loại nào tốt?
-      - [đồng hồ thông minh](product)
-      - [Dell](product) có laptop nào mới không?
-      - [Sony](product) có tai nghe nào hay?
-      - Cho mình hỏi về [Asus](product)
-      - [Xiaomi](product) có điện thoại nào ngon không?
-      - thông tin [iPhone 16 128GB](product)
-      - [Samsung S24 màu vàng](product) còn không?
-      - shop có [laptop](product) nào mỏng nhẹ không?
-      - tư vấn [điện thoại](product) chuyên chơi game
-      - [máy tính bảng](product) để học online
-      - [tai nghe không dây](product)
-      - Nói cho tôi biết về [Pixel 9](product)
-      - [máy tính](product) để bàn
-      - [màn hình](product) 27 inch
-      - [iPad Air 5](product) dùng có tốt không?
-      - Cửa hàng có [GoPro](product) không?
-      - Xem [laptop](product)
-      - [máy ảnh mirrorless](product)
-      - [Webcam](product)
+      - [AirPods Pro](product_name) này
+      - Cho xem [Galaxy Z Fold 6](product_name)
+      - Tôi đang tìm [Dell XPS 13](product_name)
+      - Mình cần [Sony WH-1000XM5](product_name)
+      - Tôi muốn [iPhone 16](product_name)
+      - Tôi quan tâm [Samsung S24](product_name)
+      - Cho tôi xem [MacBook Air M3](product_name)
+      - Tôi thích [iPad Pro](product_name)
+      - Cho tôi thông tin về [iphone 16](product_name)
+      - Tôi cần biết về [iphone 16](product_name)
+      - [iPhone 16](product_name) giá sao shop?
+      - con [Macbook Air M3](product_name) này có gì hay?
+      - Bên mình có bán [Dell XPS 13](product_name) không?
+      - Thông số của [Galaxy A55](product_name) là gì?
+      - [Sony WH-1000XM5](product_name) còn hàng không?
+      - [Samsung Galaxy Z Fold 6](product_name) có mấy màu?
+      - [Galaxy S25 Ultra](product_name) khi nào về hàng?
+      - Có [WH-1000XM5](product_name) không?a
+      - Shop có những loại [điện thoại](product_name) nào?
+      - Kể tên vài mẫu [laptop gaming](product_name) xem
+      - Xem thông tin [MacBook Air](product_name)
+      - [Samsung](product_name) có gì mới?
+      - [iPhone](product_name) có mẫu nào?
+      - Giới thiệu [Galaxy S24](product_name)
+      - tư vấn cho tôi về [máy tính bảng](product_name)
+      - Chi tiết về [Apple Watch Series 10](product_name)
+      - Bạn có thông tin gì về [Galaxy Buds 3](product_name) không?
+      - Sản phẩm [bàn phím cơ](product_name) bên mình thế nào?
+      - Tôi đang phân vân về [Dell XPS 15](product_name)
+      - Tìm hiểu về [máy ảnh](product_name) xem
+      - Review [Macbook Pro M4](product_name) đi shop
+      - Đánh giá [Xiaomi 15](product_name)
+      - Mô tả sản phẩm [Oppo Find X7](product_name)
+      - [chuột không dây](product_name) có loại nào tốt?
+      - [đồng hồ thông minh](product_name)
+      - [Dell](product_name) có laptop nào mới không?
+      - [Sony](product_name) có tai nghe nào hay?
+      - Cho mình hỏi về [Asus](product_name)
+      - [Xiaomi](product_name) có điện thoại nào ngon không?
+      - thông tin [iPhone 16 128GB](product_name)
+      - [Samsung S24 màu vàng](product_name) còn không?
+      - shop có [laptop](product_name) nào mỏng nhẹ không?
+      - tư vấn [điện thoại](product_name) chuyên chơi game
+      - [máy tính bảng](product_name) để học online
+      - [tai nghe không dây](product_name)
+      - Nói cho tôi biết về [Pixel 9](product_name)
+      - [máy tính](product_name) để bàn
+      - [màn hình](product_name) 27 inch
+      - [iPad Air 5](product_name) dùng có tốt không?
+      - Cửa hàng có [GoPro](product_name) không?
+      - Xem [laptop](product_name)
+      - [máy ảnh mirrorless](product_name)
+      - [Webcam](product_name)

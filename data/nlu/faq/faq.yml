@@ -1,0 +1,147 @@
+version: "3.1"
+
+nlu:
+  # --- KHAI BÁO TỪ ĐỒNG NGHĨA (QUAN TRỌNG) ---
+  - synonym: laptop
+    examples: |
+      - macbook
+      - mac
+      - máy tính xách tay
+      - thinkpad
+      - dell
+      - asus
+      - máy tính
+      - pc
+
+  - synonym: điện thoại
+    examples: |
+      - smartphone
+      - dế
+      - iphone
+      - samsung
+      - oppo
+      - xiaomi
+      - mobile
+      - ip
+
+  - synonym: tai nghe
+    examples: |
+      - headphone
+      - airpods
+      - earphone
+      - tai nghe bluetooth
+      - tai nghe dây
+      - headset
+
+  - synonym: chuột
+    examples: |
+      - mouse
+      - con chuột
+      - logitech
+      - razer
+      - magic mouse
+
+  # --- INTENT: FAQ TECH SUPPORT (HỖ TRỢ KỸ THUẬT/DỊCH VỤ) ---
+  - intent: faq/tech_support
+    examples: |
+      # Laptop
+      - shop có cài win giúp không
+      - cài lại win 10 hay 11 vậy shop
+      - mua [laptop](category) có được cài office miễn phí không
+      - em muốn cài photoshop và ai cho [macbook](category)
+      - cài phần mềm đồ họa cho [laptop](category) được không
+      - shop có hỗ trợ nâng cấp ram cho [laptop](category) không
+      - [laptop](category) này lắp thêm ổ cứng ssd được không
+      - máy chạy chậm quá shop có tối ưu lại được không
+      - vệ sinh [máy tính](category) hết bao nhiêu tiền
+      - tra keo tản nhiệt loại xịn cho [laptop](category)
+      
+      # Điện thoại
+      - chép dữ liệu từ [điện thoại](category) cũ sang mới giúp em với
+      - chuyển danh bạ từ android sang [iphone](category) được không
+      - có hỗ trợ dán màn hình [điện thoại](category) không
+      - shop có cắt sim nano không
+      - cài dùm em mấy app ngân hàng trên [điện thoại](category)
+      - tạo tài khoản icloud cho [ip](category)
+      
+      # Tai nghe / Chuột
+      - hướng dẫn kết nối [tai nghe](category) bluetooth với máy tính
+      - [tai nghe](category) này có app chỉnh âm thanh không
+      - cách chỉnh đèn led cho [chuột](category)
+      - cài driver cho [chuột](category) như thế nào
+      - shop có vệ sinh [tai nghe](category) không
+      - hướng dẫn reset [tai nghe](category) về mặc định
+
+  # --- INTENT: FAQ SUPPORT ERROR (BÁO LỖI/HƯ HỎNG) ---
+  - intent: faq/support_error
+    examples: |
+      - máy bị lỗi màn hình xanh
+      - [laptop](category) bật không lên nguồn
+      - máy bị đơ không sử dụng được
+      - [laptop](category) bị loạn bàn phím
+      - máy tính bị nóng quá quạt kêu to
+      - màn hình [laptop](category) bị hở sáng
+      - pin [laptop](category) bị chai sạc không vào
+      - wifi [laptop](category) bắt sóng yếu
+      - touchpad không di được
+      - [điện thoại](category) bị sọc màn hình
+      - [iphone](category) bị treo táo
+      - máy sạc cả đêm không đầy pin
+      - [điện thoại](category) bị liệt cảm ứng
+      - camera chụp hình bị mờ và rung
+      - gọi điện người bên kia không nghe thấy gì
+      - máy bị nóng ran khi chơi game
+      - face id không nhận diện được
+      - [tai nghe](category) chỉ nghe được 1 bên
+      - [tai nghe](category) sạc không sáng đèn
+      - kết nối [tai nghe](category) bị chập chờn lúc được lúc không
+      - mic [tai nghe](category) nói bé quá
+      - hộp sạc không vào điện
+      - [chuột](category) bị click đúp
+      - [chuột](category) bị liệt nút cuộn
+      - [con chuột](category) di mà con trỏ không chạy
+      - receiver cắm vào không nhận
+      - nút sườn bị kẹt không bấm được
+
+  # --- INTENT: FAQ WARRANTY (BẢO HÀNH) ---
+  - intent: faq/warranty
+    examples: |
+      - chính sách bảo hành thế nào
+      - máy này bảo hành bao lâu
+      - lỗi 1 đổi 1 trong bao nhiêu ngày
+      - bảo hành tại shop hay phải gửi lên hãng
+      - máy cũ bảo hành nguồn và màn hình không
+      - làm rơi vỡ màn hình có được bảo hành không
+      - máy vào nước có được bảo hành không
+      - mất phiếu bảo hành có được hỗ trợ không
+      - bảo hành mở rộng là gì
+      - [chuột](category) bảo hành mấy tháng
+      - hết bảo hành shop có nhận sửa tính phí không
+
+  # --- INTENT: FAQ INSTALLMENT (TRẢ GÓP) ---
+  - intent: faq/installment
+    examples: |
+      - có hỗ trợ trả góp không
+      - mua trả góp cần giấy tờ gì
+      - trả góp qua thẻ tín dụng visa được không
+      - có trả góp 0% lãi suất không
+      - trả trước 0 đồng được không
+      - sinh viên mua trả góp cần gì
+      - duyệt hồ sơ trả góp mất bao lâu
+      - trả góp qua home credit hay fe credit
+      - mình nợ xấu có mua trả góp được không
+      - thủ tục trả góp [macbook](category) thế nào
+
+  # --- INTENT: FAQ ORIGIN (NGUỒN GỐC) ---
+  - intent: faq/origin
+    examples: |
+      - máy này là hàng mới hay cũ
+      - hàng chính hãng hay xách tay
+      - máy này là bản quốc tế hay bản lock
+      - máy new seal hay like new
+      - nguồn gốc xuất xứ ở đâu
+      - máy fullbox đầy đủ phụ kiện không
+      - hàng cpo hay hàng ref
+      - máy trưng bày à shop
+      - check serial number được không
+      - cam kết zin không shop

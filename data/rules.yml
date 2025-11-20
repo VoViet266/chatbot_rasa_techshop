@@ -17,19 +17,12 @@ rules:
       - intent: restart_slot
       - action: action_restart_slot
 
-  - rule: FAQ - Máy nóng
+  - rule: FAQ - Hỏi chung
     condition:
       - active_loop: null
     steps:
-      - intent: faq_overheating
-      - action: utter_faq_overheating
-
-  - rule: FAQ - Lỗi kết nối
-    condition:
-      - active_loop: null
-    steps:
-      - intent: faq_connection_issue
-      - action: utter_faq_connection_issue
+      - intent: faq
+      - action: utter_faq
 
   - rule: Cung cấp thông tin sản phẩm
     steps:
@@ -130,7 +123,7 @@ rules:
     steps:
       - intent: select_branch_cart
       - action: action_add_to_cart
-  
+
   - rule: Hủy tiến trình đặt hàng
     condition:
       - active_loop: null
@@ -163,6 +156,20 @@ rules:
       - action: add_to_cart_form
       - active_loop: null
       - action: action_add_to_cart
+
+  - rule: hỏi danh sách biến thể sản phẩm
+    steps:
+      - intent: ask_product_variant_infor
+      - action: action_show_list_variants
+  - rule: hỏi thông tin chi tiết biến thể sản phẩm
+    steps:
+      - intent: ask_product_detail_variant_infor
+      - action: action_provide_product_spec
+
+  - rule: Cập nhật số lượng giỏ hàng (Tăng hoặc Giảm)
+    steps:
+      - intent: update_cart_quantity
+      - action: action_update_cart_quantity
 
   - rule: Xử lý ngoài phạm vi hoặc không hiểu
     steps:

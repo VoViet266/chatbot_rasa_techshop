@@ -238,7 +238,7 @@ class ActionCheckOrderSpecific(Action):
             message += build_order_html(order, db.products_collection)
             dispatcher.utter_message(text=message)
 
-        except Exception as e:
+        except Exception:
             import traceback
             traceback.print_exc()
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng. Vui lòng thử lại sau.")
@@ -319,7 +319,7 @@ class ActionCheckOrderFilter(Action):
             message += "</div>"
             dispatcher.utter_message(text=message)
 
-        except Exception as e:
+        except Exception:
             import traceback
             traceback.print_exc()
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng. Vui lòng thử lại sau.")
@@ -387,7 +387,7 @@ class ActionCheckOrderGeneral(Action):
                 message += build_order_html(order, db.products_collection)
                 dispatcher.utter_message(text=message)
 
-        except Exception as e:
+        except Exception :
             import traceback
             traceback.print_exc()
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng. Vui lòng thử lại sau.")
@@ -417,7 +417,7 @@ class ActionCheckOrderByProduct(Action):
             product = db.products_collection.find_one({"name": {"$regex": product_name, "$options": "i"}})
             if not product:
                 dispatcher.utter_message(text=f"Tôi không tìm thấy sản phẩm nào tên '{product_name}'.")
-                return [SlotSet("product", None)]
+                return [SlotSet("product_name", None)]
             
             product_id = product["_id"]
 
@@ -427,7 +427,7 @@ class ActionCheckOrderByProduct(Action):
 
             if not orders:
                 dispatcher.utter_message(text=f"Không tìm thấy đơn hàng nào của bạn có chứa sản phẩm '{product_name}'.")
-                return [SlotSet("product", None)]
+                return [SlotSet("product_name", None)]
 
             message = f"<p class='text-base font-medium mb-3'>Đây là các đơn hàng của bạn có chứa sản phẩm '{product_name}' ({len(orders)} đơn):</p>"
             message += "<div class='flex flex-col gap-4'>"
@@ -436,12 +436,12 @@ class ActionCheckOrderByProduct(Action):
             message += "</div>"
             dispatcher.utter_message(text=message)
 
-        except Exception as e:
+        except Exception:
             import traceback
             traceback.print_exc()
             dispatcher.utter_message(text="Xin lỗi, đã có lỗi xảy ra khi truy vấn thông tin đơn hàng.")
 
-        return [SlotSet("product", None)]
+        return [SlotSet("product_name", None)]
     
 class ActionCheckUnpaidOrUnshippedOrders(Action):
     def name(self) -> Text:
@@ -484,7 +484,7 @@ class ActionCheckUnpaidOrUnshippedOrders(Action):
             message += "</div>"
             dispatcher.utter_message(text=message)
 
-        except Exception as e:
+        except Exception:
             import traceback
             traceback.print_exc()
             dispatcher.utter_message(text="Đã xảy ra lỗi khi kiểm tra đơn hàng.")

@@ -3,27 +3,27 @@ version: "3.1"
 nlu:
   - intent: check_stock
     examples: |
-      - [iPhone 16](product) còn hàng không?
-      - [iPhone 16](product) bản [256GB](variant_name) còn hàng không?
-      - cho hỏi shop còn [Macbook Air M3](product) không?
-      - kiểm tra giúp mình [Samsung S24](product) còn không?
-      - [Dell XPS 13](product) [bản i7](variant_name) còn không shop?
-      - [iPhone 16 Pro Max](product) [256GB xanh titan](variant_name) còn hàng không?
-      - còn [Macbook Air](product) [M3 màu bạc](variant_name) không?
-      - check giúp mình [Samsung S24](product) [bản Plus](variant_name)
-      - shop còn [iPhone 16](product) [màu hồng](variant_name) không?
-      - [Dell XPS](product) [15 inch](variant_name) còn hàng chứ?
-      - [iPhone 16](product) [256GB](variant_name) còn những màu nào?
-      - [iPhone 16](product) ở [Cần Thơ](branch_name) còn hàng không?
-      - [iPhone 16](product) bản [256GB](variant_name) ở [Quận 1](branch_name) còn không?
-      - cho hỏi [Macbook Air M3](product) ở [chi nhánh Hà Nội](branch_name) còn không?
-      - kiểm tra giúp mình [Samsung S24](product) [bản Plus màu đen](variant_name) tại [Cần Thơ](branch_name)
-      - [Dell XPS 13](product) [bản i7](variant_name) ở [Quận 3](branch_name) còn không shop?
-      - [iPhone 16 Pro Max](product) [256GB xanh titan](variant_name) ở [Cần Thơ](branch_name) còn hàng không?
-      - còn [Macbook Air](product) [M3 màu bạc](variant_name) ở [chi nhánh chính](branch_name) không?
-      - check giúp mình [Samsung S24](product) [bản Plus](variant_name) tại [cửa hàng Cần Thơ](branch_name)
-      - shop còn [iPhone 16](product) [màu hồng](variant_name) ở [Quận 1](branch_name) không?
-      - [Dell XPS](product) [15 inch](variant_name) tại [chi nhánh Cần Thơ](branch_name) còn hàng chứ?
+      - [iPhone 16](product_name) còn hàng không?
+      - [iPhone 16](product_name) bản [256GB](variant_name) còn hàng không?
+      - cho hỏi shop còn [Macbook Air M3](product_name) không?
+      - kiểm tra giúp mình [Samsung S24](product_name) còn không?
+      - [Dell XPS 13](product_name) [bản i7](variant_name) còn không shop?
+      - [iPhone 16 Pro Max](product_name) [256GB xanh titan](variant_name) còn hàng không?
+      - còn [Macbook Air](product_name) [M3 màu bạc](variant_name) không?
+      - check giúp mình [Samsung S24](product_name) [bản Plus](variant_name)
+      - shop còn [iPhone 16](product_name) [màu hồng](variant_name) không?
+      - [Dell XPS](product_name) [15 inch](variant_name) còn hàng chứ?
+      - [iPhone 16](product_name) [256GB](variant_name) còn những màu nào?
+      - [iPhone 16](product_name) ở [Cần Thơ](branch_name) còn hàng không?
+      - [iPhone 16](product_name) bản [256GB](variant_name) ở [Quận 1](branch_name) còn không?
+      - cho hỏi [Macbook Air M3](product_name) ở [chi nhánh Hà Nội](branch_name) còn không?
+      - kiểm tra giúp mình [Samsung S24](product_name) [bản Plus màu đen](variant_name) tại [Cần Thơ](branch_name)
+      - [Dell XPS 13](product_name) [bản i7](variant_name) ở [Quận 3](branch_name) còn không shop?
+      - [iPhone 16 Pro Max](product_name) [256GB xanh titan](variant_name) ở [Cần Thơ](branch_name) còn hàng không?
+      - còn [Macbook Air](product_name) [M3 màu bạc](variant_name) ở [chi nhánh chính](branch_name) không?
+      - check giúp mình [Samsung S24](product_name) [bản Plus](variant_name) tại [cửa hàng Cần Thơ](branch_name)
+      - shop còn [iPhone 16](product_name) [màu hồng](variant_name) ở [Quận 1](branch_name) không?
+      - [Dell XPS](product_name) [15 inch](variant_name) tại [chi nhánh Cần Thơ](branch_name) còn hàng chứ?
       - khi nào có hàng lại vậy shop?
       - sản phẩm này còn hàng chứ?
       - còn ở [hà nội](branch_name) không?

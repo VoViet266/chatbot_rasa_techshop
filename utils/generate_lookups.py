@@ -45,7 +45,7 @@ nlu_data = {
     "version": "3.1",
     "nlu": [
         {
-            "lookup": "product",
+            "lookup": "product_name",
             "examples": LiteralString(product_examples)
         },
         {

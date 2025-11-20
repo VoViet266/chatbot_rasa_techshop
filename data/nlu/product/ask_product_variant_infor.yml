@@ -1,0 +1,56 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_product_variant_infor
+    examples: |
+      - Cho mình biết thông tin về các phiên bản của [iPhone 16](product_name)
+      - Các biến thể của [Samsung Galaxy S24](product_name) là gì?
+      - [Macbook Pro M4](product_name) có những phiên bản nào?
+      - Liệt kê các phiên bản của [iPhone 16](product_name)
+      - Thông tin về các biến thể của [Dell XPS 13](product_name)
+      - Các phiên bản của [iPhone 16](product_name) gồm những gì?
+      - Mình muốn biết về các biến thể của [Macbook Air M3](product_name)
+      - Cho tôi xem các phiên bản của [Samsung S24](product_name)
+      - [iPhone 16](product_name) có bao nhiêu biến thể?
+      - Nói cho tôi biết về các phiên bản của [Dell XPS](product_name)
+      - Biến thể của [iPhone 16](product_name) là gì?
+      - Phiên bản của [Macbook Pro M4](product_name) gồm những gì?
+      - Các biến thể của [Samsung Galaxy S24](product_name) gồm những gì?
+      - Liệt kê các phiên bản của [iPhone 16](product_name) giúp tôi
+      - Tôi muốn biết về các biến thể của [Dell XPS 13](product_name)
+      - Cho mình xem các phiên bản của [Macbook Air M3](product_name)
+      - [iPhone 16](product_name) có những biến thể nào?
+      - Nói cho tôi biết về các phiên bản của [Samsung S24](product_name)
+      - Biến thể của [Dell XPS](product_name) là gì?
+      - Phiên bản của [iPhone 16](product_name) gồm những gì?
+      - Mình muốn biết về các biến thể của [Macbook Pro M4](product_name)
+      - Cho tôi xem các phiên bản của [Samsung Galaxy S24](product_name)
+      - [iPhone 16](product_name) có bao nhiêu phiên bản?
+      - I want to know the variants of [iPhone 16](product_name)
+      - List the variants of [Samsung S24](product_name)
+      - Variants of [Macbook Air M3](product_name)
+      - What are the variants of [Dell XPS 13](product_name)?
+
+  - intent: ask_product_detail_variant_infor
+    examples: |
+      - Cho mình biết thông tin về phiên bản [256GB màu xanh](variant_name) của [iPhone 16](product_name)
+      - Thông tin chi tiết về biến thể [512GB](variant_name) của [Samsung Galaxy S24](product_name)
+      - Phiên bản [16GB RAM 1TB](variant_name) của [Macbook Pro M4](product_name) có gì đặc biệt?
+      - Mô tả về biến thể [core i7 16GB](variant_name) của [Dell XPS 13](product_name)
+      - Cho tôi xem thông tin về phiên bản [màu titan 512GB](variant_name) của [iPhone 16](product_name)
+      - Thông tin chi tiết về biến thể [USB-C](variant_name) của [AirPods Pro](product_name)
+      - Phiên bản [M4 13 inch 1TB](variant_name) của [iPad Pro](product_name) có gì đặc biệt?
+      - Mô tả về biến thể [Plus màu đen](variant_name) của [Samsung S24](product_name)
+      - Cho mình biết thông tin về phiên bản [256GB xanh titan](variant_name) của [iPhone 16 Pro Max](product_name)
+      - Thông tin chi tiết về biến thể [M3 màu bạc](variant_name) của [Macbook Air](product_name)
+      - Phiên bản [512GB](variant_name) của [Samsung S24](product_name) có gì đặc biệt?
+      - Mô tả về biến thể [core i7 16GB](variant_name) của [Dell XPS](product_name)
+      - Cho tôi xem thông tin về phiên bản [màu xanh](variant_name) của [iPhone 16](product_name)
+      - Thông tin chi tiết về biến thể [1TB](variant_name) của [Macbook Pro M4](product_name)
+      - Phiên bản [Plus](variant_name) của [Samsung Galaxy S24](product_name) có gì đặc biệt?
+      - Mô tả về biến thể [256GB](variant_name)
+      - Cho mình biết thông tin về phiên bản [màu hồng](variant_name) của [iPhone 16](product_name)
+      - Thông tin chi tiết về biến thể [16GB](variant_name) của [Macbook Air M3](product_name)
+      - Phiên bản [USB-C](variant_name) của [AirPods Pro](product_name) có gì đặc biệt?
+      - Mô tả về biến thể [core i7](variant_name) của [Dell XPS 13](product_name)
+      - Cho tôi xem thông tin về phiên bản [256GB xanh titan](variant_name) của [iPhone 16 Pro Max](product_name)

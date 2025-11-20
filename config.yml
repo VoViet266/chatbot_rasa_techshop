@@ -43,7 +43,13 @@ pipeline:
   - name: ResponseSelector
     epochs: 100
     constrain_similarities: true
+    retrieval_intent: faq
+
+  - name: ResponseSelector
+    epochs: 100
+    constrain_similarities: true
     retrieval_intent: chitchat
+
 
     # Điều chỉnh threshold
   - name: FallbackClassifier

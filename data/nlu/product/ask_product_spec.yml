@@ -1,0 +1,97 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_product_spec
+    examples: |
+      - [Pin](spec_type) của [iPhone 16 Pro Max](product_name) là bao nhiêu?
+      - [Camera](spec_type) [Samsung Galaxy S25](product_name) có bao nhiêu MP?
+      - [RAM](spec_type) của [Laptop Dell XPS 13](product_name) là bao nhiêu?
+      - [Màn hình](spec_type) [Macbook Air M3](product_name) to bao nhiêu inch?
+      - Thông số [GPU](spec_type) của [Asus ROG Strix](product_name) là gì?
+      - [iPhone 16](product_name) [pin](spec_type) dùng được bao lâu?
+      - [MacBook Pro](product_name) tốc độ [CPU](spec_type) như thế nào?
+      - [Samsung S24](product_name) [sạc](spec_type) có nhanh không?
+      - [Xiaomi 14](product_name) [chụp ảnh](spec_type) đêm có tốt không?
+      - [Dell XPS 15](product_name) [trọng lượng](spec_type) nặng bao nhiêu?
+      - [Con chip](spec_type) trên [iPhone 15](product_name) là loại gì?
+      - [Dung lượng](spec_type) của [iPad Pro](product_name) tối đa bao nhiêu?
+      - [Cam](spec_type) con [Sony A7 IV](product_name) này khủng không?
+      - [Cấu hình](spec_type) con [Asus TUF](product_name) chơi game ổn không?
+      - [Ổ cứng](spec_type) [Mac mini](product_name) nâng cấp được không?
+      - [Hệ điều hành](spec_type) của [Galaxy Tab S9](product_name) là Android mấy?
+      - [Độ phân giải](spec_type) máy [LG Gram](product_name) là 2K hay 4K?
+      - [Cổng kết nối](spec_type) trên [Surface Pro](product_name) có Thunderbolt không?
+
+  - lookup: spec_type
+    examples: |
+      - pin
+      - camera
+      - ram
+      - cpu
+      - gpu
+      - màn hình
+      - bộ nhớ
+      - trọng lượng
+      - kích thước
+      - hệ điều hành
+      - kết nối
+      - bluetooth
+      - wifi
+      - sim
+      - sạc
+      - loa
+      - mic
+      - chip
+      - cam
+      - rom
+      - ssd
+  - synonym: battery
+    examples: |
+      - pin
+      - dung lượng pin
+      - sạc
+      - thời lượng pin
+      - cục pin
+
+  - synonym: camera
+    examples: |
+      - cam
+      - máy ảnh
+      - ống kính
+      - chụp ảnh
+      - chụp hình
+      - quay phim
+      - selfie
+
+  - synonym: screen
+    examples: |
+      - màn hình
+      - màn
+      - độ phân giải
+      - tấm nền
+      - hiển thị
+      - tần số quét
+
+  - synonym: cpu
+    examples: |
+      - chip
+      - vi xử lý
+      - processor
+      - hiệu năng
+      - core
+
+  - synonym: storage
+    examples: |
+      - bộ nhớ
+      - dung lượng
+      - rom
+      - ổ cứng
+      - ssd
+      - hdd
+      - lưu trữ
+
+  - synonym: ram
+    examples: |
+      - ram
+      - bộ nhớ đệm
+      - memory

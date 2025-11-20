@@ -19,7 +19,6 @@ class ActionGetInformation(Action):
         if user_id != 'default':
             user_infor=db_service.users_collection.find_one({"_id": ObjectId(user_id)})
             user_name= user_infor.get("name")
-            dispatcher.utter_message(response="utter_greet_personalized", user_name=user_name)
             return [SlotSet("user_name", user_name)]
         else: 
             dispatcher.utter_message(response="utter_greet")

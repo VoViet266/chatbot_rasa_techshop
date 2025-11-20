@@ -3,32 +3,32 @@ version: "3.1"
 nlu:
   - intent: ask_product_price
     examples: |
-      - [iPhone 16](product) giá bao nhiêu?
-      - Giá của [iPhone 16](product) là bao nhiêu?
-      - Báo giá cho mình con [iPhone 16](product)
-      - [iPhone 16](product) bao nhiêu tiền?
-      - Cho mình hỏi giá [Samsung Galaxy S24](product)
-      - Con [Macbook Pro M4](product) giá sao?
-      - Giá con [iPhone 16](product)
-      - Check giá [iPhone 16](product)
-      - Xin giá con [iPhone 16](product)
-      - [iPhone 16](product) giá thế nào?
-      - Rổ giá con [Macbook Pro M4](product) ra sao?
-      - Giá bán của [Samsung Galaxy S24](product)
-      - [iPhone 16](product) nhiêu vậy?
-      - [iPhone 16](product) [256GB](variant_spec) giá bao nhiêu?
-      - Giá [iPhone 16 Pro Max](product) [màu Titan](variant_color) là mấy?
-      - Báo giá [Macbook Pro M4](product) [16GB](variant_spec) [1TB](variant_spec)
-      - Con [S24](product) [bản 512](variant_spec) giá sao?
-      - [iPhone 16](product) [bản 1TB](variant_spec) [màu xanh](variant_color) bao tiền?
-      - Cho mình hỏi giá [Macbook Air](product) [M3](variant_spec) [16GB](variant_spec)
+      - [iPhone 16](product_name) giá bao nhiêu?
+      - Giá của [iPhone 16](product_name) là bao nhiêu?
+      - Báo giá cho mình con [iPhone 16](product_name)
+      - [iPhone 16](product_name) bao nhiêu tiền?
+      - Cho mình hỏi giá [Samsung Galaxy S24](product_name)
+      - Con [Macbook Pro M4](product_name) giá sao?
+      - Giá con [iPhone 16](product_name)
+      - Check giá [iPhone 16](product_name)
+      - Xin giá con [iPhone 16](product_name)
+      - [iPhone 16](product_name) giá thế nào?
+      - Rổ giá con [Macbook Pro M4](product_name) ra sao?
+      - Giá bán của [Samsung Galaxy S24](product_name)
+      - [iPhone 16](product_name) nhiêu vậy?
+      - [iPhone 16](product_name) [256GB](variant_spec) giá bao nhiêu?
+      - Giá [iPhone 16 Pro Max](product_name) [màu Titan](variant_color) là mấy?
+      - Báo giá [Macbook Pro M4](product_name) [16GB](variant_spec) [1TB](variant_spec)
+      - Con [S24](product_name) [bản 512](variant_spec) giá sao?
+      - [iPhone 16](product_name) [bản 1TB](variant_spec) [màu xanh](variant_color) bao tiền?
+      - Cho mình hỏi giá [Macbook Air](product_name) [M3](variant_spec) [16GB](variant_spec)
       - giá nó sao?
       - bao nhiêu tiền?
       - giá nhiêu?
       - giá thế nào?
       - con đó giá bao nhiêu?
 
-  - intent: chitchat/just_looking 
+  - intent: chitchat/just_looking
     examples: |
       - Tôi không muốn mua, chỉ hỏi giá thôi
       - Chưa mua đâu, chỉ hỏi xem bao nhiêu

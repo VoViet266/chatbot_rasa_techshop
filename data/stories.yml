@@ -2,6 +2,45 @@ version: "3.1"
 
 stories:
   # 2. HỎI THÔNG TIN SẢN PHẨM
+
+  - story: Hỏi thông số cụ thể của sản phẩm
+    steps:
+      - intent: ask_product_spec
+        entities:
+          - product_name
+          - spec_type
+      - action: action_provide_product_spec
+
+  # Story 2: User hỏi toàn bộ thông số kỹ thuật
+  - story: Hỏi thông số kỹ thuật đầy đủ
+    steps:
+      - intent: ask_product_technical_specs
+        entities:
+          - product_name
+      - action: action_provide_product_technical_specs
+
+  # # Story 3: User hỏi thông số nhưng thiếu tên sản phẩm
+  # - story: Hỏi thông số nhưng chưa có tên sản phẩm
+  #   steps:
+  #     - intent: ask_product_spec
+  #     - action: action_provide_product_spec
+  #     - intent: inform
+  #       entities:
+  #         - product_name
+  #     - action: action_provide_product_spec
+
+  # # Story 4: User hỏi thông số nhưng thiếu loại spec
+  # - story: Hỏi thông số nhưng chưa rõ spec nào
+  #   steps:
+  #     - intent: ask_product_spec
+  #       entities:
+  #         - product_name
+  #     - action: action_provide_product_spec
+  #     - intent: inform
+  #       entities:
+  #         - spec_type
+  #     - action: action_provide_product_spec
+
   - story: Hỏi thông tin sản phẩm (nêu rõ tên)
     steps:
       - intent: ask_product_info
@@ -23,7 +62,7 @@ stories:
       - intent: chitchat
       - action: utter_chitchat/just_looking
       - slot_was_set:
-          - product: null
+          - product_name: null
 
   - story: Hỏi giá sản phẩm rồi quyết định mua
     steps:
@@ -153,6 +192,21 @@ stories:
 
   #  GIỎ HÀNG
   # Thêm sản phẩm vào giỏ hàng
+
+  - story: Hỏi sản phẩm rồi thêm vào giỏ
+    steps:
+      - intent: ask_product_info
+        entities:
+          - product_name: "iPhone 16"
+      - slot_was_set:
+          - product_name: "iPhone 16"
+      - action: action_provide_product_info
+      - intent: add_to_cart
+      - action: add_to_cart_form
+      - active_loop: add_to_cart_form
+      - active_loop: null
+      - action: action_add_to_cart
+
   - story: Thêm sản phẩm vào giỏ hàng
     steps:
       - intent: add_to_cart
@@ -175,16 +229,6 @@ stories:
     steps:
       - intent: delete_from_cart
       - action: action_delete_from_cart
-
-  - story: Tăng số lượng sản phẩm trong giỏ hàng
-    steps:
-      - intent: update_cart_increase
-      - action: action_update_cart
-
-  - story: Giảm số lượng sản phẩm trong giỏ hàng
-    steps:
-      - intent: update_cart_decrease
-      - action: action_update_cart
 
   # - story: user adds product to cart
   #   steps:

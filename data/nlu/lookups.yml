@@ -1,6 +1,6 @@
 version: "3.1"
 nlu:
-  - lookup: product
+  - lookup: product_name
     examples: |
       - Apple AirPods Pro (Gen 2)
       - Apple AirPods Pro 2 USB-C

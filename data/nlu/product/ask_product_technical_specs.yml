@@ -1,0 +1,21 @@
+# nlu examples for asking full technical specs by category or product
+version: "3.1"
+
+nlu:
+  - intent: ask_product_technical_specs
+    examples: |
+      - Cho tôi thông số kỹ thuật của [Dell XPS 13](product_name)
+      - Thông số kỹ thuật của [MacBook Air M3](product_name) là gì?
+      - [Laptop](product_name) này có thông số kỹ thuật như thế nào?
+      - Em cho biết cấu hình chi tiết của [Lenovo ThinkPad X1](product_name)
+      - Thông số kĩ thuật [iPhone 16](product_name) đi shop
+      - Cho mình xem thông số kỹ thuật toàn bộ của [Samsung S25](product_name)
+      - Mô tả thông số kỹ thuật cho [Macbook Pro](product_name)
+      - Xem thông số kỹ thuật [máy ảnh Sony A7](product_name)
+      - Tôi muốn xem thông số kỹ thuật của [màn hình LG 27 inch](product_name)
+      - Cấu hình [Asus ROG](product_name) như thế nào?
+      - Thông số đầy đủ của [iPad Air](product_name)
+      - Specs của [Galaxy S24](product_name) là gì?
+      - [Xiaomi 14 Pro](product_name) có specs gì?
+      - Chi tiết kỹ thuật [iPhone 15 Pro Max](product_name)
+      - Full specs [MacBook Pro M3](product_name)

@@ -3,14 +3,14 @@ version: "3.1"
 nlu:
   - intent: order
     examples: |
-      - Tôi muốn đặt mua [iPhone 16](product)
-      - Tôi muốn mua [Samsung S24](product)
-      - Mua [MacBook Air M3](product)
-      - Đặt [iPad Pro](product) cho tôi
-      - Cho tôi mua [Galaxy Z Fold 6](product)
-      - Lấy cho mình con [Dell XPS 13](product)
-      - Chốt đơn [iPhone 16](product)
-      - Tôi lấy con [Macbook Pro M4](product)
+      - Tôi muốn đặt mua [iPhone 16](product_name)
+      - Tôi muốn mua [Samsung S24](product_name)
+      - Mua [MacBook Air M3](product_name)
+      - Đặt [iPad Pro](product_name) cho tôi
+      - Cho tôi mua [Galaxy Z Fold 6](product_name)
+      - Lấy cho mình con [Dell XPS 13](product_name)
+      - Chốt đơn [iPhone 16](product_name)
+      - Tôi lấy con [Macbook Pro M4](product_name)
       - Tôi muốn đặt hàng
       - Tôi muốn mua hàng
       - Đặt hàng
@@ -28,10 +28,10 @@ nlu:
       - Tôi muốn mua ngay
       - Đặt ngay
       - Tôi muốn chốt đơn
-      - Tôi muốn mua [iPhone 16](product) [bản 256GB màu xanh](variant_name)
-      - Đặt cho tôi [2](quantity) chiếc [Samsung S24](product) [bản 512GB](variant_name)
-      - Mua ngay [MacBook Air M3](product) [16GB RAM](variant_name) [1](quantity) cái
-      - Chốt đơn [iPad Pro](product) [M4 13 inch 1TB](variant_name)
-      - Lấy cho mình [1](quantity) con [Dell XPS 13](product) [bản core i7 16GB](variant_name)
-      - Tôi muốn đặt [2](quantity) cái [AirPods Pro](product) [bản USB-C](variant_name)
-      - Bán cho tôi [1](quantity) [iPhone 16](product) [màu titan 512GB](variant_name)
+      - Tôi muốn mua [iPhone 16](product_name) [bản 256GB màu xanh](variant_name)
+      - Đặt cho tôi [2](quantity) chiếc [Samsung S24](product_name) [bản 512GB](variant_name)
+      - Mua ngay [MacBook Air M3](product_name) [16GB RAM](variant_name) [1](quantity) cái
+      - Chốt đơn [iPad Pro](product_name) [M4 13 inch 1TB](variant_name)
+      - Lấy cho mình [1](quantity) con [Dell XPS 13](product_name) [bản core i7 16GB](variant_name)
+      - Tôi muốn đặt [2](quantity) cái [AirPods Pro](product_name) [bản USB-C](variant_name)
+      - Bán cho tôi [1](quantity) [iPhone 16](product_name) [màu titan 512GB](variant_name)

@@ -5,25 +5,25 @@ nlu:
   # ----- INTENTS -----
   - intent: inform_product
     examples: |
-      - [iPhone 16](product)
-      - con [Samsung S24](product) đó
-      - Mình đang nói về [MacBook Air M3](product)
-      - [laptop gaming](product)
-      - [Dell XPS 13](product)
-      - [Sony WH-1000XM5](product)
+      - [iPhone 16](product_name)
+      - con [Samsung S24](product_name) đó
+      - Mình đang nói về [MacBook Air M3](product_name)
+      - [laptop gaming](product_name)
+      - [Dell XPS 13](product_name)
+      - [Sony WH-1000XM5](product_name)
 
   - intent: order_product
     examples: |
-      - [iPhone 16](product) [màu xanh](color) [256GB](storage) [2](quantity) cái
-      - [iPhone 16](product) [màu xanh](color)
-      - [iPhone 16](product) [2](quantity) cái
+      - [iPhone 16](product_name) [màu xanh](color) [256GB](storage) [2](quantity) cái
+      - [iPhone 16](product_name) [màu xanh](color)
+      - [iPhone 16](product_name) [2](quantity) cái
       - [màu đen](color) [1](quantity) cái
       - [bản 256GB](storage) [2](quantity)
-      - Tôi muốn [MacBook Air M3](product) [bản 256GB](storage)
-      - Cứ lấy [Dell XPS 13](product) [bản i7](variant_other) [1](quantity) cái đi
-      - [Sony WH-1000XM5](product) [màu đen](color)
-      - Lấy [iPhone 16](product) [bản 512GB](storage) [màu trắng](color)
-      - [iPhone 16](product) [2](quantity) cái [màu đỏ](color)
+      - Tôi muốn [MacBook Air M3](product_name) [bản 256GB](storage)
+      - Cứ lấy [Dell XPS 13](product_name) [bản i7](variant_other) [1](quantity) cái đi
+      - [Sony WH-1000XM5](product_name) [màu đen](color)
+      - Lấy [iPhone 16](product_name) [bản 512GB](storage) [màu trắng](color)
+      - [iPhone 16](product_name) [2](quantity) cái [màu đỏ](color)
   - intent: inform_order_id
     examples: |
       - Mã đơn hàng là [6673f8a7e0965e26f63111ed](order_id)
