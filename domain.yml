@@ -55,6 +55,8 @@ intents:
   - provide_return_reason
   - ask_order_specific
   - ask_order_filter
+  - faq
+
 
 entities:
   - branch_name
@@ -611,6 +613,66 @@ responses:
           payload: "/order"
         - title: "Không, mình chỉ hỏi giá"
           payload: "/chitchat/just_looking"
+
+  utter_faq/tech_support:
+    - condition:
+        - type: slot
+          name: category
+          value: laptop
+      text: "Đối với Laptop, TechShop hỗ trợ cài đặt Windows, Office và các phần mềm cơ bản miễn phí. Ngoài ra, shop cũng hỗ trợ nâng cấp RAM, SSD và vệ sinh máy định kỳ. Bạn cần hỗ trợ cụ thể gì không ạ?"
+    - condition:
+        - type: slot
+          name: category
+          value: điện thoại
+      text: "Với Điện thoại, TechShop hỗ trợ chuyển dữ liệu, cài đặt ứng dụng, cắt SIM và dán màn hình. Nếu bạn mua máy tại shop, các dịch vụ này thường là miễn phí ạ."
+    - condition:
+        - type: slot
+          name: category
+          value: tai nghe
+      text: "Để kết nối tai nghe, bạn hãy bật Bluetooth trên thiết bị và tai nghe, sau đó chọn tên tai nghe trong danh sách. Nếu cần hướng dẫn reset hoặc chỉnh âm, bạn có thể xem sách hướng dẫn hoặc mang qua shop ạ."
+    - condition:
+        - type: slot
+          name: category
+          value: chuột
+      text: "Chuột gaming thường có phần mềm riêng để chỉnh LED và DPI. Bạn có thể tải trên trang chủ hãng hoặc mang qua shop để nhân viên cài đặt giúp nhé."
+    - text: "TechShop hỗ trợ kỹ thuật cho tất cả các sản phẩm bán ra. Bạn cần hỗ trợ về Laptop, Điện thoại hay Phụ kiện ạ?"
+
+  utter_faq/support_error:
+    - condition:
+        - type: slot
+          name: category
+          value: laptop
+      text: "Nếu Laptop gặp sự cố (màn hình xanh, không lên nguồn, nóng máy...), bạn vui lòng mang máy đến cửa hàng gần nhất để kỹ thuật viên kiểm tra nhé. TechShop sẽ kiểm tra miễn phí và báo giá sửa chữa nếu có."
+    - condition:
+        - type: slot
+          name: category
+          value: điện thoại
+      text: "Các lỗi thường gặp trên điện thoại như treo logo, lỗi màn hình, pin ảo... cần được kiểm tra trực tiếp. Bạn hãy mang máy ra cửa hàng để được hỗ trợ nhanh nhất nhé."
+    - condition:
+        - type: slot
+          name: category
+          value: tai nghe
+      text: "Nếu tai nghe bị lỗi (nghe 1 bên, không sạc, mic nhỏ...), bạn hãy thử reset lại tai nghe trước. Nếu vẫn không được, vui lòng mang qua shop để bảo hành hoặc sửa chữa."
+    - condition:
+        - type: slot
+          name: category
+          value: chuột
+      text: "Lỗi click đúp hoặc liệt nút cuộn thường do switch bị hỏng hoặc bẩn. Bạn có thể mang qua shop để vệ sinh hoặc thay switch mới ạ."
+    - text: "Nếu sản phẩm gặp lỗi, bạn vui lòng mang qua cửa hàng TechShop gần nhất để được kỹ thuật viên kiểm tra và hỗ trợ nhé."
+
+  utter_faq/warranty:
+    - text: "TechShop bảo hành 12 tháng cho máy mới và 6 tháng cho máy cũ. Lỗi 1 đổi 1 trong 30 ngày đầu nếu có lỗi nhà sản xuất. Bảo hành cả nguồn và màn hình ạ."
+
+  utter_faq/installment:
+    - text: "TechShop hỗ trợ trả góp qua thẻ tín dụng (0% lãi suất) hoặc qua công ty tài chính (Home Credit, FE Credit). Thủ tục chỉ cần CMND/CCCD và Bằng lái xe hoặc Hộ khẩu."
+
+  utter_faq/origin:
+    - text: "Sản phẩm tại TechShop cam kết chính hãng 100%, có nguồn gốc rõ ràng. Máy cũ là hàng nguyên bản, chưa qua sửa chữa. Bạn có thể check serial/IMEI thoải mái ạ."
+
+  utter_faq/mouse_error:
+    - text: "Lỗi click đúp hoặc liệt nút cuộn thường do switch bị hỏng hoặc bẩn. Bạn có thể mang qua shop để vệ sinh hoặc thay switch mới ạ."
+
+
 
 actions:
   - utter_greet
