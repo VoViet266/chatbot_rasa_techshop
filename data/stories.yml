@@ -296,10 +296,7 @@ stories:
           - time: "hôm nay"
           - order_status: "đang giao"
 
-  - story: Xem tất cả đơn hàng
-    steps:
-      - intent: ask_all_orders
-      - action: action_list_all_orders
+
 
   - story: Tra đơn hàng chưa hoàn thành
     steps:

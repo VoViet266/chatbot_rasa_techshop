@@ -1,7 +1,7 @@
 from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
-from bson import ObjectId, InvalidId
+from bson import ObjectId
 from datetime import datetime, timedelta
 import dateparser
 from utils.database import DatabaseService
@@ -114,11 +114,7 @@ class ActionCheckOrder(Action):
         
         # Case A: Specific Order ID
         if order_id:
-            try:
-                query["_id"] = ObjectId(order_id)
-            except InvalidId:
-                dispatcher.utter_message(text=f"Mã đơn hàng '{order_id}' không hợp lệ.")
-                return []
+            query["_id"] = ObjectId(order_id)
         
         # Case B: Filter by Status
         if order_status:
