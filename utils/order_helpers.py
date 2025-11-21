@@ -22,8 +22,7 @@ def format_status(status: str) -> str:
 
 def build_order_card_html(order: Dict, products_coll) -> str:
     """
-    Build beautiful HTML card for displaying a single order
-    Used by both action_check_order and action_list_all_orders
+    Build clean, simple HTML card for order - no colors, no badges
     """
     order_id = str(order.get('_id', ''))
     status = format_status(order.get('status', ''))
@@ -35,64 +34,52 @@ def build_order_card_html(order: Dict, products_coll) -> str:
     for item in order.get('items', []):
         product_id = item.get('product')
         product_info = products_coll.find_one({"_id": product_id})
-        product_name = product_info.get('name', 'Sản phẩm')
+        product_name = product_info.get('name', 'Sản phẩm') if product_info else 'Sản phẩm'
         quantity = item.get('quantity', 1)
         price = item.get('price', 0)
         products_html += f"""
-        <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0f0f0;">
-            <div style="flex: 1;">
-                <div style="font-weight: 500; color: #333;">{product_name}</div>
-                <div style="font-size: 12px; color: #888;">Số lượng: {quantity}</div>
-            </div>
-            <div style="font-weight: 600; color: #d32f2f;">{price:,.0f}₫</div>
+        <div style="padding: 8px 0; display: flex; justify-content: space-between;">
+            <div style="color: #374151;">• {product_name} <span style="color: #9ca3af;">x{quantity}</span></div>
+            <div style="color: #111827; font-weight: 500;">{price:,.0f}₫</div>
         </div>
         """
     
     html = f"""
     <div style="
-        border: 1px solid #e0e0e0; 
-        border-radius: 12px; 
+        border: 1px solid #e5e7eb; 
+        border-radius: 8px; 
         padding: 16px; 
-        margin: 10px 0; 
-        background: #fff;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 8px 0; 
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 500px;
     ">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; max-width: 350px; min-width: 350px;">
-            <div>
-                <div style="font-size: 11px; color: #888; margin-bottom: 4px;">MÃ ĐƠN HÀNG</div>
-                <div style="font-weight: 600; color: #333; font-size: 14px;">{order_id}</div>
+        <!-- Header -->
+        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                <div>
+                    <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 4px;">Mã đơn hàng</div>
+                    <div style="font-weight: 600; color: #111827;">#{order_id[:12]}...</div>
+                </div>
+                <div style="font-size: 13px; color: #6b7280;">
+                    {status}
+                </div>
             </div>
-            <div style="
-                color: #d32f2f; 
-                padding: 6px 12px; 
-                border-radius: 20px; 
-                font-size: 12px; 
-                font-weight: 600;
-            ">{status}</div>
+            <div style="font-size: 12px; color: #9ca3af; margin-top: 8px;">
+                {created_at}
+            </div>
         </div>
         
-        <!-- Order Date -->
-        <div style="font-size: 12px; color: #666; margin-bottom: 12px;">
-            <span style="color: #888;">📅</span> {created_at}
-        </div>
-        
-        <!-- Products List -->
-        <div style="margin: 12px 0;">
+        <!-- Products -->
+        <div style="padding: 12px 0; border-bottom: 1px solid #f3f4f6;">
+            <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 8px;">Sản phẩm</div>
             {products_html}
         </div>
         
         <!-- Total -->
-        <div style="
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center;
-            padding-top: 12px;
-            border-top: 2px solid #f0f0f0;
-            margin-top: 8px;
-        ">
-            <div style="font-weight: 600; color: #333; font-size: 14px;">Tổng tiền:</div>
-            <div style="font-weight: 700; color: #d32f2f; font-size: 18px;">{total:,.0f}₫</div>
+        <div style="padding-top: 12px; display: flex; justify-content: space-between; align-items: center;">
+            <div style="font-weight: 600; color: #374151;">Tổng cộng</div>
+            <div style="font-weight: 700; color: #111827; font-size: 18px;">{total:,.0f}₫</div>
         </div>
     </div>
     """
@@ -101,27 +88,35 @@ def build_order_card_html(order: Dict, products_coll) -> str:
 
 def build_orders_summary_header(total_orders: int, total_spent: float, status_count: Dict[str, int]) -> str:
     """
-    Build summary header for list of orders
-    Used by action_list_all_orders
+    Build simple summary header - no gradient, clean
     """
     # Build status summary
-    status_summary = ", ".join([f"{count} {status}" for status, count in status_count.items()])
+    status_items = []
+    for status, count in status_count.items():
+        status_items.append(f"{count} {status}")
+    status_summary = " • ".join(status_items)
     
     header_html = f"""
     <div style="
-        background: linear-gradient(135deg, #d32f2f 0%, #f44336 100%);
-        color: white;
-        padding: 20px;
-        border-radius: 12px;
-        margin-bottom: 16px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(211, 47, 47, 0.3);
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 12px;
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 500px;
     ">
-        <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px;">📦 Tất cả đơn hàng</div>
-        <div style="font-size: 14px; opacity: 0.95;">
-            <div style="margin-bottom: 4px;">Tổng: <strong>{total_orders}</strong> đơn hàng</div>
-            <div style="margin-bottom: 4px;">Tổng chi tiêu: <strong>{total_spent:,.0f}₫</strong></div>
-            <div style="font-size: 12px; opacity: 0.9;">{status_summary}</div>
+        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
+            <div style="font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 4px;">
+                📦 Đơn hàng của tôi
+            </div>
+        </div>
+        <div style="font-size: 13px; color: #6b7280; line-height: 1.6;">
+            <div style="margin-bottom: 4px;">
+                <strong style="color: #111827;">{total_orders}</strong> đơn hàng • 
+                <strong style="color: #111827;">{total_spent:,.0f}₫</strong>
+            </div>
+            <div style="font-size: 12px; color: #9ca3af;">{status_summary}</div>
         </div>
     </div>
     """
@@ -130,21 +125,25 @@ def build_orders_summary_header(total_orders: int, total_spent: float, status_co
 
 def build_filter_info_header(filter_desc: str, count: int) -> str:
     """
-    Build header showing filter information
-    Used by action_check_order when filters are applied
+    Build simple filter header - no gradient
     """
     header_html = f"""
     <div style="
-        background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
-        color: white;
+        border: 1px solid #e5e7eb;
+        border-left: 3px solid #3b82f6;
+        border-radius: 8px;
         padding: 16px;
-        border-radius: 10px;
         margin-bottom: 12px;
-        text-align: center;
-        box-shadow: 0 3px 10px rgba(33, 150, 243, 0.3);
+        background: #ffffff;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        max-width: 500px;
     ">
-        <div style="font-size: 18px; font-weight: 600; margin-bottom: 4px;">🔍 {filter_desc}</div>
-        <div style="font-size: 13px; opacity: 0.9;">Tìm thấy <strong>{count}</strong> đơn hàng</div>
+        <div style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px;">
+            🔍 {filter_desc}
+        </div>
+        <div style="font-size: 12px; color: #6b7280;">
+            Tìm thấy {count} đơn hàng
+        </div>
     </div>
     """
     return header_html
