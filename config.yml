@@ -2,64 +2,85 @@ recipe: default.v1
 language: vi
 
 pipeline:
+  # Tokenizer for Vietnamese
   - name: WhitespaceTokenizer
 
-  
+  # ViBERT embeddings - Core featurizer
   - name: LanguageModelFeaturizer
     model_name: "bert"
     model_weights: "FPTAI/vibert-base-cased"
     from_pt: true
 
-    # Regex for patterns only
+  # Regex for exact entity matching
   - name: RegexEntityExtractor
     case_sensitive: false
     use_lookup_tables: true
     use_regexes: true
 
-    # Char-level only (bền với lỗi chính tả, teencode)
+  # Character n-grams for typo/teencode resilience  
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
-    min_ngram: 3
-    max_ngram: 5
+    min_ngram: 2
+    max_ngram: 6
 
+  # Intent + Entity classification
   - name: DIETClassifier
-    epochs: 120
-    transformer_size: 64
-    number_of_transformer_layers: 1
-    use_masked_language_model: false
-    drop_rate: 0.2
+    epochs: 150
+    transformer_size: 256
+    number_of_transformer_layers: 2
+    weight_sparsity: 0.7
     constrain_similarities: true
+    model_confidence: "softmax"
+    drop_rate: 0.25
+    drop_rate_attention: 0.1
+    entity_recognition: true
+    BILOU_flag: true
+    use_masked_language_model: true
 
+  # Entity synonym mapping
   - name: EntitySynonymMapper
 
+  # FAQ Response Selector
   - name: ResponseSelector
-    epochs: 100
+    epochs: 120
+    transformer_size: 256
+    number_of_transformer_layers: 2
     constrain_similarities: true
     retrieval_intent: faq
 
+  # Chitchat Response Selector  
   - name: ResponseSelector
-    epochs: 100
+    epochs: 120
+    transformer_size: 256
+    number_of_transformer_layers: 2
     constrain_similarities: true
     retrieval_intent: chitchat
 
+  # Fallback detection
   - name: FallbackClassifier
-    threshold: 0.55
-    ambiguity_threshold: 0.15
+    threshold: 0.65
+    ambiguity_threshold: 0.12
 
 policies:
+  # Memorize exact conversation patterns
   - name: MemoizationPolicy
 
+  # Rule-based policy
   - name: RulePolicy
-    core_fallback_threshold: 0.5
+    core_fallback_threshold: 0.4
     core_fallback_action_name: "utter_fallback"
     enable_fallback_prediction: true
 
+  # Unexpected Intent Policy
   - name: UnexpecTEDIntentPolicy
-    max_history: 10
-    epochs: 120
+    max_history: 8
+    epochs: 150
+    constrain_similarities: true
 
+  # Transformer Embedding Dialogue Policy  
   - name: TEDPolicy
     max_history: 5
-    epochs: 100
+    epochs: 120
     constrain_similarities: true
-assistant_id: 20251120-185031-rainy-rank
+
+assistant_id: 20251121-optimized-vibert

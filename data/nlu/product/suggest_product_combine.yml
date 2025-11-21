@@ -6,7 +6,7 @@ nlu:
       - Tôi cần [điện thoại](category) giá trên [5 triệu]{"entity": "price", "role": "from"} và ram trên [8 GB]{"entity": "ram", "role": "from"}
       - Có [laptop](category) nào giá dưới [10 triệu]{"entity": "price", "role": "to"} và ram trên [16 GB]{"entity": "ram", "role": "from"} không?
       - Tìm [laptop](category) ram [16 GB]{"entity": "ram"} giá khoảng [20 triệu]{"entity": "price"}
-      - Tôi muốn [điện thoại](category) ram [8GB]{"entity": "ram"} và giá dưới [10 triệu]{"entity": "price", "role": "to"}
+      - Tô muốn [điện thoại](category) ram [8GB]{"entity": "ram"} và giá dưới [10 triệu]{"entity": "price", "role": "to"}
       - Gợi ý [laptop](category) giá từ [15]{"entity": "price", "role": "from"} đến [20 triệu]{"entity": "price", "role": "to"} mà có ram [16GB]{"entity": "ram"}
       - Có [điện thoại](category) [Samsung](brand) nào giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"} không?
       - Tôi tìm [laptop](category) [Dell](brand) giá trên [20 triệu]{"entity": "price", "role": "from"}
@@ -21,10 +21,16 @@ nlu:
       - Gợi ý [laptop](category) [Dell](brand) ram [32GB]{"entity": "ram"} ổ [1T]{"entity": "storage"}
       - [Laptop](category) [Lenovo](brand) ram [16GB]{"entity": "ram"} giá tầm [20tr]{"entity": "price"}
       - Có [điện thoại](category) [Samsung](brand) nào ram [12GB]{"entity": "ram"} bộ nhớ [256GB]{"entity": "storage"} giá dưới [20 triệu]{"entity": "price", "role": "to"} không?
-      - Tôi cần ram trên [8GB]{"entity": "ram", "role": "from"}
-      - Cứ [16GB]{"entity": "ram"} là được
-      - Ổ cứng [512GB]{"entity": "storage"}
-      - Ít nhất [256GB]{"entity": "storage", "role": "from"}
-      - Tối đa [1T]{"entity": "storage", "role": "to"}
-      - [Dell](brand) hoặc [Asus](brand)
-
+      - Tôi cần [laptop](category) ram trên [8GB]{"entity": "ram", "role": "from"}
+      - Gợi ý [điện thoại](category) ram [16GB]{"entity": "ram"}
+      - [Laptop](category) ổ cứng [512GB]{"entity": "storage"}
+      - Tìm [máy tính bảng](category) bộ nhớ ít nhất [256GB]{"entity": "storage", "role": "from"}
+      - [Laptop](category) [Dell](brand) hoặc [Asus](brand)
+      - Gợi ý [điện thoại](category) [Samsung](brand) hoặc [Xiaomi](brand) giá dưới [10 triệu]{"entity": "price", "role": "to"}
+      - Tôi muốn [laptop](category) giá từ [15]{"entity": "price", "role": "from"} đến [20 triệu]{"entity": "price", "role": "to"}
+      - Có [điện thoại](category) nào pin trên [5000 mAh]{"entity": "battery", "role": "from"} không?
+      - Tìm [laptop](category) pin ít nhất [8 tiếng]{"entity": "battery", "role": "from"}
+      - Gợi ý [điện thoại](category) camera trên [50MP]{"entity": "camera"} giá dưới [15 triệu]{"entity": "price", "role": "to"}
+      - [Laptop](category) màn hình [15 inch] ram [16GB]{"entity": "ram"}
+      - Tôi cần [điện thoại](category) [Samsung](brand) giá rẻ ram [8GB]{"entity": "ram"}
+      - [Laptop gaming](category) giá từ [20]{"entity": "price", "role": "from"} đến [30 triệu]{"entity": "price", "role": "to"}

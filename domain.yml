@@ -18,7 +18,17 @@ intents:
   - suggest_product_battery
   - suggest_product_storage
   - suggest_product_ram
-  - ask_order
+  - ask_order:
+      use_entities:
+        - order_id
+        - order_direction
+        - order_index
+        - time
+        - order_status
+        - product_name
+        - order_limit
+  - ask_pending_orders
+  - ask_recent_orders
   - ask_store
   - confirm_order
   - cancel_order
@@ -39,22 +49,12 @@ intents:
       use_entities:
         - selected_branch_id
   - request_return_order
-  - ask_order_general:
-      use_entities:
-        - order_direction
-        - order_index
   - ask_product_price
   - ask_product_spec
   - ask_product_technical_specs
   - chitchat
   - show_variant_details
-  - ask_order_by_product
-  - ask_unpaid_orders
-  - ask_unshipped_orders
-  - ask_recent_orders
   - provide_return_reason
-  - ask_order_specific
-  - ask_order_filter
   - faq
 
 
@@ -712,13 +712,10 @@ actions:
   - action_compare_products
   - action_check_stock
   - action_restart_slot
-  - action_check_order_specific
-  - action_check_order_general
-  - action_check_order_filter
+  - action_check_order
+  - action_check_pending_orders
   - action_provide_product_price
   - action_show_variant_details
-  - action_check_order_by_product
-  - action_check_unpaid_or_unshipped_orders
   - action_list_recent_orders
   - action_return_order
   - action_cancel_ordering_process

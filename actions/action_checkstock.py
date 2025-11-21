@@ -143,46 +143,96 @@ class ActionCheckStock(Action):
                         })
                         total_stock_all += v_stock
 
-            # 8. Tạo phản hồi
+            # 8. Tạo phản hồi HTML chuyên nghiệp
             if total_stock_all == 0:
-                message = f"""<div class="p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                                <h4 class="font-bold text-gray-800 mb-2">❌ Hết hàng</h4>
-                                <p class="text-gray-700">
-                                    Rất tiếc! Tôi không tìm thấy sản phẩm nào còn hàng {scope_message}.
-                                </p>
-                                </div>"""
+                message = f"""
+                <div style="font-family: sans-serif; border: 1px solid #ffebee; background-color: #fff5f5; border-radius: 8px; padding: 16px; max-width: 500px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 12px;">
+                        <span style="font-size: 24px; margin-right: 10px;">❌</span>
+                        <h3 style="margin: 0; color: #c62828; font-size: 16px; font-weight: 600;">Hết hàng</h3>
+                    </div>
+                    <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.5;">
+                        Rất tiếc! Hiện tại tôi không tìm thấy sản phẩm nào còn hàng {scope_message}.
+                    </p>
+                    <div style="margin-top: 12px; font-size: 13px; color: #666;">
+                        Bạn có thể thử tìm sản phẩm khác hoặc liên hệ hotline để được hỗ trợ thêm.
+                    </div>
+                </div>
+                """
                 dispatcher.utter_message(text=message)
                 return events_to_return
 
-            # Nếu có hàng, build HTML
-            branch_details_html = []
+            # Nếu có hàng, build HTML chi tiết
+            branch_details_html = ""
             for branch, items in branch_stock_map.items():
-                if not items: continue # Bỏ qua chi nhánh không có hàng (sau khi lọc)
+                if not items: continue
 
-               
-                branch_total_stock = 0
+                # Group items by variant name & color to sum stock if needed, or just list them
+                # items structure: [{'name': '128GB', 'color': 'Xanh', 'stock': 5}, ...]
                 
-                grouped_items = defaultdict(int)
+                items_html = ""
                 for item in items:
-                    grouped_items[(item['name'], item['color'])] += item['stock']
-                    branch_total_stock += item['stock']
+                    v_name = item['name']
+                    v_color = item['color']
+                    v_stock = item['stock']
+                    
+                    items_html += f"""
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px dashed #eee;">
+                        <div style="display: flex; align-items: center;">
+                            <span style="display: inline-block; width: 8px; height: 8px; background-color: #4caf50; border-radius: 50%; margin-right: 8px;"></span>
+                            <span style="font-size: 13px; color: #333;">{v_name} - {v_color}</span>
+                        </div>
+                        <span style="font-size: 13px; font-weight: 600; color: #2e7d32; background-color: #e8f5e9; padding: 2px 8px; border-radius: 12px;">
+                            Còn {v_stock}
+                        </span>
+                    </div>
+                    """
 
+                branch_details_html += f"""
+                <div style="margin-bottom: 12px; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px;">
+                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                        <span style="font-size: 16px; margin-right: 6px;">🏪</span>
+                        <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #1f2937;">{branch}</h4>
+                    </div>
+                    <div style="padding-left: 4px;">
+                        {items_html}
+                    </div>
+                </div>
+                """
 
-                branch_details_html.append(
-                    f"""<div class='mt-3 p-3 bg-gray-50 rounded border border-gray-200'>
-                           <h5 class='font-bold text-blue-600'>{branch} (Còn: {branch_total_stock})</h5>
-                       </div>"""
-                )
-
-            message = f"""<div class="p-4 bg-white border border-gray-200 rounded-lg">
-                            <h4 class="font-bold text-gray-800 mb-2"> Thông tin tồn kho</h4>
-                            <p class="text-gray-700">
-                                Tìm thấy tổng cộng <strong class="text-orange-600">{total_stock_all}</strong> sản phẩm {scope_message}.
-                            </p>
-                            <p class="mt-3 mb-2 font-medium text-gray-800">Sản phẩm còn hàng tại các chi nhánh:</p>
-                            {''.join(branch_details_html)}
-                            </div>"""
-            dispatcher.utter_message(text=message)
+            message = f"""
+            <div style="font-family: sans-serif; border: 1px solid #e0e0e0; background-color: #fff; border-radius: 8px; overflow: hidden; max-width: 500px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
+                <div style="background-color: #d32f2f; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
+                    <div style="display: flex; align-items: center; color: #fff;">
+                        <span style="font-size: 20px; margin-right: 10px;">📦</span>
+                        <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Thông tin tồn kho</h3>
+                    </div>
+                    <span style="background-color: rgba(255,255,255,0.2); color: #fff; font-size: 12px; padding: 4px 8px; border-radius: 4px;">
+                        Tổng: {total_stock_all}
+                    </span>
+                </div>
+                
+                <div style="padding: 16px;">
+                    <p style="margin: 0 0 16px 0; color: #555; font-size: 14px; line-height: 1.5;">
+                        Dưới đây là tình trạng hàng {scope_message}:
+                    </p>
+                    
+                    {branch_details_html}
+                    
+                    <div style="margin-top: 16px; font-size: 12px; color: #888; text-align: center; font-style: italic;">
+                        * Số lượng có thể thay đổi theo thời gian thực.
+                    </div>
+                </div>
+            </div>
+            """
+            
+            # Tạo buttons
+            buttons = [
+                {"title": "🛒 Đặt hàng ngay", "payload": "/order"},
+                {"title": "🔍 Xem chi tiết sản phẩm", "payload": f'/ask_product_info{{"product_name": "{product_name_proper}"}}'}
+            ]
+            
+            dispatcher.utter_message(text=message, buttons=buttons)
 
         except Exception as e:
             logger.error(f"Lỗi trong ActionCheckStock: {e}")

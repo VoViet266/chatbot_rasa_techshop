@@ -42,11 +42,18 @@ def build_search_pipeline(product_name, limit = 1):
         {
             "$project": {
                 "name": 1,
-                "brand": "$brand_info.name",
-                "category": "$category_info.name",
+                "brand": {
+                    "_id": "$brand_info._id",
+                    "name": "$brand_info.name"
+                },
+                "category": {
+                    "_id": "$category_info._id",
+                    "name": "$category_info.name"
+                },
                 "discount": 1,
                 "variants": 1,
-                "attributes": 1
+                "attributes": 1,
+                "specifications": 1
             }
         },
         {"$limit": limit}

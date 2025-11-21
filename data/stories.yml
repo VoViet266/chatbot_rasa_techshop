@@ -240,34 +240,33 @@ stories:
   #   - action: action_add_to_cart
 
   # 4. TRA CỨU ĐƠN HÀNG
-  - story: Tra đơn hàng bằng ID (người dùng nhập sẵn)
+  - story: Tra đơn hàng bằng ID
     steps:
-      - intent: ask_order_specific
+      - intent: ask_order
         entities:
           - order_id: "6673f8a7e0965e26f63111ed"
-      - action: action_check_order_specific
+      - action: action_check_order
       - slot_was_set:
           - order_id: "6673f8a7e0965e26f63111ed"
 
-  - story: Tra đơn hàng khi chưa nhập ID
+  - story: Tra đơn hàng theo filters
     steps:
-      - intent: ask_order_general
-      - action: utter_ask_order_id
-      - intent: ask_order_specific
+      - intent: ask_order
         entities:
-          - order_id: "1234567890abcdef12345678"
-      - action: action_check_order_specific
+          - time: "hôm nay"
+          - order_status: "đang giao"
+      - action: action_check_order
       - slot_was_set:
-          - order_id: "1234567890abcdef12345678"
+          - time: "hôm nay"
+          - order_status: "đang giao"
+
+  - story: Tra đơn hàng chưa hoàn thành
+    steps:
+      - intent: ask_pending_orders
+      - action: action_check_pending_orders
 
   # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
-  - story: So sánh sản phẩm qua form
-    steps:
-      - intent: compare_products
-      - action: compare_products_form
-      - active_loop: compare_products_form
-      - active_loop: null
-      - action: action_compare_products
+
 
   - story: So sánh trực tiếp hai sản phẩm
     steps:

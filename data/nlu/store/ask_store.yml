@@ -15,6 +15,12 @@ nlu:
       - Địa chỉ shop
       - Mấy giờ cửa hàng mở cửa?
       - Cửa hàng có làm việc cuối tuần không?
+      - Hotline của cửa hàng là gì?
+      - Shop mở cửa đến mấy giờ?
+      - Có chi nhánh nào ở Hà Nội không?
+      - Cho xin địa chỉ các chi nhánh
+      - Giờ làm việc của shop
+      - Số điện thoại liên hệ cửa hàng
 
   - intent: select_branch_order
     examples: |

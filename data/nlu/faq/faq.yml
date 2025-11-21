@@ -1,7 +1,6 @@
 version: "3.1"
 
 nlu:
-  # --- KHAI BÁO TỪ ĐỒNG NGHĨA (QUAN TRỌNG) ---
   - synonym: laptop
     examples: |
       - macbook
@@ -41,7 +40,6 @@ nlu:
       - razer
       - magic mouse
 
-  # --- INTENT: FAQ TECH SUPPORT (HỖ TRỢ KỸ THUẬT/DỊCH VỤ) ---
   - intent: faq/tech_support
     examples: |
       # Laptop
@@ -55,8 +53,6 @@ nlu:
       - máy chạy chậm quá shop có tối ưu lại được không
       - vệ sinh [máy tính](category) hết bao nhiêu tiền
       - tra keo tản nhiệt loại xịn cho [laptop](category)
-      
-      # Điện thoại
       - chép dữ liệu từ [điện thoại](category) cũ sang mới giúp em với
       - chuyển danh bạ từ android sang [iphone](category) được không
       - có hỗ trợ dán màn hình [điện thoại](category) không
@@ -72,7 +68,6 @@ nlu:
       - shop có vệ sinh [tai nghe](category) không
       - hướng dẫn reset [tai nghe](category) về mặc định
 
-  # --- INTENT: FAQ SUPPORT ERROR (BÁO LỖI/HƯ HỎNG) ---
   - intent: faq/support_error
     examples: |
       - máy bị lỗi màn hình xanh
@@ -103,7 +98,6 @@ nlu:
       - receiver cắm vào không nhận
       - nút sườn bị kẹt không bấm được
 
-  # --- INTENT: FAQ WARRANTY (BẢO HÀNH) ---
   - intent: faq/warranty
     examples: |
       - chính sách bảo hành thế nào
@@ -118,7 +112,6 @@ nlu:
       - [chuột](category) bảo hành mấy tháng
       - hết bảo hành shop có nhận sửa tính phí không
 
-  # --- INTENT: FAQ INSTALLMENT (TRẢ GÓP) ---
   - intent: faq/installment
     examples: |
       - có hỗ trợ trả góp không
@@ -132,7 +125,6 @@ nlu:
       - mình nợ xấu có mua trả góp được không
       - thủ tục trả góp [macbook](category) thế nào
 
-  # --- INTENT: FAQ ORIGIN (NGUỒN GỐC) ---
   - intent: faq/origin
     examples: |
       - máy này là hàng mới hay cũ

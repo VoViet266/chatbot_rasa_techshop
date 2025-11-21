@@ -5,25 +5,19 @@ nlu:
   - intent: ask_product_info
     examples: |
       - Thông tin [iphone 16 Pro Max](product_name)
-      - [Samsung Galaxy S25 Plus]
+      - [Samsung Galaxy S25 Plus](product_name)
       - [AirPods Pro](product_name) này
       - Cho xem [Galaxy Z Fold 6](product_name)
-      - Tôi đang tìm [Dell XPS 13](product_name)
-      - Mình cần [Sony WH-1000XM5](product_name)
-      - Tôi muốn [iPhone 16](product_name)
-      - Tôi quan tâm [Samsung S24](product_name)
+      - Tôi đang tìm hiểu về [Dell XPS 13](product_name)
+      - Mình muốn tìm hiểu [Sony WH-1000XM5](product_name)
       - Cho tôi xem [MacBook Air M3](product_name)
       - Tôi thích [iPad Pro](product_name)
       - Cho tôi thông tin về [iphone 16](product_name)
       - Tôi cần biết về [iphone 16](product_name)
-      - [iPhone 16](product_name) giá sao shop?
       - con [Macbook Air M3](product_name) này có gì hay?
       - Bên mình có bán [Dell XPS 13](product_name) không?
       - Thông số của [Galaxy A55](product_name) là gì?
-      - [Sony WH-1000XM5](product_name) còn hàng không?
       - [Samsung Galaxy Z Fold 6](product_name) có mấy màu?
-      - [Galaxy S25 Ultra](product_name) khi nào về hàng?
-      - Có [WH-1000XM5](product_name) không?a
       - Shop có những loại [điện thoại](product_name) nào?
       - Kể tên vài mẫu [laptop gaming](product_name) xem
       - Xem thông tin [MacBook Air](product_name)
@@ -46,7 +40,6 @@ nlu:
       - Cho mình hỏi về [Asus](product_name)
       - [Xiaomi](product_name) có điện thoại nào ngon không?
       - thông tin [iPhone 16 128GB](product_name)
-      - [Samsung S24 màu vàng](product_name) còn không?
       - shop có [laptop](product_name) nào mỏng nhẹ không?
       - tư vấn [điện thoại](product_name) chuyên chơi game
       - [máy tính bảng](product_name) để học online
@@ -59,3 +52,13 @@ nlu:
       - Xem [laptop](product_name)
       - [máy ảnh mirrorless](product_name)
       - [Webcam](product_name)
+      - Cho em xem thông tin [iPhone 16](product_name)
+      - [MacBook Pro](product_name) có những tính năng gì?
+      - Mô tả chi tiết [Samsung S24](product_name)
+      - [Galaxy Z Flip 6](product_name) có gì đặc biệt?
+      - Đặc điểm của [AirPods Max](product_name)
+      - [iPhone 16 Pro](product_name) có điểm nổi bật gì?
+      - Tính năng của [iPad Pro M4](product_name)
+      - [Samsung S24 Ultra](product_name) thiết kế ra sao?
+      - Thông tin chi tiết [MacBook Air M3](product_name)
+      - [Sony WH-1000XM5](product_name) có tính năng gì?

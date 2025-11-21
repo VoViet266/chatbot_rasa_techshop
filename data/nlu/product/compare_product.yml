@@ -4,10 +4,50 @@ nlu:
   - intent: compare_products
     examples: |
       - So sánh [iPhone 16](product_1) với [Samsung Galaxy S25 Plus](product_2)
-      - Giữa [iPhone 16](product_1) và [Samsung S24](product_2) thì nên chọn cái nào?
+      - Giữa [iPhone 16](product_1) và [Samsung S24](product_2) thì khác gì nhau?
       - [iPhone 16](product_1) khác gì [iPhone 15](product_2)?
       - So sánh [Macbook Air](product_1) và [Macbook Pro](product_2) giúp tôi
       - So sánh [Samsung Galaxy S25 Plus](product_1) với [Samsung Galaxy S25 Ultra](product_2)
       - So sánh [iPhone 16](product_1) và [Samsung Galaxy S25 Plus](product_2)
-      - Nên mua [iPhone 16 Pro Max](product_1) hay [Samsung Galaxy S25 Plus](product_2)?
-      - Cho tôi sự khác nhau giữa  [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)
+      - Cho tôi sự khác nhau giữa [iPhone 16 Pro Max](product_1) và [Samsung Galaxy S25 Plus](product_2)
+      - So sánh giúp em [iPhone 16](product_1) vs [Samsung S24](product_2)
+      - [iPhone 16](product_1) với [iPhone 15](product_2) khác nhau như thế nào?
+      - Cho em xem so sánh [Macbook Air](product_1) và [Macbook Pro](product_2)
+      - Em muốn xem so sánh [iPhone 16](product_1) và [Galaxy S24](product_2)
+      - Compare [iPhone 16](product_1) vs [Samsung S24](product_2)
+      - Khác biệt giữa [iPhone 16](product_1) và [iPhone 15](product_2)
+      - [iPhone 16](product_1) so với [Samsung Galaxy S24](product_2) thế nào?
+      - Cho tôi biết [iPhone 16](product_1) và [Samsung S24](product_2) khác gì nhau
+      - Phân biệt [iPhone 16](product_1) với [iPhone 15](product_2)
+      - [iPhone 16 Pro](product_1) khác [iPhone 16 Pro Max](product_2) chỗ nào?
+      - Em muốn so sánh 2 dòng [iPhone 16](product_1) và [Samsung S24](product_2)
+      - Cho em xem bảng so sánh [Macbook Air](product_1) với [Macbook Pro](product_2)
+      - Tôi muốn so sánh [iPhone 16](product_1) với [Samsung S24](product_2)
+      - [Galaxy S24](product_1) và [Galaxy S24 Plus](product_2) khác nhau thế nào?
+      - So sánh spec [iPhone 16](product_1) và [Samsung S24](product_2)
+      - Cho xem sự khác biệt [iPhone 16](product_1) vs [iPhone 15](product_2)
+      - [Macbook Air M2](product_1) so [Macbook Air M3](product_2)
+      - So sánh thông số [iPhone 16](product_1) với [Samsung S24](product_2)
+      - Compare giúp em [iPhone 16](product_1) và [Samsung S24](product_2)
+      - [iPhone 16 Pro Max](product_1) có gì khác [iPhone 16 Pro](product_2)?
+      - Khác nhau giữa [iPhone 16](product_1) với [iPhone 15](product_2) là gì?
+      - So sánh [iPhone 16](product_1) với [Samsung S24](product_2)
+      - Cho em biết [iPhone 16](product_1) khác [Samsung S24](product_2) ra sao
+      - [Galaxy S24 Ultra](product_1) và [iPhone 16 Pro Max](product_2) khác gì?
+      - Cho tôi xem [iPhone 16](product_1) với [iPhone 15](product_2) khác gì
+      - [Macbook Air](product_1) có gì khác [Macbook Pro](product_2)?
+      - So sánh chi tiết [iPhone 16 Pro](product_1) và [iPhone 16 Pro Max](product_2)
+      - [iPhone 16](product_1) và [Samsung S24](product_2) điểm khác biệt là gì?
+      - Phân tích sự khác nhau giữa [iPhone 16](product_1) với [Galaxy S24](product_2)
+      - So sánh cấu hình [Macbook Air](product_1) và [Macbook Pro](product_2)
+      - [iPhone 16](product_1) đọ thông số với [Samsung S24](product_2)
+      - Cho em xem [iPhone 16](product_1) vs [iPhone 15](product_2) khác gì
+      - [Samsung S24](product_1) khác [Samsung S24 Plus](product_2) như nào?
+      - So sánh màn hình [iPhone 16](product_1) với [Galaxy S24](product_2)
+      - [Macbook Pro M3](product_1) và [Macbook Pro M4](product_2) khác nhau gì?
+      - Điểm khác biệt [iPhone 16](product_1) so với [iPhone 15](product_2)
+      - Compare spec [Macbook Air](product_1) vs [Macbook Pro](product_2)
+      - [Galaxy S24](product_1) đối đầu [iPhone 16](product_2) về thông số
+      - So sánh pin [iPhone 16](product_1) và [Samsung S24](product_2)
+      - [iPhone 16 Pro](product_1) vs [iPhone 16 Pro Max](product_2) khác ở đâu?
+      - Sự khác biệt cơ bản [Macbook Air](product_1) và [Macbook Pro](product_2)

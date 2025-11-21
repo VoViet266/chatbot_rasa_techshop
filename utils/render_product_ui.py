@@ -116,8 +116,8 @@ def render_product_card(product, variants):
                 {f'<span style="font-size:12px;color:#d32f2f;font-weight:500;padding:3px 6px;border:1px solid #fde0e0;border-radius:4px;background:#fff8f8;">-{discount}%</span>' if discount > 0 else ''}
             </div>
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
-                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Thương hiệu: {product.get('brand', 'N/A')}</span>
-                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Loại: {product.get('category', 'N/A')}</span>
+                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Thương hiệu: {product.get('brand', {}).get('name', 'N/A')}</span>
+                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Loại: {product.get('category', {}).get('name', 'N/A')}</span>
             </div>
         </div>
     </div>

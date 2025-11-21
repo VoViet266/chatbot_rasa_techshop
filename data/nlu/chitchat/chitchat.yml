@@ -18,6 +18,23 @@ nlu:
       - xin chào bạn
       - xin chào bạn ạ
       - ni hào
+      - helo
+      - lô
+      - hi shop
+      - chào ad
+      - alo
+      - a lô
+      - có ai không
+      - hú
+      - hi bạn
+      - chào buổi sáng
+      - chào buổi chiều
+      - chào buổi tối
+      - good morning
+      - good afternoon
+      - good evening
+      - hey
+      - hi there
 
   - intent: goodbye
     examples: |
@@ -30,6 +47,16 @@ nlu:
       - tôi đi đây
       - bye nha
       - vậy thôi
+      - pp
+      - bibi
+      - bb
+      - gặp lại sau nhé
+      - đi ngủ đây
+      - out đây
+      - stop
+      - dừng lại
+      - kết thúc
+      - nghỉ nhé
 
   - intent: chitchat/thanks
     examples: |
@@ -41,6 +68,15 @@ nlu:
       - biết ơn nha
       - tuyệt, cảm ơn
       - cảm ơn sự hỗ trợ
+      - tks
+      - thank you
+      - cám ơn
+      - đa tạ
+      - thank kiu
+      - iu shop
+      - cảm ơn nhiều
+      - thanks ad
+      - ok tks
 
   - intent: chitchat/deny
     examples: |
@@ -53,6 +89,16 @@ nlu:
       - không
       - để sau
       - không, cảm ơn
+      - no
+      - never
+      - không bao giờ
+      - thôi đi
+      - đừng
+      - không thích
+      - chê
+      - ko
+      - k cần
+      - thôi nha
 
   - intent: chitchat/just_looking
     examples: |
@@ -66,6 +112,10 @@ nlu:
       - mình xem giá trước
       - để mình suy nghĩ thêm
       - mình tham khảo giá
+      - xem chơi thôi
+      - chưa mua ngay đâu
+      - để tính sau
+      - coi cho biết
 
   - intent: chitchat/compliment
     examples: |
@@ -79,6 +129,15 @@ nlu:
       - tốt quá
       - okela
       - tuyệt vời
+      - xuất sắc
+      - good job
+      - làm tốt lắm
+      - giỏi
+      - quá dữ
+      - 10 điểm
+      - bot xịn sò
+      - cute phết
+      - đáng yêu
 
   - intent: chitchat/positive_feedback
     examples: |
@@ -92,6 +151,19 @@ nlu:
       - đúng rồi
       - chính xác
       - đồng ý
+      - chuẩn
+      - chuẩn luôn
+      - nhất trí
+      - ok chốt
+      - duyệt
+      - uh
+      - uhm
+      - ừm
+      - ye
+      - yes
+      - yup
+      - đúng
+      - chí phải
 
   - intent: chitchat/ask_how_are_you
     examples: |
@@ -100,6 +172,9 @@ nlu:
       - hôm nay sao rồi?
       - bạn có ổn không?
       - khoẻ không?
+      - how are you?
+      - khỏe ko bot?
+      - có gì mới không?
 
   - intent: chitchat/ask_are_you_a_bot
     examples: |
@@ -110,6 +185,11 @@ nlu:
       - bạn là ai?
       - đây là bot hay người?
       - bạn là cái gì?
+      - ai đang chat vậy?
+      - người thật hay máy?
+      - are you a bot?
+      - who are you?
+      - danh tính của bạn
 
   - intent: chitchat/ask_what_can_you_do
     examples: |
@@ -118,6 +198,10 @@ nlu:
       - nói cho tôi biết bạn có thể làm gì
       - bạn giúp được gì?
       - khả năng của bạn là gì?
+      - chức năng của bạn
+      - bot làm được những gì?
+      - help
+      - hướng dẫn sử dụng
 
   - intent: chitchat/insult
     examples: |
@@ -128,6 +212,11 @@ nlu:
       - dở
       - chán thế
       - bot ngáo
+      - ngu ngốc
+      - tệ hại
+      - vô dụng
+      - cùi bắp
+      - stupid
 
   - intent: chitchat/apologize
     examples: |
@@ -136,3 +225,6 @@ nlu:
       - xin lỗi nha
       - sr
       - sorry
+      - thứ lỗi
+      - mình nhầm
+      - xin lỗi bot
