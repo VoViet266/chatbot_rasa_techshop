@@ -22,6 +22,11 @@ rules:
     steps:
       - intent: faq
       - action: utter_faq
+    
+  - rule: Respond to chitchat (Trả lời tán gẫu)
+    steps:
+      - intent: chitchat
+      - action: utter_chitchat
 
   - rule: Cung cấp thông tin sản phẩm
     steps:
@@ -37,7 +42,6 @@ rules:
     steps:
       - intent: ask_store
       - action: action_provide_store_info
-
 
   - rule: Gợi ý sản phẩm theo giá
     steps:

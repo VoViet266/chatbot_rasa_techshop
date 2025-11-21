@@ -67,7 +67,7 @@ graph LR
     Action <--> DB[(MongoDB)]
     Rasa <--> Model[ViBERT Model]
 ```
-
+    
 ---
 
 ## 🛠️ Cài đặt & Triển khai

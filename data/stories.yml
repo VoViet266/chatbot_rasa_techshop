@@ -67,7 +67,7 @@ stories:
       - action: action_provide_product_price
       - action: utter_ask_if_want_to_order
       - intent: chitchat
-      - action: utter_chitchat/just_looking
+      - action: utter_chitchat
       - slot_was_set:
           - product_name: null
 

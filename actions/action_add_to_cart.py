@@ -174,7 +174,6 @@ class ActionAddToCart(Action):
                 }
             ]
         }
-
         headers = {"Content-Type": "application/json"}
         if token:
             headers["Authorization"] = f"Bearer {token}"
