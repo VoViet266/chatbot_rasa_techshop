@@ -17,7 +17,7 @@ pipeline:
     use_lookup_tables: true
     use_regexes: true
 
-  # Character n-grams for typo/teencode resilience  
+  # Character n-grams for typo/teencode resilience
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
     min_ngram: 2
@@ -47,14 +47,20 @@ pipeline:
     number_of_transformer_layers: 2
     constrain_similarities: true
     retrieval_intent: faq
+    hidden_layers_sizes:
+      text: []
+      label: []
 
-  # Chitchat Response Selector  
+  # Chitchat Response Selector
   - name: ResponseSelector
     epochs: 120
     transformer_size: 256
     number_of_transformer_layers: 2
     constrain_similarities: true
     retrieval_intent: chitchat
+    hidden_layers_sizes:
+      text: []
+      label: []
 
   # Fallback detection
   - name: FallbackClassifier
@@ -77,7 +83,7 @@ policies:
     epochs: 150
     constrain_similarities: true
 
-  # Transformer Embedding Dialogue Policy  
+  # Transformer Embedding Dialogue Policy
   - name: TEDPolicy
     max_history: 5
     epochs: 120

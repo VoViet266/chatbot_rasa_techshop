@@ -57,7 +57,6 @@ intents:
   - provide_return_reason
   - faq
 
-
 entities:
   - branch_name
   - selected_branch_id
@@ -111,7 +110,7 @@ entities:
 slots:
   user_id:
     type: text
-    influence_conversation: true
+    influence_conversation: false
     mappings:
       - type: from_entity
         entity: user_id
@@ -255,6 +254,12 @@ slots:
     mappings:
       - type: from_entity
         entity: quantity
+        intent:
+          - order
+          - order_product
+          - add_to_cart
+          - select_quantity
+          - update_cart_quantity
 
   product_1:
     type: text
@@ -671,8 +676,6 @@ responses:
 
   utter_faq/mouse_error:
     - text: "Lỗi click đúp hoặc liệt nút cuộn thường do switch bị hỏng hoặc bẩn. Bạn có thể mang qua shop để vệ sinh hoặc thay switch mới ạ."
-
-
 
 actions:
   - utter_greet

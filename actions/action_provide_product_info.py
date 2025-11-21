@@ -150,7 +150,6 @@ class ActionShowVariantDetails(Action):
         user_id = tracker.sender_id
         payload_dict = {
             "variant_id": str(variant_data.get("_id")), # Convert ObjectId to string
-            "user_id": user_id,
         }
         payload_json = json.dumps(payload_dict)
 

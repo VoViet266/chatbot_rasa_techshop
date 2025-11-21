@@ -145,8 +145,3 @@ rules:
     steps:
       - intent: out_of_scope
       - action: utter_fallback
-
-  - rule: Respond to chitchat
-    steps:
-      - intent: chitchat
-      - action: utter_chitchat

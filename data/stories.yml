@@ -19,27 +19,34 @@ stories:
           - product_name
       - action: action_provide_product_technical_specs
 
-  # # Story 3: User hỏi thông số nhưng thiếu tên sản phẩm
-  # - story: Hỏi thông số nhưng chưa có tên sản phẩm
-  #   steps:
-  #     - intent: ask_product_spec
-  #     - action: action_provide_product_spec
-  #     - intent: inform
-  #       entities:
-  #         - product_name
-  #     - action: action_provide_product_spec
+  # Story 3: User hỏi thông số nhưng thiếu tên sản phẩm
+  - story: Hỏi thông số nhưng chưa có tên sản phẩm
+    steps:
+      - intent: ask_product_spec
+        entities:
+          - spec_type: "pin"
+      - action: utter_ask_which_product
+      - intent: inform_product
+        entities:
+          - product_name: "iPhone 16"
+      - slot_was_set:
+          - product_name: "iPhone 16"
+      - action: action_provide_product_spec
 
-  # # Story 4: User hỏi thông số nhưng thiếu loại spec
-  # - story: Hỏi thông số nhưng chưa rõ spec nào
-  #   steps:
-  #     - intent: ask_product_spec
-  #       entities:
-  #         - product_name
-  #     - action: action_provide_product_spec
-  #     - intent: inform
-  #       entities:
-  #         - spec_type
-  #     - action: action_provide_product_spec
+  # Story 4: User hỏi thông số nhưng thiếu loại spec
+  - story: Hỏi thông số nhưng chưa rõ spec nào
+    steps:
+      - intent: ask_product_spec
+        entities:
+          - product_name: "iPhone 16"
+      - slot_was_set:
+          - product_name: "iPhone 16"
+      - action: utter_ask_spec_type
+      - intent: ask_product_spec
+        entities:
+          - product_name: "iPhone 16"
+          - spec_type: "pin"
+      - action: action_provide_product_spec
 
   - story: Hỏi thông tin sản phẩm (nêu rõ tên)
     steps:
@@ -202,6 +209,8 @@ stories:
           - product_name: "iPhone 16"
       - action: action_provide_product_info
       - intent: add_to_cart
+      - slot_was_set:
+          - product_name: "iPhone 16"
       - action: add_to_cart_form
       - active_loop: add_to_cart_form
       - active_loop: null
@@ -266,8 +275,6 @@ stories:
       - action: action_check_pending_orders
 
   # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
-
-
   - story: So sánh trực tiếp hai sản phẩm
     steps:
       - intent: compare_products

@@ -63,6 +63,7 @@ nlu:
       - [1](quantity)
       - [2](quantity)
       - [3](quantity)
+      - [4](quantity)
       - [5](quantity)
       - [10](quantity)
       - Lấy [1](quantity) cái
@@ -73,6 +74,10 @@ nlu:
       - Tôi muốn [4](quantity) cái
       - Đặt [5](quantity) chiếc
       - [10](quantity) sản phẩm
+      - [1](quantity) ạ
+      - [2](quantity) cái ạ
+      - [1](quantity) nhé
+      - lấy [1](quantity) ạ
 
   # ----- LOOKUP TABLE -----
   - lookup: color

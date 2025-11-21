@@ -1,11 +1,5 @@
-"""
-Unified Order Actions
-Gộp 4 actions: check_order_specific, check_order_general, check_order_filter, check_order_by_product
-thành 1 action: action_check_order
-"""
 
 from rasa_sdk import Action, Tracker
-from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 from bson import ObjectId
 from bson.errors import InvalidId
@@ -53,7 +47,7 @@ def _get_time_query(time_str: str):
     time_mapping = {
         "hôm nay": (now.replace(hour=0, minute=0, second=0), now.replace(hour=23, minute=59, second=59)),
         "hôm qua": ((now - timedelta(days=1)).replace(hour=0, minute=0, second=0),
-                   (now - timedelta(days=1)).replace(hour=23, minute=59, second=59)),
+                    (now - timedelta(days=1)).replace(hour=23, minute=59, second=59)),
         "tuần này": (now - timedelta(days=now.weekday()), now),
         "tuần trước": (now - timedelta(days=now.weekday() + 7), now - timedelta(days=now.weekday())),
         "tháng này": (now.replace(day=1), now),
@@ -72,7 +66,7 @@ def _get_time_query(time_str: str):
             days = int(''.join(filter(str.isdigit, time_str)))
             start_time = now - timedelta(days=days)
             return {"createdAt": {"$gte": start_time, "$lte": now}}
-        except:
+        except:  # noqa: E722
             pass
     
     # Try dateparser
@@ -82,7 +76,7 @@ def _get_time_query(time_str: str):
             start = parsed_date.replace(hour=0, minute=0, second=0)
             end = parsed_date.replace(hour=23, minute=59, second=59)
             return {"createdAt": {"$gte": start, "$lte": end}}
-    except:
+    except:  # noqa: E722
         pass
     
     return {}
@@ -241,7 +235,7 @@ class ActionCheckOrder(Action):
                         }
                         limit = limit_map.get(str(order_limit).lower(), 5)
                     orders = orders[:limit]
-                except:
+                except Exception:
                     orders = orders[:5]
             elif not order_index:
                 # Default limit

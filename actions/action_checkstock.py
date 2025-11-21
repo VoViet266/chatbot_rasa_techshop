@@ -1,7 +1,5 @@
-import pymongo
 import logging
 from rasa_sdk import Action, Tracker
-from bson import ObjectId
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from typing import Any, Text, Dict, List
@@ -9,8 +7,6 @@ import re
 from utils.database import DatabaseService
 from utils.product_pipelines import build_search_pipeline
 from collections import defaultdict 
-
-# Thiết lập logger
 logger = logging.getLogger(__name__)
 
 class ActionCheckStock(Action):

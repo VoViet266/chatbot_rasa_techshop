@@ -42,7 +42,6 @@ nlu:
 
   - intent: faq/tech_support
     examples: |
-      # Laptop
       - shop có cài win giúp không
       - cài lại win 10 hay 11 vậy shop
       - mua [laptop](category) có được cài office miễn phí không
@@ -59,8 +58,6 @@ nlu:
       - shop có cắt sim nano không
       - cài dùm em mấy app ngân hàng trên [điện thoại](category)
       - tạo tài khoản icloud cho [ip](category)
-      
-      # Tai nghe / Chuột
       - hướng dẫn kết nối [tai nghe](category) bluetooth với máy tính
       - [tai nghe](category) này có app chỉnh âm thanh không
       - cách chỉnh đèn led cho [chuột](category)
