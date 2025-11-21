@@ -22,7 +22,7 @@ rules:
     steps:
       - intent: faq
       - action: utter_faq
-    
+
   - rule: Respond to chitchat (Trả lời tán gẫu)
     steps:
       - intent: chitchat
@@ -72,6 +72,11 @@ rules:
     steps:
       - intent: ask_order
       - action: action_check_order
+
+  - rule: Xem tất cả đơn hàng
+    steps:
+      - intent: ask_all_orders
+      - action: action_list_all_orders
 
   - rule: Tra đơn hàng chưa hoàn thành
     steps:

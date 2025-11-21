@@ -27,6 +27,7 @@ intents:
         - order_status
         - product_name
         - order_limit
+  - ask_all_orders
   - ask_pending_orders
   - ask_recent_orders
   - ask_store
@@ -725,6 +726,7 @@ actions:
   - action_provide_product_spec
   - action_provide_product_technical_specs
   - action_show_list_variants
+  - action_list_all_orders
 
 session_config:
   session_expiration_time: 60

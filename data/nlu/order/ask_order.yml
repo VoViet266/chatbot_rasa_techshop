@@ -1,139 +1,66 @@
 version: "3.1"
 
 nlu:
-  - intent: ask_order_specific
+  - intent: ask_order
     examples: |
-      - xem đơn hàng [68fdac60da0e22b34751e6fb](order_id)
-      - check giúp tôi đơn [abcdef1234567890abcdef12](order_id)
-      - tình trạng đơn [68fdac60da0e22b34751e6fb](order_id) sao rồi
-      - đơn hàng [d4e5f6a1b2c3d4e5f6a1b2c3](order_id) đã gửi chưa
-      - tra đơn hàng [1234567890abcdef12345678](order_id)
-      - đơn hàng của tôi [fedcba0987654321fedcba09](order_id)
-      - cho tôi xem thông tin đơn [b2b3c4c5d6d7b2b3c4c5d6d7](order_id)
-      - đơn [c3c4d5d6e7e8c3c4d5d6e7e8](order_id) đang ở đâu
-      - tình trạng đơn [a7a8b9b0c1c2a7a8b9b0c1c2](order_id)
-      - mã đơn [a1a2b3b4c5c6a1a2b3b4c5c6](order_id) là gì
-      - xem giúp tôi đơn [f6f7a8a9b0b1f6f7a8a9b0b1](order_id)
-      - đơn hàng [b2c3d4e5f6a1b2c3d4e5f6a1](order_id) của tôi thế nào
-      - tra cứu đơn hàng mã [abcdef1234567890abcdef12](order_id)
-      - đơn [e5f6a1b2c3d4e5f6a1b2c3d4](order_id)
-      - check đơn [b3b4c5c6d7d8b3b4c5c6d7d8](order_id)
-      - tình trạng đơn [a9b0c1d2e3f4a9b0c1d2e3f4](order_id)
-
-  - intent: ask_order_general
-    examples: |
-      - xem đơn [mới](order_direction:newest) [nhất](order_index:1)
-      - đơn hàng [gần đây](order_direction:newest) của tôi
-      - cho tôi xem đơn hàng [cũ nhất](order_direction:oldest)
-      - tìm đơn hàng [đầu tiên](order_direction:oldest)
-      - cho tôi đơn hàng [mới nhất](order_direction:newest)
-      - đơn [mới](order_direction:newest) [thứ 2](order_index:2)
-      - xem đơn [thứ 3](order_index:3)
-      - đơn [mới](order_direction:newest) [thứ 5](order_index:5)
-      - tôi muốn xem đơn [gần nhất](order_direction:newest)
-      - đơn hàng [xa nhất](order_direction:oldest)
-      - đơn [mới](order_direction:newest) [thứ 4](order_index:4)
-      - liệt kê đơn hàng [mới nhất](order_direction:newest)
-
-  - intent: ask_order_filter
-    examples: |
-      - cho tôi xem đơn hàng [hôm qua](time)
-      - các đơn hàng [hôm nay](time)
-      - đơn hàng [tuần này](time)
-      - đơn hàng [tuần trước](time)
-      - đơn hàng [tháng này](time)
+      - xem đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - kiểm tra đơn [abcdef1234567890abcdef12](order_id)
+      - tình trạng đơn [6673f8a7e0965e26f63111fb](order_id)
+      - check đơn [1234567890abcdef12345678](order_id) giúp mình
+      - đơn [6673f8a7e0965e26f63111ed](order_id) đi đến đâu rồi
+      - đơn hàng [hôm nay](time)
+      - xem đơn [hôm qua](time)
+      - các đơn hàng [tuần này](time)
       - đơn hàng [tháng trước](time)
-      - xem đơn [ngày 25/10/2024](time)
-      - đơn hàng [3 ngày trước](time)
-      - đơn hàng trong [7 ngày qua](time)
-      - đơn hàng [năm nay](time)
-      - đơn [đang giao](order_status)
-      - đơn [đã giao](order_status)
-      - đơn [chờ thanh toán](order_status)
-      - đơn [đang xử lý](order_status)
-      - đơn [đã huỷ](order_status)
-      - đơn [chờ xác nhận](order_status)
-      - đơn [đã thanh toán](order_status)
-      - có đơn nào [đã huỷ](order_status) [tháng này](time) không
-      - liệt kê đơn [đang giao](order_status) [tuần trước](time)
-      - check đơn [đã giao](order_status) [hôm qua](time)
-      - xem đơn [chưa thanh toán](order_status)
-      - đơn hàng [đang giao](order_status) [hôm nay](time)
+      - kiểm tra đơn [3 ngày qua](time)
+      - kiểm tra các đơn [đang giao](order_status)
+      - xem đơn [chờ xác nhận](order_status)
+      - có đơn nào [đã hủy](order_status) không
+      - liệt kê đơn [chưa thanh toán](order_status)
+      - đơn hàng [đã giao](order_status)
+      - xem đơn [mới nhất](order_direction:newest)
+      - đơn hàng [gần đây](order_direction:newest)
+      - kiểm tra đơn [cũ nhất](order_direction:oldest)
+      - đơn [mới](order_direction:newest) [thứ 2](order_index:2)
+      - đơn hàng [cuối cùng](order_direction:newest)
+      - đơn [đang giao](order_status) [hôm nay](time)
+      - đơn [mới nhất](order_direction:newest) [đang xử lý](order_status)
+      - tìm đơn [đã hủy](order_status) [tuần trước](time)
 
-  - intent: ask_order_by_product
+  - intent: ask_all_orders
     examples: |
-      - đơn hàng của [iPhone 16](product_name)
-      - cho tôi xem đơn hàng có [Galaxy S24](product_name)
-      - tôi đã đặt [Macbook Air](product_name) chưa
-      - có đơn nào của [iPad Pro](product_name) không
-      - đơn chứa [iPhone 15](product_name) của tôi
-      - đơn hàng nào có [Apple Watch Ultra](product_name)
-      - xem đơn của [AirPods Pro](product_name)
-      - tôi mua [iPhone 16 Pro Max](product_name) chưa
-      - đơn hàng [MacBook Pro 2023](product_name) đâu rồi
-      - tôi muốn xem đơn có [Samsung Galaxy Z Flip5](product_name)
-      - kiểm tra đơn chứa [Asus ROG Phone 8](product_name)
-      - có đơn nào đặt [Dell XPS 13](product_name) không
-      - liệt kê đơn hàng có [iPad Air 6](product_name)
-      - đơn hàng tôi mua [Apple Watch SE](product_name) đâu
-      - tôi có đặt [Oppo Reno 12](product_name) không
-      - đơn có sản phẩm [Realme 13 Pro](product_name)
+      - xem tất cả đơn hàng
+      - danh sách đơn hàng của tôi
+      - lịch sử mua hàng
+      - tôi đã đặt những gì
+      - thông tin đơn hàng của tôi
+      - liệt kê các đơn hàng
+      - đơn hàng của tôi
+      - xem list order
+      - kiểm tra lịch sử đơn hàng
 
-  - intent: ask_unpaid_orders
+  - intent: ask_pending_orders
     examples: |
-      - tôi có đơn nào chưa thanh toán không
-      - đơn hàng nào chờ thanh toán
-      - cho tôi xem đơn chưa trả tiền
-      - còn đơn nào tôi chưa thanh toán
-      - kiểm tra đơn chưa thanh toán giúp tôi
-      - tôi còn đơn hàng nào chưa trả không
-      - có đơn nào chưa thanh toán hết không
-      - các đơn đang [chờ thanh toán](order_status)
-      - liệt kê đơn hàng chưa thanh toán của tôi
+      - đơn hàng đang chờ
+      - tôi có đơn nào chưa xong không
+      - các đơn đang xử lý
+      - đơn chưa giao
+      - kiểm tra đơn pending
 
-  - intent: ask_unshipped_orders
-    examples: |
-      - tôi có đơn nào đang giao không
-      - đơn hàng nào chưa nhận
-      - còn đơn nào đang được giao không
-      - kiểm tra giúp tôi các đơn đang ship
-      - đơn hàng nào đang vận chuyển
-      - tôi có đơn nào đang trên đường giao không
-      - liệt kê đơn hàng đang giao giúp tôi
-      - các đơn hàng chưa nhận
-      - đơn hàng đang đi đường nào rồi
-      - đơn [đang giao](order_status) của tôi đâu
-
-  - intent: ask_recent_orders
-    examples: |
-      - cho tôi xem các đơn hàng gần đây
-      - danh sách đơn hàng gần nhất
-      - hiển thị đơn mới nhất
-      - tôi đã mua gì gần đây
-      - cho tôi xem [5](order_limit) đơn hàng gần nhất
-      - liệt kê [3](order_limit) đơn hàng mới nhất
-      - cho tôi xem [10](order_limit) đơn gần đây
-      - hiển thị [2](order_limit) đơn hàng gần đây
-      - xem giúp tôi [vài](order_limit) đơn gần nhất
-      - cho tôi xem [một số](order_limit) đơn hàng gần đây
-      - tôi muốn xem [tất cả](order_limit) đơn hàng gần đây
-      - các đơn [5](order_limit) gần đây của tôi là gì
-      - các đơn hàng tôi đặt gần đây
-      - các đơn hàng gần đây của tôi là gì
-      - tôi muốn xem các đơn mới nhất
-      - cho xem danh sách đơn gần đây
-      - liệt kê đơn hàng mới đặt
+regex:
+  - name: order_id
+    pattern: "[0-9a-f]{24}"
 
 lookup:
   - name: order_status
     examples: |
       - đang giao
       - đã giao
+      - đã hủy
       - đang xử lý
-      - đã huỷ
-      - chờ thanh toán
-      - đã thanh toán
       - chờ xác nhận
+      - đã thanh toán
+      - chờ thanh toán
 
   - name: time
     examples: |
@@ -143,85 +70,3 @@ lookup:
       - tuần trước
       - tháng này
       - tháng trước
-      - 3 ngày trước
-      - 7 ngày qua
-      - năm nay
-      - năm trước
-
-  - name: order_direction
-    examples: |
-      - mới
-      - cũ
-
-  - name: order_index
-    examples: |
-      - nhất
-      - thứ 2
-      - thứ 3
-      - thứ 4
-      - thứ 5
-
-synonym:
-  - synonym: hôm nay
-    examples: |
-      - ngày hôm nay
-      - trong hôm nay
-      - hôm ni
-
-  - synonym: hôm qua
-    examples: |
-      - ngày hôm qua
-      - hôm qua nè
-      - hôm qua đó
-
-  - synonym: tuần này
-    examples: |
-      - trong tuần này
-      - tuần hiện tại
-      - đầu tuần này
-
-  - synonym: tuần trước
-    examples: |
-      - tuần vừa rồi
-      - tuần ngoái
-      - trong tuần trước
-
-  - synonym: tháng này
-    examples: |
-      - trong tháng này
-      - tháng hiện tại
-
-  - synonym: tháng trước
-    examples: |
-      - tháng vừa rồi
-      - tháng ngoái
-
-  - synonym: đang giao
-    examples: |
-      - đang giao hàng
-      - đang vận chuyển
-      - đang ship
-
-  - synonym: đã giao
-    examples: |
-      - đã giao hàng
-      - đã nhận
-      - hoàn thành
-
-  - synonym: đã huỷ
-    examples: |
-      - bị huỷ
-      - đã hủy
-      - bị hủy
-
-  - synonym: newest
-    examples: |
-      - mới nhất
-      - gần đây nhất
-      - vừa đặt
-
-  - synonym: oldest
-    examples: |
-      - cũ nhất
-      - đầu tiên
-      - xa nhất

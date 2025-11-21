@@ -258,7 +258,34 @@ stories:
       - slot_was_set:
           - order_id: "6673f8a7e0965e26f63111ed"
 
-  - story: Tra đơn hàng theo filters
+  - story: Tra đơn hàng theo thời gian
+    steps:
+      - intent: ask_order
+        entities:
+          - time: "hôm nay"
+      - action: action_check_order
+      - slot_was_set:
+          - time: "hôm nay"
+
+  - story: Tra đơn hàng theo trạng thái
+    steps:
+      - intent: ask_order
+        entities:
+          - order_status: "đang giao"
+      - action: action_check_order
+      - slot_was_set:
+          - order_status: "đang giao"
+
+  - story: Tra đơn hàng mới nhất
+    steps:
+      - intent: ask_order
+        entities:
+          - order_direction: "newest"
+      - action: action_check_order
+      - slot_was_set:
+          - order_direction: "newest"
+
+  - story: Tra đơn hàng kết hợp filters
     steps:
       - intent: ask_order
         entities:
@@ -268,6 +295,11 @@ stories:
       - slot_was_set:
           - time: "hôm nay"
           - order_status: "đang giao"
+
+  - story: Xem tất cả đơn hàng
+    steps:
+      - intent: ask_all_orders
+      - action: action_list_all_orders
 
   - story: Tra đơn hàng chưa hoàn thành
     steps:
