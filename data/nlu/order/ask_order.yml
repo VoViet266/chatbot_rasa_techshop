@@ -1,7 +1,7 @@
 version: "3.1"
 
 nlu:
-  - intent: ask_order_specific
+  - intent: ask_order
     examples: |
       - xem đơn hàng [68fdac60da0e22b34751e6fb](order_id)
       - check giúp tôi đơn [abcdef1234567890abcdef12](order_id)
@@ -19,9 +19,6 @@ nlu:
       - đơn [e5f6a1b2c3d4e5f6a1b2c3d4](order_id)
       - check đơn [b3b4c5c6d7d8b3b4c5c6d7d8](order_id)
       - tình trạng đơn [a9b0c1d2e3f4a9b0c1d2e3f4](order_id)
-
-  - intent: ask_order_general
-    examples: |
       - xem đơn [mới](order_direction:newest) [nhất](order_index:1)
       - đơn hàng [gần đây](order_direction:newest) của tôi
       - cho tôi xem đơn hàng [cũ nhất](order_direction:oldest)
@@ -34,9 +31,6 @@ nlu:
       - đơn hàng [xa nhất](order_direction:oldest)
       - đơn [mới](order_direction:newest) [thứ 4](order_index:4)
       - liệt kê đơn hàng [mới nhất](order_direction:newest)
-
-  - intent: ask_order_filter
-    examples: |
       - cho tôi xem đơn hàng [hôm qua](time)
       - các đơn hàng [hôm nay](time)
       - đơn hàng [tuần này](time)
@@ -59,9 +53,6 @@ nlu:
       - check đơn [đã giao](order_status) [hôm qua](time)
       - xem đơn [chưa thanh toán](order_status)
       - đơn hàng [đang giao](order_status) [hôm nay](time)
-
-  - intent: ask_order_by_product
-    examples: |
       - đơn hàng của [iPhone 16](product_name)
       - cho tôi xem đơn hàng có [Galaxy S24](product_name)
       - tôi đã đặt [Macbook Air](product_name) chưa
@@ -78,9 +69,6 @@ nlu:
       - đơn hàng tôi mua [Apple Watch SE](product_name) đâu
       - tôi có đặt [Oppo Reno 12](product_name) không
       - đơn có sản phẩm [Realme 13 Pro](product_name)
-
-  - intent: ask_unpaid_orders
-    examples: |
       - tôi có đơn nào chưa thanh toán không
       - đơn hàng nào chờ thanh toán
       - cho tôi xem đơn chưa trả tiền
@@ -90,9 +78,6 @@ nlu:
       - có đơn nào chưa thanh toán hết không
       - các đơn đang [chờ thanh toán](order_status)
       - liệt kê đơn hàng chưa thanh toán của tôi
-
-  - intent: ask_unshipped_orders
-    examples: |
       - tôi có đơn nào đang giao không
       - đơn hàng nào chưa nhận
       - còn đơn nào đang được giao không
