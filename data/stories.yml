@@ -296,24 +296,10 @@ stories:
           - time: "hôm nay"
           - order_status: "đang giao"
 
-
-
   - story: Tra đơn hàng chưa hoàn thành
     steps:
       - intent: ask_pending_orders
       - action: action_check_pending_orders
-
-  # 5. SO SÁNH & KIỂM TRA HÀNG TỒN
-  - story: So sánh trực tiếp hai sản phẩm
-    steps:
-      - intent: compare_products
-        entities:
-          - product_1: "iPhone 16"
-          - product_2: "Galaxy S24"
-      - slot_was_set:
-          - product_1: "iPhone 16"
-          - product_2: "Galaxy S24"
-      - action: action_compare_products
 
   # 6. KIỂM TRA HÀNG TỒN
   - story: Kiểm tra hàng tồn (chỉ có tên)

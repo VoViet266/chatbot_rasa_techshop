@@ -108,35 +108,37 @@ class ActionCompareProducts(Action):
         c2_name = category2.get('name', '—') if category2 else '—'
 
         html = f"""
-        <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 4px; padding: 15px; max-width: 600px;">
-            <h4 style="margin: 0 0 15px 0; font-size: 16px; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">So sánh sản phẩm</h4>
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #f5f5f5;">
-                        <th style="padding: 8px; text-align: left; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;"></th>
-                        <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p1_name}</th>
-                        <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p2_name}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Danh mục</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{c1_name}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{c2_name}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Thương hiệu</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b1_name}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b2_name}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666;">Giá bán</td>
-                        <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f;">{p1_price}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f;">{p2_price}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <p style="margin: 10px 0 0 0; font-size: 12px; color: #999; font-style: italic;">* Hai sản phẩm thuộc danh mục khác nhau nên chỉ so sánh thông tin cơ bản</p>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #1a1a1a; max-width: 700px;">
+            <div style="padding: 12px; margin-bottom: 12px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <h4 style="margin: 0 0 15px 0; font-size: 16px; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">So sánh sản phẩm</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #f9f9f9;">
+                            <th style="padding: 8px; text-align: left; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;"></th>
+                            <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p1_name}</th>
+                            <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p2_name}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Danh mục</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{c1_name}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{c2_name}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Thương hiệu</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b1_name}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b2_name}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666;">Giá bán</td>
+                            <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f;">{p1_price}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f;">{p2_price}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin: 10px 0 0 0; font-size: 12px; color: #999; font-style: italic;">* Hai sản phẩm thuộc danh mục khác nhau nên chỉ so sánh thông tin cơ bản</p>
+            </div>
         </div>
         """
         return html
@@ -168,84 +170,116 @@ class ActionCompareProducts(Action):
         category_name = category.get('name', 'Sản phẩm') if category else 'Sản phẩm'
 
         # Lấy thông số kỹ thuật (ưu tiên specifications, fallback sang attributes)
-        specs1 = product_1.get('specifications') or product_1.get('attributes') or {}
-        specs2 = product_2.get('specifications') or product_2.get('attributes') or {}
+        raw_specs1 = product_1.get('specifications') or product_1.get('attributes') or {}
+        raw_specs2 = product_2.get('specifications') or product_2.get('attributes') or {}
         
-        # Chuẩn hóa về dạng Dict nếu là List (ví dụ: [{'k': 'RAM', 'v': '8GB'}])
-        if isinstance(specs1, list):
-            specs1 = {str(item.get('name', item.get('key', ''))): str(item.get('value', '')) for item in specs1 if item}
-            
-        if isinstance(specs2, list):
-            specs2 = {str(item.get('name', item.get('key', ''))): str(item.get('value', '')) for item in specs2 if item}
+        # Helper function to normalize specs into map (key -> value) and labels (key -> label)
+        def normalize_specs(raw_specs):
+            spec_map = {}
+            spec_labels = {}
+            if isinstance(raw_specs, list):
+                for item in raw_specs:
+                    # Ưu tiên 'key' làm định danh, nếu không có thì dùng 'name'
+                    k = item.get('key', item.get('name'))
+                    v = item.get('value')
+                    # Ưu tiên 'name' làm nhãn hiển thị, nếu không có thì dùng key
+                    l = item.get('name', k)
+                    
+                    if k:
+                        k_str = str(k)
+                        spec_map[k_str] = str(v) if v is not None else '—'
+                        spec_labels[k_str] = str(l) if l else k_str
+            elif isinstance(raw_specs, dict):
+                for k, v in raw_specs.items():
+                    k_str = str(k)
+                    spec_map[k_str] = str(v) if v is not None else '—'
+                    spec_labels[k_str] = k_str # Với dict, key cũng là label
+            return spec_map, spec_labels
 
-        # Thu thập tất cả các key specs từ cả 2 sản phẩm
-        all_spec_keys = set(specs1.keys()) | set(specs2.keys())
+        specs1, labels1 = normalize_specs(raw_specs1)
+        specs2, labels2 = normalize_specs(raw_specs2)
+
+        # Lấy cấu hình fields từ category
+        config_fields = category.get('configFields', {})
+        extra_fields = config_fields.get('extraFields', [])
         
-        # Tạo các dòng so sánh specs
         spec_rows = ""
-        for spec_key in sorted(all_spec_keys):
-            spec_display_name = self._format_spec_name(spec_key)
-            spec_value1 = specs1.get(spec_key, '—')
-            spec_value2 = specs2.get(spec_key, '—')
-            
-            spec_rows += f"""
+        
+        if extra_fields:
+            # Sử dụng cấu hình từ category để hiển thị
+            for field in extra_fields:
+                field_name = field.get('name')
+                field_label = field.get('label')
+                
+                if not field_name:
+                    continue
+                    
+                # Lấy giá trị từ specs đã chuẩn hóa
+                val1 = specs1.get(field_name)
+                if val1 is None:
+                     # Fallback check attributes directly if needed
+                     attrs1 = product_1.get('attributes', {})
+                     val1 = attrs1.get(field_name, '—')
+                
+                val2 = specs2.get(field_name)
+                if val2 is None:
+                     attrs2 = product_2.get('attributes', {})
+                     val2 = attrs2.get(field_name, '—')
+
+                if val1 == '—' and val2 == '—':
+                    continue
+
+                spec_rows += f"""
                     <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">{spec_display_name}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{spec_value1}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{spec_value2}</td>
+                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">{field_label}</td>
+                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{val1}</td>
+                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{val2}</td>
                     </tr>"""
+        else:
+            # Fallback: Thu thập tất cả các key specs từ cả 2 sản phẩm
+            all_spec_keys = set(specs1.keys()) | set(specs2.keys())
+            
+            for spec_key in sorted(all_spec_keys):
+                # Lấy label từ dữ liệu sản phẩm (ưu tiên p1, rồi p2, rồi key)
+                spec_display_name = labels1.get(spec_key) or labels2.get(spec_key) or spec_key
+                
+                spec_value1 = specs1.get(spec_key, '—')
+                spec_value2 = specs2.get(spec_key, '—')
+                
+                spec_rows += f"""
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">{spec_display_name}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{spec_value1}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{spec_value2}</td>
+                        </tr>"""
 
         html = f"""
-        <div style="font-family: Arial, sans-serif; border: 1px solid #ddd; border-radius: 4px; padding: 15px; max-width: 700px;">
-            <h4 style="margin: 0 0 15px 0; font-size: 16px; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">So sánh chi tiết - {category_name}</h4>
-            <table style="width: 100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: #f5f5f5;">
-                        <th style="padding: 8px; text-align: left; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">Thông số</th>
-                        <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p1_name}</th>
-                        <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p2_name}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Giá bán</td>
-                        <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f; border-bottom: 1px solid #f0f0f0;">{p1_price}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f; border-bottom: 1px solid #f0f0f0;">{p2_price}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Thương hiệu</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b1_name}</td>
-                        <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b2_name}</td>
-                    </tr>
-                    {spec_rows}
-                </tbody>
-            </table>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; color: #1a1a1a; max-width: 700px;">
+            <div style="padding: 12px; margin-bottom: 12px; background: #fff; border: 1px solid #e5e5e5; border-radius: 8px;">
+                <h4 style="margin: 0 0 15px 0; font-size: 16px; color: #333; border-bottom: 2px solid #eee; padding-bottom: 8px;">So sánh chi tiết - {category_name}</h4>
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background-color: #f9f9f9;">
+                            <th style="padding: 8px; text-align: left; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">Thông số</th>
+                            <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p1_name}</th>
+                            <th style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; border-bottom: 1px solid #ddd;">{p2_name}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Giá bán</td>
+                            <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f; border-bottom: 1px solid #f0f0f0;">{p1_price}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 14px; font-weight: 600; color: #d9534f; border-bottom: 1px solid #f0f0f0;">{p2_price}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; font-size: 13px; color: #666; border-bottom: 1px solid #f0f0f0;">Thương hiệu</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b1_name}</td>
+                            <td style="padding: 8px; text-align: center; font-size: 13px; border-bottom: 1px solid #f0f0f0;">{b2_name}</td>
+                        </tr>
+                        {spec_rows}
+                    </tbody>
+                </table>
+            </div>
         </div>
         """
         return html
-
-    def _format_spec_name(self, spec_key: str) -> str:
-        """Định dạng tên thông số để hiển thị đẹp hơn"""
-        spec_name_mapping = {
-            "cpu": "CPU",
-            "ram": "RAM",
-            "storage": "Bộ nhớ",
-            "screen": "Màn hình",
-            "battery": "Pin",
-            "camera": "Camera",
-            "os": "Hệ điều hành",
-            "weight": "Trọng lượng",
-            "size": "Kích thước",
-            "gpu": "Card đồ họa",
-            "display": "Màn hình",
-            "chipset": "Chipset",
-            "rear_camera": "Camera sau",
-            "front_camera": "Camera trước",
-            "battery_capacity": "Dung lượng pin",
-            "charging": "Sạc",
-            "connectivity": "Kết nối",
-            "bluetooth": "Bluetooth",
-            "wifi": "WiFi",
-            "ports": "Cổng kết nối"
-        }
-        return spec_name_mapping.get(spec_key.lower(), spec_key.capitalize())

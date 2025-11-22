@@ -1,0 +1,188 @@
+version: "3.1"
+
+nlu:
+  # Hỏi thông tin/giới thiệu về một brand cụ thể (KHÔNG hỏi xem sản phẩm)
+  - intent: ask_brand_info
+    examples: |
+      - cho tôi biết về [Dell](brand)
+      - [Apple](brand) là gì
+      - thông tin về [Samsung](brand)
+      - giới thiệu về [Sony](brand)
+      - [Dell](brand) thế nào
+      - [Apple](brand) như thế nào
+      - [Dell](brand) có tốt không
+      - [Apple](brand) có đáng tin không
+      - nói về [Samsung](brand)
+      - [Sony](brand) có uy tín không
+      - [Apple](brand) có chính hãng không
+      - tìm hiểu về [Samsung](brand)
+      - [Dell](brand) ra đời khi nào
+      - lịch sử của [Apple](brand)
+      - [Sony](brand) là hãng gì
+      - [Samsung](brand) xuất xứ từ đâu
+      - [Apple](brand) nổi tiếng về gì
+      - đánh giá về [Dell](brand)
+      - review [Samsung](brand)
+
+  # Hỏi danh sách tất cả brands
+  - intent: ask_brand_list
+    examples: |
+      - có những hãng nào
+      - các nhãn hiệu
+      - brand nào có
+      - hãng nào
+      - liệt kê các hãng
+      - những thương hiệu nào
+      - list brand
+      - show brand
+      - có những thương hiệu gì
+      - shop có những hãng gì
+      - nhãn hiệu nào
+      - danh sách các hãng
+      - các thương hiệu có sẵn
+      - shop hợp tác với hãng nào
+
+  # Hỏi danh sách tất cả categories
+  - intent: ask_category_list
+    examples: |
+      - danh mục sản phẩm
+      - có những loại sản phẩm nào
+      - shop bán gì
+      - xem danh mục
+      - các loại sản phẩm
+      - category nào có
+      - liệt kê danh mục
+      - shop có những mặt hàng gì
+      - sản phẩm nào
+      - bán những gì
+      - có bán gì
+      - các loại hàng
+      - menu sản phẩm
+      - show category
+      - list category
+      - danh sách các loại sản phẩm
+      - các mặt hàng
+      - mục hàng nào
+
+  # Tìm sản phẩm theo category
+  - intent: suggest_product_by_category
+    examples: |
+      - cho tôi xem [máy tính](category)
+      - gợi ý [điện thoại](category)
+      - tìm [tai nghe](category)
+      - có [máy tính bảng](category) nào không
+      - [laptop](category) nào tốt
+      - xem [điện thoại](category)
+      - [tai nghe không dây](category)
+      - thông tin [laptop](category)
+      - thông tin về [điện thoại](category)
+      - cho tôi biết về [tai nghe](category)
+      - giới thiệu [chuột](category)
+      - show [laptop](category)
+      - muốn mua [điện thoại](category)
+      - tôi cần [laptop](category)
+      - có [đồng hồ](category) không
+      - gợi ý [máy tính](category)
+      - [laptop](category) có không
+      - shop có [điện thoại](category) không
+      - bán [tai nghe](category) không
+      - list [laptop](category)
+      - xem [chuột](category)
+      - [bàn phím](category) nào hay
+      - [máy tính](category) có không
+      - [máy tính](category) nào tốt
+      - [máy tính](category) có bán không
+
+  # Hỏi xem có bán brand X không / Tìm sản phẩm theo brand
+  - intent: suggest_product_by_brand
+    examples: |
+      - shop có bán [Apple](brand) không
+      - có [Samsung](brand) không
+      - [Sony](brand) có không
+      - shop có [Samsung](brand) không
+      - có hãng [Sony](brand) không
+      - shop bán [Dell](brand) không
+      - gợi ý [Apple](brand)
+      - tìm [Dell](brand)
+      - [Apple](brand) có gì
+      - sản phẩm [Samsung](brand)
+      - [Sony](brand) nào tốt
+      - show [Apple](brand)
+      - muốn xem [Samsung](brand)
+      - [Dell](brand) có những gì
+      - list [Apple](brand)
+      - tìm hàng [Samsung](brand)
+      - xem sản phẩm [Apple](brand)
+      - [Samsung](brand) có sản phẩm gì
+      - có bán hàng [Apple](brand) không
+      - [Dell](brand) còn hàng không
+      - mua [Samsung](brand)
+      - đặt [Apple](brand)
+
+  - synonym: Apple
+    examples: |
+      - apple
+      - táo
+      - nhà táo
+      - iphone
+      - ipad
+      - macbook
+
+  - synonym: Samsung
+    examples: |
+      - samsung
+      - sam sung
+      - ss
+      - galaxy
+
+  - synonym: Sony
+    examples: |
+      - sony
+      - xperia
+      - bravia
+
+  - synonym: Dell
+    examples: |
+      - dell
+      - alienware
+
+  - synonym: Asus
+    examples: |
+      - asus
+      - rog
+
+  - synonym: máy tính
+    examples: |
+      - máy tính xách tay
+      - lap
+      - notebook
+      - laptop
+      - máy tính
+
+  - synonym: điện thoại
+    examples: |
+      - mobile
+      - smartphone
+      - dế
+      - phone
+      - di động
+      - máy
+      - dt
+
+  - synonym: tai nghe
+    examples: |
+      - headphone
+      - earphone
+      - headset
+      - tai phone
+      - tai nghe
+
+  - synonym: chuột
+    examples: |
+      - mouse
+      - con chuột
+
+  - synonym: bàn phím
+    examples: |
+      - keyboard
+      - phím

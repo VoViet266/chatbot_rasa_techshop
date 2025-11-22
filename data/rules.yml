@@ -150,6 +150,11 @@ rules:
       - intent: update_cart_quantity
       - action: action_update_cart_quantity
 
+  - rule: So sánh sản phẩm (luôn thực hiện)
+    steps:
+      - intent: compare_products
+      - action: action_compare_products
+
   - rule: Xử lý ngoài phạm vi hoặc không hiểu
     steps:
       - intent: out_of_scope

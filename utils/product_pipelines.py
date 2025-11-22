@@ -48,7 +48,8 @@ def build_search_pipeline(product_name, limit = 1):
                 },
                 "category": {
                     "_id": "$category_info._id",
-                    "name": "$category_info.name"
+                    "name": "$category_info.name",
+                    "configFields": "$category_info.configFields"
                 },
                 "discount": 1,
                 "variants": 1,
