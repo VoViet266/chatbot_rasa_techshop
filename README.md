@@ -165,10 +165,4 @@ Chúng tôi rất hoan nghênh mọi đóng góp để cải thiện dự án!
 
 ---
 
-## 📄 License
-
-Dự án được phân phối dưới giấy phép **MIT License**. Xem file [LICENSE](LICENSE) để biết thêm chi tiết.
-
----
-
 **Built with ❤️ by TechShop Team**

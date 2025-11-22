@@ -182,6 +182,11 @@ class ActionCompareProducts(Action):
                     # Ưu tiên 'key' làm định danh, nếu không có thì dùng 'name'
                     k = item.get('key', item.get('name'))
                     v = item.get('value')
+                    
+                    # Convert boolean True to "Có"
+                    if v is True:
+                        v = "Có"
+                        
                     # Ưu tiên 'name' làm nhãn hiển thị, nếu không có thì dùng key
                     l = item.get('name', k)
                     
@@ -192,6 +197,11 @@ class ActionCompareProducts(Action):
             elif isinstance(raw_specs, dict):
                 for k, v in raw_specs.items():
                     k_str = str(k)
+                    
+                    # Convert boolean True to "Có"
+                    if v is True:
+                        v = "Có"
+                        
                     spec_map[k_str] = str(v) if v is not None else '—'
                     spec_labels[k_str] = k_str # Với dict, key cũng là label
             return spec_map, spec_labels
