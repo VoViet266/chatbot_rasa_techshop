@@ -27,7 +27,7 @@
 
 **TechShop Chatbot** không chỉ là một công cụ trả lời tự động, mà là một nhân viên tư vấn ảo toàn diện. Hệ thống có khả năng thấu hiểu ngữ cảnh, ghi nhớ thông tin người dùng và thực hiện các tác vụ phức tạp như so sánh sản phẩm, kiểm tra tồn kho theo thời gian thực và quản lý đơn hàng.
 
-Dự án tập trung vào trải nghiệm người dùng tự nhiên, hỗ trợ đa dạng các cách diễn đạt từ trang trọng đến văn nói hàng ngày (teencode, viết tắt).
+Dự án tập trung vào trải nghiệm người dùng tự nhiên, hỗ trợ đa dạng các cách diễn đạt từ trang trọng đến văn nói hàng ngày (teencode, viết tắt, viết không dấu).
 
 ---
 
