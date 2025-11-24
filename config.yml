@@ -2,91 +2,78 @@ recipe: default.v1
 language: vi
 
 pipeline:
+  #  Chuẩn hóa văn bản và sửa lỗi chính tả
+  - name: components.text_normalizer.VietnameseTextNormalizer
+
+  #  Augment training data với phiên bản không dấu
+  - name: components.accent_augmenter.AccentAugmenter
+    augment_enabled: true
+    augment_ratio: 1.0
+
   # Tokenizer for Vietnamese
   - name: WhitespaceTokenizer
 
-  # ViBERT embeddings - Core featurizer
-  - name: LanguageModelFeaturizer
-    model_name: "bert"
-    model_weights: "FPTAI/vibert-base-cased"
-    from_pt: true
-
-  # Regex for exact entity matching
   - name: RegexEntityExtractor
     case_sensitive: false
     use_lookup_tables: true
     use_regexes: true
 
-  # Character n-grams for typo/teencode resilience
+  # Giúp bắt chính xác các từ vựng đã xuất hiện trong training data
   - name: CountVectorsFeaturizer
-    analyzer: "char_wb"
-    min_ngram: 2
-    max_ngram: 6
+    analyzer: word
+    min_ngram: 1
+    max_ngram: 2
 
-  # Intent + Entity classification
+  # Chia nhỏ từ thành các n-gram ký tự (ví dụ: "khong" -> "kho", "ong").
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 3
+    max_ngram: 5
+
+  - name: LanguageModelFeaturizer
+    model_name: "bert"
+    model_weights: "FPTAI/vibert-base-cased"
+    from_pt: true
+
   - name: DIETClassifier
-    epochs: 150
-    transformer_size: 256
-    number_of_transformer_layers: 2
-    weight_sparsity: 0.7
+    epochs: 100 
     constrain_similarities: true
     model_confidence: "softmax"
-    drop_rate: 0.25
+    drop_rate: 0.2
     drop_rate_attention: 0.1
     entity_recognition: true
     BILOU_flag: true
-    use_masked_language_model: true
+    use_masked_language_model: false
 
-  # Entity synonym mapping
   - name: EntitySynonymMapper
 
-  # FAQ Response Selector
   - name: ResponseSelector
-    epochs: 120
-    transformer_size: 256
-    number_of_transformer_layers: 2
-    constrain_similarities: true
     retrieval_intent: faq
-    hidden_layers_sizes:
-      text: []
-      label: []
-
-  # Chitchat Response Selector
-  - name: ResponseSelector
-    epochs: 120
-    transformer_size: 256
-    number_of_transformer_layers: 2
+    epochs: 100
     constrain_similarities: true
-    retrieval_intent: chitchat
-    hidden_layers_sizes:
-      text: []
-      label: []
 
-  # Fallback detection
+  - name: ResponseSelector
+    retrieval_intent: chitchat
+    epochs: 100
+    constrain_similarities: true
+
   - name: FallbackClassifier
-    threshold: 0.65
-    ambiguity_threshold: 0.12
+    threshold: 0.45
+    ambiguity_threshold: 0.1
 
 policies:
-  # Memorize exact conversation patterns
   - name: MemoizationPolicy
-
-  # Rule-based policy
   - name: RulePolicy
     core_fallback_threshold: 0.4
     core_fallback_action_name: "utter_fallback"
     enable_fallback_prediction: true
-
-  # Unexpected Intent Policy
   - name: UnexpecTEDIntentPolicy
     max_history: 8
     epochs: 150
     constrain_similarities: true
-
-  # Transformer Embedding Dialogue Policy
   - name: TEDPolicy
     max_history: 5
     epochs: 120
     constrain_similarities: true
 
-assistant_id: 20251121-optimized-vibert
+assistant_id: 20251124-vibert-augmented

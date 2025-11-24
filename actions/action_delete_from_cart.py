@@ -4,6 +4,7 @@ from rasa_sdk import Action, Tracker
 from utils.database import DatabaseService
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
+from utils.validate_user import _validate_user
 
 
 class ActionDeleteFromCart(Action):
@@ -12,7 +13,7 @@ class ActionDeleteFromCart(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
         # Lấy user_id
-        user_id = tracker.sender_id
+        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xóa sản phẩm khỏi giỏ hàng!")
         product_name = tracker.get_slot("product_name")
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")

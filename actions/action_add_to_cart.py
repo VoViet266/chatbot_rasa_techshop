@@ -5,6 +5,7 @@ from rasa_sdk.events import SlotSet, AllSlotsReset
 from bson import ObjectId
 from utils.product_pipelines import build_search_pipeline
 from utils.database import DatabaseService
+from utils.validate_user import _validate_user  
 
 
 class ActionAddToCart(Action):
@@ -15,7 +16,7 @@ class ActionAddToCart(Action):
         db_service = DatabaseService()
 
         # Lấy slot
-        user_id = tracker.sender_id
+        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!")
         product_name = tracker.get_slot("product_name")
         variant_name = tracker.get_slot("variant_name")
         variant_color = tracker.get_slot("variant_color")

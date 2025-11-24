@@ -144,7 +144,7 @@ class ActionCheckStock(Action):
                 message = f"""
                 <div style="font-family: sans-serif; border: 1px solid #ffebee; background-color: #fff5f5; border-radius: 8px; padding: 16px; max-width: 500px;">
                     <div style="display: flex; align-items: center; margin-bottom: 12px;">
-                        <span style="font-size: 24px; margin-right: 10px;">❌</span>
+                        <span style="font-size: 24px; margin-right: 10px;"></span>
                         <h3 style="margin: 0; color: #c62828; font-size: 16px; font-weight: 600;">Hết hàng</h3>
                     </div>
                     <p style="margin: 0; color: #333; font-size: 14px; line-height: 1.5;">
@@ -187,7 +187,7 @@ class ActionCheckStock(Action):
                 branch_details_html += f"""
                 <div style="margin-bottom: 12px; background-color: #f9fafb; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px;">
                     <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                        <span style="font-size: 16px; margin-right: 6px;">🏪</span>
+                        <span style="font-size: 16px; margin-right: 6px;"></span>
                         <h4 style="margin: 0; font-size: 14px; font-weight: 600; color: #1f2937;">{branch}</h4>
                     </div>
                     <div style="padding-left: 4px;">
@@ -224,8 +224,8 @@ class ActionCheckStock(Action):
             
             # Tạo buttons
             buttons = [
-                {"title": "🛒 Đặt hàng ngay", "payload": "/order"},
-                {"title": "🔍 Xem chi tiết sản phẩm", "payload": f'/ask_product_info{{"product_name": "{product_name_proper}"}}'}
+                {"title": "Đặt hàng ngay", "payload": "/order"},
+                {"title": "Xem chi tiết sản phẩm", "payload": f'/ask_product_info{{"product_name": "{product_name_proper}"}}'}
             ]
             
             dispatcher.utter_message(text=message, buttons=buttons)

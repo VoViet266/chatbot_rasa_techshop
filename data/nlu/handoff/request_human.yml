@@ -1,0 +1,14 @@
+version: "3.1"
+nlu:
+  - intent: request_human
+    examples: |
+      - tôi muốn gặp nhân viên
+      - cho tôi gặp người thật
+      - tư vấn viên đâu
+      - tôi cần hỗ trợ trực tiếp
+      - chat với nhân viên
+      - gặp admin
+      - gọi cho tôi
+      - số điện thoại hỗ trợ
+      - hotline
+      - bot không hiểu ý tôi

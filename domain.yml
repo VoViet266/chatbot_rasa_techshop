@@ -57,6 +57,9 @@ intents:
   - show_variant_details
   - provide_return_reason
   - faq
+  - ask_promotion
+  - request_human
+  # - give_feedback
 
 entities:
   - branch_name
@@ -107,6 +110,8 @@ entities:
   - variant_name
   - variant_color
   - spec_type
+  - feedback_rating
+  - feedback_comment
 
 slots:
   user_id:
@@ -415,6 +420,18 @@ slots:
       - type: from_entity
         entity: spec_type
 
+  feedback_rating:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: feedback_rating
+
+  feedback_comment:
+    type: text
+    mappings:
+      - type: from_text
+        intent: give_feedback
+
 forms:
   order_form:
     required_slots:
@@ -678,6 +695,12 @@ responses:
   utter_faq/mouse_error:
     - text: "Lỗi click đúp hoặc liệt nút cuộn thường do switch bị hỏng hoặc bẩn. Bạn có thể mang qua shop để vệ sinh hoặc thay switch mới ạ."
 
+  # utter_ask_feedback_rating:
+  #   - text: "Bạn đánh giá trải nghiệm vừa rồi mấy sao ạ? (1-5 sao)"
+
+  # utter_thanks_feedback:
+  #   - text: "Cảm ơn bạn đã góp ý! TechShop sẽ cố gắng cải thiện hơn nữa."
+
 actions:
   - utter_greet
   - utter_greet_personalized
@@ -727,6 +750,9 @@ actions:
   - action_provide_product_technical_specs
   - action_show_list_variants
   - action_list_all_orders
+  - action_check_promotion
+  - action_human_handoff
+  # - action_submit_feedback
 
 session_config:
   session_expiration_time: 60

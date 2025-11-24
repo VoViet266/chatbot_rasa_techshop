@@ -16,7 +16,7 @@ class ActionCompareProducts(Action):
         tracker: Tracker,
         domain: Dict[Text, Any],
     ) -> List[Dict[Text, Any]]:
-        
+        print('tin nhắn của user:', tracker.latest_message.get('text'))
         product_1 = tracker.get_slot("product_1")
         product_2 = tracker.get_slot("product_2")
         

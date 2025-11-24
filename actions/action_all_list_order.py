@@ -4,20 +4,12 @@ from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from bson import ObjectId
 from utils.database import DatabaseService
+from utils.validate_user import _validate_user
 from utils.order_helpers import (
     format_status,
     build_order_card_html,
     build_orders_summary_header
 )
-
-
-def _validate_user(tracker: Tracker, dispatcher: CollectingDispatcher):
-    """Validate user_id từ tracker"""
-    user_id = tracker.sender_id
-    if not user_id:
-        dispatcher.utter_message(text="Vui lòng đăng nhập để xem đơn hàng.")
-        return None
-    return user_id
 
 
 class ActionListAllOrders(Action):
@@ -34,9 +26,7 @@ class ActionListAllOrders(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # Validate user
-        user_id = _validate_user(tracker, dispatcher)
-        if not user_id:
-            return []
+        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem thông tin đơn hàng của bạn!")
         
         db = DatabaseService()
         try:

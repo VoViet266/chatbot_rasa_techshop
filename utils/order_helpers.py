@@ -1,5 +1,3 @@
-
-
 from typing import Dict
 from datetime import datetime
 
@@ -21,9 +19,7 @@ def format_status(status: str) -> str:
 
 
 def build_order_card_html(order: Dict, products_coll) -> str:
-    """
-    Build clean, simple HTML card for order - no colors, no badges
-    """
+    """Build clean HTML card for order"""
     order_id = str(order.get('_id', ''))
     status = format_status(order.get('status', ''))
     total = order.get('totalPrice', 0)
@@ -87,16 +83,11 @@ def build_order_card_html(order: Dict, products_coll) -> str:
 
 
 def build_orders_summary_header(total_orders: int, total_spent: float, status_count: Dict[str, int]) -> str:
-    """
-    Build simple summary header - no gradient, clean
-    """
-    # Build status summary
-    status_items = []
-    for status, count in status_count.items():
-        status_items.append(f"{count} {status}")
+    """Build summary header for all orders"""
+    status_items = [f"{count} {status}" for status, count in status_count.items()]
     status_summary = " • ".join(status_items)
     
-    header_html = f"""
+    return f"""
     <div style="
         border: 1px solid #e5e7eb;
         border-radius: 8px;
@@ -120,17 +111,14 @@ def build_orders_summary_header(total_orders: int, total_spent: float, status_co
         </div>
     </div>
     """
-    return header_html
 
 
-def build_filter_info_header(filter_desc: str, count: int) -> str:
-    """
-    Build simple filter header - no gradient
-    """
-    header_html = f"""
+def build_filter_info_header(filter_desc: str, count: int, border_color: str = "#3b82f6") -> str:
+    """Build filter header with optional border color"""
+    return f"""
     <div style="
         border: 1px solid #e5e7eb;
-        border-left: 3px solid #3b82f6;
+        border-left: 3px solid {border_color};
         border-radius: 8px;
         padding: 16px;
         margin-bottom: 12px;
@@ -139,11 +127,10 @@ def build_filter_info_header(filter_desc: str, count: int) -> str:
         max-width: 500px;
     ">
         <div style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px;">
-            🔍 {filter_desc}
+            {filter_desc}
         </div>
         <div style="font-size: 12px; color: #6b7280;">
             Tìm thấy {count} đơn hàng
         </div>
     </div>
     """
-    return header_html

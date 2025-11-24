@@ -1,0 +1,15 @@
+# version: "3.1"
+
+# nlu:
+#   - intent: give_feedback
+#     examples: |
+#       - tôi muốn đánh giá
+#       - bot tệ quá
+#       - bot tốt quá
+#       - dịch vụ chán
+#       - tuyệt vời
+#       - 5 sao
+#       - 1 sao
+#       - cần cải thiện thêm
+#       - phản hồi về bot
+#       - góp ý

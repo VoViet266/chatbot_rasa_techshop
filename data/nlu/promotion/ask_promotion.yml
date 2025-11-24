@@ -1,0 +1,19 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_promotion
+    examples: |
+      - có khuyến mãi gì không
+      - shop đang giảm giá gì
+      - có mã giảm giá nào không
+      - chương trình khuyến mãi hiện tại
+      - sale gì không
+      - coupon
+      - voucher
+      - ưu đãi hôm nay
+      - khuyến mãi laptop
+      - giảm giá điện thoại
+      - chương trình khuyến mãi
+      - chương trình khuyến mãi hiện tại
+      - shop có chương trình khuyến mãi không
+      - Cửa hàng mình có khuyến mãi gì không ạ?

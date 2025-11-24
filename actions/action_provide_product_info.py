@@ -14,7 +14,7 @@ class ActionProvideProductInfo(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: dict):
-
+       
         product_name_slot = tracker.get_slot("product_name")
         db = DatabaseService()
         if not product_name_slot:
@@ -130,7 +130,7 @@ class ActionShowVariantDetails(Action):
 
 
         is_active = variant_data.get("isActive", True)
-        status = "✅ Còn hàng" if is_active else "❌ Tạm ngưng kinh doanh"
+        status = "Còn hàng" if is_active else "Tạm ngưng kinh doanh"
         
         html_message = f"""
         <div style="background-color: #f9f9f9; padding: 15px; border-radius: 10px; border: 1px solid #ddd;">
@@ -155,11 +155,11 @@ class ActionShowVariantDetails(Action):
 
         buttons = [
             {
-                "title": "🛒 Thêm vào giỏ hàng",
+                "title": "Thêm vào giỏ hàng",
                 "payload": f"/add_to_cart{payload_json}" 
             },
             {
-                "title": "💳 Đặt hàng ngay",
+                "title": "Đặt hàng ngay",
                 "payload": f"/order{payload_json}" 
             }
         ]
@@ -225,8 +225,6 @@ class ActionShowListVariants(Action):
             storage = memory.get("storage", "")
             spec_str = f"({ram}/{storage})" if ram and storage else ""
 
-            # Tạo dòng HTML: • Tên (Ram/Rom): Giá đỏ
-            # style="margin-bottom: 5px;" để các dòng thoáng hơn
             list_items_html += (
                 f'<li style="margin-bottom: 8px;">'
                 f'<b>{v_name}</b> <span style="font-size: 0.9em; color: #666;">{spec_str}</span>: '
@@ -271,7 +269,7 @@ class ActionProvideProductPrice(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: dict):
-        
+        print('tin nhắn của user:', tracker.latest_message.get('text'))  
         db = DatabaseService()
         product_name_slot = tracker.get_slot("product_name")
         if not product_name_slot:

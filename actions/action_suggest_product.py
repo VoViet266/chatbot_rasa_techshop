@@ -1,4 +1,4 @@
-from pymongo import MongoClient
+
 from rasa_sdk.events import SlotSet
 from rasa_sdk import Action, Tracker
 from utils.database import DatabaseService

@@ -5,23 +5,11 @@ from bson import ObjectId
 from datetime import datetime, timedelta
 import dateparser
 from utils.database import DatabaseService
-from utils.order_helpers import (
-    build_order_card_html,
-    build_filter_info_header
-)
-
-
-def _validate_user(tracker: Tracker, dispatcher: CollectingDispatcher):
-    """Validate user_id từ tracker"""
-    user_id = tracker.sender_id
-    if not user_id:
-        dispatcher.utter_message(text="Vui lòng đăng nhập để xem đơn hàng.")
-        return None
-    return user_id
-
+from utils.validate_user import _validate_user
+from utils.order_helpers import build_order_card_html, build_filter_info_header
 
 def _map_status_to_db(status_vn: str) -> str:
-    """Map Vietnamese status to DB status code (UPPERCASE)"""
+    """Map Vietnamese status to DB status code"""
     status_map = {
         "chờ xác nhận": "PENDING",
         "đã xác nhận": "CONFIRMED",
@@ -38,49 +26,38 @@ def _map_status_to_db(status_vn: str) -> str:
 
 def _get_time_query(time_str: str) -> Dict:
     """Generate MongoDB query for time range"""
-    now = datetime.now()
-    today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
-    
     if not time_str:
         return {}
         
+    now = datetime.now()
+    today_start = now.replace(hour=0, minute=0, second=0, microsecond=0)
     time_lower = time_str.lower()
     
-    if time_lower in ["hôm nay", "nay"]:
-        return {"$gte": today_start}
-        
-    elif time_lower in ["hôm qua"]:
-        yesterday_start = today_start - timedelta(days=1)
-        return {"$gte": yesterday_start, "$lt": today_start}
-        
-    elif time_lower in ["tuần này"]:
-        start_week = today_start - timedelta(days=today_start.weekday())
-        return {"$gte": start_week}
-        
-    elif time_lower in ["tuần trước"]:
-        start_week = today_start - timedelta(days=today_start.weekday())
-        start_last_week = start_week - timedelta(days=7)
-        return {"$gte": start_last_week, "$lt": start_week}
-        
-    elif time_lower in ["tháng này"]:
-        start_month = today_start.replace(day=1)
-        return {"$gte": start_month}
-        
-    elif time_lower in ["tháng trước"]:
-        start_month = today_start.replace(day=1)
-        # First day of last month
-        last_month = start_month - timedelta(days=1)
-        start_last_month = last_month.replace(day=1)
-        return {"$gte": start_last_month, "$lt": start_month}
-        
+    time_ranges = {
+        ("hôm nay", "nay"): {"$gte": today_start},
+        ("hôm qua",): {
+            "$gte": today_start - timedelta(days=1),
+            "$lt": today_start
+        },
+        ("tuần này",): {
+            "$gte": today_start - timedelta(days=today_start.weekday())
+        },
+        ("tháng này",): {
+            "$gte": today_start.replace(day=1)
+        }
+    }
+    
+    for keys, query in time_ranges.items():
+        if time_lower in keys:
+            return query
+    
     # Try parsing date
     try:
         parsed_date = dateparser.parse(time_str)
         if parsed_date:
             start_day = parsed_date.replace(hour=0, minute=0, second=0, microsecond=0)
-            end_day = start_day + timedelta(days=1)
-            return {"$gte": start_day, "$lt": end_day}
-    except:
+            return {"$gte": start_day, "$lt": start_day + timedelta(days=1)}
+    except Exception:
         pass
         
     return {}
@@ -94,15 +71,15 @@ class ActionCheckOrder(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        # 1. Validate User
-        user_id = _validate_user(tracker, dispatcher)
+        # Validate user
+        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem đơn hàng!")
         if not user_id:
             return []
-            
-        # 2. Get Slots
+        
+        # Get slots
         order_id = tracker.get_slot("order_id")
-        order_direction = tracker.get_slot("order_direction") # newest, oldest
-        order_index = tracker.get_slot("order_index") # 1, 2, 3...
+        order_direction = tracker.get_slot("order_direction")
+        order_index = tracker.get_slot("order_index")
         time_str = tracker.get_slot("time")
         order_status = tracker.get_slot("order_status")
         product_name = tracker.get_slot("product_name")
@@ -110,88 +87,80 @@ class ActionCheckOrder(Action):
         db = DatabaseService()
         query = {"user": ObjectId(user_id)}
         
-        # 3. Build Query
-        
-        # Case A: Specific Order ID
+        # Build query filters
         if order_id:
             query["_id"] = ObjectId(order_id)
         
-        # Case B: Filter by Status
         if order_status:
             db_status = _map_status_to_db(order_status)
             if db_status:
                 query["status"] = db_status
-            else:
-                # Nếu không map được chính xác, thử tìm theo text (ít khi xảy ra nếu NLU tốt)
-                pass
-                
-        # Case C: Filter by Time
+        
         if time_str:
             time_query = _get_time_query(time_str)
             if time_query:
                 query["createdAt"] = time_query
-                
-        # Case D: Filter by Product Name (Advanced)
+        
         if product_name:
-            # Find products matching name first
             products = list(db.products_collection.find(
                 {"name": {"$regex": product_name, "$options": "i"}},
                 {"_id": 1}
             ))
             if products:
-                product_ids = [p["_id"] for p in products]
-                query["items.product"] = {"$in": product_ids}
+                query["items.product"] = {"$in": [p["_id"] for p in products]}
             else:
-                dispatcher.utter_message(text=f"Không tìm thấy sản phẩm nào tên '{product_name}' trong hệ thống.")
+                dispatcher.utter_message(
+                    text=f"Không tìm thấy sản phẩm '{product_name}'."
+                )
                 return []
-
-        # 4. Execute Query & Sort
-        # Default sort by newest
-        sort_direction = -1 # DESC
-        if order_direction == "oldest":
-            sort_direction = 1 # ASC
-            
+        
+        # Execute query
         try:
+            sort_direction = 1 if order_direction == "oldest" else -1
             orders = list(db.orders_collection.find(query).sort("createdAt", sort_direction))
             
             if not orders:
                 dispatcher.utter_message(response="utter_no_orders_found")
                 return []
-                
-            # 5. Handle Index (e.g. "đơn thứ 2")
+            
+            # Handle specific index
             if order_index:
                 try:
                     idx = int(order_index) - 1
                     if 0 <= idx < len(orders):
                         orders = [orders[idx]]
                     else:
-                        dispatcher.utter_message(text=f"Không tìm thấy đơn hàng thứ {order_index} theo yêu cầu.")
+                        dispatcher.utter_message(
+                            text=f"Không tìm thấy đơn hàng thứ {order_index}."
+                        )
                         return []
                 except ValueError:
                     pass
             
-            # 6. Limit results if too many (unless specific ID requested)
+            # Limit results
             if not order_id and len(orders) > 5:
                 orders = orders[:5]
             
-            # 7. Display Results
+            # Display results
             if len(orders) == 1:
-                # Single order
                 html = build_order_card_html(orders[0], db.products_collection)
                 dispatcher.utter_message(text=html)
             else:
-                # Multiple orders
-                filter_desc = "Kết quả tìm kiếm"
-                if time_str: filter_desc = f"Đơn hàng {time_str}"
-                elif order_status: filter_desc = f"Đơn hàng {order_status}"
-                elif order_direction == "newest": filter_desc = "Đơn hàng mới nhất"
+                # Determine filter description
+                if time_str:
+                    filter_desc = f"Đơn hàng {time_str}"
+                elif order_status:
+                    filter_desc = f"Đơn hàng {order_status}"
+                elif order_direction == "newest":
+                    filter_desc = "Đơn hàng mới nhất"
+                else:
+                    filter_desc = "Kết quả tìm kiếm"
                 
                 header = build_filter_info_header(filter_desc, len(orders))
-                html_parts = [header]
-                
-                for order in orders:
-                    html_parts.append(build_order_card_html(order, db.products_collection))
-                
+                html_parts = [header] + [
+                    build_order_card_html(order, db.products_collection)
+                    for order in orders
+                ]
                 dispatcher.utter_message(text="\n".join(html_parts))
                 
         except Exception as e:
@@ -212,53 +181,41 @@ class ActionCheckPendingOrders(Action):
         user_id = _validate_user(tracker, dispatcher)
         if not user_id:
             return []
-            
+        
         db = DatabaseService()
         
-        # Pending statuses (UPPERCASE)
-        pending_statuses = ["PENDING", "CONFIRMED", "PROCESSING", "SHIPPING", "PENDING_PAYMENT"]
-        
+        # Query pending orders
         query = {
             "user": ObjectId(user_id),
-            "status": {"$in": pending_statuses}
+            "status": {"$in": ["PENDING", "CONFIRMED", "PROCESSING", 
+                              "SHIPPING", "PENDING_PAYMENT"]}
         }
         
         try:
             orders = list(db.orders_collection.find(query).sort("createdAt", -1))
             
             if not orders:
-                dispatcher.utter_message(text="Bạn không có đơn hàng nào đang chờ xử lý.")
+                dispatcher.utter_message(
+                    text="Bạn không có đơn hàng nào đang chờ xử lý."
+                )
                 return []
             
-            # Build header for pending orders (Manual HTML to match style)
-            header_html = f"""
-            <div style="
-                border: 1px solid #e5e7eb;
-                border-left: 3px solid #f59e0b;
-                border-radius: 8px;
-                padding: 16px;
-                margin-bottom: 12px;
-                background: #ffffff;
-                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-                max-width: 500px;
-            ">
-                <div style="font-size: 16px; font-weight: 700; color: #111827; margin-bottom: 4px;">
-                    ⏳ Đơn hàng đang chờ
-                </div>
-                <div style="font-size: 13px; color: #6b7280;">
-                    Bạn có <strong style="color: #111827;">{len(orders)}</strong> đơn hàng đang xử lý
-                </div>
-            </div>
-            """
+            # Build header
+            header = build_filter_info_header(
+                "⏳ Đơn hàng đang chờ",
+                len(orders),
+                border_color="#f59e0b"
+            )
             
-            html_parts = [header_html]
-            for order in orders:
-                html_parts.append(build_order_card_html(order, db.products_collection))
+            html_parts = [header] + [
+                build_order_card_html(order, db.products_collection)
+                for order in orders
+            ]
             
             dispatcher.utter_message(text="\n".join(html_parts))
-            return []
             
         except Exception as e:
             print(f"Error in ActionCheckPendingOrders: {e}")
             dispatcher.utter_message(text="Có lỗi xảy ra khi kiểm tra đơn hàng.")
-            return []
+            
+        return []

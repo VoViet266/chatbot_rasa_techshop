@@ -8,14 +8,11 @@ import regex
 import requests
 from utils.format_currentcy import format_vnd
 from utils.product_pipelines import build_search_pipeline
+from utils.validate_user import _validate_user
 import re
 
-def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService) -> Tuple[Optional[str], Optional[Dict]]:
-    user_id = tracker.sender_id
-    
-    # 1. Xác thực người dùng
-    if not user_id or not ObjectId.is_valid(user_id):
-        return "Để mua hàng, vui lòng đăng nhập.", None
+def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService, dispatcher: CollectingDispatcher) -> Tuple[Optional[str], Optional[Dict]]:
+    user_id = _validate_user(tracker,dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
     
     product_name = tracker.get_slot("product_name")
     variant_name = tracker.get_slot("variant_name")
@@ -153,7 +150,7 @@ class ActionReviewOrder(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         db_service = DatabaseService()
-        error_message, order_data = _get_validated_order_info(tracker, db_service)
+        error_message, order_data = _get_validated_order_info(tracker,  db_service, dispatcher)
 
         if error_message:
             dispatcher.utter_message(text=error_message)
@@ -303,7 +300,7 @@ class ActionSubmitOrder(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # Lấy thông tin từ slots
-        user_id = tracker.sender_id
+        user_id = _validate_user(tracker.sender_id, dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
 
