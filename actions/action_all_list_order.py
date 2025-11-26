@@ -4,7 +4,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from bson import ObjectId
 from utils.database import DatabaseService
-from utils.validate_user import _validate_user
+from utils.validate_user import validate_user
 from utils.order_helpers import (
     format_status,
     build_order_card_html,
@@ -26,7 +26,7 @@ class ActionListAllOrders(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # Validate user
-        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem thông tin đơn hàng của bạn!")
+        user_id = validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem thông tin đơn hàng của bạn!")
         
         db = DatabaseService()
         try:

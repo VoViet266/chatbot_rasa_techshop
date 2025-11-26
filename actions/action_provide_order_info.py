@@ -5,7 +5,7 @@ from bson import ObjectId
 from datetime import datetime, timedelta
 import dateparser
 from utils.database import DatabaseService
-from utils.validate_user import _validate_user
+from utils.validate_user import validate_user
 from utils.order_helpers import build_order_card_html, build_filter_info_header
 
 def _map_status_to_db(status_vn: str) -> str:
@@ -72,7 +72,7 @@ class ActionCheckOrder(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # Validate user
-        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem đơn hàng!")
+        user_id = validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xem đơn hàng!")
         if not user_id:
             return []
         
@@ -178,7 +178,7 @@ class ActionCheckPendingOrders(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        user_id = _validate_user(tracker, dispatcher)
+        user_id = validate_user(tracker, dispatcher)
         if not user_id:
             return []
         

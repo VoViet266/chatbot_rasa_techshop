@@ -45,29 +45,14 @@ class VietnameseTextNormalizer(GraphComponent):
                 with open(json_path, 'r', encoding='utf-8') as f:
                     corrections = json.load(f)
                 
-                print(f"✓ Loaded {len(corrections)} entries from vi-nsw-dict.json")
+                print(f"Loaded {len(corrections)} entries from vi-nsw-dict.json")
             else:
                 corrections = self._get_fallback_corrections()
         except Exception as e:
-            print(f"⚠ Error loading vi-nsw-dict.json: {e}, using fallback")
+            print(f"Error loading vi-nsw-dict.json: {e}, using fallback")
             corrections = self._get_fallback_corrections()
         
         return corrections
-    
-    def _get_fallback_corrections(self) -> Dict[str, List[str]]:
-        """Fallback dictionary nhỏ (array format)."""
-        return {
-            "ko": ["không"],
-            "k": ["không"],
-            "dc": ["được"],
-            "đc": ["được"],
-            "dt": ["điện thoại"],
-            "sp": ["sản phẩm"],
-            "bn": ["bao nhiêu"],
-            "khong": ["không"],
-            "duoc": ["được"],
-            "dien thoai": ["điện thoại"],
-        }
 
     def normalize_unicode(self, text: str) -> str:
         """Chuẩn hóa unicode về dạng NFC."""
@@ -79,12 +64,6 @@ class VietnameseTextNormalizer(GraphComponent):
         return text.strip()
 
     def correct_spelling(self, text: str) -> str:
-        """
-        Sửa lỗi chính tả dựa trên vi-nsw-dict.json
-        Support cả 2 formats:
-        - Simple: "ko": "không"
-        - Array: "ko": ["không", "khong"]
-        """
         words = text.split()
         corrected_words = []
         

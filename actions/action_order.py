@@ -8,11 +8,11 @@ import regex
 import requests
 from utils.format_currentcy import format_vnd
 from utils.product_pipelines import build_search_pipeline
-from utils.validate_user import _validate_user
+from utils.validate_user import validate_user
 import re
 
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService, dispatcher: CollectingDispatcher) -> Tuple[Optional[str], Optional[Dict]]:
-    user_id = _validate_user(tracker,dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
+    user_id = validate_user(tracker,dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
     
     product_name = tracker.get_slot("product_name")
     variant_name = tracker.get_slot("variant_name")
@@ -300,7 +300,7 @@ class ActionSubmitOrder(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         # Lấy thông tin từ slots
-        user_id = _validate_user(tracker.sender_id, dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
+        user_id = validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
 

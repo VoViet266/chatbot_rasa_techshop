@@ -41,6 +41,13 @@ nlu:
       - danh sách các hãng
       - các thương hiệu có sẵn
       - shop hợp tác với hãng nào
+      - [điện thoại](category) có những hãng gì
+      - [laptop](category) có hãng nào
+      - các hãng [tai nghe](category)
+      - thương hiệu [chuột](category)
+      - [điện thoại](category) có những hảng gì
+      - [laptop](category) có những hảng nào
+      - hãng nào bán [điện thoại](category)
 
   # Hỏi danh sách tất cả categories
   - intent: ask_category_list
@@ -122,6 +129,7 @@ nlu:
   - synonym: Apple
     examples: |
       - apple
+      - aple
       - táo
       - nhà táo
       - iphone

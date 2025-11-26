@@ -79,15 +79,45 @@ class ActionAskBrandList(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         db_service = DatabaseService()
         
+        # Check if user asked for brands of a specific category
+        category_name = next(tracker.get_latest_entity_values("category"), None)
+        
         try:
-            # Get all active brands
+            filter_query = {"isDeleted": {"$ne": True}}
+            
+            if category_name:
+                # Find category first
+                category = db_service.categories_collection.find_one({
+                    "name": {"$regex": f"^{category_name}", "$options": "i"},
+                    "isDeleted": {"$ne": True}
+                })
+                
+                if category:
+                    # Find products in this category to get related brands
+                    category_id = category.get("_id")
+                    product_brands = db_service.products_collection.distinct("brand", {"category": category_id, "isDeleted": {"$ne": True}})
+                    
+                    if product_brands:
+                        filter_query["_id"] = {"$in": product_brands}
+                    else:
+                        dispatcher.utter_message(text=f"Hiện tại shop chưa có nhãn hiệu nào cho danh mục {category_name}.")
+                        return []
+                else:
+                  
+                    dispatcher.utter_message(text=f"Xin lỗi, shop không tìm thấy danh mục '{category_name}'.")
+                    return []
+
+            # Get brands based on filter
             brands = list(db_service.brands_collection.find(
-                {"isDeleted": {"$ne": True}},
+                filter_query,
                 {"name": 1, "description": 1, "logo": 1}
             ).sort("name", 1))
             
             if not brands:
-                dispatcher.utter_message(text="Hiện tại shop chưa có nhãn hiệu nào.")
+                if category_name:
+                    dispatcher.utter_message(text=f"Hiện tại shop chưa có nhãn hiệu nào cho danh mục {category_name}.")
+                else:
+                    dispatcher.utter_message(text="Hiện tại shop chưa có nhãn hiệu nào.")
                 return []
             
             # Build HTML response
@@ -119,6 +149,10 @@ class ActionAskBrandList(Action):
                 </div>
                 """
             
+            title = "Nhãn hiệu"
+            if category_name:
+                title = f"Nhãn hiệu {category_name}"
+
             html = f"""
             <div style="
                 border: 1px solid #e5e7eb;
@@ -132,7 +166,7 @@ class ActionAskBrandList(Action):
                 box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             ">
                 <div style="font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
-                    Nhãn hiệu
+                    {title}
                 </div>
                 <div style="max-height: 300px; overflow-y: auto;">
                     {brands_html}

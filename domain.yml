@@ -59,6 +59,11 @@ intents:
   - faq
   - ask_promotion
   - request_human
+  - ask_brand_list
+  - ask_category_list
+  - ask_brand_info
+  - suggest_product_by_category
+  - suggest_product_by_brand
   # - give_feedback
 
 entities:
@@ -112,6 +117,7 @@ entities:
   - spec_type
   - feedback_rating
   - feedback_comment
+  - error_type
 
 slots:
   user_id:
@@ -432,6 +438,13 @@ slots:
       - type: from_text
         intent: give_feedback
 
+  error_type:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: error_type
+
 forms:
   order_form:
     required_slots:
@@ -621,21 +634,21 @@ responses:
         - title: "OK, lên đơn"
           payload: "/order"
         - title: "Để mình xem thêm"
-          payload: "/chitchat/just_looking"
+          payload: "Chỉ tham khảo thôi"
 
     - text: "Mình tiến hành đặt hàng cho bạn luôn nhé?"
       buttons:
         - title: "Đồng ý"
           payload: "/order"
         - title: "Không, cảm ơn"
-          payload: "/chitchat/just_looking"
+          payload: "Chỉ tham khảo thôi"
 
     - text: "Bạn có muốn đặt hàng ngay để mình giữ sản phẩm cho bạn không?"
       buttons:
         - title: "Giữ hàng cho mình"
           payload: "/order"
         - title: "Không, mình chỉ hỏi giá"
-          payload: "/chitchat/just_looking"
+          payload: "Chỉ tham khảo thôi"
 
   utter_faq/tech_support:
     - condition:
@@ -663,6 +676,111 @@ responses:
   utter_faq/support_error:
     - condition:
         - type: slot
+          name: error_type
+          value: blue_screen
+      text: "Lỗi màn hình xanh thường do xung đột phần mềm hoặc lỗi phần cứng (RAM, ổ cứng). Bạn hãy thử khởi động lại máy, nếu vẫn bị thì mang qua shop để kỹ thuật viên kiểm tra nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: power_issue
+      text: "Máy không lên nguồn có thể do hết pin, lỗi sạc hoặc lỗi mainboard. Bạn thử cắm sạc 30 phút rồi bật lại xem sao nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: freeze
+      text: "Máy bị treo/đơ có thể do quá tải hoặc lỗi phần mềm. Bạn thử khởi động lại máy. Nếu thường xuyên bị, có thể cần cài lại Win hoặc kiểm tra ổ cứng."
+    - condition:
+        - type: slot
+          name: error_type
+          value: keyboard_issue
+      text: "Lỗi bàn phím (loạn, liệt) thường do bụi bẩn hoặc mạch phím bị hỏng. Bạn mang qua shop để vệ sinh hoặc thay bàn phím mới nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: overheat
+      text: "Máy nóng quá có thể do quạt tản nhiệt bị bụi hoặc keo tản nhiệt khô. Bạn nên mang máy đi vệ sinh và tra keo tản nhiệt định kỳ 6 tháng/lần."
+    - condition:
+        - type: slot
+          name: error_type
+          value: screen_issue
+      text: "Lỗi màn hình (sọc, hở sáng) thường là lỗi phần cứng panel. Trường hợp này cần mang máy đến trung tâm bảo hành để kiểm tra và thay thế nếu cần."
+    - condition:
+        - type: slot
+          name: error_type
+          value: battery_issue
+      text: "Pin chai hoặc sạc không vào có thể do pin đã cũ hoặc lỗi mạch sạc. Bạn mang máy qua shop để kiểm tra tình trạng pin và thay thế nếu cần thiết."
+    - condition:
+        - type: slot
+          name: error_type
+          value: wifi_issue
+      text: "Wifi yếu có thể do driver hoặc card wifi bị lỏng. Bạn thử cài lại driver wifi hoặc mang qua shop để kiểm tra card wifi nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: touchpad_issue
+      text: "Touchpad không di được có thể do bị khóa (fn + f9/f10...) hoặc lỗi driver. Bạn kiểm tra lại phím tắt xem sao nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: boot_loop
+      text: "Lỗi treo táo/boot loop thường do lỗi iOS/Android. Bạn thử restore lại máy (nhớ backup dữ liệu) hoặc mang qua shop để chạy lại phần mềm."
+    - condition:
+        - type: slot
+          name: error_type
+          value: touch_issue
+      text: "Liệt cảm ứng thường do lỗi màn hình hoặc IC cảm ứng. Bạn cần mang máy đi kiểm tra phần cứng ạ."
+    - condition:
+        - type: slot
+          name: error_type
+          value: camera_issue
+      text: "Camera mờ/rung có thể do bụi vào hoặc lỗi chống rung quang học. Bạn mang qua shop để vệ sinh hoặc kiểm tra camera nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: mic_issue
+      text: "Mic lỗi (nói bé, không nghe) có thể do bụi bẩn hoặc lỗi mic. Bạn thử vệ sinh lỗ mic xem sao, nếu không được thì cần thay mic ạ."
+    - condition:
+        - type: slot
+          name: error_type
+          value: face_id_issue
+      text: "Lỗi Face ID thường do va đập hoặc vào nước làm hỏng cảm biến. Lỗi này khá phức tạp, bạn mang qua shop để kỹ thuật viên kiểm tra kỹ hơn nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: one_side_issue
+      text: "Tai nghe chỉ nghe 1 bên có thể do chưa kết nối đồng bộ 2 tai hoặc 1 bên hết pin. Bạn thử reset tai nghe và kết nối lại nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: charging_issue
+      text: "Lỗi sạc (không sáng đèn, không vào điện) có thể do cổng sạc bẩn hoặc pin hộp sạc bị hỏng. Bạn vệ sinh chân tiếp xúc xem sao nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: connection_issue
+      text: "Kết nối chập chờn có thể do nhiễu sóng hoặc pin yếu. Bạn thử sạc đầy pin và reset lại kết nối bluetooth nhé."
+    - condition:
+        - type: slot
+          name: error_type
+          value: double_click
+      text: "Lỗi click đúp (double click) thường do switch chuột bị mòn. Bạn có thể mang qua shop để thay switch mới (Omron/Huano/Kailh) dùng sẽ bền hơn ạ."
+    - condition:
+        - type: slot
+          name: error_type
+          value: scroll_issue
+      text: "Lỗi lăn chuột (scroll) thường do bộ mã hóa (encoder) bị bẩn hoặc hỏng. Vệ sinh hoặc thay encoder là hết ạ."
+    - condition:
+        - type: slot
+          name: error_type
+          value: sensor_issue
+      text: "Chuột di không chạy (mất mắt đọc) có thể do bề mặt di chuột hoặc mắt đọc bị bẩn. Bạn thử đổi lót chuột và lau mắt đọc xem sao."
+    - condition:
+        - type: slot
+          name: error_type
+          value: button_issue
+      text: "Nút bị kẹt có thể do bụi bẩn hoặc lò xo bị gãy. Bạn mang qua shop để vệ sinh hoặc sửa chữa nhé."
+    - condition:
+        - type: slot
           name: category
           value: laptop
       text: "Nếu Laptop gặp sự cố (màn hình xanh, không lên nguồn, nóng máy...), bạn vui lòng mang máy đến cửa hàng gần nhất để kỹ thuật viên kiểm tra nhé. TechShop sẽ kiểm tra miễn phí và báo giá sửa chữa nếu có."
@@ -684,12 +802,72 @@ responses:
     - text: "Nếu sản phẩm gặp lỗi, bạn vui lòng mang qua cửa hàng TechShop gần nhất để được kỹ thuật viên kiểm tra và hỗ trợ nhé."
 
   utter_faq/warranty:
+    - condition:
+        - type: slot
+          name: category
+          value: laptop
+      text: "Laptop tại TechShop được bảo hành 12 tháng (máy mới) hoặc 6 tháng (máy cũ). Bảo hành toàn diện cả nguồn, màn hình, bàn phím. Lỗi 1 đổi 1 trong 30 ngày đầu."
+    - condition:
+        - type: slot
+          name: category
+          value: điện thoại
+      text: "Điện thoại được bảo hành 12 tháng chính hãng hoặc 6 tháng tại cửa hàng (với máy cũ). Bao test 1 đổi 1 trong 30 ngày. Hỗ trợ bảo hành cả nguồn và màn hình."
+    - condition:
+        - type: slot
+          name: category
+          value: tai nghe
+      text: "Tai nghe được bảo hành 12 tháng (với hàng chính hãng) hoặc 3-6 tháng (với hàng xách tay/cũ). Lỗi 1 đổi 1 ngay lập tức nếu có lỗi nhà sản xuất trong tháng đầu."
+    - condition:
+        - type: slot
+          name: category
+          value: chuột
+      text: "Chuột Gaming/Văn phòng được bảo hành 12-24 tháng tùy hãng (Logitech, Razer...). Đổi mới ngay nếu bị lỗi click đúp hoặc cảm biến trong thời gian bảo hành."
     - text: "TechShop bảo hành 12 tháng cho máy mới và 6 tháng cho máy cũ. Lỗi 1 đổi 1 trong 30 ngày đầu nếu có lỗi nhà sản xuất. Bảo hành cả nguồn và màn hình ạ."
 
   utter_faq/installment:
+    - condition:
+        - type: slot
+          name: category
+          value: laptop
+      text: "Bạn có thể trả góp Laptop qua thẻ tín dụng (0%) hoặc công ty tài chính (cần CMND/CCCD). Trả trước từ 0đ - 30% giá trị máy tùy hồ sơ ạ."
+    - condition:
+        - type: slot
+          name: category
+          value: điện thoại
+      text: "Mua điện thoại trả góp rất đơn giản, chỉ cần CMND/CCCD. Duyệt hồ sơ trong 15 phút. Hỗ trợ trả góp 0% qua thẻ tín dụng."
+    - condition:
+        - type: slot
+          name: category
+          value: tai nghe
+      text: "TechShop hỗ trợ trả góp cho đơn hàng từ 3 triệu. Nếu tai nghe giá trị cao hoặc mua cùng máy, bạn hoàn toàn có thể làm thủ tục trả góp nhé."
+    - condition:
+        - type: slot
+          name: category
+          value: chuột
+      text: "Trả góp áp dụng cho đơn hàng trên 3 triệu. Bạn có thể mua chuột kèm Laptop/PC để được hỗ trợ trả góp chung cả bộ nhé."
     - text: "TechShop hỗ trợ trả góp qua thẻ tín dụng (0% lãi suất) hoặc qua công ty tài chính (Home Credit, FE Credit). Thủ tục chỉ cần CMND/CCCD và Bằng lái xe hoặc Hộ khẩu."
 
   utter_faq/origin:
+    - condition:
+        - type: slot
+          name: category
+          value: laptop
+      text: "Laptop tại TechShop chủ yếu là hàng nhập khẩu từ Mỹ/Nhật (ThinkPad, Dell...) và hàng chính hãng phân phối tại VN. Cam kết nguyên bản, chưa qua sửa chữa."
+    - condition:
+        - type: slot
+          name: category
+          value: điện thoại
+      text: "Điện thoại là bản Quốc tế (không bán máy Lock), bao gồm cả hàng chính hãng VN/A và hàng nhập khẩu. Máy cũ cam kết Zin all, chưa thay thế linh kiện."
+    - condition:
+        - type: slot
+          name: category
+          value: tai nghe
+      text: "Tai nghe là hàng chính hãng (Sony, JBL, Apple...) hoặc hàng xách tay chất lượng cao. Bao check serial/auth trọn đời."
+    - condition:
+        - type: slot
+          name: category
+          value: chuột
+      text: "Chuột Gaming/Văn phòng cam kết chính hãng 100% (Logitech, Razer, Corsair...). Fullbox đầy đủ phụ kiện."
     - text: "Sản phẩm tại TechShop cam kết chính hãng 100%, có nguồn gốc rõ ràng. Máy cũ là hàng nguyên bản, chưa qua sửa chữa. Bạn có thể check serial/IMEI thoải mái ạ."
 
   utter_faq/mouse_error:
@@ -752,6 +930,9 @@ actions:
   - action_list_all_orders
   - action_check_promotion
   - action_human_handoff
+  - action_ask_brand_list
+  - action_ask_category_list
+  - action_ask_brand_info
   # - action_submit_feedback
 
 session_config:

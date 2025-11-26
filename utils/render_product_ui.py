@@ -13,15 +13,24 @@ def render_variants_list(variants):
         price = variant.get("price", 0)
         discounted_price = price * (1 - discount/100)
         
+        # Construct display name
+        product_name = variant.get("name", "Sản phẩm")
+        ram = variant.get('memory', {}).get('ram', '')
+        storage = variant.get('memory', {}).get('storage', '')
+        if ram or storage:
+            display_name = f"{product_name} ({ram}/{storage})"
+        else:
+            display_name = product_name
+
         try:
             image_url = variant["color"][0]["images"][0]
         except (KeyError, IndexError, TypeError):
             image_url = "https://via.placeholder.com/90"
 
         result += f'''<div style="display:flex;gap:12px;padding:12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;transition:box-shadow 0.2s;">
-    <img src="{image_url}" alt="{variant["name"]}" style="width:90px;height:90px;object-fit:contain;flex-shrink:0;border-radius:4px;">
+    <img src="{image_url}" alt="{display_name}" style="width:90px;height:90px;object-fit:contain;flex-shrink:0;border-radius:4px;">
     <div style="flex:1;min-width:0;">
-        <h3 style="margin:0 0 8px;font-size:14px;font-weight:500;line-height:1.4;color:#1a1a1a;">{variant["name"]}</h3>
+        <h3 style="margin:0 0 8px;font-size:14px;font-weight:500;line-height:1.4;color:#1a1a1a;">{display_name}</h3>
         <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;">
             <span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(discounted_price)}</span>
             {f'<span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;">{format_vnd(price)}</span>' if discount > 0 else ''}
@@ -82,14 +91,23 @@ def render_product_card(product, variants):
         product_discount = product.get('discount', 0)
         
         for v in variants:
-            variant_name = v.get("name", "Phiên bản")
+            # Construct variant name from specs if name is missing
+            variant_name = v.get("name")
+            if not variant_name:
+                ram = v.get('memory', {}).get('ram', '')
+                storage = v.get('memory', {}).get('storage', '')
+                if ram or storage:
+                    variant_name = f"{ram} - {storage}"
+                else:
+                    variant_name = "Phiên bản tiêu chuẩn"
+
             price = v.get('price', 0)
             final_price = price * (1 - product_discount / 100)
             
             price_display_html = f'<span style="font-size:13px;font-weight:500;color:#d32f2f;">{format_vnd(final_price)}</span>'
             if product_discount > 0:
                 price_display_html += f'<span style="font-size:12px;color:#9e9e9e;text-decoration:line-through;margin-left:5px;">{format_vnd(price)}</span>'
-
+ 
             variants_html_list += f'''
 <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f5f5f5;">
     <span style="font-size:13px;color:#333;padding-right:10px;">{variant_name}</span>

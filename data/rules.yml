@@ -175,4 +175,27 @@ rules:
   #     - intent: give_feedback
   #     - action: utter_ask_feedback_rating
   #     - action: action_submit_feedback
-  #     - action: utter_thanks_feedback
+  - rule: Hỏi danh sách thương hiệu
+    steps:
+      - intent: ask_brand_list
+      - action: action_ask_brand_list
+
+  - rule: Hỏi danh sách danh mục
+    steps:
+      - intent: ask_category_list
+      - action: action_ask_category_list
+
+  - rule: Hỏi thông tin thương hiệu
+    steps:
+      - intent: ask_brand_info
+      - action: action_ask_brand_info
+
+  - rule: Gợi ý sản phẩm theo danh mục
+    steps:
+      - intent: suggest_product_by_category
+      - action: action_suggest_product
+
+  - rule: Gợi ý sản phẩm theo thương hiệu
+    steps:
+      - intent: suggest_product_by_brand
+      - action: action_suggest_product

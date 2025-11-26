@@ -23,7 +23,12 @@ nlu:
       - Tôi muốn [điện thoại](category) giá trên [10 triệu]{"entity": "price", "role": "from"}
       - Tôi đang có nhu cầu mua [máy tính bảng](category) giá từ [10]{"entity": "price", "role": "from"} đến [15 triệu]{"entity": "price", "role": "to"}
       - Gợi ý cho tôi vài [máy ảnh](category) giá dưới [20 triệu]{"entity": "price", "role": "to"}
-      
+      - [Điện thoại](category) [giá cao](price_qualifier) nhất
+      - Tìm [laptop](category) loại [đắt tiền](price_qualifier)
+      - Tôi muốn mua [điện thoại](category) [giá cao](price_qualifier)
+      - [Máy tính](category) [phân khúc cao](price_qualifier)
+      - [Tai nghe](category) [xịn](price_qualifier) giá bao nhiêu?
+
   - synonym: cheap
     examples: |
       - giá rẻ
@@ -60,3 +65,4 @@ nlu:
       - chất lượng cao
       - hàng khủng
       - xịn nhất
+      - flagship

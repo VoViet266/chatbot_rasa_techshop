@@ -82,6 +82,52 @@ lookup:
       - chờ xác nhận
       - đã thanh toán
       - chờ thanh toán
+      - dang giao
+      - da giao
+      - da huy
+      - dang xu ly
+      - cho xac nhan
+      - da thanh toan
+      - cho thanh toan
+      - dang xac nhan
+
+  - synonym: đang giao
+    examples: |
+      - dang giao
+      - shipping
+      - đang ship
+      - dang ship
+
+  - synonym: đang xác nhận
+    examples: |
+      - dang xac nhan
+      - cho xac nhan
+      - dang cho xac nhan
+      - chờ xác nhận
+
+  - synonym: đã hủy
+    examples: |
+      - da huy
+      - huy don
+      - don da huy
+
+  - synonym: đang xử lý
+    examples: |
+      - dang xu ly
+      - dang lam
+      - processing
+
+  - synonym: đã thanh toán
+    examples: |
+      - da thanh toan
+      - thanh toan roi
+      - paid
+
+  - synonym: chờ thanh toán
+    examples: |
+      - cho thanh toan
+      - chua thanh toan
+      - unpaid
 
   - name: time
     examples: |

@@ -11,9 +11,18 @@ nlu:
       - coupon
       - voucher
       - ưu đãi hôm nay
-      - khuyến mãi laptop
-      - giảm giá điện thoại
+      - khuyến mãi [laptop](category)
+      - giảm giá [điện thoại](category)
       - chương trình khuyến mãi
       - chương trình khuyến mãi hiện tại
       - shop có chương trình khuyến mãi không
       - Cửa hàng mình có khuyến mãi gì không ạ?
+      - [Laptop](category) đang có khuyến mãi gì?
+      - [Điện thoại](category) giảm giá bao nhiêu?
+      - Có mã giảm giá cho [tai nghe](category) không?
+      - Khuyến mãi [chuột](category) gaming
+      - Ưu đãi cho [phụ kiện](category)
+      - Mã giảm giá theo danh mục
+      - Mua [laptop](category) được tặng gì không?
+      - Giảm giá cho sinh viên mua [laptop](category)
+      - Khuyến mãi riêng cho [điện thoại](category) Samsung

@@ -40,6 +40,107 @@ nlu:
       - razer
       - magic mouse
 
+  - synonym: blue_screen
+    examples: |
+      - lỗi màn hình xanh
+      - màn hình xanh
+
+  - synonym: power_issue
+    examples: |
+      - không lên nguồn
+      - bật không lên
+
+  - synonym: freeze
+    examples: |
+      - bị đơ
+      - treo máy
+
+  - synonym: keyboard_issue
+    examples: |
+      - loạn bàn phím
+      - liệt phím
+
+  - synonym: overheat
+    examples: |
+      - nóng quá
+      - nóng ran
+
+  - synonym: screen_issue
+    examples: |
+      - hở sáng
+      - sọc màn hình
+      - màn hình bị sọc
+
+  - synonym: battery_issue
+    examples: |
+      - chai
+      - chai pin
+      - sạc không vào
+      - sạc cả đêm không đầy pin
+
+  - synonym: wifi_issue
+    examples: |
+      - bắt sóng yếu
+      - wifi yếu
+
+  - synonym: touchpad_issue
+    examples: |
+      - touchpad không di được
+
+  - synonym: boot_loop
+    examples: |
+      - treo táo
+
+  - synonym: touch_issue
+    examples: |
+      - liệt cảm ứng
+
+  - synonym: camera_issue
+    examples: |
+      - mờ và rung
+      - camera lỗi
+
+  - synonym: mic_issue
+    examples: |
+      - không nghe thấy gì
+      - mic bé
+      - mic nói bé quá
+      - nói bé quá
+
+  - synonym: face_id_issue
+    examples: |
+      - face id không nhận diện được
+
+  - synonym: one_side_issue
+    examples: |
+      - nghe được 1 bên
+
+  - synonym: charging_issue
+    examples: |
+      - sạc không sáng đèn
+      - hộp sạc không vào điện
+
+  - synonym: connection_issue
+    examples: |
+      - chập chờn
+      - receiver cắm vào không nhận
+
+  - synonym: double_click
+    examples: |
+      - click đúp
+
+  - synonym: scroll_issue
+    examples: |
+      - liệt nút cuộn
+
+  - synonym: sensor_issue
+    examples: |
+      - con trỏ không chạy
+
+  - synonym: button_issue
+    examples: |
+      - nút sườn bị kẹt
+
   - intent: faq/tech_support
     examples: |
       - shop có cài win giúp không
@@ -67,33 +168,33 @@ nlu:
 
   - intent: faq/support_error
     examples: |
-      - máy bị lỗi màn hình xanh
-      - [laptop](category) bật không lên nguồn
-      - máy bị đơ không sử dụng được
-      - [laptop](category) bị loạn bàn phím
-      - máy tính bị nóng quá quạt kêu to
-      - màn hình [laptop](category) bị hở sáng
-      - pin [laptop](category) bị chai sạc không vào
-      - wifi [laptop](category) bắt sóng yếu
-      - touchpad không di được
-      - [điện thoại](category) bị sọc màn hình
-      - [iphone](category) bị treo táo
-      - máy sạc cả đêm không đầy pin
-      - [điện thoại](category) bị liệt cảm ứng
-      - camera chụp hình bị mờ và rung
-      - gọi điện người bên kia không nghe thấy gì
-      - máy bị nóng ran khi chơi game
-      - face id không nhận diện được
-      - [tai nghe](category) chỉ nghe được 1 bên
-      - [tai nghe](category) sạc không sáng đèn
-      - kết nối [tai nghe](category) bị chập chờn lúc được lúc không
-      - mic [tai nghe](category) nói bé quá
-      - hộp sạc không vào điện
-      - [chuột](category) bị click đúp
-      - [chuột](category) bị liệt nút cuộn
-      - [con chuột](category) di mà con trỏ không chạy
-      - receiver cắm vào không nhận
-      - nút sườn bị kẹt không bấm được
+      - máy bị [lỗi màn hình xanh](error_type)
+      - [laptop](category) bật [không lên nguồn](error_type)
+      - máy [bị đơ](error_type) không sử dụng được
+      - [laptop](category) bị [loạn bàn phím](error_type)
+      - máy tính bị [nóng quá](error_type) quạt kêu to
+      - màn hình [laptop](category) bị [hở sáng](error_type)
+      - pin [laptop](category) bị [chai](error_type) sạc không vào
+      - wifi [laptop](category) [bắt sóng yếu](error_type)
+      - [touchpad không di được](error_type)
+      - [điện thoại](category) bị [sọc màn hình](error_type)
+      - [iphone](category) bị [treo táo](error_type)
+      - máy [sạc cả đêm không đầy pin](error_type)
+      - [điện thoại](category) bị [liệt cảm ứng](error_type)
+      - camera chụp hình bị [mờ và rung](error_type)
+      - gọi điện người bên kia [không nghe thấy gì](error_type)
+      - máy bị [nóng ran](error_type) khi chơi game
+      - [face id không nhận diện được](error_type)
+      - [tai nghe](category) chỉ [nghe được 1 bên](error_type)
+      - [tai nghe](category) [sạc không sáng đèn](error_type)
+      - kết nối [tai nghe](category) bị [chập chờn](error_type) lúc được lúc không
+      - mic [tai nghe](category) [nói bé quá](error_type)
+      - [hộp sạc không vào điện](error_type)
+      - [chuột](category) bị [click đúp](error_type)
+      - [chuột](category) bị [liệt nút cuộn](error_type)
+      - [con chuột](category) di mà [con trỏ không chạy](error_type)
+      - [receiver cắm vào không nhận](error_type)
+      - [nút sườn bị kẹt](error_type) không bấm được
 
   - intent: faq/warranty
     examples: |

@@ -34,3 +34,13 @@ nlu:
       - [Laptop](category) màn hình [15 inch] ram [16GB]{"entity": "ram"}
       - Tôi cần [điện thoại](category) [Samsung](brand) giá rẻ ram [8GB]{"entity": "ram"}
       - [Laptop gaming](category) giá từ [20]{"entity": "price", "role": "from"} đến [30 triệu]{"entity": "price", "role": "to"}
+      - Tìm [điện thoại](category) [giá cao](price_qualifier)
+      - Tôi muốn mua [laptop](category) [xịn](price_qualifier)
+      - Gợi ý [điện thoại](category) [giá rẻ](price_qualifier) ram [4GB]{"entity": "ram"}
+      - [Laptop](category) [cao cấp](price_qualifier) cho doanh nhân
+      - Tìm [máy tính bảng](category) [giá tốt](price_qualifier)
+      - [Điện thoại](category) [Samsung](brand) [giá cao](price_qualifier)
+      - [Laptop](category) [Dell](brand) [giá rẻ](price_qualifier)
+      - Có [điện thoại](category) nào [xịn sò](price_qualifier) không?
+      - [Tai nghe](category) [giá rẻ](price_qualifier) nghe hay
+      - [Chuột](category) [cao cấp](price_qualifier) chơi game

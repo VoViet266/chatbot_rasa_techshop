@@ -4,7 +4,7 @@ from bson import ObjectId
 from rasa_sdk.executor import CollectingDispatcher
 from typing import Any, Text, Dict, List
 from utils.database import DatabaseService
-from utils.validate_user import _validate_user
+from utils.validate_user import validate_user
 from rasa_sdk.events import SlotSet
 import logging
 
@@ -18,7 +18,7 @@ class ActionGetInformation(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        user_id = _validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để sử dụng dịch vụ!")
+        user_id = validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để sử dụng dịch vụ!")
         user_name = None
         events = []
         # Kiểm tra xem user_id có phải là ObjectId hợp lệ không
