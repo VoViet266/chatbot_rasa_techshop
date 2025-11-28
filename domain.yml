@@ -3,13 +3,14 @@
 intents:
   - greet
   - goodbye
-  - order_product
+
   - order
   - add_to_cart
   - view_cart
   - update_cart_quantity
   - delete_from_cart
-  - inform_product
+  - inform
+
   - inform_order_id
   - ask_product_info
   - ask_warranty
@@ -39,8 +40,7 @@ intents:
   - compare_products
   - check_stock
   - restart_slot
-  - select_quantity
-  - select_variant
+
   - ask_product_detail_variant_infor
   - ask_product_variant_infor
   - select_branch_order:
@@ -275,9 +275,8 @@ slots:
         entity: quantity
         intent:
           - order
-          - order_product
+          - inform
           - add_to_cart
-          - select_quantity
           - update_cart_quantity
 
   product_1:

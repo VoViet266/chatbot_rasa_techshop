@@ -3,63 +3,33 @@ language: vi
 
 nlu:
   # ----- INTENTS -----
-  - intent: inform_product
-    examples: |
-      - [iPhone 16](product_name)
-      - con [Samsung S24](product_name) đó
-      - Mình đang nói về [MacBook Air M3](product_name)
-      - [laptop gaming](product_name)
-      - [Dell XPS 13](product_name)
-      - [Sony WH-1000XM5](product_name)
-
-  - intent: order_product
+  - intent: inform
     examples: |
       - [iPhone 16](product_name) [màu xanh](color) [256GB](storage) [2](quantity) cái
+      - [samsung Galaxy S25 plus](product_name)
       - [iPhone 16](product_name) [màu xanh](color)
       - [iPhone 16](product_name) [2](quantity) cái
       - [màu đen](color) [1](quantity) cái
       - [bản 256GB](storage) [2](quantity)
-      - Tôi muốn [MacBook Air M3](product_name) [bản 256GB](storage)
-      - Cứ lấy [Dell XPS 13](product_name) [bản i7](variant_other) [1](quantity) cái đi
       - [Sony WH-1000XM5](product_name) [màu đen](color)
-      - Lấy [iPhone 16](product_name) [bản 512GB](storage) [màu trắng](color)
-      - [iPhone 16](product_name) [2](quantity) cái [màu đỏ](color)
-  - intent: inform_order_id
-    examples: |
-      - Mã đơn hàng là [6673f8a7e0965e26f63111ed](order_id)
-      - Đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
-      - [6673f8a7e0965e26f63111ed](order_id)
-      - Mã đơn của tôi là [6673f8a7e0965e26f63111ed](order_id)
-      - Đây là mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
-      - Số đơn hàng [6673f8a7e0965e26f63111ed](order_id)
-      - ID đơn hàng [6673f8a7e0965e26f63111ed](order_id)
-      - Tôi có mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
-      - Mã đơn hàng [6913e9492af0f16cc64a8f3e](order_id)
-      - Đơn [6913e9492af0f16cc64a8f3e](order_id)
-      - [6913e9492af0f16cc64a8f3e](order_id)
-      - Mã của tôi là [6913e9492af0f16cc64a8f3e](order_id)
-  - intent: select_variant
-    examples: |
-      - Tôi chọn [bản 256GB](storage)
+      - [iPhone 16](product_name) [bốn](quantity) cái
+      - [Samsung S24](product_name) [năm](quantity) chiếc
+      - [MacBook Air](product_name) [sáu](quantity) cái
+      - [iPad](product_name) [bảy](quantity) chiếc
+      - [Tai nghe](product_name) [tám](quantity) cái
+      - [Chuột](product_name) [chín](quantity) cái
+      - [Bàn phím](product_name) [mười](quantity) chiếc
       - Mình lấy [màu xanh](color)
-      - Chọn [phiên bản 512GB](storage)
-      - Lấy [bản cao cấp](variant_other)
+      - Lấy [bản cao cấp](variant_name)
       - Em chọn [màu titan](color)
-      - Tôi muốn [bản thường](variant_other)
-      - [256GB](storage)
-      - [512GB](storage)
+      - Tôi muốn [bản thường](variant_name)
       - [Màu xanh](color)
       - [Màu trắng](color)
-      - [Bản tiêu chuẩn](variant_other)
-      - [Bản cao cấp](variant_other)
-      - [Màu xanh](color) [128GB](storage)
-      - [Bản 512GB](storage) [màu trắng](color)
-      - [Màu titan](color) [256GB](storage)
-      - [Bản i7](variant_other)
-      - [màu xanh 256GB](color) [256GB](storage)
-
-  - intent: select_quantity
-    examples: |
+      - [Bản tiêu chuẩn](variant_name)
+      - [Bản cao cấp](variant_name)
+      - [màu trắng](color)
+      - [Bản i7](variant_name)
+      - [màu xanh 256GB](color)
       - [1](quantity)
       - [2](quantity)
       - [3](quantity)
@@ -98,7 +68,61 @@ nlu:
       - cho tớ [ba](quantity) chiếc nhé
       - [một](quantity) cái thôi
       - [hai](quantity) chiếc nha
+      - [hai](quantity) chiếc nha
       - chỉ [một](quantity)
+      - Mình chọn [màu xám](color)
+      - Lấy bản [512GB](storage) nhé
+      - Cho mình [3](quantity) cái [màu trắng](color)
+      - [iPhone 15](product_name) bản [256GB](storage)
+      - [Samsung S23](product_name) [màu kem](color)
+      - [MacBook Air](product_name) [16GB](variant_name)
+      - [iPad Gen 10](product_name) [màu vàng](color) [64GB](storage)
+      - [2](quantity) cái [màu đen](color)
+      - [1](quantity) chiếc [bản 1TB](storage)
+      - [màu xanh dương](color)
+      - [bản titanium](color)
+      - [màu gold](color) [2](quantity) cái
+      - [bản 128GB](storage) [màu hồng](color)
+      - Lấy [màu bạc](color) cho mình
+      - Chọn [bản đặc biệt](variant_name)
+      - [màu đỏ](color) nha
+      - [bản tiêu chuẩn](variant_name) thôi
+      - [5](quantity) cái [màu xanh lá](color)
+      - [iPhone 16 Pro](product_name) [màu titan tự nhiên](color)
+      - [Galaxy Z Flip 5](product_name) [màu tím](color) [512GB](storage)
+      - [Tai nghe Sony](product_name) [màu đen](color)
+      - [Chuột Logitech](product_name) [màu trắng](color)
+      - [Bàn phím cơ](product_name) [switch đỏ](variant_name)
+      - [Sạc dự phòng](product_name) [20000mAh](variant_name)
+      - [Ốp lưng](product_name) [màu trong suốt](color)
+      - [Cường lực](product_name) [chống nhìn trộm](variant_name)
+      - [Loa Bluetooth](product_name) [màu xanh rêu](color)
+      - [Đồng hồ](product_name) [dây da](variant_name)
+      - [màu cam](color)
+      - [màu nâu](color)
+      - [bản giới hạn](variant_name)
+      - [bản quốc tế](variant_name)
+      - [bản chính hãng](variant_name)
+      - [1](quantity) bộ
+      - [2](quantity) cặp
+      - [3](quantity) hộp
+      - [nửa tá](quantity)
+      - [một tá](quantity)
+
+  - intent: inform_order_id
+    examples: |
+      - Mã đơn hàng là [6673f8a7e0965e26f63111ed](order_id)
+      - Đơn hàng số [6673f8a7e0965e26f63111ed](order_id)
+      - [6673f8a7e0965e26f63111ed](order_id)
+      - Mã đơn của tôi là [6673f8a7e0965e26f63111ed](order_id)
+      - Đây là mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Số đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - ID đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Tôi có mã đơn hàng [6673f8a7e0965e26f63111ed](order_id)
+      - Mã đơn hàng [6913e9492af0f16cc64a8f3e](order_id)
+      - Đơn [6913e9492af0f16cc64a8f3e](order_id)
+      - [6913e9492af0f16cc64a8f3e](order_id)
+      - Mã của tôi là [6913e9492af0f16cc64a8f3e](order_id)
 
   # ----- LOOKUP TABLE -----
   - lookup: color
@@ -152,6 +176,70 @@ nlu:
       - ba chiếc
       - 3 cái
       - 3 chiếc
+
+  - synonym: "4"
+    examples: |
+      - bốn
+      - 4
+      - bốn cái
+      - bốn chiếc
+      - 4 cái
+      - 4 chiếc
+
+  - synonym: "5"
+    examples: |
+      - năm
+      - 5
+      - năm cái
+      - năm chiếc
+      - 5 cái
+      - 5 chiếc
+
+  - synonym: "6"
+    examples: |
+      - sáu
+      - 6
+      - sáu cái
+      - sáu chiếc
+      - 6 cái
+      - 6 chiếc
+
+  - synonym: "7"
+    examples: |
+      - bảy
+      - 7
+      - bảy cái
+      - bảy chiếc
+      - 7 cái
+      - 7 chiếc
+
+  - synonym: "8"
+    examples: |
+      - tám
+      - 8
+      - tám cái
+      - tám chiếc
+      - 8 cái
+      - 8 chiếc
+
+  - synonym: "9"
+    examples: |
+      - chín
+      - 9
+      - chín cái
+      - chín chiếc
+      - 9 cái
+      - 9 chiếc
+
+  - synonym: "10"
+    examples: |
+      - mười
+      - 10
+      - mười cái
+      - mười chiếc
+      - 10 cái
+      - 10 chiếc
+      - một chục
 
   # Storage
   - synonym: "128GB"

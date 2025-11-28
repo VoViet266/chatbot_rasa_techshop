@@ -33,6 +33,27 @@ nlu:
       - Mình muốn cho [iPad Pro](product_name) vào giỏ
       - Tôi cần thêm [AirPods Pro](product_name) vào giỏ hàng
       - Thêm [2](quantity) cái vào giỏ
+      - [một](quantity) vào giỏ
+      - [hai](quantity) cái vào giỏ 
+      - [ba](quantity) cái vào giỏ 
+      - [bốn](quantity) cái vào giỏ 
+      - [năm](quantity) cái vào giỏ 
+      - [sáu](quantity) cái vào giỏ 
+      - [bảy](quantity) cái vào giỏ 
+      - [tám](quantity) cái vào giỏ 
+      - [chín](quantity) cái vào giỏ 
+      - [mười](quantity) cái vào giỏ 
+      - lấy [một](quantity) cái
+      - cho mình [hai](quantity) chiếc
+      - mua [ba](quantity) cái
+      - đặt [bốn](quantity) chiếc
+      - lấy [năm](quantity) sản phẩm
+      - số lượng [một](quantity)
+      - mình muốn mua [hai](quantity) cái
+      - cho tớ [ba](quantity) chiếc nhé
+      - [một](quantity) cái thôi
+      - [hai](quantity) chiếc nha 
+      - chỉ [một](quantity)
       - Cho [3](quantity) chiếc vào giỏ hàng
       - Bỏ [1](quantity) sản phẩm vào giỏ
       - Lưu [4](quantity) cái vào giỏ hàng
@@ -41,6 +62,21 @@ nlu:
       - [5](quantity) chiếc đi
       - Tôi muốn thêm [6](quantity) cái
       - Thêm vào giỏ hàng [7](quantity) cái
+      - Thêm [bốn](quantity) cái vào giỏ
+      - Lấy [năm](quantity) chiếc
+      - Cho [sáu](quantity) sản phẩm vào giỏ
+      - Mua [bảy](quantity) cái
+      - Đặt [tám](quantity) chiếc
+      - Lấy [chín](quantity) cái
+      - Thêm [mười](quantity) cái vào giỏ
+      - Cho mình [bốn](quantity) cái
+      - Lấy [5](quantity) cái nha
+      - Thêm [6](quantity) chiếc
+      - [bảy](quantity) cái
+      - [tám](quantity) chiếc
+      - [chín](quantity) sản phẩm
+      - [mười](quantity) cái luôn
+
       - Tôi chọn phiên bản [256GB](variant_name)
       - [128 GB](variant_name)
       - Tôi chọn [128GB](variant_name)
@@ -72,16 +108,24 @@ nlu:
       - [Trắng ngọc trai](variant_color)
       - [Đen](variant_color)
       - [Bạc](variant_color)
-  - lookup: product_name
-    examples: |
-      - iPhone 16 Pro Max
-      - Samsung Galaxy S23 Ultra
-      - MacBook Air M3
-      - iPhone 15 Pro Max
-      - Sony WH-1000XM5
-      - Dell XPS 13
-      - Sony WH-1000XM5
-      - Samsung Galaxy Z Fold 6
+      - Thêm cái này vào giỏ
+      - Bỏ vào giỏ hàng giúp
+      - Lấy thêm 1 cái nữa
+      - Cho vào danh sách mua
+      - Add vào cart
+      - Giỏ hàng thêm [iPhone 16](product_name)
+      - Nhặt vào giỏ
+      - Thêm [chuột](product_name) vào giỏ hàng
+      - Cho [bàn phím](product_name) vào cart
+      - Lưu lại để mua sau
+      - Thêm sản phẩm này
+      - Chọn mua (nhưng chưa thanh toán ngay)
+      - Bỏ vô giỏ
+      - Cho mình thêm món này
+      - Thêm [ốp lưng](product_name) vào đơn
+      - Kèm thêm [kính cường lực](product_name) vào giỏ
+      - Lấy thêm [tai nghe](product_name) bỏ vào giỏ
+      - Thêm tiếp [sạc](product_name)
 
   - lookup: variant_name
     examples: |
@@ -133,3 +177,97 @@ nlu:
       - 8
       - 9
       - 10
+      - 11
+      - 12
+      - 20
+
+  - synonym: "1"
+    examples: |
+      - một
+      - 1
+      - một cái
+      - một chiếc
+      - 1 cái
+      - 1 chiếc
+
+  - synonym: "2"
+    examples: |
+      - hai
+      - 2
+      - hai cái
+      - hai chiếc
+      - 2 cái
+      - 2 chiếc
+
+  - synonym: "3"
+    examples: |
+      - ba
+      - 3
+      - ba cái
+      - ba chiếc
+      - 3 cái
+      - 3 chiếc
+
+  - synonym: "4"
+    examples: |
+      - bốn
+      - 4
+      - bốn cái
+      - bốn chiếc
+      - 4 cái
+      - 4 chiếc
+
+  - synonym: "5"
+    examples: |
+      - năm
+      - 5
+      - năm cái
+      - năm chiếc
+      - 5 cái
+      - 5 chiếc
+
+  - synonym: "6"
+    examples: |
+      - sáu
+      - 6
+      - sáu cái
+      - sáu chiếc
+      - 6 cái
+      - 6 chiếc
+
+  - synonym: "7"
+    examples: |
+      - bảy
+      - 7
+      - bảy cái
+      - bảy chiếc
+      - 7 cái
+      - 7 chiếc
+
+  - synonym: "8"
+    examples: |
+      - tám
+      - 8
+      - tám cái
+      - tám chiếc
+      - 8 cái
+      - 8 chiếc
+
+  - synonym: "9"
+    examples: |
+      - chín
+      - 9
+      - chín cái
+      - chín chiếc
+      - 9 cái
+      - 9 chiếc
+
+  - synonym: "10"
+    examples: |
+      - mười
+      - 10
+      - mười cái
+      - mười chiếc
+      - 10 cái
+      - 10 chiếc
+      - một chục

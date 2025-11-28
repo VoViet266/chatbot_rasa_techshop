@@ -26,7 +26,7 @@ stories:
         entities:
           - spec_type: "pin"
       - action: utter_ask_which_product
-      - intent: inform_product
+      - intent: inform
         entities:
           - product_name: "iPhone 16"
       - slot_was_set:
@@ -135,15 +135,67 @@ stories:
       - intent: confirm_order
       - action: action_submit_order
 
-  - story: Đặt hàng nhanh (nêu thẳng sản phẩm)
+  # - story: Đặt hàng tương tác (Interactive Ordering)vv
+  #   steps:
+  #     - intent: order
+  #       entities:
+  #         - product_name: "iPhone 16"
+  #     - slot_was_set:
+  #         - product_name: "iPhone 16"
+  #     - action: order_form
+  #     - active_loop: order_form
+  #     - slot_was_set:
+  #         - requested_slot: variant_name
+  #     - intent: inform
+  #       entities:
+  #         - variant_name: "256GB"
+  #     - action: order_form
+  #     - slot_was_set:
+  #         - requested_slot: quantity
+  #     - intent: inform
+  #       entities:
+  #         - quantity: 2
+  #     - action: order_form
+  #     - active_loop: null
+  #     - action: action_preview_order
+  #     - intent: confirm_order
+  #     - action: action_submit_order
+
+  - story: Đặt hàng và hỏi tồn kho giữa chừng (Context Switching)
     steps:
       - intent: order
+        entities:
+          - product_name: "Samsung S24"
+      - slot_was_set:
+          - product_name: "Samsung S24"
+      - action: order_form
+      - active_loop: order_form
+      - intent: check_stock
+      - action: action_check_stock
+      - action: order_form
+      - active_loop: order_form
+      - active_loop: null
+      - action: action_preview_order
+      - intent: confirm_order
+      - action: action_submit_order
+
+  - story: Đặt hàng nhưng đổi ý (Correction)
+    steps:
+      - intent: order
+      - action: order_form
+      - active_loop: order_form
+      - intent: inform
+        entities:
+          - product_name: "iPhone 15"
+      - slot_was_set:
+          - product_name: "iPhone 15"
+      - action: order_form
+      - intent: inform
         entities:
           - product_name: "iPhone 16"
       - slot_was_set:
           - product_name: "iPhone 16"
       - action: order_form
-      - active_loop: order_form
       - active_loop: null
       - action: action_preview_order
       - intent: confirm_order
@@ -316,7 +368,7 @@ stories:
       - intent: check_stock
         entities:
           - product_name: "Macbook Air"
-          - variant_spec: "256GB"
+          - variant_name: "256GB"
           - variant_color: "bạc"
       - slot_was_set:
           - product_name: "Macbook Air"
@@ -329,4 +381,3 @@ stories:
     steps:
       - intent: out_of_scope
       - action: utter_fallback
-

@@ -21,6 +21,25 @@ nlu:
       - Cho xin địa chỉ các chi nhánh
       - Giờ làm việc của shop
       - Số điện thoại liên hệ cửa hàng
+      - Shop nằm ở đường nào?
+      - Có chỗ đậu xe không?
+      - Liên hệ shop qua đâu?
+      - Email hỗ trợ là gì?
+      - Tổng đài chăm sóc khách hàng
+      - Shop có mở ngày lễ không?
+      - Chỉ đường đến shop
+      - Vị trí cửa hàng
+      - Trụ sở chính ở đâu
+      - Gửi location cho mình
+      - Shop có ship COD không? (liên quan chính sách nhưng cũng hay hỏi khi hỏi store)
+      - Có chi nhánh ở quận 1 không?
+      - Tìm cửa hàng gần đây
+      - Showroom ở đâu?
+      - Trung tâm bảo hành ở đâu? (có thể nhầm với warranty, nhưng thường hỏi địa điểm)
+      - Shop có mặt ở Sài Gòn không?
+      - Địa chỉ cụ thể là gì?
+      - Số hotline là bao nhiêu?
+      - Gọi cho shop bằng số nào?
 
   - intent: select_branch_order
     examples: |

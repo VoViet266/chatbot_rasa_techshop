@@ -12,7 +12,6 @@ class ActionViewCart(Action):
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
         # Lấy user_id
         user_id = tracker.sender_id
-        print('tin nhắn của user:', tracker.latest_message.get('text'))
 
         # 1. Kiểm tra đăng nhập
         if not user_id or not ObjectId.is_valid(user_id):

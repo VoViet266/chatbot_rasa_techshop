@@ -20,6 +20,15 @@ nlu:
       - [Giảm xuống](quantity_action) còn [1](quantity_change) cái [iPhone 14](product_name)
       - [Hủy](quantity_action) bớt [1](quantity_change) [bàn ủi](product_name)
       - [Xóa](quantity_action) cái [Samsung S24](product_name) đi
+      - Thêm [bốn](quantity_change) cái nữa
+      - Giảm [năm](quantity_change) cái
+      - Tăng [sáu](quantity_change) cái
+      - Bớt [bảy](quantity_change) cái
+      - Cộng thêm [tám](quantity_change)
+      - Trừ đi [chín](quantity_change)
+      - Thêm [mười](quantity_change) cái
+      - [Tăng](quantity_action) thêm [bốn](quantity_change) cái
+      - [Giảm](quantity_action) [năm](quantity_change) chiếc
 
   - regex: quantity_action
     examples: |
