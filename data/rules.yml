@@ -6,6 +6,11 @@ rules:
       - intent: greet
       - action: action_get_user_info
 
+  - rule: Luôn kích hoạt xóa giỏ hàng khi người dùng yêu cầu
+    steps:
+      - intent: delete_from_cart
+      - action: action_delete_from_cart
+
   - rule: Xử lý tạm biệt
     steps:
       - intent: goodbye
