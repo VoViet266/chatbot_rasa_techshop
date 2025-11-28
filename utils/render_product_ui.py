@@ -27,6 +27,9 @@ def render_variants_list(variants):
         except (KeyError, IndexError, TypeError):
             image_url = "https://via.placeholder.com/90"
 
+        sold_count = variant.get('soldCount', 0)
+        rating = variant.get('averageRating', 0)
+
         result += f'''<div style="display:flex;gap:12px;padding:12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;transition:box-shadow 0.2s;">
     <img src="{image_url}" alt="{display_name}" style="width:90px;height:90px;object-fit:contain;flex-shrink:0;border-radius:4px;">
     <div style="flex:1;min-width:0;">
@@ -40,6 +43,8 @@ def render_variants_list(variants):
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">RAM {variant.get('memory', {}).get('ram', 'N/A')}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">ROM {variant.get('memory', {}).get('storage', 'N/A')}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Pin {variant.get('battery', 'N/A')}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {sold_count}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {rating}</span>
         </div>
         <a href="http://localhost:5173/product/{variant.get('product_id', '')}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
     </div>
@@ -49,6 +54,69 @@ def render_variants_list(variants):
     cleaned_result = re.sub(r'\s+', ' ', result).strip()
     return cleaned_result
 
+def render_products(products):
+    if not products:
+        return "Không có sản phẩm phù hợp với nhu cầu của bạn."
+    
+    result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</p>'
+    
+    for product in products:
+        # Extract variants and calculate price range
+        variants = product.get('variants', [])
+        prices = [v.get('price') for v in variants if v.get('price') is not None and v.get('price') > 0]
+        min_price = min(prices) if prices else 0
+        max_price = max(prices) if prices else 0
+        discount = product.get('discount', 0)
+        
+        # Price display logic
+        if not prices:
+            price_html = '<span style="font-size:14px;color:#616161;">Chưa có thông tin giá</span>'
+        elif discount > 0:
+            min_final = min_price * (1 - discount / 100)
+            max_final = max_price * (1 - discount / 100)
+            if min_price == max_price:
+                price_html = f'''<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_final)}</span>
+                                <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;">{format_vnd(min_price)}</span>'''
+            else:
+                price_html = f'''<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_final)} - {format_vnd(max_final)}</span>
+                                <span style="font-size:13px;color:#9e9e9e;text-decoration:line-through;margin-left:8px;">{format_vnd(min_price)} - {format_vnd(max_price)}</span>'''
+        else:
+            if min_price == max_price:
+                price_html = f'<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_price)}</span>'
+            else:
+                price_html = f'<span style="font-size:16px;font-weight:600;color:#d32f2f;">{format_vnd(min_price)} - {format_vnd(max_price)}</span>'
+
+        # Image
+        try:
+            image_url = variants[0].get("color", [{}])[0].get("images", ["https://via.placeholder.com/90"])[0]
+        except (IndexError, TypeError):
+            image_url = "https://via.placeholder.com/90"
+
+        # Other details
+        sold_count = product.get('soldCount', 0)
+        rating = product.get('averageRating', 0)
+        product_id = product.get('_id', '')
+        product_name = product.get('name', 'Sản phẩm')
+
+        result += f'''<div style="display:flex;gap:12px;padding:12px;margin-bottom:12px;background:#fff;border:1px solid #e5e5e5;border-radius:8px;transition:box-shadow 0.2s;">
+    <img src="{image_url}" alt="{product_name}" style="width:90px;height:90px;object-fit:contain;flex-shrink:0;border-radius:4px;">
+    <div style="flex:1;min-width:0;">
+        <h3 style="margin:0 0 8px;font-size:14px;font-weight:500;line-height:1.4;color:#1a1a1a;">{product_name}</h3>
+        <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap;">
+            {price_html}
+            {f'<span style="font-size:12px;color:#d32f2f;font-weight:500;">-{discount}%</span>' if discount > 0 else ''}
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {sold_count}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {rating}</span>
+        </div>
+        <a href="http://localhost:5173/product/{product_id}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
+    </div>
+</div>'''
+    
+    result += '</div>'
+    cleaned_result = re.sub(r'\s+', ' ', result).strip()
+    return cleaned_result
 
 
 def render_product_card(product, variants):
@@ -136,6 +204,8 @@ def render_product_card(product, variants):
             <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
                 <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Thương hiệu: {product.get('brand', {}).get('name', 'N/A')}</span>
                 <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Loại: {product.get('category', {}).get('name', 'N/A')}</span>
+                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {product.get('soldCount', 0)}</span>
+                <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {product.get('averageRating', 0)}</span>
             </div>
         </div>
     </div>

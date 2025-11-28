@@ -64,6 +64,7 @@ intents:
   - ask_brand_info
   - suggest_product_by_category
   - suggest_product_by_brand
+  - ask_recommendation
   # - give_feedback
 
 entities:
@@ -118,6 +119,12 @@ entities:
   - feedback_rating
   - feedback_comment
   - error_type
+  - location
+  - shipping_area
+  - shipping_type
+  - payment_method
+  - exchange_reason
+  - variant_storage
 
 slots:
   user_id:
@@ -444,6 +451,27 @@ slots:
     mappings:
       - type: from_entity
         entity: error_type
+
+  shipping_type:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: shipping_type
+
+  payment_method:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: payment_method
+
+  variant_storage:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: variant_storage
 
 forms:
   order_form:
@@ -891,8 +919,6 @@ actions:
   - utter_ask_product_1
   - utter_ask_product_2
   - utter_order_confirmed
-  - utter_faq_overheating
-  - utter_faq_connection_issue
   - utter_ask_order_id
   - utter_order_not_found
   - utter_no_orders_found
@@ -933,6 +959,8 @@ actions:
   - action_ask_brand_list
   - action_ask_category_list
   - action_ask_brand_info
+  - action_show_product_reviews
+  - action_get_recommendation
   # - action_submit_feedback
 
 session_config:

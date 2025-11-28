@@ -1,5 +1,4 @@
 
-
 from pymongo import MongoClient
 
 class DatabaseService:
@@ -18,3 +17,4 @@ class DatabaseService:
         self.inventories_collection = self.db["inventories"]
         self.branches_collection = self.db["branches"]
         self.promotions_collection = self.db["promotions"]
+        self.reviews_collection = self.db["reviews"]

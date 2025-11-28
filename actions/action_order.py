@@ -344,7 +344,8 @@ class ActionSubmitOrder(Action):
             "shippingAddress": address,
             "phone": phone,
             "customerName": customer_name,
-            "status": "pending"
+            "status": "pending", 
+            "source": "chatbot"
         }
         
         headers = {"Content-Type": "application/json"}

@@ -78,6 +78,27 @@ nlu:
       - [2](quantity) cái ạ
       - [1](quantity) nhé
       - lấy [1](quantity) ạ
+      - [một](quantity)
+      - [hai](quantity)
+      - [ba](quantity)
+      - [bốn](quantity)
+      - [năm](quantity)
+      - [sáu](quantity)
+      - [bảy](quantity)
+      - [tám](quantity)
+      - [chín](quantity)
+      - [mười](quantity)
+      - lấy [một](quantity) cái
+      - cho mình [hai](quantity) chiếc
+      - mua [ba](quantity) cái
+      - đặt [bốn](quantity) chiếc
+      - lấy [năm](quantity) sản phẩm
+      - số lượng [một](quantity)
+      - mình muốn mua [hai](quantity) cái
+      - cho tớ [ba](quantity) chiếc nhé
+      - [một](quantity) cái thôi
+      - [hai](quantity) chiếc nha
+      - chỉ [một](quantity)
 
   # ----- LOOKUP TABLE -----
   - lookup: color

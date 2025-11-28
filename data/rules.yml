@@ -199,3 +199,8 @@ rules:
     steps:
       - intent: suggest_product_by_brand
       - action: action_suggest_product
+
+  - rule: Gợi ý sản phẩm (Recommendation)
+    steps:
+      - intent: ask_recommendation
+      - action: action_get_recommendation

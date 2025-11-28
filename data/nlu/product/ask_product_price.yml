@@ -28,14 +28,4 @@ nlu:
       - giá thế nào?
       - con đó giá bao nhiêu?
 
-  - intent: chitchat/just_looking
-    examples: |
-      - Tôi không muốn mua, chỉ hỏi giá thôi
-      - Chưa mua đâu, chỉ hỏi xem bao nhiêu
-      - Hỏi thử giá thôi nha
-      - Mình xem thôi
-      - Mình tham khảo giá thôi
-      - Chỉ hỏi giá, không mua
-      - Chưa mua vội, xem giá đã
-      - Mình đang tham khảo
-      - Cảm ơn, mình chỉ xem thôi
+

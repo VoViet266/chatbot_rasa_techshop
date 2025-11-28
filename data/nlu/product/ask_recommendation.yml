@@ -1,0 +1,16 @@
+version: "3.1"
+
+nlu:
+  - intent: ask_recommendation
+    examples: |
+      - Gợi ý cho tôi vài mẫu tương tự
+      - Có sản phẩm nào giống cái này không?
+      - Recommend cho mình vài con
+      - Có gì hay không?
+      - Gợi ý sản phẩm
+      - Bạn có đề xuất gì không?
+      - Xem các sản phẩm tương tự
+      - Có mẫu nào hot không?
+      - Sản phẩm nào đang bán chạy?
+      - Gợi ý cho tớ vài mẫu [iPhone 16](product_name) tương tự
+      - Tìm giúp mình mấy con giống [Samsung S24](product_name)

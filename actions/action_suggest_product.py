@@ -171,8 +171,8 @@ class ActionSuggestProduct(Action):
             sort_stage['variant_data.price'] = -1  # Descending (most expensive first)
         
         if not sort_stage:
-             # Default sort: Price ascending (cheapest first)
-             sort_stage['variant_data.price'] = 1
+             # Default sort: Popularity (soldCount descending)
+             sort_stage['soldCount'] = -1
              
         pipeline.append({'$sort': sort_stage})
         
@@ -189,7 +189,9 @@ class ActionSuggestProduct(Action):
                             'discount': '$discount', 
                             'product_id': '$_id',
                             'battery': '$attributes.batteryCapacity',
-                            'name': '$name'
+                            'name': '$name',
+                            'soldCount': '$soldCount',
+                            'averageRating': '$averageRating'
                         }
                     ]
                 }
