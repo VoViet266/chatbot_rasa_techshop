@@ -13,7 +13,11 @@ class ActionDeleteFromCart(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: dict):
         # Lấy user_id
-        user_id = validate_user(tracker, dispatcher, message="Vui lòng đăng nhập để xóa sản phẩm khỏi giỏ hàng!")
+        user_id = validate_user(
+            tracker,
+            dispatcher,
+            message="Vui lòng đăng nhập để xóa sản phẩm khỏi giỏ hàng!",
+        )
         product_name = tracker.get_slot("product_name")
         metadata = tracker.latest_message.get("metadata", {})
         token = metadata.get("accessToken")
@@ -37,6 +41,8 @@ class ActionDeleteFromCart(Action):
         if not product_name:
             dispatcher.utter_message(text="Bạn vui lòng cho biết tên sản phẩm cần xóa!")
             return []
+        
+        print('Product name:', product_name)
 
         items = cart.get("items", [])
         if not items:
@@ -47,7 +53,7 @@ class ActionDeleteFromCart(Action):
         product_to_delete = None
 
         for item in items:
-            product = db_service.products_collection.find_one({"_id": item["product"]})
+            product = db_service.products_collection.find_one({"_id": ObjectId(item["product"])})
             if product and product_name.lower() in product["name"].lower():
                 payload = {
                     "productId": str(item["product"]),
@@ -55,6 +61,8 @@ class ActionDeleteFromCart(Action):
                 }
                 product_to_delete = product
                 break
+
+        print('Payload:', payload)
 
         if not payload:
             dispatcher.utter_message(
