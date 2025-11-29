@@ -19,7 +19,6 @@ def format_status(status: str) -> str:
 
 
 def build_order_card_html(order: Dict, products_coll) -> str:
-    """Build clean HTML card for order"""
     order_id = str(order.get('_id', ''))
     status = format_status(order.get('status', ''))
     total = order.get('totalPrice', 0)
@@ -44,24 +43,25 @@ def build_order_card_html(order: Dict, products_coll) -> str:
     <div style="
         border: 1px solid #e5e7eb; 
         border-radius: 8px; 
-        padding: 16px; 
+        padding: 10px; 
         margin: 8px 0; 
         background: #ffffff;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         max-width: 500px;
+        min-width: 400px;
     ">
         <!-- Header -->
-        <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
+        <div style="margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid #f3f4f6;">
             <div style="display: flex; justify-content: space-between; align-items: baseline;">
                 <div>
-                    <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 4px;">Mã đơn hàng</div>
+                    <div style="font-size: 11px; color: #9ca3af; text-transform: uppercase; margin-bottom: 3px;">Mã đơn hàng</div>
                     <div style="font-weight: 600; color: #111827;">#{order_id[:12]}...</div>
                 </div>
                 <div style="font-size: 13px; color: #6b7280;">
                     {status}
                 </div>
             </div>
-            <div style="font-size: 12px; color: #9ca3af; margin-top: 8px;">
+            <div style="font-size: 12px; color: #9ca3af; margin-top: 6px;">
                 {created_at}
             </div>
         </div>
@@ -96,10 +96,11 @@ def build_orders_summary_header(total_orders: int, total_spent: float, status_co
         background: #ffffff;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         max-width: 500px;
+        min-width: 400px;
     ">
         <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
             <div style="font-size: 18px; font-weight: 700; color: #111827; margin-bottom: 4px;">
-                📦 Đơn hàng của tôi
+                Đơn hàng của tôi
             </div>
         </div>
         <div style="font-size: 13px; color: #6b7280; line-height: 1.6;">
@@ -125,6 +126,7 @@ def build_filter_info_header(filter_desc: str, count: int, border_color: str = "
         background: #ffffff;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         max-width: 500px;
+        min-width: 400px;
     ">
         <div style="font-size: 14px; font-weight: 600; color: #111827; margin-bottom: 4px;">
             {filter_desc}

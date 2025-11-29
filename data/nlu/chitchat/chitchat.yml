@@ -175,6 +175,7 @@ nlu:
       - how are you?
       - khỏe ko bot?
       - có gì mới không?
+      
 
   - intent: chitchat/ask_are_you_a_bot
     examples: |

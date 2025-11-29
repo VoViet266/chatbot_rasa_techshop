@@ -2,11 +2,11 @@ from utils.format_currentcy import format_vnd
 import re
 
 
-def render_variants_list(variants):
+def render_variants_list(variants, message=""):
     if not variants:
         return "Không có sản phẩm phù hợp với nhu cầu của bạn."
     
-    result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</p>'
+    result = f'<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">{message}</p>'
     
     for variant in variants:
         discount = variant.get('discount', 0)
@@ -17,6 +17,7 @@ def render_variants_list(variants):
         product_name = variant.get("name", "Sản phẩm")
         ram = variant.get('memory', {}).get('ram', '')
         storage = variant.get('memory', {}).get('storage', '')
+    
         if ram or storage:
             display_name = f"{product_name} ({ram}/{storage})"
         else:
@@ -42,7 +43,7 @@ def render_variants_list(variants):
         <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;">
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">RAM {variant.get('memory', {}).get('ram', 'N/A')}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">ROM {variant.get('memory', {}).get('storage', 'N/A')}</span>
-            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Pin {variant.get('battery', 'N/A')}</span>
+            <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Pin {variant.get('battery') or variant.get('attributes', {}).get('batteryCapacity', 'N/A')}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {sold_count}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {rating}</span>
         </div>
@@ -54,11 +55,11 @@ def render_variants_list(variants):
     cleaned_result = re.sub(r'\s+', ' ', result).strip()
     return cleaned_result
 
-def render_products(products):
+def render_products(products, message=""):
     if not products:
         return "Không có sản phẩm phù hợp với nhu cầu của bạn."
     
-    result = '<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">Dưới đây là một số sản phẩm phù hợp với nhu cầu của bạn</p>'
+    result = f'<div style="font-family:-apple-system,BlinkMacSystemFont,\'Segoe UI\',Arial,sans-serif;color:#1a1a1a;"><p style="margin:0 0 16px;font-size:14px;font-weight:500;">{message}</p>'
     
     for product in products:
         # Extract variants and calculate price range

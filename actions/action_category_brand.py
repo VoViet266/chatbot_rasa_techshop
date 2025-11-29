@@ -50,7 +50,7 @@ class ActionAskCategoryList(Action):
                 box-shadow: 0 1px 2px rgba(0,0,0,0.05);
             ">
                 <div style="font-size: 14px; font-weight: 700; color: #111827; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f3f4f6;">
-                     Danh mục sản phẩm
+                    Danh mục sản phẩm
                 </div>
                 <div style="max-height: 300px; overflow-y: auto;">
                     {categories_html}

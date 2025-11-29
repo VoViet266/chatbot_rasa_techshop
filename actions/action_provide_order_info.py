@@ -39,6 +39,10 @@ def _get_time_query(time_str: str) -> Dict:
             "$gte": today_start - timedelta(days=1),
             "$lt": today_start
         },
+        ("hôm kia",): {
+            "$gte": today_start - timedelta(days=2),
+            "$lt": today_start - timedelta(days=1)
+        },
         ("tuần này",): {
             "$gte": today_start - timedelta(days=today_start.weekday())
         },
@@ -87,7 +91,6 @@ class ActionCheckOrder(Action):
         db = DatabaseService()
         query = {"user": ObjectId(user_id)}
         
-        # Build query filters
         if order_id:
             query["_id"] = ObjectId(order_id)
         
@@ -187,8 +190,7 @@ class ActionCheckPendingOrders(Action):
         # Query pending orders
         query = {
             "user": ObjectId(user_id),
-            "status": {"$in": ["PENDING", "CONFIRMED", "PROCESSING", 
-                              "SHIPPING", "PENDING_PAYMENT"]}
+            "status": {"$in": ["PENDING", "CONFIRMED", "PROCESSING", "SHIPPING", "PENDING_PAYMENT"]}
         }
         
         try:
@@ -202,7 +204,7 @@ class ActionCheckPendingOrders(Action):
             
             # Build header
             header = build_filter_info_header(
-                "⏳ Đơn hàng đang chờ",
+                "Đơn hàng đang chờ",
                 len(orders),
                 border_color="#f59e0b"
             )

@@ -305,7 +305,7 @@ class ActionProvideProductTechnicalSpecs(Action):
         
         full_html = f"""
         <div style="font-family: Arial, sans-serif; max-width: 100%;">
-            <h3 style="text-align: center; margin-top: 0;">📱 {product_display}</h3>
+            <h3 style="text-align: center; margin-top: 0;">{product_display}</h3>
             {"".join(html_sections)}
         </div>
         """

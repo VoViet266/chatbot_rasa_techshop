@@ -549,24 +549,24 @@ responses:
     - text: "Dạ anh/chị cho em biết mã đơn hàng của anh/chị ạ?"
 
   utter_greet:
-    - text: "Xin chào! Tôi có thể giúp gì cho bạn hôm nay?"
-    - text: "Chào anh/chị! Em có thể hỗ trợ gì cho anh/chị ạ?"
-    - text: "Dạ chào anh/chị! Em là tư vấn viên TechShop, rất vui được phục vụ anh/chị!"
-    - text: "Xin chào anh/chị! Anh/chị cần tư vấn sản phẩm hay dịch vụ gì ạ?"
-    - text: "Chào mừng anh/chị đến với TechShop! Em có thể giúp gì cho anh/chị hôm nay?"
+    - text: "Xin chào! Chào mừng anh/chị đến với TechShop - chuyên cung cấp laptop, điện thoại và phụ kiện công nghệ. Em có thể hỗ trợ anh/chị tìm kiếm sản phẩm nào hôm nay không ạ?"
+    - text: "Chào anh/chị! Em là trợ lý ảo của TechShop. Hôm nay anh/chị đang quan tâm đến laptop, điện thoại hay phụ kiện nào để em tư vấn chi tiết ạ?"
+    - text: "Dạ chào anh/chị! Em là tư vấn viên TechShop, rất vui được phục vụ anh/chị! Anh/chị cần tìm sản phẩm công nghệ gì hoặc kiểm tra đơn hàng ạ?"
+    - text: "TechShop xin chào! Em có thể giúp anh/chị tra cứu giá, so sánh cấu hình, kiểm tra tồn kho hoặc theo dõi đơn hàng. Anh/chị cần gì ạ?"
+    - text: "Chào mừng anh/chị đến với TechShop! Bên em đang có nhiều sản phẩm công nghệ hot với giá tốt. Em có thể tư vấn cho anh/chị không ạ?"
 
   utter_greet_personalized:
-    - text: "Chào {user_name}, rất vui được gặp lại! Bạn cần tôi hỗ trợ gì hôm nay?"
-    - text: "Dạ chào anh/chị {user_name}! Em rất vui được gặp lại. Hôm nay anh/chị cần em hỗ trợ gì ạ?"
-    - text: "Chào {user_name}! Hôm nay em có thể giúp gì cho anh/chị ạ?"
-    - text: "Dạ {user_name} thân mến! Rất vui được phục vụ anh/chị lần nữa. Anh/chị cần tư vấn gì ạ?"
+    - text: "Chào {user_name}! Rất vui được gặp lại anh/chị tại TechShop. Hôm nay anh/chị cần em hỗ trợ tìm kiếm sản phẩm mới, kiểm tra đơn hàng hay xem chương trình khuyến mãi ạ?"
+    - text: "Dạ chào anh/chị {user_name}! Em là trợ lý ảo TechShop đây ạ. Anh/chị có cần em kiểm tra tình trạng đơn hàng, tư vấn sản phẩm mới hay so sánh giá không ạ?"
+    - text: "Chào {user_name}! Hôm nay TechShop có nhiều ưu đãi hấp dẫn cho laptop và điện thoại lắm ạ. Anh/chị cần em tư vấn chi tiết sản phẩm nào không?"
+    - text: "Dạ {user_name} thân mến! Thật vui vì được phục vụ anh/chị lần nữa. Em có thể giúp anh/chị tìm sản phẩm công nghệ phù hợp với nhu cầu không ạ?"
 
   utter_goodbye:
-    - text: "Cảm ơn bạn đã ghé thăm. Hẹn gặp lại!"
-    - text: "Dạ cảm ơn anh/chị! Chúc anh/chị một ngày tốt lành. Hẹn gặp lại ạ!"
-    - text: "Cảm ơn anh/chị đã tin tưởng TechShop. Hẹn gặp lại anh/chị!"
-    - text: "Dạ em cảm ơn anh/chị! Nếu cần hỗ trợ gì thêm, anh/chị cứ liên hệ em nhé!"
-    - text: "Cảm ơn anh/chị! Chúc anh/chị sử dụng sản phẩm vui vẻ. Hẹn gặp lại!"
+    - text: "Tạm biệt anh/chị nhé! Cảm ơn anh/chị đã ghé thăm TechShop. Chúc anh/chị một ngày thật vui vẻ và mua sắm thỏa thích!"
+    - text: "Chào tạm biệt ạ! Hy vọng sớm được gặp lại anh/chị. Nếu cần mua sắm laptop, điện thoại hay phụ kiện công nghệ, nhớ ghé TechShop ủng hộ em nha!"
+    - text: "Dạ em chào anh/chị ạ. Cảm ơn anh/chị đã tin tưởng TechShop. Chúc anh/chị sử dụng sản phẩm công nghệ vui vẻ. Hẹn gặp lại!"
+    - text: "Cảm ơn anh/chị đã trò chuyện với em! Nếu cần hỗ trợ thêm về sản phẩm, đơn hàng hay khuyến mãi, anh/chị cứ nhắn em bất cứ lúc nào nhé. Chúc một ngày tốt lành!"
+    - text: "Tạm biệt và hẹn gặp lại anh/chị! TechShop luôn sẵn sàng phục vụ 24/7. Chúc anh/chị có những trải nghiệm tuyệt vời với sản phẩm công nghệ!"
 
   utter_ask_product_info:
     - text: "Bạn muốn xem giá hoặc thông tin của sản phẩm nào ạ?"
@@ -596,7 +596,6 @@ responses:
     - text: "Rất tiếc, mã đơn hàng {order_id} không tồn tại."
 
   utter_no_orders_found:
-    - text: "Hiện tại bạn không có đơn hàng nào."
     - text: "Tôi không tìm thấy đơn hàng nào phù hợp với yêu cầu của bạn."
 
   utter_fallback:
@@ -606,47 +605,64 @@ responses:
     - text: "Dạ em chưa rõ anh/chị muốn hỏi về vấn đề gì. Anh/chị có thể nói cụ thể hơn được không ạ?"
 
   utter_chitchat/deny:
-    - text: "Không sao, khi nào cần thì cứ nói nhé."
+    - text: "Dạ vâng, không sao ạ. Khi nào anh/chị cần hỗ trợ hoặc tìm kiếm sản phẩm nào thì cứ nhắn em nhé!"
+    - text: "Dạ em hiểu rồi ạ. Nếu anh/chị thay đổi ý định hoặc cần tư vấn thêm thì em luôn ở đây ạ."
+    - text: "Không vấn đề gì ạ! TechShop luôn sẵn sàng hỗ trợ anh/chị 24/7. Khi nào cần tư vấn laptop, điện thoại hay phụ kiện thì cứ gọi em nhé."
 
   utter_chitchat/thanks:
-    - text: "Rất vui được giúp bạn!"
+    - text: "Dạ không có gì ạ! Rất vui vì được hỗ trợ anh/chị. Anh/chị còn thắc mắc nào khác về sản phẩm không ạ?"
+    - text: "Đừng khách sáo ạ ^^. Sự hài lòng của anh/chị là niềm vui của em. Cần tìm thêm món đồ công nghệ nào anh/chị cứ bảo em nha!"
+    - text: "Dạ vâng, được giúp đỡ anh/chị là niềm vui của em ạ! Nếu cần so sánh thêm sản phẩm hoặc kiểm tra khuyến mãi, em luôn sẵn sàng hỗ trợ nhé."
 
   utter_chitchat/just_looking:
-    - text: "Không sao đâu, bạn cứ xem thoải mái nhé."
+    - text: "Dạ vâng, anh/chị cứ thoải mái tham khảo nhé. Bên em đang có nhiều mẫu laptop, điện thoại mới về lắm ạ. Cần tư vấn chi tiết mẫu nào thì ới em ngay nha."
+    - text: "Dạ, anh/chị cứ dạo xem tự nhiên ạ. Nếu thấy ưng ý sản phẩm nào hoặc muốn so sánh cấu hình thì nhắn em hỗ trợ nhé!"
+    - text: "Hoàn toàn không sao ạ! TechShop có đầy đủ từ flagship đến tầm trung. Anh/chị tham khảo thoải mái, có thắc mắc gì cứ hỏi em nha."
 
   utter_chitchat/goodbye:
-    - text: "Tạm biệt nhé, hẹn gặp lại!"
+    - text: "Tạm biệt anh/chị nhé. Cảm ơn anh/chị đã ghé thăm TechShop. Chúc anh/chị một ngày thật vui vẻ!"
+    - text: "Chào tạm biệt ạ! Hy vọng sớm được gặp lại anh/chị. Nếu cần mua sắm laptop, điện thoại hay phụ kiện công nghệ, nhớ ghé TechShop ủng hộ em nha!"
+    - text: "Hẹn gặp lại anh/chị ạ! TechShop luôn có nhiều deal hot và sản phẩm mới. Chúc anh/chị mua sắm vui vẻ!"
 
   utter_chitchat/greet:
-    - text: "Xin chào, mình ở đây để giúp bạn."
+    - text: "Xin chào! Chào mừng anh/chị đến với TechShop - nơi cung cấp laptop, điện thoại và phụ kiện công nghệ chính hãng. Em có thể hỗ trợ anh/chị tìm kiếm sản phẩm nào hôm nay không ạ?"
+    - text: "Chào anh/chị! Em là trợ lý ảo của TechShop. Hôm nay anh/chị đang quan tâm đến laptop, điện thoại hay phụ kiện nào để em tư vấn chi tiết ạ?"
+    - text: "Dạ chào anh/chị ạ! TechShop rất vui được hỗ trợ anh/chị. Em có thể giúp tìm sản phẩm, so sánh giá hoặc kiểm tra đơn hàng. Anh/chị cần gì ạ?"
 
   utter_chitchat/compliment:
-    - text: "Cảm ơn nha, bạn nói vậy mình ngại ghê!"
+    - text: "Em cảm ơn lời khen của anh/chị nhiều ạ! Nghe vậy em vui lắm. Anh/chị cần em hỗ trợ thêm thông tin sản phẩm nào không ạ?"
+    - text: "Dạ em cảm ơn ạ! Được anh/chị khen là em có thêm động lực học hỏi để phục vụ tốt hơn đấy ạ ^^."
+    - text: "Cảm ơn anh/chị nhiều lắm ạ! Nhiệm vụ của em là giúp anh/chị tìm được sản phẩm công nghệ ưng ý nhất. Em có thể tư vấn thêm gì không ạ?"
 
   utter_chitchat/positive_feedback:
-    - text: "Dạ vâng!"
-    - text: "Tuyệt vời!"
+    - text: "Dạ tuyệt vời quá ạ! Em rất vui khi thấy anh/chị hài lòng với dịch vụ tư vấn của TechShop."
+    - text: "Dạ vâng, cảm ơn phản hồi tích cực của anh/chị ạ! Hy vọng anh/chị sẽ tìm được laptop, điện thoại hoặc phụ kiện ưng ý tại TechShop."
+    - text: "Em rất vui vì có thể giúp anh/chị ạ! Nếu cần tư vấn thêm về sản phẩm hay chương trình khuyến mãi, em luôn sẵn sàng hỗ trợ nhé."
 
   utter_chitchat/ask_how_are_you:
-    - text: "Tôi là bot nên lúc nào cũng khoẻ. Cảm ơn bạn đã hỏi thăm! Bạn cần hỗ trợ gì ạ?"
-    - text: "Em vẫn ổn ạ. Em có thể giúp gì cho anh/chị?"
+    - text: "Cảm ơn anh/chị đã hỏi thăm! Là trợ lý ảo nên em lúc nào cũng tràn đầy năng lượng 24/7 để hỗ trợ anh/chị tìm mua laptop, điện thoại và phụ kiện đây ạ. Anh/chị cần tìm gì cứ bảo em nhé!"
+    - text: "Em vẫn hoạt động rất tốt ạ ^^. Cảm ơn anh/chị quan tâm nha. Hôm nay em có thể giúp anh/chị tìm kiếm sản phẩm công nghệ nào không ạ?"
+    - text: "Dạ em vẫn khỏe mạnh và sẵn sàng tư vấn cho anh/chị ạ! TechShop đang có nhiều sản phẩm mới về. Anh/chị cần em giới thiệu không ạ?"
 
   utter_chitchat/ask_are_you_a_bot:
-    - text: "Đúng vậy, tôi là một trợ lý ảo được lập trình để hỗ trợ bạn."
-    - text: "Em là bot tư vấn của TechShop. Em có thể hỗ trợ anh/chị 24/7 ạ."
+    - text: "Dạ đúng rồi ạ, em là trợ lý ảo AI được lập trình chuyên biệt để hỗ trợ khách hàng của TechShop tìm kiếm laptop, điện thoại và phụ kiện nhanh nhất ạ."
+    - text: "Vâng, em là bot tư vấn tự động của TechShop. Tuy là máy nhưng em được học rất kỹ về các sản phẩm công nghệ, cấu hình, giá cả để phục vụ anh/chị đấy ạ ^^."
+    - text: "Đúng vậy ạ! Em là AI chatbot được TechShop đào tạo để tư vấn sản phẩm, so sánh giá, kiểm tra tồn kho và hỗ trợ đặt hàng. Em có thể giúp gì cho anh/chị không ạ?"
 
   utter_chitchat/ask_what_can_you_do:
-    - text: "Tôi có thể giúp bạn tìm sản phẩm, tra cứu đơn hàng, tư vấn kỹ thuật và đặt hàng."
-    - text: "Em có thể tư vấn sản phẩm, báo giá, kiểm tra tình trạng đơn hàng và hỗ trợ đặt hàng cho anh/chị ạ."
+    - text: "Em khá đa năng đấy ạ! Em có thể giúp anh/chị: 1. Tìm laptop/điện thoại theo cấu hình và giá 2. So sánh các sản phẩm 3. Kiểm tra tồn kho tại chi nhánh 4. Hỗ trợ đặt hàng nhanh chóng. Anh/chị cần bắt đầu từ đâu ạ?"
+    - text: "Nhiệm vụ của em là giúp anh/chị mua sắm công nghệ dễ dàng hơn! Anh/chị có thể hỏi em về: thông số kỹ thuật sản phẩm, so sánh giá, chương trình khuyến mãi, tình trạng đơn hàng, hoặc kiểm tra bảo hành ạ."
+    - text: "Em được đào tạo để hỗ trợ anh/chị toàn diện: tư vấn sản phẩm phù hợp nhu cầu, tra giá laptop/điện thoại/phụ kiện, kiểm tra hàng còn không, theo dõi đơn hàng. Em bắt đầu giúp anh/chị từ đâu nhé?"
 
   utter_chitchat/insult:
-    - text: "Tôi xin lỗi nếu đã làm bạn không hài lòng. Tôi sẽ cố gắng cải thiện."
-    - text: "Em xin ghi nhận góp ý của anh/chị ạ."
-    - text: "Em xin lỗi vì trải nghiệm chưa tốt. Anh/chị có thể nói rõ vấn đề em hỗ trợ lại được không ạ?"
+    - text: "Em rất xin lỗi nếu đã làm anh/chị cảm thấy phiền lòng. Em vẫn đang học hỏi để hoàn thiện hơn mỗi ngày. Anh/chị có thể bỏ qua cho em được không ạ? Em sẽ cố gắng hỗ trợ anh/chị tốt hơn."
+    - text: "Em thành thật xin lỗi vì trải nghiệm chưa tốt này. Em xin phép ghi nhận góp ý để cải thiện. Anh/chị có muốn em kết nối với nhân viên tư vấn người thật của TechShop không ạ?"
+    - text: "Dạ em xin lỗi anh/chị ạ. Có thể em chưa hiểu đúng yêu cầu. Anh/chị cho em cơ hội được hỗ trợ lại hoặc để em chuyển sang nhân viên TechShop được không ạ?"
 
   utter_chitchat/apologize:
-    - text: "Không sao đâu ạ."
-    - text: "Dạ không có gì ạ."
+    - text: "Dạ không sao đâu ạ, anh/chị đừng bận tâm nhé. Chúng ta tiếp tục nha, anh/chị đang cần tìm laptop, điện thoại hay phụ kiện nào ạ?"
+    - text: "Không có gì đâu ạ, ai cũng có lúc nhầm lẫn mà ^^. Anh/chị cần em hỗ trợ tìm sản phẩm hoặc kiểm tra đơn hàng gì tiếp theo không ạ?"
+    - text: "Hoàn toàn không sao ạ! Em luôn sẵn sàng giúp anh/chị. Anh/chị cần tư vấn về sản phẩm TechShop nào không ạ?"
 
   utter_ask_if_want_to_order:
     - text: "Bạn có muốn đặt hàng sản phẩm này không ạ?"

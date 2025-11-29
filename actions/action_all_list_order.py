@@ -13,10 +13,6 @@ from utils.order_helpers import (
 
 
 class ActionListAllOrders(Action):
-    """
-    Action để hiển thị toàn bộ đơn hàng của user
-    Khi user hỏi chung chung như "thông tin đơn hàng của tôi", "xem tất cả đơn hàng"
-    """
     
     def name(self) -> Text:
         return "action_list_all_orders"
@@ -65,6 +61,7 @@ class ActionListAllOrders(Action):
                     color: #666;
                     font-size: 13px;
                     font-style: italic;
+                    min-width: 400px;
                 ">
                     Đang hiển thị 10 đơn hàng gần nhất. 
                     Bạn có tổng {total_orders} đơn hàng.

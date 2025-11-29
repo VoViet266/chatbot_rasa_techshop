@@ -76,7 +76,7 @@ class ActionGetRecommendation(Action):
                 dispatcher.utter_message(text="Hiện tại mình chưa có gợi ý nào phù hợp.")
                 return [AllSlotsReset()]
 
-            html = render_products(recommendations)
+            html = render_products(recommendations, "Dưới đây là một số sản phẩm phù hợp với bạn:")
             dispatcher.utter_message(text=html)
             
         except Exception as e:

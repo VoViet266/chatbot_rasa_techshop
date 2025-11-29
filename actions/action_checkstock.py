@@ -17,12 +17,11 @@ class ActionCheckStock(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # 1. Lấy thông tin từ các slots (3 cấp độ)
+        # 1. Lấy thông tin từ các slots
         product_name = tracker.get_slot("product_name")
         variant_name_group = tracker.get_slot("variant_name") # "128GB"
         variant_color = tracker.get_slot("variant_color")   # "Xanh"
         branch_name = tracker.get_slot("branch_name") 
-
         if not product_name:
             dispatcher.utter_message(text="Bạn muốn kiểm tra tồn kho cho sản phẩm nào ạ?")
             return []
@@ -161,11 +160,9 @@ class ActionCheckStock(Action):
             # Nếu có hàng, build HTML chi tiết
             branch_details_html = ""
             for branch, items in branch_stock_map.items():
-                if not items: continue
+                if not items: 
+                    continue
 
-                # Group items by variant name & color to sum stock if needed, or just list them
-                # items structure: [{'name': '128GB', 'color': 'Xanh', 'stock': 5}, ...]
-                
                 items_html = ""
                 for item in items:
                     v_name = item['name']
@@ -200,7 +197,6 @@ class ActionCheckStock(Action):
             <div style="font-family: sans-serif; border: 1px solid #e0e0e0; background-color: #fff; border-radius: 8px; overflow: hidden; max-width: 500px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);">
                 <div style="background-color: #d32f2f; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between;">
                     <div style="display: flex; align-items: center; color: #fff;">
-                        <span style="font-size: 20px; margin-right: 10px;">📦</span>
                         <h3 style="margin: 0; font-size: 16px; font-weight: 600;">Thông tin tồn kho</h3>
                     </div>
                     <span style="background-color: rgba(255,255,255,0.2); color: #fff; font-size: 12px; padding: 4px 8px; border-radius: 4px;">
@@ -215,9 +211,6 @@ class ActionCheckStock(Action):
                     
                     {branch_details_html}
                     
-                    <div style="margin-top: 16px; font-size: 12px; color: #888; text-align: center; font-style: italic;">
-                        * Số lượng có thể thay đổi theo thời gian thực.
-                    </div>
                 </div>
             </div>
             """

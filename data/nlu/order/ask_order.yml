@@ -12,7 +12,6 @@ nlu:
       - xem đơn [hôm qua](time)
       - các đơn hàng [tuần này](time)
       - đơn hàng [tháng trước](time)
-      - kiểm tra đơn [3 ngày qua](time)
       - kiểm tra các đơn [đang giao](order_status)
       - xem đơn [chờ xác nhận](order_status)
       - có đơn nào [đã hủy](order_status) không
@@ -47,6 +46,25 @@ nlu:
       - đơn [đang giao](order_status) [hôm nay](time)
       - đơn [mới nhất](order_direction:newest) [đang xử lý](order_status)
       - tìm đơn [đã hủy](order_status) [tuần trước](time)
+      - đơn [hôm kia](time) [đang xử lý]
+      - xem đơn hàng [đã giao](order_status) của tôi [hôm qua](time)
+      - xem đơn [mới nhất](order_direction:newest)
+      - kiểm tra đơn hàng [cũ nhất](order_direction:oldest)
+      - check đơn [gần đây](order_direction:newest)
+      - đơn [đầu tiên](order_direction:oldest) tôi mua là gì
+      - đơn hàng [vừa đặt](order_direction:newest)
+      - tìm đơn [lâu nhất](order_direction:oldest)
+      - xem đơn [thứ 2](order_index)
+      - kiểm tra đơn [số 1](order_index)
+      - chi tiết đơn hàng [thứ 3](order_index)
+      - đơn [thứ 5](order_index) tình trạng thế nào
+      - xem đơn [mới nhất](order_direction:newest) [thứ 2](order_index)
+      - check đơn [gần đây](order_direction:newest) [thứ 3](order_index) giúp mình
+      - đơn [cũ nhất](order_direction:oldest) [thứ 2](order_index)
+      - tìm đơn [đầu tiên](order_direction:oldest) [số 2](order_index)
+      - cho xem đơn [thứ 2](order_index) trong danh sách [mới nhất](order_direction:newest)
+      - đơn [gần đây](order_direction:newest) nhất là đơn nào
+      - đơn [thứ hai](order_index) từ dưới lên
 
   - intent: ask_all_orders
     examples: |
@@ -71,6 +89,29 @@ nlu:
 regex:
   - name: order_id
     pattern: "[0-9a-f]{24}"
+  - name: order_index
+    pattern: "(?i)(thứ|số)\\s+\\d+"
+
+  - synonym: newest
+    examples: |
+      - mới nhất
+      - gần đây
+      - vừa xong
+      - vừa đặt
+      - latest
+      - new
+      - gan day
+      - moi nhat
+
+  - synonym: oldest
+    examples: |
+      - cũ nhất
+      - đầu tiên
+      - lâu nhất
+      - cu nhat
+      - dau tien
+      - oldest
+      - old
 
 lookup:
   - name: order_status

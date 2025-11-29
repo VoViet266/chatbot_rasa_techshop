@@ -171,9 +171,7 @@ class ActionSuggestProduct(Action):
             sort_stage['variant_data.price'] = -1  # Descending (most expensive first)
         
         if not sort_stage:
-             # Default sort: Popularity (soldCount descending)
-             sort_stage['soldCount'] = -1
-             
+            sort_stage['soldCount'] = -1
         pipeline.append({'$sort': sort_stage})
         
         # Limit results
@@ -201,11 +199,11 @@ class ActionSuggestProduct(Action):
         # Execute
         try:
             results = list(db.products_collection.aggregate(pipeline))
-            
+            print(results)
             if not results:
                 dispatcher.utter_message(text="Rất tiếc, không có sản phẩm nào phù hợp với yêu cầu của bạn.")
             else:
-                dispatcher.utter_message(text=render_variants_list(results), html=True)
+                dispatcher.utter_message(text=render_variants_list(results, "Dưới đây là các sản phẩm phù hợp với tiêu chí của bạn:"), html=True)
         except Exception as e:
             print(f"Lỗi khi aggregate: {e}")
             dispatcher.utter_message(text="Đã có lỗi xảy ra trong quá trình tìm kiếm sản phẩm.")
