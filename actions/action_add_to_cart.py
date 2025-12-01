@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset
@@ -180,7 +184,7 @@ class ActionAddToCart(Action):
             headers["Authorization"] = f"Bearer {token}"
             try:
                 response = requests.post(
-                    "http://localhost:8080/api/v1/carts",
+                    f"{os.getenv('BACKEND_URL')}/carts",
                     json=payload,
                     headers=headers,
                     timeout=10,

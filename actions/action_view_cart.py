@@ -3,6 +3,10 @@ from rasa_sdk.executor import CollectingDispatcher
 from bson import ObjectId
 from utils.database import DatabaseService
 import traceback
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 class ActionViewCart(Action):
@@ -185,7 +189,7 @@ class ActionViewCart(Action):
             </div>
             
             <!-- Action Button -->
-            <a href="http://localhost:5173/cart" target="_blank" style="
+            <a href="{os.getenv('FRONTEND_URL')}/cart" target="_blank" style="
                 display: block;
                 width: 100%;
                 padding: 10px;

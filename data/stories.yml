@@ -211,6 +211,17 @@ stories:
           - order_id: "6673f8a7e0965e26f63111ed"
       - action: action_cancel_order
 
+  - story: Hủy đơn chưa có mã (người dùng cung cấp sau)
+    steps:
+      - intent: cancel_order
+      - action: action_cancel_order
+      - intent: inform_order_id
+        entities:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - slot_was_set:
+          - order_id: "6673f8a7e0965e26f63111ed"
+      - action: action_cancel_order
+
   # 6. TRẢ HÀNG
   - story: Yêu cầu trả hàng (chưa có mã)
     steps:

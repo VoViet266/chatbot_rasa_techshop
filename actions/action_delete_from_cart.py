@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from bson import ObjectId
 from rasa_sdk import Action, Tracker
 from utils.database import DatabaseService
@@ -75,7 +79,7 @@ class ActionDeleteFromCart(Action):
             headers["Authorization"] = f"Bearer {token}"
         try:
             response = requests.delete(
-                "http://localhost:8080/api/v1/carts/remove-item",
+                f"{os.getenv('BACKEND_URL')}/carts/remove-item",
                 json=payload,
                 headers=headers,
                 timeout=10,

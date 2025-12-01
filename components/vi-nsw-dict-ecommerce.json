@@ -1,3845 +1,1274 @@
 {
-  "15p": [
-    "15 phút"
-  ],
-  "1c": [
-    "1 cái"
-  ],
-  "1g": [
-    "1 giờ"
-  ],
-  "1m": [
-    "một mình"
-  ],
-  "1tháng": [
-    "1 tháng"
-  ],
-  "môt": [
-    "1"
-  ],
-  "2 ank": [
-    "2 anh"
-  ],
-  "k": [
-    "không"
-  ],
-  "ko": [
-    "không"
-  ],
-  "kg": [
-    "không"
-  ],
-  "kh": [
-    "không"
-  ],
-  "khong": [
-    "không"
-  ],
-  "khum": [
-    "không"
-  ],
-  "khm": [
-    "không"
-  ],
-  "hem": [
-    "không"
-  ],
-  "hok": [
-    "không"
-  ],
-  "hông": [
-    "không"
-  ],
-  "hảng": [
-    "hãng"
-  ],
-  "mn": [
-    "muốn"
-  ],
-  "mún": [
-    "muốn"
-  ],
-  "múnh": [
-    "muốn"
-  ],
-  "m": [
-    "mình"
-  ],
-  "all": [
-    "tất cả"
-  ],
-  "tất cao": [
-    "tất cả"
-  ],
-  "tấc cao": [
-    "tất cả"
-  ],
-  "mình": [
-    "mình"
-  ],
-  "mink": [
-    "mình"
-  ],
-  "minh": [
-    "mình"
-  ],
-  "muốn": [
-    "muốn"
-  ],
-  "min": [
-    "thấp nhất"
-  ],
-  "dc": [
-    "được"
-  ],
-  "dk": [
-    "được"
-  ],
-  "duoc": [
-    "được"
-  ],
-  "r": [
-    "rồi"
-  ],
-  "roi": [
-    "rồi"
-  ],
-  "z": [
-    "gì"
-  ],
-  "j": [
-    "gì"
-  ],
-  "ji": [
-    "gì"
-  ],
-  "giề": [
-    "gì"
-  ],
-  "gi": [
-    "gì"
-  ],
-  "ss": [
-    "so sánh"
-  ],
-  "so sánh": [
-    "so sánh"
-  ],
-  "cho xac nhan": [
-    "chờ xác nhận"
-  ],
-  "cho xn": [
-    "chờ xác nhận"
-  ],
-  "xn": [
-    "xác nhận"
-  ],
-  "bn": [
-    "bao nhiêu"
-  ],
-  "bnn": [
-    "bao nhiêu"
-  ],
-  "bnh": [
-    "bao nhiêu"
-  ],
-  "bnhieu": [
-    "bao nhiêu"
-  ],
-  "bnhiu": [
-    "bao nhiêu"
-  ],
-  "ch": [
-    "chưa"
-  ],
-  "chua": [
-    "chưa"
-  ],
-  "chw": [
-    "chưa"
-  ],
-  "vs": [
-    "với"
-  ],
-  "voi": [
-    "với"
-  ],
-  "v": [
-    "vậy"
-  ],
-  "vay": [
-    "vậy"
-  ],
-  "oke": [
-    "ok"
-  ],
-  "okie": [
-    "ok"
-  ],
-  "okee": [
-    "ok"
-  ],
-  "tks": [
-    "cảm ơn"
-  ],
-  "thanks": [
-    "cảm ơn"
-  ],
-  "thank": [
-    "cảm ơn"
-  ],
-  "cam on": [
-    "cảm ơn"
-  ],
-  "dt": [
-    "điện thoại"
-  ],
-  "đt": [
-    "điện thoại"
-  ],
-  "đthoai": [
-    "điện thoại"
-  ],
-  "dien thoai": [
-    "điện thoại"
-  ],
-  "diện thoại": [
-    "điện thoại"
-  ],
-  "điên thoại": [
-    "điện thoại"
-  ],
-  "đien thoại": [
-    "điện thoại"
-  ],
-  "điện thoại": [
-    "điện thoại"
-  ],
-  "smartphone": [
-    "điện thoại"
-  ],
-  "smart phone": [
-    "điện thoại"
-  ],
-  "phone": [
-    "điện thoại"
-  ],
-  "fone": [
-    "điện thoại"
-  ],
-  "laptop": [
-    "laptop"
-  ],
-  "laptob": [
-    "laptop"
-  ],
-  "labtop": [
-    "laptop"
-  ],
-  "laktop": [
-    "laptop"
-  ],
-  "lap": [
-    "laptop"
-  ],
-  "lap top": [
-    "laptop"
-  ],
-  "maytinh": [
-    "máy tính"
-  ],
-  "may tinh": [
-    "máy tính"
-  ],
-  "pc": [
-    "máy tính"
-  ],
-  "mac": [
-    "macbook"
-  ],
-  "tai nge": [
-    "tai nghe"
-  ],
-  "tai ngề": [
-    "tai nghe"
-  ],
-  "tay nghe": [
-    "tai nghe"
-  ],
-  "airpod": [
-    "tai nghe"
-  ],
-  "air pod": [
-    "tai nghe"
-  ],
-  "chuot": [
-    "chuột"
-  ],
-  "chuôt": [
-    "chuột"
-  ],
-  "chụt": [
-    "chuột"
-  ],
-  "mouse": [
-    "chuột"
-  ],
-  "ban phim": [
-    "bàn phím"
-  ],
-  "ban fim": [
-    "bàn phím"
-  ],
-  "bàn fim": [
-    "bàn phím"
-  ],
-  "keyboard": [
-    "bàn phím"
-  ],
-  "phim": [
-    "bàn phím"
-  ],
-  "key": [
-    "bàn phím"
-  ],
-  "keybroad": [
-    "bàn phím"
-  ],
-  "key board": [
-    "bàn phím"
-  ],
-  "mang hinh": [
-    "màn hình"
-  ],
-  "man hình": [
-    "màn hình"
-  ],
-  "mang hình": [
-    "màn hình"
-  ],
-  "màng hình": [
-    "màn hình"
-  ],
-  "manf hình": [
-    "màn hình"
-  ],
-  "monitor": [
-    "màn hình"
-  ],
-  "screen": [
-    "màn hình"
-  ],
-  "sac": [
-    "sạc"
-  ],
-  "sạt": [
-    "sạc"
-  ],
-  "săc": [
-    "sạc"
-  ],
-  "charger": [
-    "sạc"
-  ],
-  "adapter": [
-    "sạc"
-  ],
-  "cable": [
-    "cáp"
-  ],
-  "cap": [
-    "cáp"
-  ],
-  "day": [
-    "dây"
-  ],
-  "dây": [
-    "dây"
-  ],
-  "op lung": [
-    "ốp lưng"
-  ],
-  "op": [
-    "ốp"
-  ],
-  "case": [
-    "ốp lưng"
-  ],
-  "kinh cuong luc": [
-    "kính cường lực"
-  ],
-  "kinh": [
-    "kính cường lực"
-  ],
-  "dan man hinh": [
-    "dán màn hình"
-  ],
-  "dan": [
-    "dán màn hình"
-  ],
-  "speaker": [
-    "loa"
-  ],
-  "loa": [
-    "loa"
-  ],
-  "usb": [
-    "usb"
-  ],
-  "the nho": [
-    "thẻ nhớ"
-  ],
-  "memory card": [
-    "thẻ nhớ"
-  ],
-  "sd": [
-    "thẻ nhớ"
-  ],
-  "o cung": [
-    "ổ cứng"
-  ],
-  "hard drive": [
-    "ổ cứng"
-  ],
-  "hdd": [
-    "ổ cứng"
-  ],
-  "ssd": [
-    "ssd"
-  ],
-  "pin du phong": [
-    "pin dự phòng"
-  ],
-  "power bank": [
-    "pin dự phòng"
-  ],
-  "pin": [
-    "pin"
-  ],
-  "camera": [
-    "camera"
-  ],
-  "cam": [
-    "camera"
-  ],
-  "webcam": [
-    "webcam"
-  ],
-  "web cam": [
-    "webcam"
-  ],
-  "ram": [
-    "ram"
-  ],
-  "rom": [
-    "rom"
-  ],
-  "bo nho": [
-    "bộ nhớ"
-  ],
-  "luu tru": [
-    "lưu trữ"
-  ],
-  "storage": [
-    "bộ nhớ"
-  ],
-  "memory": [
-    "bộ nhớ"
-  ],
-  "gb": [
-    "gb"
-  ],
-  "mb": [
-    "mb"
-  ],
-  "inch": [
-    "inch"
-  ],
-  "samsung": [
-    "samsung"
-  ],
-  "sam sung": [
-    "samsung"
-  ],
-  "samsum": [
-    "samsung"
-  ],
-  "samsug": [
-    "samsung"
-  ],
-  "samsun": [
-    "samsung"
-  ],
-  "sản sung": [
-    "samsung"
-  ],
-  "ip": [
-    "iphone"
-  ],
-  "ifone": [
-    "iphone"
-  ],
-  "i phone": [
-    "iphone"
-  ],
-  "ipone": [
-    "iphone"
-  ],
-  "aifon": [
-    "iphone"
-  ],
-  "oppo": [
-    "oppo"
-  ],
-  "opo": [
-    "oppo"
-  ],
-  "vivo": [
-    "vivo"
-  ],
-  "xiaomi": [
-    "xiaomi"
-  ],
-  "xaomi": [
-    "xiaomi"
-  ],
-  "siaomi": [
-    "xiaomi"
-  ],
-  "xiomi": [
-    "xiaomi"
-  ],
-  "realme": [
-    "realme"
-  ],
-  "real me": [
-    "realme"
-  ],
-  "realmee": [
-    "realme"
-  ],
-  "nokia": [
-    "nokia"
-  ],
-  "huawei": [
-    "huawei"
-  ],
-  "hoa vi": [
-    "huawei"
-  ],
-  "hoa wei": [
-    "huawei"
-  ],
-  "asus": [
-    "asus"
-  ],
-  "asuz": [
-    "asus"
-  ],
-  "hp": [
-    "hp"
-  ],
-  "hpe": [
-    "hp"
-  ],
-  "lenovo": [
-    "lenovo"
-  ],
-  "lenơvo": [
-    "lenovo"
-  ],
-  "acer": [
-    "acer"
-  ],
-  "accer": [
-    "acer"
-  ],
-  "dell": [
-    "dell"
-  ],
-  "msi": [
-    "msi"
-  ],
-  "sony": [
-    "sony"
-  ],
-  "soni": [
-    "sony"
-  ],
-  "xony": [
-    "sony"
-  ],
-  "jbl": [
-    "jbl"
-  ],
-  "logitech": [
-    "logitech"
-  ],
-  "logitec": [
-    "logitech"
-  ],
-  "logi": [
-    "logitech"
-  ],
-  "razer": [
-    "razer"
-  ],
-  "razor": [
-    "razer"
-  ],
-  "apple": [
-    "apple"
-  ],
-  "aple": [
-    "apple"
-  ],
-  "aplle": [
-    "apple"
-  ],
-  "microsoft": [
-    "microsoft"
-  ],
-  "microsof": [
-    "microsoft"
-  ],
-  "canon": [
-    "canon"
-  ],
-  "conon": [
-    "canon"
-  ],
-  "nikon": [
-    "nikon"
-  ],
-  "nikkon": [
-    "nikon"
-  ],
-  "gopro": [
-    "gopro"
-  ],
-  "go pro": [
-    "gopro"
-  ],
-  "bose": [
-    "bose"
-  ],
-  "bóe": [
-    "bose"
-  ],
-  "beats": [
-    "beats"
-  ],
-  "beat": [
-    "beats"
-  ],
-  "anker": [
-    "anker"
-  ],
-  "ancer": [
-    "anker"
-  ],
-  "kingston": [
-    "kingston"
-  ],
-  "kinston": [
-    "kingston"
-  ],
-  "sandisk": [
-    "sandisk"
-  ],
-  "sandis": [
-    "sandisk"
-  ],
-  "seagate": [
-    "seagate"
-  ],
-  "sea gate": [
-    "seagate"
-  ],
-  "wd": [
-    "western digital"
-  ],
-  "western digital": [
-    "western digital"
-  ],
-  "gia": [
-    "giá"
-  ],
-  "già": [
-    "giá"
-  ],
-  "bao nhieu": [
-    "bao nhiêu"
-  ],
-  "san pham": [
-    "sản phẩm"
-  ],
-  "sp": [
-    "sản phẩm"
-  ],
-  "dia chi": [
-    "địa chỉ"
-  ],
-  "so dien thoai": [
-    "số điện thoại"
-  ],
-  "sdt": [
-    "số điện thoại"
-  ],
-  "lien he": [
-    "liên hệ"
-  ],
-  "lien lac": [
-    "liên lạc"
-  ],
-  "thong tin": [
-    "thông tin"
-  ],
-  "chi tiet": [
-    "chi tiết"
-  ],
-  "mo ta": [
-    "mô tả"
-  ],
-  "giao hang": [
-    "giao hàng"
-  ],
-  "nhan hang": [
-    "nhận hàng"
-  ],
-  "thanh toan": [
-    "thanh toán"
-  ],
-  "don hang": [
-    "đơn hàng"
-  ],
-  "don hàng": [
-    "đơn hàng"
-  ],
-  "đơn hang": [
-    "đơn hàng"
-  ],
-  "gio hang": [
-    "giỏ hàng"
-  ],
-  "dat hang": [
-    "đặt hàng"
-  ],
-  "bao hanh": [
-    "bảo hành"
-  ],
-  "bao hành": [
-    "bảo hành"
-  ],
-  "bao hàng": [
-    "bảo hành"
-  ],
-  "bảo hanh": [
-    "bảo hành"
-  ],
-  "dỏ hàng": [
-    "đỏ hàng"
-  ],
-  "đỏ hàng": [
-    "đỏ hàng"
-  ],
-  "bh": [
-    "bảo hành"
-  ],
-  "bao ve": [
-    "bảo vệ"
-  ],
-  "cam ung": [
-    "cảm ứng"
-  ],
-  "anh": [
-    "ảnh"
-  ],
-  "chup": [
-    "chụp"
-  ],
-  "quay": [
-    "quay"
-  ],
-  "video": [
-    "video"
-  ],
-  "am thanh": [
-    "âm thanh"
-  ],
-  "do phan giai": [
-    "độ phân giải"
-  ],
-  "kich thuoc": [
-    "kích thước"
-  ],
-  "kich co": [
-    "kích cỡ"
-  ],
-  "trong luong": [
-    "trọng lượng"
-  ],
-  "mau sac": [
-    "màu sắc"
-  ],
-  "color": [
-    "màu"
-  ],
-  "thiet ke": [
-    "thiết kế"
-  ],
-  "chat lieu": [
-    "chất liệu"
-  ],
-  "chat luong": [
-    "chất lượng"
-  ],
-  "tot": [
-    "tốt"
-  ],
-  "dep": [
-    "đẹp"
-  ],
-  "xau": [
-    "xấu"
-  ],
-  "nhanh": [
-    "nhanh"
-  ],
-  "ben": [
-    "bền"
-  ],
-  "muon": [
-    "muốn"
-  ],
-  "can": [
-    "cần"
-  ],
-  "mua": [
-    "mua"
-  ],
-  "kiem tra": [
-    "kiểm tra"
-  ],
-  "check": [
-    "kiểm tra"
-  ],
-  "cho": [
-    "cho"
-  ],
-  "gioi thieu": [
-    "giới thiệu"
-  ],
-  "tu van": [
-    "tư vấn"
-  ],
-  "tv": [
-    "tư vấn"
-  ],
-  "tu vấn": [
-    "tư vấn"
-  ],
-  "so sanh": [
-    "so sánh"
-  ],
-  "hoan": [
-    "hoàn"
-  ],
-  "huy": [
-    "hủy"
-  ],
-  "giao": [
-    "giao"
-  ],
-  "nhan": [
-    "nhận"
-  ],
-  "chuyen khoan": [
-    "chuyển khoản"
-  ],
-  "ck": [
-    "chuyển khoản"
-  ],
-  "khi nao": [
-    "khi nào"
-  ],
-  "the nao": [
-    "thế nào"
-  ],
-  "nhu the nao": [
-    "như thế nào"
-  ],
-  "ntn": [
-    "như thế nào"
-  ],
-  "shop": [
-    "shop"
-  ],
-  "sop": [
-    "shop"
-  ],
-  "shợp": [
-    "shop"
-  ],
-  "cửa hang": [
-    "cửa hàng"
-  ],
-  "cua hang": [
-    "cửa hàng"
-  ],
-  "của hàng": [
-    "cửa hàng"
-  ],
-  "lien hệ": [
-    "liên hệ"
-  ],
-  "liên he": [
-    "liên hệ"
-  ],
-  "gio mo cua": [
-    "giờ mở cửa"
-  ],
-  "gio dong cua": [
-    "giờ đóng cửa"
-  ],
-  "lam viec": [
-    "làm việc"
-  ],
-  "khuyen mai": [
-    "khuyến mãi"
-  ],
-  "km": [
-    "khuyến mãi"
-  ],
-  "giam gia": [
-    "giảm giá"
-  ],
-  "sale": [
-    "giảm giá"
-  ],
-  "sale off": [
-    "giảm giá"
-  ],
-  "uu dai": [
-    "ưu đãi"
-  ],
-  "voucher": [
-    "voucher"
-  ],
-  "ma giam gia": [
-    "mã giảm giá"
-  ],
-  "phi van chuyen": [
-    "phí vận chuyển"
-  ],
-  "phi ship": [
-    "phí ship"
-  ],
-  "ship": [
-    "ship"
-  ],
-  "van chuyen": [
-    "vận chuyển"
-  ],
-  "doi tra": [
-    "đổi trả"
-  ],
-  "dieu kien": [
-    "điều kiện"
-  ],
-  "co ko": [
-    "có không"
-  ],
-  "co khong": [
-    "có không"
-  ],
-  "có ko": [
-    "có không"
-  ],
-  "het chua": [
-    "hết chưa"
-  ],
-  "het roi": [
-    "hết rồi"
-  ],
-  "con hang ko": [
-    "còn hàng không"
-  ],
-  "con hang khong": [
-    "còn hàng không"
-  ],
-  "san co": [
-    "sẵn có"
-  ],
-  "hien co": [
-    "hiện có"
-  ],
-  "bao lau": [
-    "bao lâu"
-  ],
-  "ra sao": [
-    "ra sao"
-  ],
-  "ok ko": [
-    "ok không"
-  ],
-  "duoc ko": [
-    "được không"
-  ],
-  "duoc khong": [
-    "được không"
-  ],
-  "zao": [
-    "sao"
-  ],
-  "nhu": [
-    "như"
-  ],
-  "nư": [
-    "như"
-  ],
-  "tron": [
-    "trong"
-  ],
-  "trong": [
-    "trong"
-  ],
-  "dau": [
-    "đâu"
-  ],
-  "đau": [
-    "đâu"
-  ],
-  "nao": [
-    "nào"
-  ],
-  "ao": [
-    "nào"
-  ],
-  "co": [
-    "có"
-  ],
-  "coá": [
-    "có"
-  ],
-  "coa": [
-    "có"
-  ],
-  "có": [
-    "có"
-  ],
-  "cs": [
-    "có"
-  ],
-  "c": [
-    "có"
-  ],
-  "csss": [
-    "có"
-  ],
-  "cscss": [
-    "có"
-  ],
-  "biet": [
-    "biết"
-  ],
-  "bik": [
-    "biết"
-  ],
-  "bit": [
-    "biết"
-  ],
-  "bt": [
-    "biết"
-  ],
-  "biếc": [
-    "biết"
-  ],
-  "píc": [
-    "biết"
-  ],
-  "pt": [
-    "biết"
-  ],
-  "bh": [
-    "bây giờ",
-    "bảo hành"
-  ],
-  "bg": [
-    "bây giờ"
-  ],
-  "bay gio": [
-    "bây giờ"
-  ],
-  "bao h": [
-    "bao giờ"
-  ],
-  "bao gio": [
-    "bao giờ"
-  ],
-  "th": [
-    "thì",
-    "thôi"
-  ],
-  "thi": [
-    "thì"
-  ],
-  "thoi": [
-    "thôi"
-  ],
-  "thoai": [
-    "thôi"
-  ],
-  "chac": [
-    "chắc"
-  ],
-  "chăc": [
-    "chắc"
-  ],
-  "nha": [
-    "nha"
-  ],
-  "nhe": [
-    "nhé"
-  ],
-  "ne": [
-    "nè"
-  ],
-  "a": [
-    "anh",
-    "à"
-  ],
-  "ak": [
-    "à"
-  ],
-  "uh": [
-    "ừ"
-  ],
-  "uk": [
-    "ừ"
-  ],
-  "ok": [
-    "ok"
-  ],
-  "OK": [
-    "ok"
-  ],
-  "cm": [
-    "comment",
-    "cảm ơn"
-  ],
-  "ơ": [
-    "ở"
-  ],
-  "o": [
-    "ở",
-    "ông"
-  ],
-  "oi": [
-    "ơi"
-  ],
-  "oiii": [
-    "ơi"
-  ],
-  "ui": [
-    "ui"
-  ],
-  "uii": [
-    "ui"
-  ],
-  "hihi": [
-    "hihi"
-  ],
-  "haha": [
-    "haha"
-  ],
-  "huhu": [
-    "huhu"
-  ],
-  "m.n": [
-    "mọi người"
-  ],
-  "mng": [
-    "mọi người"
-  ],
-  "nua": [
-    "nữa"
-  ],
-  "nx": [
-    "nữa"
-  ],
-  "cx": [
-    "cũng"
-  ],
-  "cg": [
-    "cũng"
-  ],
-  "cung": [
-    "cũng"
-  ],
-  "ns": [
-    "nói"
-  ],
-  "nt": [
-    "nhắn tin"
-  ],
-  "ntn": [
-    "như thế nào"
-  ],
-  "nay": [
-    "này"
-  ],
-  "ni": [
-    "này"
-  ],
-  "tre": [
-    "trẻ"
-  ],
-  "rong": [
-    "rộng"
-  ],
-  "dai": [
-    "dài"
-  ],
-  "ngan": [
-    "ngắn"
-  ],
-  "nhe": [
-    "nhẹ"
-  ],
-  "nang": [
-    "nặng"
-  ],
-  "xanh": [
-    "xanh"
-  ],
-  "trang": [
-    "trắng"
-  ],
-  "den": [
-    "đen"
-  ],
-  "do": [
-    "đỏ"
-  ],
-  "vang": [
-    "vàng"
-  ],
-  "nau": [
-    "nâu"
-  ],
-  "bac": [
-    "bạc"
-  ],
-  "vang dong": [
-    "vàng đồng"
-  ],
-  "xanh duong": [
-    "xanh dương"
-  ],
-  "xanh la": [
-    "xanh lá"
-  ],
-  "xanh navy": [
-    "xanh navy"
-  ],
-  "xanh reu": [
-    "xanh rêu"
-  ],
-  "xanh da troi": [
-    "xanh da trời"
-  ],
-  "tim": [
-    "tím"
-  ],
-  "cam": [
-    "cam"
-  ],
-  "moi": [
-    "mới"
-  ],
-  "cu": [
-    "cũ"
-  ],
-  "like new": [
-    "như mới"
-  ],
-  "chinh hang": [
-    "chính hãng"
-  ],
-  "hang nhai": [
-    "hàng nhái"
-  ],
-  "xach tay": [
-    "xách tay"
-  ],
-  "nhap khau": [
-    "nhập khẩu"
-  ],
-  "han quoc": [
-    "hàn quốc"
-  ],
-  "trung quoc": [
-    "trung quốc"
-  ],
-  "my": [
-    "mỹ"
-  ],
-  "nhat ban": [
-    "nhật bản"
-  ],
-  "thai lan": [
-    "thái lan"
-  ],
-  "viet nam": [
-    "việt nam"
-  ],
-  "vn": [
-    "việt nam"
-  ],
-  "re": [
-    "rẻ"
-  ],
-  "mac": [
-    "mắc"
-  ],
-  "dat": [
-    "đắt"
-  ],
-  "tot": [
-    "tốt"
-  ],
-  "dem": [
-    "dẹp"
-  ],
-  "xin": [
-    "xinh"
-  ],
-  "sang": [
-    "sang"
-  ],
-  "hien dai": [
-    "hiện đại"
-  ],
-  "co dien": [
-    "cổ điển"
-  ],
-  "don gian": [
-    "đơn giản"
-  ],
-  "phuc tap": [
-    "phức tạp"
-  ],
-  "sang trong": [
-    "sang trọng"
-  ],
-  "cao cap": [
-    "cao cấp"
-  ],
-  "binh dan": [
-    "bình dân"
-  ],
-  "pho thong": [
-    "phổ thông"
-  ],
-  "tien": [
-    "tiền"
-  ],
-  "tièn": [
-    "tiền"
-  ],
-  "dong": [
-    "đồng"
-  ],
-  "trieu": [
-    "triệu"
-  ],
-  "ty": [
-    "tỷ"
-  ],
-  "ngan": [
-    "ngàn"
-  ],
-  "cu": [
-    "củ",
-    "triệu"
-  ],
-  "chai": [
-    "trăm"
-  ],
-  "nghin": [
-    "nghìn"
-  ],
-  "m": [
-    "triệu"
-  ],
-  "b": [
-    "tỷ"
-  ],
-  "vnđ": [
-    "việt nam đồng"
-  ],
-  "vnd": [
-    "việt nam đồng"
-  ],
-  "tien mat": [
-    "tiền mặt"
-  ],
-  "chuyen khoan": [
-    "chuyển khoản"
-  ],
-  "the": [
-    "thẻ"
-  ],
-  "visa": [
-    "visa"
-  ],
-  "mastercard": [
-    "mastercard"
-  ],
-  "atm": [
-    "atm"
-  ],
-  "momo": [
-    "momo"
-  ],
-  "zalopay": [
-    "zalopay"
-  ],
-  "vnpay": [
-    "vnpay"
-  ],
-  "airpay": [
-    "airpay"
-  ],
-  "apple pay": [
-    "apple pay"
-  ],
-  "samsung pay": [
-    "samsung pay"
-  ],
-  "tra gop": [
-    "trả góp"
-  ],
-  "mua chiu": [
-    "mua chịu"
-  ],
-  "lai suat": [
-    "lãi suất"
-  ],
-  "phan tram": [
-    "phần trăm"
-  ],
-  "ngay": [
-    "ngày"
-  ],
-  "thang": [
-    "tháng"
-  ],
-  "nam": [
-    "năm"
-  ],
-  "tuan": [
-    "tuần"
-  ],
-  "gio": [
-    "giờ"
-  ],
-  "phut": [
-    "phút"
-  ],
-  "giay": [
-    "giây"
-  ],
-  "hom nay": [
-    "hôm nay"
-  ],
-  "ngay mai": [
-    "ngày mai"
-  ],
-  "hom qua": [
-    "hôm qua"
-  ],
-  "hqua": [
-    "hôm qua"
-  ],
-  "bh": [
-    "bây giờ"
-  ],
-  "luc nay": [
-    "lúc này"
-  ],
-  "bay h": [
-    "bây giờ"
-  ],
-  "nhanh chong": [
-    "nhanh chóng"
-  ],
-  "giao nhanh": [
-    "giao nhanh"
-  ],
-  "giao tận noi": [
-    "giao tận nơi"
-  ],
-  "giao tan nha": [
-    "giao tận nhà"
-  ],
-  "mien phi": [
-    "miễn phí"
-  ],
-  "free": [
-    "miễn phí"
-  ],
-  "freeship": [
-    "miễn phí ship"
-  ],
-  "cod": [
-    "cod"
-  ],
-  "tien hang": [
-    "tiền hàng"
-  ],
-  "tien cod": [
-    "tiền cod"
-  ],
-  "kien hang": [
-    "kiện hàng"
-  ],
-  "don": [
-    "đơn"
-  ],
-  "goi": [
-    "gói"
-  ],
-  "hop": [
-    "hộp"
-  ],
-  "chiec": [
-    "chiếc"
-  ],
-  "cai": [
-    "cái"
-  ],
-  "bo": [
-    "bộ"
-  ],
-  "cap": [
-    "cặp"
-  ],
-  "doi": [
-    "đôi"
-  ],
-  "com bo": [
-    "combo"
-  ],
-  "combo": [
-    "combo"
-  ],
-  "set": [
-    "set"
-  ],
-  "mua": [
-    "mua"
-  ],
-  "ban": [
-    "bán"
-  ],
-  "dat": [
-    "đặt"
-  ],
-  "them": [
-    "thêm"
-  ],
-  "xoa": [
-    "xóa"
-  ],
-  "huy": [
-    "hủy"
-  ],
-  "doi": [
-    "đổi"
-  ],
-  "tra": [
-    "trả"
-  ],
-  "hoan": [
-    "hoàn"
-  ],
-  "tim": [
-    "tìm"
-  ],
-  "xem": [
-    "xem"
-  ],
-  "kiem": [
-    "kiểm"
-  ],
-  "tra": [
-    "tra"
-  ],
-  "cap nhat": [
-    "cập nhật"
-  ],
-  "update": [
-    "cập nhật"
-  ],
-  "chinh sua": [
-    "chỉnh sửa"
-  ],
-  "edit": [
-    "chỉnh sửa"
-  ],
-  "luu": [
-    "lưu"
-  ],
-  "save": [
-    "lưu"
-  ],
-  "tai": [
-    "tải"
-  ],
-  "tai xuong": [
-    "tải xuống"
-  ],
-  "download": [
-    "tải xuống"
-  ],
-  "upload": [
-    "tải lên"
-  ],
-  "tai len": [
-    "tải lên"
-  ],
-  "mo": [
-    "mở"
-  ],
-  "dong": [
-    "đóng"
-  ],
-  "bat": [
-    "bật"
-  ],
-  "tat": [
-    "tắt"
-  ],
-  "on": [
-    "bật"
-  ],
-  "off": [
-    "tắt"
-  ],
-  "khoi dong": [
-    "khởi động"
-  ],
-  "reset": [
-    "reset"
-  ],
-  "cai dat": [
-    "cài đặt"
-  ],
-  "install": [
-    "cài đặt"
-  ],
-  "go cai dat": [
-    "gỡ cài đặt"
-  ],
-  "uninstall": [
-    "gỡ cài đặt"
-  ],
-  "backup": [
-    "sao lưu"
-  ],
-  "restore": [
-    "khôi phục"
-  ],
-  "format": [
-    "định dạng"
-  ],
-  "delete": [
-    "xóa"
-  ],
-  "share": [
-    "chia sẻ"
-  ],
-  "send": [
-    "gửi"
-  ],
-  "receive": [
-    "nhận"
-  ],
-  "connect": [
-    "kết nối"
-  ],
-  "disconnect": [
-    "ngắt kết nối"
-  ],
-  "wifi": [
-    "wifi"
-  ],
-  "bluetooth": [
-    "bluetooth"
-  ],
-  "4g": [
-    "4g"
-  ],
-  "5g": [
-    "5g"
-  ],
-  "3g": [
-    "3g"
-  ],
-  "sim": [
-    "sim"
-  ],
-  "esim": [
-    "esim"
-  ],
-  "dual sim": [
-    "dual sim"
-  ],
-  "hai sim": [
-    "hai sim"
-  ],
-  "mang di dong": [
-    "mạng di động"
-  ],
-  "song song": [
-    "song song"
-  ],
-  "da nhiem": [
-    "đa nhiệm"
-  ],
-  "da tac vu": [
-    "đa tác vụ"
-  ],
-  "processor": [
-    "bộ xử lý"
-  ],
-  "cpu": [
-    "cpu"
-  ],
-  "gpu": [
-    "gpu"
-  ],
-  "chip": [
-    "chip"
-  ],
-  "snapdragon": [
-    "snapdragon"
-  ],
-  "mediatek": [
-    "mediatek"
-  ],
-  "exynos": [
-    "exynos"
-  ],
-  "intel": [
-    "intel"
-  ],
-  "amd": [
-    "amd"
-  ],
-  "nvidia": [
-    "nvidia"
-  ],
-  "qualcomm": [
-    "qualcomm"
-  ],
-  "core": [
-    "core"
-  ],
-  "thread": [
-    "luồng"
-  ],
-  "ghz": [
-    "ghz"
-  ],
-  "mhz": [
-    "mhz"
-  ],
-  "ips": [
-    "ips"
-  ],
-  "oled": [
-    "oled"
-  ],
-  "amoled": [
-    "amoled"
-  ],
-  "lcd": [
-    "lcd"
-  ],
-  "led": [
-    "led"
-  ],
-  "qled": [
-    "qled"
-  ],
-  "hdr": [
-    "hdr"
-  ],
-  "4k": [
-    "4k"
-  ],
-  "full hd": [
-    "full hd"
-  ],
-  "hd": [
-    "hd"
-  ],
-  "fhd": [
-    "full hd"
-  ],
-  "uhd": [
-    "uhd"
-  ],
-  "pixel": [
-    "pixel"
-  ],
-  "ppi": [
-    "ppi"
-  ],
-  "dpi": [
-    "dpi"
-  ],
-  "hz": [
-    "hz"
-  ],
-  "fps": [
-    "fps"
-  ],
-  "mah": [
-    "mah"
-  ],
-  "watt": [
-    "watt"
-  ],
-  "w": [
-    "w"
-  ],
-  "ampere": [
-    "ampere"
-  ],
-  "volt": [
-    "volt"
-  ],
-  "nhanh": [
-    "nhanh"
-  ],
-  "cham": [
-    "chậm"
-  ],
-  "manh": [
-    "mạnh"
-  ],
-  "yeu": [
-    "yếu"
-  ],
-  "on dinh": [
-    "ổn định"
-  ],
-  "khong on dinh": [
-    "không ổn định"
-  ],
-  "lag": [
-    "lag"
-  ],
-  "giat": [
-    "giật"
-  ],
-  "treo": [
-    "treo"
-  ],
-  "loi": [
-    "lỗi"
-  ],
-  "bug": [
-    "lỗi"
-  ],
-  "error": [
-    "lỗi"
-  ],
-  "hong": [
-    "hỏng"
-  ],
-  "hu": [
-    "hư"
-  ],
-  "mo hong": [
-    "mở hỏng"
-  ],
-  "tat hong": [
-    "tắt hỏng"
-  ],
-  "vo": [
-    "vỡ"
-  ],
-  "nut": [
-    "nứt"
-  ],
-  "rach": [
-    "rách"
-  ],
-  "xoc": [
-    "xước"
-  ],
-  "be": [
-    "bể"
-  ],
-  "gay": [
-    "gãy"
-  ],
-  "lung": [
-    "lủng"
-  ],
-  "mat": [
-    "mất"
-  ],
-  "bi mat": [
-    "bị mất"
-  ],
-  "bi mat cap": [
-    "bị mất cắp"
-  ],
-  "bi danh cap": [
-    "bị đánh cắp"
-  ],
-  "bi danh roi": [
-    "bị đánh rơi"
-  ],
-  "bi roi": [
-    "bị rơi"
-  ],
-  "bi vao nuoc": [
-    "bị vào nước"
-  ],
-  "bi nuoc": [
-    "bị nước"
-  ],
-  "chong nuoc": [
-    "chống nước"
-  ],
-  "chong bui": [
-    "chống bụi"
-  ],
-  "chong va dap": [
-    "chống va đập"
-  ],
-  "chong soc": [
-    "chống sốc"
-  ],
-  "an toan": [
-    "an toàn"
-  ],
-  "chat luong": [
-    "chất lượng"
-  ],
-  "uy tin": [
-    "uy tín"
-  ],
-  "chinh hang": [
-    "chính hãng"
-  ],
-  "fake": [
-    "fake"
-  ],
-  "that": [
-    "thật"
-  ],
-  "gia": [
-    "giả"
-  ],
-  "moi": [
-    "mới"
-  ],
-  "cu": [
-    "cũ"
-  ],
-  "da qua su dung": [
-    "đã qua sử dụng"
-  ],
-  "second hand": [
-    "second hand"
-  ],
-  "refurbished": [
-    "refurbished"
-  ],
-  "chinh chu": [
-    "chính chủ"
-  ],
-  "nguyen ban": [
-    "nguyên bản"
-  ],
-  "nguyen seal": [
-    "nguyên seal"
-  ],
-  "nguyen hop": [
-    "nguyên hộp"
-  ],
-  "full box": [
-    "full box"
-  ],
-  "fullbox": [
-    "fullbox"
-  ],
-  "phu kien": [
-    "phụ kiện"
-  ],
-  "accessory": [
-    "phụ kiện"
-  ],
-  "dong goi": [
-    "đóng gói"
-  ],
-  "packaging": [
-    "đóng gói"
-  ],
-  "bao bi": [
-    "bao bì"
-  ],
-  "thung": [
-    "thùng"
-  ],
-  "tui": [
-    "túi"
-  ],
-  "boc": [
-    "bọc"
-  ],
-  "nilon": [
-    "nilon"
-  ],
-  "mang boc": [
-    "màng bọc"
-  ],
-  "carton": [
-    "carton"
-  ],
-  "xop": [
-    "xốp"
-  ],
-  "bong bong": [
-    "bóng bóng"
-  ],
-  "bao ho": [
-    "bảo hộ"
-  ],
-  "cam ket": [
-    "cam kết"
-  ],
-  "bao dam": [
-    "bảo đảm"
-  ],
-  "dam bao": [
-    "đảm bảo"
-  ],
-  "chinh sach": [
-    "chính sách"
-  ],
-  "dieu khoan": [
-    "điều khoản"
-  ],
-  "quy dinh": [
-    "quy định"
-  ],
-  "huong dan": [
-    "hướng dẫn"
-  ],
-  "ho tro": [
-    "hỗ trợ"
-  ],
-  "support": [
-    "hỗ trợ"
-  ],
-  "tu van": [
-    "tư vấn"
-  ],
-  "consultant": [
-    "tư vấn"
-  ],
-  "cham soc": [
-    "chăm sóc"
-  ],
-  "care": [
-    "chăm sóc"
-  ],
-  "khach hang": [
-    "khách hàng"
-  ],
-  "customer": [
-    "khách hàng"
-  ],
-  "nguoi dung": [
-    "người dùng"
-  ],
-  "user": [
-    "người dùng"
-  ],
-  "admin": [
-    "admin"
-  ],
-  "quan tri vien": [
-    "quản trị viên"
-  ],
-  "nhan vien": [
-    "nhân viên"
-  ],
-  "staff": [
-    "nhân viên"
-  ],
-  "dang ky": [
-    "đăng ký"
-  ],
-  "register": [
-    "đăng ký"
-  ],
-  "dang nhap": [
-    "đăng nhập"
-  ],
-  "login": [
-    "đăng nhập"
-  ],
-  "dang xuat": [
-    "đăng xuất"
-  ],
-  "logout": [
-    "đăng xuất"
-  ],
-  "tai khoan": [
-    "tài khoản"
-  ],
-  "account": [
-    "tài khoản"
-  ],
-  "mat khau": [
-    "mật khẩu"
-  ],
-  "password": [
-    "mật khẩu"
-  ],
-  "pass": [
-    "mật khẩu"
-  ],
-  "username": [
-    "tên đăng nhập"
-  ],
-  "email": [
-    "email"
-  ],
-  "mail": [
-    "email"
-  ],
-  "sms": [
-    "sms"
-  ],
-  "otp": [
-    "otp"
-  ],
-  "ma xac nhan": [
-    "mã xác nhận"
-  ],
-  "xac nhan": [
-    "xác nhận"
-  ],
-  "confirm": [
-    "xác nhận"
-  ],
-  "kich hoat": [
-    "kích hoạt"
-  ],
-  "active": [
-    "kích hoạt"
-  ],
-  "mo khoa": [
-    "mở khóa"
-  ],
-  "unlock": [
-    "mở khóa"
-  ],
-  "khoa": [
-    "khóa"
-  ],
-  "lock": [
-    "khóa"
-  ],
-  "bao mat": [
-    "bảo mật"
-  ],
-  "security": [
-    "bảo mật"
-  ],
-  "an ninh": [
-    "an ninh"
-  ],
-  "rieng tu": [
-    "riêng tư"
-  ],
-  "privacy": [
-    "riêng tư"
-  ],
-  "van tay": [
-    "vân tay"
-  ],
-  "fingerprint": [
-    "vân tay"
-  ],
-  "khuon mat": [
-    "khuôn mặt"
-  ],
-  "face": [
-    "khuôn mặt"
-  ],
-  "face id": [
-    "face id"
-  ],
-  "touch id": [
-    "touch id"
-  ],
-  "mat ma": [
-    "mật mã"
-  ],
-  "pin": [
-    "pin"
-  ],
-  "pattern": [
-    "hình mẫu"
-  ],
-  "app": [
-    "app"
-  ],
-  "ung dung": [
-    "ứng dụng"
-  ],
-  "phan mem": [
-    "phần mềm"
-  ],
-  "software": [
-    "phần mềm"
-  ],
-  "game": [
-    "game"
-  ],
-  "tro choi": [
-    "trò chơi"
-  ],
-  "tai": [
-    "tải"
-  ],
-  "download": [
-    "tải"
-  ],
-  "cai dat": [
-    "cài đặt"
-  ],
-  "install": [
-    "cài đặt"
-  ],
-  "cap nhat": [
-    "cập nhật"
-  ],
-  "update": [
-    "cập nhật"
-  ],
-  "nang cap": [
-    "nâng cấp"
-  ],
-  "upgrade": [
-    "nâng cấp"
-  ],
-  "ha cap": [
-    "hạ cấp"
-  ],
-  "downgrade": [
-    "hạ cấp"
-  ],
-  "xoa": [
-    "xóa"
-  ],
-  "delete": [
-    "xóa"
-  ],
-  "go bo": [
-    "gỡ bỏ"
-  ],
-  "remove": [
-    "gỡ bỏ"
-  ],
-  "setting": [
-    "cài đặt"
-  ],
-  "config": [
-    "cấu hình"
-  ],
-  "cau hinh": [
-    "cấu hình"
-  ],
-  "tuy chinh": [
-    "tùy chỉnh"
-  ],
-  "customize": [
-    "tùy chỉnh"
-  ],
-  "thiet lap": [
-    "thiết lập"
-  ],
-  "setup": [
-    "thiết lập"
-  ],
-  "khoi tao": [
-    "khởi tạo"
-  ],
-  "initialize": [
-    "khởi tạo"
-  ],
-  "sao luu": [
-    "sao lưu"
-  ],
-  "backup": [
-    "sao lưu"
-  ],
-  "khoi phuc": [
-    "khôi phục"
-  ],
-  "restore": [
-    "khôi phục"
-  ],
-  "dong bo": [
-    "đồng bộ"
-  ],
-  "sync": [
-    "đồng bộ"
-  ],
-  "ket noi": [
-    "kết nối"
-  ],
-  "connect": [
-    "kết nối"
-  ],
-  "lien ket": [
-    "liên kết"
-  ],
-  "link": [
-    "liên kết"
-  ],
-  "chia se": [
-    "chia sẻ"
-  ],
-  "share": [
-    "chia sẻ"
-  ],
-  "gui": [
-    "gửi"
-  ],
-  "send": [
-    "gửi"
-  ],
-  "nhan": [
-    "nhận"
-  ],
-  "receive": [
-    "nhận"
-  ],
-  "tin nhan": [
-    "tin nhắn"
-  ],
-  "message": [
-    "tin nhắn"
-  ],
-  "sms": [
-    "sms"
-  ],
-  "chat": [
-    "chat"
-  ],
-  "tro chuyen": [
-    "trò chuyện"
-  ],
-  "goi": [
-    "gọi"
-  ],
-  "call": [
-    "gọi"
-  ],
-  "goi dien": [
-    "gọi điện"
-  ],
-  "phone call": [
-    "gọi điện"
-  ],
-  "goi video": [
-    "gọi video"
-  ],
-  "video call": [
-    "gọi video"
-  ],
-  "anh": [
-    "ảnh"
-  ],
-  "hinh": [
-    "hình"
-  ],
-  "photo": [
-    "ảnh"
-  ],
-  "picture": [
-    "ảnh"
-  ],
-  "image": [
-    "ảnh"
-  ],
-  "video": [
-    "video"
-  ],
-  "clip": [
-    "clip"
-  ],
-  "phim": [
-    "phim"
-  ],
-  "movie": [
-    "phim"
-  ],
-  "nhac": [
-    "nhạc"
-  ],
-  "music": [
-    "nhạc"
-  ],
-  "bai hat": [
-    "bài hát"
-  ],
-  "song": [
-    "bài hát"
-  ],
-  "album": [
-    "album"
-  ],
-  "playlist": [
-    "danh sách phát"
-  ],
-  "danh sach phat": [
-    "danh sách phát"
-  ],
-  "loa ngoai": [
-    "loa ngoài"
-  ],
-  "speaker": [
-    "loa"
-  ],
-  "headphone": [
-    "tai nghe"
-  ],
-  "tai nghe": [
-    "tai nghe"
-  ],
-  "earphone": [
-    "tai nghe"
-  ],
-  "am thanh": [
-    "âm thanh"
-  ],
-  "sound": [
-    "âm thanh"
-  ],
-  "audio": [
-    "âm thanh"
-  ],
-  "am luong": [
-    "âm lượng"
-  ],
-  "volume": [
-    "âm lượng"
-  ],
-  "to": [
-    "to"
-  ],
-  "nho": [
-    "nhỏ"
-  ],
-  "im": [
-    "im"
-  ],
-  "loud": [
-    "to"
-  ],
-  "quiet": [
-    "nhỏ"
-  ],
-  "mute": [
-    "tắt tiếng"
-  ],
-  "tat tieng": [
-    "tắt tiếng"
-  ],
-  "rung": [
-    "rung"
-  ],
-  "vibrate": [
-    "rung"
-  ],
-  "chuong": [
-    "chuông"
-  ],
-  "ringtone": [
-    "chuông"
-  ],
-  "nhac chuong": [
-    "nhạc chuông"
-  ],
-  "thong bao": [
-    "thông báo"
-  ],
-  "notification": [
-    "thông báo"
-  ],
-  "canh bao": [
-    "cảnh báo"
-  ],
-  "alert": [
-    "cảnh báo"
-  ],
-  "icon": [
-    "biểu tượng"
-  ],
-  "bieu tuong": [
-    "biểu tượng"
-  ],
-  "logo": [
-    "logo"
-  ],
-  "hinh dai dien": [
-    "hình đại diện"
-  ],
-  "avatar": [
-    "hình đại diện"
-  ],
-  "bia": [
-    "bìa"
-  ],
-  "cover": [
-    "bìa"
-  ],
-  "nen": [
-    "nền"
-  ],
-  "background": [
-    "nền"
-  ],
-  "wallpaper": [
-    "hình nền"
-  ],
-  "hinh nen": [
-    "hình nền"
-  ],
-  "theme": [
-    "giao diện"
-  ],
-  "giao dien": [
-    "giao diện"
-  ],
-  "man hinh": [
-    "màn hình"
-  ],
-  "display": [
-    "màn hình"
-  ],
-  "screen": [
-    "màn hình"
-  ],
-  "cam bien": [
-    "cảm biến"
-  ],
-  "sensor": [
-    "cảm biến"
-  ],
-  "van tay": [
-    "vân tay"
-  ],
-  "fingerprint": [
-    "vân tay"
-  ],
-  "khuon mat": [
-    "khuôn mặt"
-  ],
-  "face": [
-    "khuôn mặt"
-  ],
-  "mong mat": [
-    "mống mắt"
-  ],
-  " iris": [
-    "mống mắt"
-  ],
-  "hai lite": [
-    "hai lite"
-  ],
-  "flashlight": [
-    "đèn pin"
-  ],
-  "den pin": [
-    "đèn pin"
-  ],
-  "torch": [
-    "đèn pin"
-  ],
-  "den flash": [
-    "đèn flash"
-  ],
-  "flash": [
-    "flash"
-  ],
-  "zoom": [
-    "zoom"
-  ],
-  "phong to": [
-    "phóng to"
-  ],
-  "thu nho": [
-    "thu nhỏ"
-  ],
-  "chup anh": [
-    "chụp ảnh"
-  ],
-  "take photo": [
-    "chụp ảnh"
-  ],
-  "quay video": [
-    "quay video"
-  ],
-  "record": [
-    "quay"
-  ],
-  "ghi am": [
-    "ghi âm"
-  ],
-  "recorder": [
-    "ghi âm"
-  ],
-  "mic": [
-    "mic"
-  ],
-  "microphone": [
-    "microphone"
-  ],
-  "cong nghe": [
-    "công nghệ"
-  ],
-  "technology": [
-    "công nghệ"
-  ],
-  "tech": [
-    "công nghệ"
-  ],
-  "ai": [
-    "ai"
-  ],
-  "tri tue nhan tao": [
-    "trí tuệ nhân tạo"
-  ],
-  "ar": [
-    "ar"
-  ],
-  "thuc te ao": [
-    "thực tế ảo"
-  ],
-  "vr": [
-    "vr"
-  ],
-  "thuc te tang cuong": [
-    "thực tế tăng cường"
-  ],
-  "nfc": [
-    "nfc"
-  ],
-  "gps": [
-    "gps"
-  ],
-  "vi tri": [
-    "vị trí"
-  ],
-  "location": [
-    "vị trí"
-  ],
-  "ban do": [
-    "bản đồ"
-  ],
-  "map": [
-    "bản đồ"
-  ],
-  "dan duong": [
-    "dẫn đường"
-  ],
-  "navigation": [
-    "dẫn đường"
-  ],
-  "na vi": [
-    "navi"
-  ],
-  "compass": [
-    "la bàn"
-  ],
-  "la ban": [
-    "la bàn"
-  ],
-  "gia toc": [
-    "gia tốc"
-  ],
-  "accelerometer": [
-    "gia tốc"
-  ],
-  "con quay": [
-    "con quay"
-  ],
-  "gyroscope": [
-    "con quay"
-  ],
-  "ap suat": [
-    "áp suất"
-  ],
-  "barometer": [
-    "áp kế"
-  ],
-  "nhiet do": [
-    "nhiệt độ"
-  ],
-  "temperature": [
-    "nhiệt độ"
-  ],
-  "do am": [
-    "độ ẩm"
-  ],
-  "humidity": [
-    "độ ẩm"
-  ],
-  "anh sang": [
-    "ánh sáng"
-  ],
-  "light": [
-    "ánh sáng"
-  ],
-  "gan": [
-    "gần"
-  ],
-  "proximity": [
-    "gần"
-  ],
-  "tu truong": [
-    "từ trường"
-  ],
-  "magnetometer": [
-    "la bàn điện tử"
-  ],
-  "tim mach": [
-    "tim mạch"
-  ],
-  "heart rate": [
-    "nhịp tim"
-  ],
-  "spo2": [
-    "spo2"
-  ],
-  "oxy mau": [
-    "oxy máu"
-  ],
-  "huyet ap": [
-    "huyết áp"
-  ],
-  "blood pressure": [
-    "huyết áp"
-  ],
-  "buoc chan": [
-    "bước chân"
-  ],
-  "steps": [
-    "bước chân"
-  ],
-  "calo": [
-    "calo"
-  ],
-  "calorie": [
-    "calo"
-  ],
-  "tap luyen": [
-    "tập luyện"
-  ],
-  "workout": [
-    "tập luyện"
-  ],
-  "fitness": [
-    "fitness"
-  ],
-  "suc khoe": [
-    "sức khỏe"
-  ],
-  "health": [
-    "sức khỏe"
-  ],
-  "the thao": [
-    "thể thao"
-  ],
-  "sport": [
-    "thể thao"
-  ],
-  "chay bo": [
-    "chạy bộ"
-  ],
-  "running": [
-    "chạy bộ"
-  ],
-  "dap xe": [
-    "đạp xe"
-  ],
-  "cycling": [
-    "đạp xe"
-  ],
-  "boi loi": [
-    "bơi lội"
-  ],
-  "swimming": [
-    "bơi lội"
-  ],
-  "chong nuoc": [
-    "chống nước"
-  ],
-  "waterproof": [
-    "chống nước"
-  ],
-  "ip67": [
-    "ip67"
-  ],
-  "ip68": [
-    "ip68"
-  ],
-  "ip rating": [
-    "chỉ số ip"
-  ],
-  "gaming": [
-    "gaming"
-  ],
-  "choi game": [
-    "chơi game"
-  ],
-  "do hoa": [
-    "đồ hoạ"
-  ],
-  "graphic": [
-    "đồ hoạ"
-  ],
-  "van phong": [
-    "văn phòng"
-  ],
-  "office": [
-    "văn phòng"
-  ],
-  "hoc tap": [
-    "học tập"
-  ],
-  "study": [
-    "học tập"
-  ],
-  "online": [
-    "online"
-  ],
-  "truc tuyen": [
-    "trực tuyến"
-  ],
-  "offline": [
-    "offline"
-  ],
-  "ngoai tuyen": [
-    "ngoại tuyến"
-  ],
-  "internet": [
-    "internet"
-  ],
-  "mang": [
-    "mạng"
-  ],
-  "network": [
-    "mạng"
-  ],
-  "data": [
-    "data"
-  ],
-  "du lieu": [
-    "dữ liệu"
-  ],
-  "cloud": [
-    "cloud"
-  ],
-  "dam may": [
-    "đám mây"
-  ],
-  "icloud": [
-    "icloud"
-  ],
-  "google drive": [
-    "google drive"
-  ],
-  "onedrive": [
-    "onedrive"
-  ],
-  "dropbox": [
-    "dropbox"
-  ],
-  "server": [
-    "server"
-  ],
-  "may chu": [
-    "máy chủ"
-  ],
-  "host": [
-    "host"
-  ],
-  "domain": [
-    "tên miền"
-  ],
-  "ten mien": [
-    "tên miền"
-  ],
-  "website": [
-    "website"
-  ],
-  "trang web": [
-    "trang web"
-  ],
-  "web": [
-    "web"
-  ],
-  "browser": [
-    "trình duyệt"
-  ],
-  "trinh duyet": [
-    "trình duyệt"
-  ],
-  "chrome": [
-    "chrome"
-  ],
-  "firefox": [
-    "firefox"
-  ],
-  "safari": [
-    "safari"
-  ],
-  "edge": [
-    "edge"
-  ],
-  "opera": [
-    "opera"
-  ],
-  "coccoc": [
-    "cốc cốc"
-  ],
-  "coc coc": [
-    "cốc cốc"
-  ],
-  "youtube": [
-    "youtube"
-  ],
-  "facebook": [
-    "facebook"
-  ],
-  "fb": [
-    "facebook"
-  ],
-  "instagram": [
-    "instagram"
-  ],
-  "insta": [
-    "instagram"
-  ],
-  "ig": [
-    "instagram"
-  ],
-  "tiktok": [
-    "tiktok"
-  ],
-  "twitter": [
-    "twitter"
-  ],
-  "zalo": [
-    "zalo"
-  ],
-  "messenger": [
-    "messenger"
-  ],
-  "telegram": [
-    "telegram"
-  ],
-  "viber": [
-    "viber"
-  ],
-  "whatsapp": [
-    "whatsapp"
-  ],
-  "skype": [
-    "skype"
-  ],
-  "zoom": [
-    "zoom"
-  ],
-  "teams": [
-    "teams"
-  ],
-  "meet": [
-    "meet"
-  ],
-  "google": [
-    "google"
-  ],
-  "gmail": [
-    "gmail"
-  ],
-  "outlook": [
-    "outlook"
-  ],
-  "yahoo": [
-    "yahoo"
-  ],
-  "hotmail": [
-    "hotmail"
-  ],
-  "iphone": [
-    "iphone"
-  ],
-  "ipad": [
-    "ipad"
-  ],
-  "macbook": [
-    "macbook"
-  ],
-  "imac": [
-    "imac"
-  ],
-  "mac": [
-    "mac"
-  ],
-  "ios": [
-    "ios"
-  ],
-  "android": [
-    "android"
-  ],
-  "windows": [
-    "windows"
-  ],
-  "win": [
-    "windows"
-  ],
-  "linux": [
-    "linux"
-  ],
-  "macos": [
-    "macos"
-  ],
-  "he dieu hanh": [
-    "hệ điều hành"
-  ],
-  "os": [
-    "hệ điều hành"
-  ],
-  "operating system": [
-    "hệ điều hành"
-  ],
-  "phien ban": [
-    "phiên bản"
-  ],
-  "version": [
-    "phiên bản"
-  ],
-  "ver": [
-    "phiên bản"
-  ],
-  "moi nhat": [
-    "mới nhất"
-  ],
-  "latest": [
-    "mới nhất"
-  ],
-  "cu nhat": [
-    "cũ nhất"
-  ],
-  "oldest": [
-    "cũ nhất"
-  ],
-  "pho bien": [
-    "phổ biến"
-  ],
-  "popular": [
-    "phổ biến"
-  ],
-  "hot": [
-    "hot"
-  ],
-  "trending": [
-    "xu hướng"
-  ],
-  "xu huong": [
-    "xu hướng"
-  ],
-  "bestseller": [
-    "bán chạy"
-  ],
-  "ban chay": [
-    "bán chạy"
-  ],
-  "top": [
-    "top"
-  ],
-  "xep hang": [
-    "xếp hạng"
-  ],
-  "ranking": [
-    "xếp hạng"
-  ],
-  "danh gia": [
-    "đánh giá"
-  ],
-  "review": [
-    "đánh giá"
-  ],
-  "feedback": [
-    "phản hồi"
-  ],
-  "phan hoi": [
-    "phản hồi"
-  ],
-  "comment": [
-    "bình luận"
-  ],
-  "binh luan": [
-    "bình luận"
-  ],
-  "rate": [
-    "đánh giá"
-  ],
-  "xep hang": [
-    "xếp hạng"
-  ],
-  "star": [
-    "sao"
-  ],
-  "sao": [
-    "sao"
-  ],
-  "diem": [
-    "điểm"
-  ],
-  "point": [
-    "điểm"
-  ],
-  "like": [
-    "thích"
-  ],
-  "thich": [
-    "thích"
-  ],
-  "dislike": [
-    "không thích"
-  ],
-  "khong thich": [
-    "không thích"
-  ],
-  "yeu thich": [
-    "yêu thích"
-  ],
-  "favorite": [
-    "yêu thích"
-  ],
-  "wishlist": [
-    "danh sách yêu thích"
-  ],
-  "danh sach yeu thich": [
-    "danh sách yêu thích"
-  ],
-  "gio hang": [
-    "giỏ hàng"
-  ],
-  "cart": [
-    "giỏ hàng"
-  ],
-  "basket": [
-    "giỏ hàng"
-  ],
-  "checkout": [
-    "thanh toán"
-  ],
-  "order": [
-    "đơn hàng"
-  ],
-  "purchase": [
-    "mua hàng"
-  ],
-  "mua hang": [
-    "mua hàng"
-  ],
-  "buy": [
-    "mua"
-  ],
-  "sell": [
-    "bán"
-  ],
-  "transaction": [
-    "giao dịch"
-  ],
-  "giao dich": [
-    "giao dịch"
-  ],
-  "invoice": [
-    "hóa đơn"
-  ],
-  "hoa don": [
-    "hóa đơn"
-  ],
-  "receipt": [
-    "biên lai"
-  ],
-  "bien lai": [
-    "biên lai"
-  ],
-  "warranty": [
-    "bảo hành"
-  ],
-  "guarantee": [
-    "đảm bảo"
-  ],
-  "refund": [
-    "hoàn tiền"
-  ],
-  "hoan tien": [
-    "hoàn tiền"
-  ],
-  "exchange": [
-    "đổi"
-  ],
-  "return": [
-    "trả"
-  ],
-  "cancel": [
-    "hủy"
-  ],
-  "confirm": [
-    "xác nhận"
-  ],
-  "xac nhan": [
-    "xác nhận"
-  ],
-  "complete": [
-    "hoàn thành"
-  ],
-  "hoan thanh": [
-    "hoàn thành"
-  ],
-  "pending": [
-    "đang chờ"
-  ],
-  "dang cho": [
-    "đang chờ"
-  ],
-  "processing": [
-    "đang xử lý"
-  ],
-  "dang xu ly": [
-    "đang xử lý"
-  ],
-  "shipping": [
-    "đang giao"
-  ],
-  "dang giao": [
-    "đang giao"
-  ],
-  "delivered": [
-    "đã giao"
-  ],
-  "da giao": [
-    "đã giao"
-  ],
-  "received": [
-    "đã nhận"
-  ],
-  "da nhan": [
-    "thành công"
-  ],
-  "thanh cong": [
-    "thành công"
-  ],
-  "error": [
-    "lỗi"
-  ],
-  "loi": [
-    "lỗi"
-  ],
-  "warning": [
-    "cảnh báo"
-  ],
-  "canh bao": [
-    "cảnh báo"
-  ],
-  "info": [
-    "thông tin"
-  ],
-  "information": [
-    "thông tin"
-  ],
-  "detail": [
-    "chi tiết"
-  ],
-  "specification": [
-    "thông số kỹ thuật"
-  ],
-  "thong so": [
-    "thông số"
-  ],
-  "thong so ky thuat": [
-    "thông số kỹ thuật"
-  ],
-  "feature": [
-    "tính năng"
-  ],
-  "tinh nang": [
-    "tính năng"
-  ],
-  "function": [
-    "chức năng"
-  ],
-  "chuc nang": [
-    "chức năng"
-  ],
-  "advantage": [
-    "ưu điểm"
-  ],
-  "uu diem": [
-    "ưu điểm"
-  ],
-  "disadvantage": [
-    "nhược điểm"
-  ],
-  "nhuoc diem": [
-    "nhược điểm"
-  ],
-  "pros": [
-    "ưu điểm"
-  ],
-  "cons": [
-    "nhược điểm"
-  ],
-  "comparison": [
-    "so sánh"
-  ],
-  "compare": [
-    "so sánh"
-  ],
-  "difference": [
-    "khác biệt"
-  ],
-  "khac biet": [
-    "khác biệt"
-  ],
-  "similar": [
-    "tương tự"
-  ],
-  "tuong tu": [
-    "tương tự"
-  ],
-  "same": [
-    "giống"
-  ],
-  "giong": [
-    "giống"
-  ],
-  "different": [
-    "khác"
-  ],
-  "khac": [
-    "khác"
-  ],
-  "better": [
-    "tốt hơn"
-  ],
-  "tot hon": [
-    "tốt hơn"
-  ],
-  "worse": [
-    "tệ hơn"
-  ],
-  "te hon": [
-    "tệ hơn"
-  ],
-  "best": [
-    "tốt nhất"
-  ],
-  "tot nhat": [
-    "tốt nhất"
-  ],
-  "worst": [
-    "tệ nhất"
-  ],
-  "te nhat": [
-    "tệ nhất"
-  ],
-  "cheap": [
-    "rẻ"
-  ],
-  "cheaper": [
-    "rẻ hơn"
-  ],
-  "re hon": [
-    "rẻ hơn"
-  ],
-  "cheapest": [
-    "rẻ nhất"
-  ],
-  "re nhat": [
-    "rẻ nhất"
-  ],
-  "expensive": [
-    "đắt"
-  ],
-  "more expensive": [
-    "đắt hơn"
-  ],
-  "dat hon": [
-    "đắt hơn"
-  ],
-  "most expensive": [
-    "đắt nhất"
-  ],
-  "dat nhat": [
-    "đắt nhất"
-  ],
-  "affordable": [
-    "giá phải chăng"
-  ],
-  "gia phai chang": [
-    "giá phải chăng"
-  ],
-  "budget": [
-    "ngân sách"
-  ],
-  "ngan sach": [
-    "ngân sách"
-  ],
-  "mid-range": [
-    "tầm trung"
-  ],
-  "tam trung": [
-    "tầm trung"
-  ],
-  "high-end": [
-    "cao cấp"
-  ],
-  "flagship": [
-    "hàng đầu"
-  ],
-  "entry-level": [
-    "phổ thông"
-  ],
-  "pho thong": [
-    "phổ thông"
-  ],
-  "premium": [
-    "cao cấp"
-  ],
-  "luxury": [
-    "sang trọng"
-  ],
-  "sang trong": [
-    "sang trọng"
-  ],
-  "standard": [
-    "tiêu chuẩn"
-  ],
-  "tieu chuan": [
-    "tiêu chuẩn"
-  ],
-  "basic": [
-    "cơ bản"
-  ],
-  "co ban": [
-    "cơ bản"
-  ],
-  "advanced": [
-    "nâng cao"
-  ],
-  "nang cao": [
-    "nâng cao"
-  ],
-  "professional": [
-    "chuyên nghiệp"
-  ],
-  "chuyen nghiep": [
-    "chuyên nghiệp"
-  ],
-  "pro": [
-    "pro"
-  ],
-  "lite": [
-    "lite"
-  ],
-  "plus": [
-    "plus"
-  ],
-  "max": [
-    "max"
-  ],
-  "mini": [
-    "mini"
-  ],
-  "ultra": [
-    "ultra"
-  ],
-  "note": [
-    "note"
-  ],
-  "series": [
-    "series"
-  ],
-  "generation": [
-    "thế hệ"
-  ],
-  "the he": [
-    "thế hệ"
-  ],
-  "gen": [
-    "thế hệ"
-  ],
-  "year": [
-    "năm"
-  ],
-  "model": [
-    "mẫu"
-  ],
-  "mau": [
-    "mẫu"
-  ],
-  "type": [
-    " loại"
-  ],
-  "loai": [
-    "loại"
-  ],
-  "kind": [
-    "loại"
-  ],
-  "category": [
-    "danh mục"
-  ],
-  "danh muc": [
-    "danh mục"
-  ],
-  "brand": [
-    "thương hiệu"
-  ],
-  "thuong hieu": [
-    "thương hiệu"
-  ],
-  "manufacturer": [
-    "nhà sản xuất"
-  ],
-  "nha san xuat": [
-    "nhà sản xuất"
-  ],
-  "maker": [
-    "nhà sản xuất"
-  ],
-  "seller": [
-    "người bán"
-  ],
-  "nguoi ban": [
-    "người bán"
-  ],
-  "buyer": [
-    "người mua"
-  ],
-  "nguoi mua": [
-    "người mua"
-  ],
-  "dealer": [
-    "đại lý"
-  ],
-  "dai ly": [
-    "đại lý"
-  ],
-  "distributor": [
-    "nhà phân phối"
-  ],
-  "nha phan phoi": [
-    "nhà phân phối"
-  ],
-  "retailer": [
-    "nhà bán lẻ"
-  ],
-  "nha ban le": [
-    "nhà bán lẻ"
-  ],
-  "wholesaler": [
-    "nhà bán sỉ"
-  ],
-  "nha ban si": [
-    "nhà bán sỉ"
-  ],
-  "supplier": [
-    "nhà cung cấp"
-  ],
-  "nha cung cap": [
-    "nhà cung cấp"
-  ],
-  "importer": [
-    "nhà nhập khẩu"
-  ],
-  "nha nhap khau": [
-    "nhà nhập khẩu"
-  ],
-  "exporter": [
-    "nhà xuất khẩu"
-  ],
-  "nha xuat khau": [
-    "nhà xuất khẩu"
-  ],
-  "authentic": [
-    "chính hãng"
-  ],
-  "genuine": [
-    "chính hãng"
-  ],
-  "original": [
-    "chính hãng"
-  ],
-  "legit": [
-    "chính hãng"
-  ],
-  "authorized": [
-    "được ủy quyền"
-  ],
-  "duoc uy quyen": [
-    "được ủy quyền"
-  ],
-  "official": [
-    "chính thức"
-  ],
-  "chinh thuc": [
-    "chính thức"
-  ],
-  "licensed": [
-    "có giấy phép"
-  ],
-  "co giay phep": [
-    "có giấy phép"
-  ],
-  "certified": [
-    "được chứng nhận"
-  ],
-  "duoc chung nhan": [
-    "được chứng nhận"
-  ],
-  "approved": [
-    "được phê duyệt"
-  ],
-  "duoc phe duyet": [
-    "được phê duyệt"
-  ],
-  "verified": [
-    "đã xác minh"
-  ],
-  "da xac minh": [
-    "đã xác minh"
-  ],
-  "trusted": [
-    "đáng tin cậy"
-  ],
-  "dang tin cay": [
-    "đáng tin cậy"
-  ],
-  "reliable": [
-    "đáng tin cậy"
-  ],
-  "quality": [
-    "chất lượng"
-  ],
-  "exclusive": [
-    "độc quyền"
-  ],
-  "doc quyen": [
-    "độc quyền"
-  ],
-  "limited": [
-    "giới hạn"
-  ],
-  "gioi han": [
-    "giới hạn"
-  ],
-  "limited edition": [
-    "phiên bản giới hạn"
-  ],
-  "phien ban gioi han": [
-    "phiên bản giới hạn"
-  ],
-  "special edition": [
-    "phiên bản đặc biệt"
-  ],
-  "phien ban dac biet": [
-    "phiên bản đặc biệt"
-  ],
-  "custom": [
-    "tùy chỉnh"
-  ],
-  "tuy chinh": [
-    "tùy chỉnh"
-  ],
-  "personalized": [
-    "cá nhân hóa"
-  ],
-  "ca nhan hoa": [
-    "cá nhân hóa"
-  ],
-  "unique": [
-    "độc đáo"
-  ],
-  "doc dao": [
-    "độc đáo"
-  ],
-  "rare": [
-    "hiếm"
-  ],
-  "hiem": [
-    "hiếm"
-  ],
-  "common": [
-    "thông thường"
-  ],
-  "thong thuong": [
-    "thông thường"
-  ],
-  "available": [
-    "có sẵn"
-  ],
-  "co san": [
-    "có sẵn"
-  ],
-  "in stock": [
-    "còn hàng"
-  ],
-  "con hang": [
-    "còn hàng"
-  ],
-  "out of stock": [
-    "hết hàng"
-  ],
-  "het hang": [
-    "hết hàng"
-  ],
-  "pre-order": [
-    "đặt trước"
-  ],
-  "dat truoc": [
-    "đặt trước"
-  ],
-  "coming soon": [
-    "sắp ra mắt"
-  ],
-  "sap ra mat": [
-    "sắp ra mắt"
-  ],
-  "new arrival": [
-    "hàng mới về"
-  ],
-  "hang moi ve": [
-    "hàng mới về"
-  ],
-  "just in": [
-    "mới về"
-  ],
-  "moi ve": [
-    "mới về"
-  ],
-  "clearance": [
-    "thanh lý"
-  ],
-  "thanh ly": [
-    "thanh lý"
-  ],
-  "deal": [
-    "ưu đãi"
-  ],
-  "offer": [
-    "ưu đãi"
-  ],
-  "promotion": [
-    "khuyến mãi"
-  ],
-  "promo": [
-    "khuyến mãi"
-  ],
-  "discount": [
-    "giảm giá"
-  ],
-  "cut": [
-    "giảm"
-  ],
-  "giam": [
-    "giảm"
-  ],
-  "reduce": [
-    "giảm"
-  ],
-  "percent": [
-    "phần trăm"
-  ],
-  "phan tram": [
-    "phần trăm"
-  ],
-  "%": [
-    "phần trăm"
-  ],
-  "off": [
-    "giảm"
-  ],
-  "save": [
-    "tiết kiệm"
-  ],
-  "tiet kiem": [
-    "tiết kiệm"
-  ],
-  "bonus": [
-    "thưởng"
-  ],
-  "thuong": [
-    "thưởng"
-  ],
-  "gift": [
-    "quà tặng"
-  ],
-  "qua tang": [
-    "quà tặng"
-  ],
-  "freebie": [
-    "quà tặng"
-  ],
-  "giveaway": [
-    "tặng"
-  ],
-  "tang": [
-    "tặng"
-  ],
-  "complimentary": [
-    "miễn phí"
-  ],
-  "free": [
-    "miễn phí"
-  ],
-  "mien phi": [
-    "miễn phí"
-  ],
-  "no cost": [
-    "không mất phí"
-  ],
-  "khong mat phi": [
-    "không mất phí"
-  ],
-  "on the house": [
-    "miễn phí"
-  ],
-  "gratis": [
-    "miễn phí"
-  ]
+  "15p": ["15 phút"],
+  "1c": ["1 cái"],
+  "1g": ["1 giờ"],
+  "1m": ["một mình"],
+  "1tháng": ["1 tháng"],
+  "môt": ["1"],
+  "2 ank": ["2 anh"],
+  "k": ["không"],
+  "ko": ["không"],
+  "kg": ["không"],
+  "kh": ["không"],
+  "khong": ["không"],
+  "khum": ["không"],
+  "khm": ["không"],
+  "hem": ["không"],
+  "hok": ["không"],
+  "hông": ["không"],
+  "hảng": ["hãng"],
+  "mn": ["muốn"],
+  "mún": ["muốn"],
+  "múnh": ["muốn"],
+  "m": ["mình"],
+  "all": ["tất cả"],
+  "tất cao": ["tất cả"],
+  "tấc cao": ["tất cả"],
+  "mình": ["mình"],
+  "mink": ["mình"],
+  "minh": ["mình"],
+  "muốn": ["muốn"],
+  "min": ["thấp nhất"],
+  "dc": ["được"],
+  "dk": ["được"],
+  "duoc": ["được"],
+  "r": ["rồi"],
+  "roi": ["rồi"],
+  "z": ["gì"],
+  "j": ["gì"],
+  "ji": ["gì"],
+  "giề": ["gì"],
+  "gi": ["gì"],
+  "ss": ["so sánh"],
+  "so sánh": ["so sánh"],
+  "cho xac nhan": ["chờ xác nhận"],
+  "cho xn": ["chờ xác nhận"],
+  "xn": ["xác nhận"],
+  "bn": ["bao nhiêu"],
+  "bnn": ["bao nhiêu"],
+  "bnh": ["bao nhiêu"],
+  "bnhieu": ["bao nhiêu"],
+  "bnhiu": ["bao nhiêu"],
+  "ch": ["chưa"],
+  "chua": ["chưa"],
+  "chw": ["chưa"],
+  "vs": ["với"],
+  "voi": ["với"],
+  "v": ["vậy"],
+  "vay": ["vậy"],
+  "oke": ["ok"],
+  "okie": ["ok"],
+  "okee": ["ok"],
+  "tks": ["cảm ơn"],
+  "thanks": ["cảm ơn"],
+  "thank": ["cảm ơn"],
+  "cam on": ["cảm ơn"],
+  "dt": ["điện thoại"],
+  "đt": ["điện thoại"],
+  "đthoai": ["điện thoại"],
+  "dien thoai": ["điện thoại"],
+  "diện thoại": ["điện thoại"],
+  "điên thoại": ["điện thoại"],
+  "đien thoại": ["điện thoại"],
+  "điện thoại": ["điện thoại"],
+  "smartphone": ["điện thoại"],
+  "smart phone": ["điện thoại"],
+  "phone": ["điện thoại"],
+  "fone": ["điện thoại"],
+  "laptop": ["laptop"],
+  "laptob": ["laptop"],
+  "labtop": ["laptop"],
+  "laktop": ["laptop"],
+  "lap": ["laptop"],
+  "lap top": ["laptop"],
+  "maytinh": ["máy tính"],
+  "may tinh": ["máy tính"],
+  "pc": ["máy tính"],
+  "mac": ["macbook"],
+  "tai nge": ["tai nghe"],
+  "tai ngề": ["tai nghe"],
+  "tay nghe": ["tai nghe"],
+  "airpod": ["tai nghe"],
+  "air pod": ["tai nghe"],
+  "chuot": ["chuột"],
+  "chuôt": ["chuột"],
+  "chụt": ["chuột"],
+  "mouse": ["chuột"],
+  "ban phim": ["bàn phím"],
+  "ban fim": ["bàn phím"],
+  "bàn fim": ["bàn phím"],
+  "keyboard": ["bàn phím"],
+  "phim": ["bàn phím"],
+  "key": ["bàn phím"],
+  "keybroad": ["bàn phím"],
+  "key board": ["bàn phím"],
+  "mang hinh": ["màn hình"],
+  "man hình": ["màn hình"],
+  "mang hình": ["màn hình"],
+  "màng hình": ["màn hình"],
+  "manf hình": ["màn hình"],
+  "monitor": ["màn hình"],
+  "screen": ["màn hình"],
+  "sac": ["sạc"],
+  "sạt": ["sạc"],
+  "săc": ["sạc"],
+  "charger": ["sạc"],
+  "adapter": ["sạc"],
+  "cable": ["cáp"],
+  "cap": ["cáp"],
+  "day": ["dây"],
+  "dây": ["dây"],
+  "op lung": ["ốp lưng"],
+  "op": ["ốp"],
+  "case": ["ốp lưng"],
+  "kinh cuong luc": ["kính cường lực"],
+  "kinh": ["kính cường lực"],
+  "dan man hinh": ["dán màn hình"],
+  "dan": ["dán màn hình"],
+  "speaker": ["loa"],
+  "loa": ["loa"],
+  "usb": ["usb"],
+  "the nho": ["thẻ nhớ"],
+  "memory card": ["thẻ nhớ"],
+  "sd": ["thẻ nhớ"],
+  "o cung": ["ổ cứng"],
+  "hard drive": ["ổ cứng"],
+  "hdd": ["ổ cứng"],
+  "ssd": ["ssd"],
+  "pin du phong": ["pin dự phòng"],
+  "power bank": ["pin dự phòng"],
+  "pin": ["pin"],
+  "camera": ["camera"],
+  "cam": ["camera"],
+  "webcam": ["webcam"],
+  "web cam": ["webcam"],
+  "ram": ["ram"],
+  "rom": ["rom"],
+  "bo nho": ["bộ nhớ"],
+  "luu tru": ["lưu trữ"],
+  "storage": ["bộ nhớ"],
+  "memory": ["bộ nhớ"],
+  "gb": ["gb"],
+  "mb": ["mb"],
+  "inch": ["inch"],
+  "samsung": ["samsung"],
+  "sam sung": ["samsung"],
+  "samsum": ["samsung"],
+  "samsug": ["samsung"],
+  "samsun": ["samsung"],
+  "sản sung": ["samsung"],
+  "ip": ["iphone"],
+  "ifone": ["iphone"],
+  "i phone": ["iphone"],
+  "ipone": ["iphone"],
+  "aifon": ["iphone"],
+  "oppo": ["oppo"],
+  "opo": ["oppo"],
+  "vivo": ["vivo"],
+  "xiaomi": ["xiaomi"],
+  "xaomi": ["xiaomi"],
+  "siaomi": ["xiaomi"],
+  "xiomi": ["xiaomi"],
+  "realme": ["realme"],
+  "real me": ["realme"],
+  "realmee": ["realme"],
+  "nokia": ["nokia"],
+  "huawei": ["huawei"],
+  "hoa vi": ["huawei"],
+  "hoa wei": ["huawei"],
+  "asus": ["asus"],
+  "asuz": ["asus"],
+  "hp": ["hp"],
+  "hpe": ["hp"],
+  "lenovo": ["lenovo"],
+  "lenơvo": ["lenovo"],
+  "acer": ["acer"],
+  "accer": ["acer"],
+  "dell": ["dell"],
+  "msi": ["msi"],
+  "sony": ["sony"],
+  "soni": ["sony"],
+  "xony": ["sony"],
+  "jbl": ["jbl"],
+  "logitech": ["logitech"],
+  "logitec": ["logitech"],
+  "logi": ["logitech"],
+  "razer": ["razer"],
+  "razor": ["razer"],
+  "apple": ["apple"],
+  "aple": ["apple"],
+  "aplle": ["apple"],
+  "microsoft": ["microsoft"],
+  "microsof": ["microsoft"],
+  "canon": ["canon"],
+  "conon": ["canon"],
+  "nikon": ["nikon"],
+  "nikkon": ["nikon"],
+  "gopro": ["gopro"],
+  "go pro": ["gopro"],
+  "bose": ["bose"],
+  "bóe": ["bose"],
+  "beats": ["beats"],
+  "beat": ["beats"],
+  "anker": ["anker"],
+  "ancer": ["anker"],
+  "kingston": ["kingston"],
+  "kinston": ["kingston"],
+  "sandisk": ["sandisk"],
+  "sandis": ["sandisk"],
+  "seagate": ["seagate"],
+  "sea gate": ["seagate"],
+  "wd": ["western digital"],
+  "western digital": ["western digital"],
+  "gia": ["giá"],
+  "già": ["giá"],
+  "bao nhieu": ["bao nhiêu"],
+  "san pham": ["sản phẩm"],
+  "sp": ["sản phẩm"],
+  "dia chi": ["địa chỉ"],
+  "so dien thoai": ["số điện thoại"],
+  "sdt": ["số điện thoại"],
+  "lien he": ["liên hệ"],
+  "lien lac": ["liên lạc"],
+  "thong tin": ["thông tin"],
+  "chi tiet": ["chi tiết"],
+  "mo ta": ["mô tả"],
+  "giao hang": ["giao hàng"],
+  "nhan hang": ["nhận hàng"],
+  "thanh toan": ["thanh toán"],
+  "don hang": ["đơn hàng"],
+  "don hàng": ["đơn hàng"],
+  "đơn hang": ["đơn hàng"],
+  "gio hang": ["giỏ hàng"],
+  "dat hang": ["đặt hàng"],
+  "bao hanh": ["bảo hành"],
+  "bao hành": ["bảo hành"],
+  "bao hàng": ["bảo hành"],
+  "bảo hanh": ["bảo hành"],
+  "dỏ hàng": ["đỏ hàng"],
+  "đỏ hàng": ["đỏ hàng"],
+  "bh": ["bảo hành"],
+  "bao ve": ["bảo vệ"],
+  "cam ung": ["cảm ứng"],
+  "anh": ["ảnh"],
+  "chup": ["chụp"],
+  "quay": ["quay"],
+  "video": ["video"],
+  "am thanh": ["âm thanh"],
+  "do phan giai": ["độ phân giải"],
+  "kich thuoc": ["kích thước"],
+  "kich co": ["kích cỡ"],
+  "trong luong": ["trọng lượng"],
+  "mau sac": ["màu sắc"],
+  "color": ["màu"],
+  "thiet ke": ["thiết kế"],
+  "chat lieu": ["chất liệu"],
+  "chat luong": ["chất lượng"],
+  "tot": ["tốt"],
+  "dep": ["đẹp"],
+  "xau": ["xấu"],
+  "nhanh": ["nhanh"],
+  "ben": ["bền"],
+  "muon": ["muốn"],
+  "can": ["cần"],
+  "mua": ["mua"],
+  "kiem tra": ["kiểm tra"],
+  "check": ["kiểm tra"],
+  "cho": ["cho"],
+  "gioi thieu": ["giới thiệu"],
+  "tu van": ["tư vấn"],
+  "tv": ["tư vấn"],
+  "tu vấn": ["tư vấn"],
+  "so sanh": ["so sánh"],
+  "hoan": ["hoàn"],
+  "huy": ["hủy"],
+  "giao": ["giao"],
+  "nhan": ["nhận"],
+  "chuyen khoan": ["chuyển khoản"],
+  "ck": ["chuyển khoản"],
+  "khi nao": ["khi nào"],
+  "the nao": ["thế nào"],
+  "nhu the nao": ["như thế nào"],
+  "ntn": ["như thế nào"],
+  "shop": ["shop"],
+  "sop": ["shop"],
+  "shợp": ["shop"],
+  "cửa hang": ["cửa hàng"],
+  "cua hang": ["cửa hàng"],
+  "của hàng": ["cửa hàng"],
+  "lien hệ": ["liên hệ"],
+  "liên he": ["liên hệ"],
+  "gio mo cua": ["giờ mở cửa"],
+  "gio dong cua": ["giờ đóng cửa"],
+  "lam viec": ["làm việc"],
+  "khuyen mai": ["khuyến mãi"],
+  "km": ["khuyến mãi"],
+  "giam gia": ["giảm giá"],
+  "sale": ["giảm giá"],
+  "sale off": ["giảm giá"],
+  "uu dai": ["ưu đãi"],
+  "voucher": ["voucher"],
+  "ma giam gia": ["mã giảm giá"],
+  "phi van chuyen": ["phí vận chuyển"],
+  "phi ship": ["phí ship"],
+  "ship": ["ship"],
+  "van chuyen": ["vận chuyển"],
+  "doi tra": ["đổi trả"],
+  "dieu kien": ["điều kiện"],
+  "co ko": ["có không"],
+  "co khong": ["có không"],
+  "có ko": ["có không"],
+  "het chua": ["hết chưa"],
+  "het roi": ["hết rồi"],
+  "con hang ko": ["còn hàng không"],
+  "con hang khong": ["còn hàng không"],
+  "san co": ["sẵn có"],
+  "hien co": ["hiện có"],
+  "bao lau": ["bao lâu"],
+  "ra sao": ["ra sao"],
+  "ok ko": ["ok không"],
+  "duoc ko": ["được không"],
+  "duoc khong": ["được không"],
+  "zao": ["sao"],
+  "nhu": ["như"],
+  "nư": ["như"],
+  "tron": ["trong"],
+  "trong": ["trong"],
+  "dau": ["đâu"],
+  "đau": ["đâu"],
+  "nao": ["nào"],
+  "ao": ["nào"],
+  "co": ["có"],
+  "coá": ["có"],
+  "coa": ["có"],
+  "có": ["có"],
+  "cs": ["có"],
+  "c": ["có"],
+  "csss": ["có"],
+  "cscss": ["có"],
+  "biet": ["biết"],
+  "bik": ["biết"],
+  "bit": ["biết"],
+  "bt": ["biết"],
+  "biếc": ["biết"],
+  "píc": ["biết"],
+  "pt": ["biết"],
+  "bh": ["bây giờ", "bảo hành"],
+  "bg": ["bây giờ"],
+  "bay gio": ["bây giờ"],
+  "bao h": ["bao giờ"],
+  "bao gio": ["bao giờ"],
+  "th": ["thì", "thôi"],
+  "thi": ["thì"],
+  "thoi": ["thôi"],
+  "thoai": ["thôi"],
+  "chac": ["chắc"],
+  "chăc": ["chắc"],
+  "nha": ["nha"],
+  "nhe": ["nhé"],
+  "ne": ["nè"],
+  "a": ["anh", "à"],
+  "ak": ["à"],
+  "uh": ["ừ"],
+  "uk": ["ừ"],
+  "ok": ["ok"],
+  "OK": ["ok"],
+  "cm": ["comment", "cảm ơn"],
+  "ơ": ["ở"],
+  "o": ["ở", "ông"],
+  "oi": ["ơi"],
+  "oiii": ["ơi"],
+  "ui": ["ui"],
+  "uii": ["ui"],
+  "hihi": ["hihi"],
+  "haha": ["haha"],
+  "huhu": ["huhu"],
+  "m.n": ["mọi người"],
+  "mng": ["mọi người"],
+  "nua": ["nữa"],
+  "nx": ["nữa"],
+  "cx": ["cũng"],
+  "cg": ["cũng"],
+  "cung": ["cũng"],
+  "ns": ["nói"],
+  "nt": ["nhắn tin"],
+  "ntn": ["như thế nào"],
+  "nay": ["này"],
+  "ni": ["này"],
+  "tre": ["trẻ"],
+  "rong": ["rộng"],
+  "dai": ["dài"],
+  "ngan": ["ngắn"],
+  "nhe": ["nhẹ"],
+  "nang": ["nặng"],
+  "xanh": ["xanh"],
+  "trang": ["trắng"],
+  "den": ["đen"],
+  "do": ["đỏ"],
+  "vang": ["vàng"],
+  "nau": ["nâu"],
+  "bac": ["bạc"],
+  "vang dong": ["vàng đồng"],
+  "xanh duong": ["xanh dương"],
+  "xanh la": ["xanh lá"],
+  "xanh navy": ["xanh navy"],
+  "xanh reu": ["xanh rêu"],
+  "xanh da troi": ["xanh da trời"],
+  "tim": ["tím"],
+  "cam": ["cam"],
+  "moi": ["mới"],
+  "cu": ["cũ"],
+  "like new": ["như mới"],
+  "chinh hang": ["chính hãng"],
+  "hang nhai": ["hàng nhái"],
+  "xach tay": ["xách tay"],
+  "nhap khau": ["nhập khẩu"],
+  "han quoc": ["hàn quốc"],
+  "trung quoc": ["trung quốc"],
+  "my": ["mỹ"],
+  "nhat ban": ["nhật bản"],
+  "thai lan": ["thái lan"],
+  "viet nam": ["việt nam"],
+  "vn": ["việt nam"],
+  "re": ["rẻ"],
+  "mac": ["mắc"],
+  "dat": ["đắt"],
+  "tot": ["tốt"],
+  "dem": ["dẹp"],
+  "xin": ["xinh"],
+  "sang": ["sang"],
+  "hien dai": ["hiện đại"],
+  "co dien": ["cổ điển"],
+  "don gian": ["đơn giản"],
+  "phuc tap": ["phức tạp"],
+  "sang trong": ["sang trọng"],
+  "cao cap": ["cao cấp"],
+  "binh dan": ["bình dân"],
+  "pho thong": ["phổ thông"],
+  "tien": ["tiền"],
+  "tièn": ["tiền"],
+  "dong": ["đồng"],
+  "trieu": ["triệu"],
+  "ty": ["tỷ"],
+  "ngan": ["ngàn"],
+  "cu": ["củ", "triệu"],
+  "chai": ["trăm"],
+  "nghin": ["nghìn"],
+  "m": ["triệu"],
+  "b": ["tỷ"],
+  "vnđ": ["việt nam đồng"],
+  "vnd": ["việt nam đồng"],
+  "tien mat": ["tiền mặt"],
+  "chuyen khoan": ["chuyển khoản"],
+  "the": ["thẻ"],
+  "visa": ["visa"],
+  "mastercard": ["mastercard"],
+  "atm": ["atm"],
+  "momo": ["momo"],
+  "zalopay": ["zalopay"],
+  "vnpay": ["vnpay"],
+  "airpay": ["airpay"],
+  "apple pay": ["apple pay"],
+  "samsung pay": ["samsung pay"],
+  "tra gop": ["trả góp"],
+  "mua chiu": ["mua chịu"],
+  "lai suat": ["lãi suất"],
+  "phan tram": ["phần trăm"],
+  "ngay": ["ngày"],
+  "thang": ["tháng"],
+  "nam": ["năm"],
+  "tuan": ["tuần"],
+  "gio": ["giờ"],
+  "phut": ["phút"],
+  "giay": ["giây"],
+  "hom nay": ["hôm nay"],
+  "ngay mai": ["ngày mai"],
+  "hom qua": ["hôm qua"],
+  "hqua": ["hôm qua"],
+  "luc nay": ["lúc này"],
+  "bay h": ["bây giờ"],
+  "nhanh chong": ["nhanh chóng"],
+  "giao nhanh": ["giao nhanh"],
+  "giao tận noi": ["giao tận nơi"],
+  "giao tan nha": ["giao tận nhà"],
+  "mien phi": ["miễn phí"],
+  "free": ["miễn phí"],
+  "freeship": ["miễn phí ship"],
+  "cod": ["cod"],
+  "tien hang": ["tiền hàng"],
+  "tien cod": ["tiền cod"],
+  "kien hang": ["kiện hàng"],
+  "don": ["đơn"],
+  "hop": ["hộp"],
+  "chiec": ["chiếc"],
+  "cai": ["cái"],
+  "bo": ["bộ"],
+  "com bo": ["combo"],
+  "combo": ["combo"],
+  "set": ["set"],
+  "ban": ["bán"],
+
+  "them": ["thêm"],
+  "doi": ["đổi"],
+  "tra": ["trả"],
+  "hoan": ["hoàn"],
+  "tim": ["tìm"],
+  "xem": ["xem"],
+  "kiem": ["kiểm"],
+  "tra": ["tra"],
+  "cap nhat": ["cập nhật"],
+  "update": ["cập nhật"],
+  "chinh sua": ["chỉnh sửa"],
+  "edit": ["chỉnh sửa"],
+  "luu": ["lưu"],
+  "save": ["lưu"],
+  "tai": ["tải"],
+  "tai xuong": ["tải xuống"],
+  "download": ["tải xuống"],
+  "upload": ["tải lên"],
+  "tai len": ["tải lên"],
+  "mo": ["mở"],
+  "dong": ["đóng"],
+  "bat": ["bật"],
+  "tat": ["tắt"],
+  "on": ["bật"],
+  "off": ["tắt"],
+  "khoi dong": ["khởi động"],
+  "reset": ["reset"],
+  "cai dat": ["cài đặt"],
+  "install": ["cài đặt"],
+  "go cai dat": ["gỡ cài đặt"],
+  "uninstall": ["gỡ cài đặt"],
+  "backup": ["sao lưu"],
+  "restore": ["khôi phục"],
+  "format": ["định dạng"],
+  "delete": ["xóa"],
+  "share": ["chia sẻ"],
+  "send": ["gửi"],
+  "receive": ["nhận"],
+  "connect": ["kết nối"],
+  "disconnect": ["ngắt kết nối"],
+  "wifi": ["wifi"],
+  "bluetooth": ["bluetooth"],
+  "4g": ["4g"],
+  "5g": ["5g"],
+  "3g": ["3g"],
+  "sim": ["sim"],
+  "esim": ["esim"],
+  "dual sim": ["dual sim"],
+  "hai sim": ["hai sim"],
+  "mang di dong": ["mạng di động"],
+  "song song": ["song song"],
+  "da nhiem": ["đa nhiệm"],
+  "da tac vu": ["đa tác vụ"],
+  "processor": ["bộ xử lý"],
+  "cpu": ["cpu"],
+  "gpu": ["gpu"],
+  "chip": ["chip"],
+  "snapdragon": ["snapdragon"],
+  "mediatek": ["mediatek"],
+  "exynos": ["exynos"],
+  "intel": ["intel"],
+  "amd": ["amd"],
+  "nvidia": ["nvidia"],
+  "qualcomm": ["qualcomm"],
+  "core": ["core"],
+  "thread": ["luồng"],
+  "ghz": ["ghz"],
+  "mhz": ["mhz"],
+  "ips": ["ips"],
+  "oled": ["oled"],
+  "amoled": ["amoled"],
+  "lcd": ["lcd"],
+  "led": ["led"],
+  "qled": ["qled"],
+  "hdr": ["hdr"],
+  "4k": ["4k"],
+  "full hd": ["full hd"],
+  "hd": ["hd"],
+  "fhd": ["full hd"],
+  "uhd": ["uhd"],
+  "pixel": ["pixel"],
+  "ppi": ["ppi"],
+  "dpi": ["dpi"],
+  "hz": ["hz"],
+  "fps": ["fps"],
+  "mah": ["mah"],
+  "watt": ["watt"],
+  "w": ["w"],
+  "ampere": ["ampere"],
+  "volt": ["volt"],
+  "nhanh": ["nhanh"],
+  "cham": ["chậm"],
+  "manh": ["mạnh"],
+  "yeu": ["yếu"],
+  "on dinh": ["ổn định"],
+  "khong on dinh": ["không ổn định"],
+  "lag": ["lag"],
+  "giat": ["giật"],
+  "treo": ["treo"],
+  "loi": ["lỗi"],
+  "bug": ["lỗi"],
+  "error": ["lỗi"],
+  "hong": ["hỏng"],
+  "hu": ["hư"],
+  "mo hong": ["mở hỏng"],
+  "tat hong": ["tắt hỏng"],
+  "vo": ["vỡ"],
+  "nut": ["nứt"],
+  "rach": ["rách"],
+  "xoc": ["xước"],
+  "be": ["bể"],
+  "gay": ["gãy"],
+  "lung": ["lủng"],
+  "mat": ["mất"],
+  "bi mat": ["bị mất"],
+  "bi mat cap": ["bị mất cắp"],
+  "bi danh cap": ["bị đánh cắp"],
+  "bi danh roi": ["bị đánh rơi"],
+  "bi roi": ["bị rơi"],
+  "bi vao nuoc": ["bị vào nước"],
+  "bi nuoc": ["bị nước"],
+  "chong nuoc": ["chống nước"],
+  "chong bui": ["chống bụi"],
+  "chong va dap": ["chống va đập"],
+  "chong soc": ["chống sốc"],
+  "an toan": ["an toàn"],
+  "chat luong": ["chất lượng"],
+  "uy tin": ["uy tín"],
+  "chinh hang": ["chính hãng"],
+  "fake": ["fake"],
+  "that": ["thật"],
+  "gia": ["giả"],
+  "moi": ["mới"],
+  "cu": ["cũ"],
+  "da qua su dung": ["đã qua sử dụng"],
+  "second hand": ["second hand"],
+  "refurbished": ["refurbished"],
+  "chinh chu": ["chính chủ"],
+  "nguyen ban": ["nguyên bản"],
+  "nguyen seal": ["nguyên seal"],
+  "nguyen hop": ["nguyên hộp"],
+  "full box": ["full box"],
+  "fullbox": ["fullbox"],
+  "phu kien": ["phụ kiện"],
+  "accessory": ["phụ kiện"],
+  "dong goi": ["đóng gói"],
+  "packaging": ["đóng gói"],
+  "bao bi": ["bao bì"],
+  "thung": ["thùng"],
+  "tui": ["túi"],
+  "boc": ["bọc"],
+  "nilon": ["nilon"],
+  "mang boc": ["màng bọc"],
+  "carton": ["carton"],
+  "xop": ["xốp"],
+  "bong bong": ["bóng bóng"],
+  "bao ho": ["bảo hộ"],
+  "cam ket": ["cam kết"],
+  "bao dam": ["bảo đảm"],
+  "dam bao": ["đảm bảo"],
+  "chinh sach": ["chính sách"],
+  "dieu khoan": ["điều khoản"],
+  "quy dinh": ["quy định"],
+  "huong dan": ["hướng dẫn"],
+  "ho tro": ["hỗ trợ"],
+  "support": ["hỗ trợ"],
+  "tu van": ["tư vấn"],
+  "consultant": ["tư vấn"],
+  "cham soc": ["chăm sóc"],
+  "care": ["chăm sóc"],
+  "khach hang": ["khách hàng"],
+  "customer": ["khách hàng"],
+  "nguoi dung": ["người dùng"],
+  "user": ["người dùng"],
+  "admin": ["admin"],
+  "quan tri vien": ["quản trị viên"],
+  "nhan vien": ["nhân viên"],
+  "staff": ["nhân viên"],
+  "dang ky": ["đăng ký"],
+  "register": ["đăng ký"],
+  "dang nhap": ["đăng nhập"],
+  "login": ["đăng nhập"],
+  "dang xuat": ["đăng xuất"],
+  "logout": ["đăng xuất"],
+  "tai khoan": ["tài khoản"],
+  "account": ["tài khoản"],
+  "mat khau": ["mật khẩu"],
+  "password": ["mật khẩu"],
+  "pass": ["mật khẩu"],
+  "username": ["tên đăng nhập"],
+  "email": ["email"],
+  "mail": ["email"],
+  "sms": ["sms"],
+  "otp": ["otp"],
+  "ma xac nhan": ["mã xác nhận"],
+  "xac nhan": ["xác nhận"],
+  "confirm": ["xác nhận"],
+  "kich hoat": ["kích hoạt"],
+  "active": ["kích hoạt"],
+  "mo khoa": ["mở khóa"],
+  "unlock": ["mở khóa"],
+  "khoa": ["khóa"],
+  "lock": ["khóa"],
+  "bao mat": ["bảo mật"],
+  "security": ["bảo mật"],
+  "an ninh": ["an ninh"],
+  "rieng tu": ["riêng tư"],
+  "privacy": ["riêng tư"],
+  "van tay": ["vân tay"],
+  "fingerprint": ["vân tay"],
+  "khuon mat": ["khuôn mặt"],
+  "face": ["khuôn mặt"],
+  "face id": ["face id"],
+  "touch id": ["touch id"],
+  "mat ma": ["mật mã"],
+  "pin": ["pin"],
+  "pattern": ["hình mẫu"],
+  "app": ["app"],
+  "ung dung": ["ứng dụng"],
+  "phan mem": ["phần mềm"],
+  "software": ["phần mềm"],
+  "game": ["game"],
+  "tro choi": ["trò chơi"],
+  "tai": ["tải"],
+  "download": ["tải"],
+  "cai dat": ["cài đặt"],
+  "install": ["cài đặt"],
+  "cap nhat": ["cập nhật"],
+  "update": ["cập nhật"],
+  "nang cap": ["nâng cấp"],
+  "upgrade": ["nâng cấp"],
+  "ha cap": ["hạ cấp"],
+  "downgrade": ["hạ cấp"],
+  "xoa": ["xóa"],
+  "delete": ["xóa"],
+  "go bo": ["gỡ bỏ"],
+  "remove": ["gỡ bỏ"],
+  "setting": ["cài đặt"],
+  "config": ["cấu hình"],
+  "cau hinh": ["cấu hình"],
+  "tuy chinh": ["tùy chỉnh"],
+  "customize": ["tùy chỉnh"],
+  "thiet lap": ["thiết lập"],
+  "setup": ["thiết lập"],
+  "khoi tao": ["khởi tạo"],
+  "initialize": ["khởi tạo"],
+  "sao luu": ["sao lưu"],
+  "backup": ["sao lưu"],
+  "khoi phuc": ["khôi phục"],
+  "restore": ["khôi phục"],
+  "dong bo": ["đồng bộ"],
+  "sync": ["đồng bộ"],
+  "ket noi": ["kết nối"],
+  "connect": ["kết nối"],
+  "lien ket": ["liên kết"],
+  "link": ["liên kết"],
+  "chia se": ["chia sẻ"],
+  "share": ["chia sẻ"],
+  "gui": ["gửi"],
+  "send": ["gửi"],
+  "nhan": ["nhận"],
+  "receive": ["nhận"],
+  "tin nhan": ["tin nhắn"],
+  "message": ["tin nhắn"],
+  "sms": ["sms"],
+  "chat": ["chat"],
+  "tro chuyen": ["trò chuyện"],
+  "goi": ["gọi"],
+  "call": ["gọi"],
+  "goi dien": ["gọi điện"],
+  "phone call": ["gọi điện"],
+  "goi video": ["gọi video"],
+  "video call": ["gọi video"],
+  "anh": ["ảnh"],
+  "hinh": ["hình"],
+  "photo": ["ảnh"],
+  "picture": ["ảnh"],
+  "image": ["ảnh"],
+  "video": ["video"],
+  "clip": ["clip"],
+  "phim": ["phim"],
+  "movie": ["phim"],
+  "nhac": ["nhạc"],
+  "music": ["nhạc"],
+  "bai hat": ["bài hát"],
+  "song": ["bài hát"],
+  "album": ["album"],
+  "playlist": ["danh sách phát"],
+  "danh sach phat": ["danh sách phát"],
+  "loa ngoai": ["loa ngoài"],
+  "speaker": ["loa"],
+  "headphone": ["tai nghe"],
+  "tai nghe": ["tai nghe"],
+  "earphone": ["tai nghe"],
+  "am thanh": ["âm thanh"],
+  "sound": ["âm thanh"],
+  "audio": ["âm thanh"],
+  "am luong": ["âm lượng"],
+  "volume": ["âm lượng"],
+  "to": ["to"],
+  "nho": ["nhỏ"],
+  "im": ["im"],
+  "loud": ["to"],
+  "quiet": ["nhỏ"],
+  "mute": ["tắt tiếng"],
+  "tat tieng": ["tắt tiếng"],
+  "rung": ["rung"],
+  "vibrate": ["rung"],
+  "chuong": ["chuông"],
+  "ringtone": ["chuông"],
+  "nhac chuong": ["nhạc chuông"],
+  "thong bao": ["thông báo"],
+  "notification": ["thông báo"],
+  "canh bao": ["cảnh báo"],
+  "alert": ["cảnh báo"],
+  "icon": ["biểu tượng"],
+  "bieu tuong": ["biểu tượng"],
+  "logo": ["logo"],
+  "hinh dai dien": ["hình đại diện"],
+  "avatar": ["hình đại diện"],
+  "bia": ["bìa"],
+  "cover": ["bìa"],
+  "nen": ["nền"],
+  "background": ["nền"],
+  "wallpaper": ["hình nền"],
+  "hinh nen": ["hình nền"],
+  "theme": ["giao diện"],
+  "giao dien": ["giao diện"],
+  "man hinh": ["màn hình"],
+  "display": ["màn hình"],
+  "screen": ["màn hình"],
+  "cam bien": ["cảm biến"],
+  "sensor": ["cảm biến"],
+  "van tay": ["vân tay"],
+  "fingerprint": ["vân tay"],
+  "khuon mat": ["khuôn mặt"],
+  "face": ["khuôn mặt"],
+  "mong mat": ["mống mắt"],
+  " iris": ["mống mắt"],
+  "hai lite": ["hai lite"],
+  "flashlight": ["đèn pin"],
+  "den pin": ["đèn pin"],
+  "torch": ["đèn pin"],
+  "den flash": ["đèn flash"],
+  "flash": ["flash"],
+  "zoom": ["zoom"],
+  "phong to": ["phóng to"],
+  "thu nho": ["thu nhỏ"],
+  "chup anh": ["chụp ảnh"],
+  "take photo": ["chụp ảnh"],
+  "quay video": ["quay video"],
+  "record": ["quay"],
+  "ghi am": ["ghi âm"],
+  "recorder": ["ghi âm"],
+  "mic": ["mic"],
+  "microphone": ["microphone"],
+  "cong nghe": ["công nghệ"],
+  "technology": ["công nghệ"],
+  "tech": ["công nghệ"],
+  "ai": ["ai"],
+  "tri tue nhan tao": ["trí tuệ nhân tạo"],
+  "ar": ["ar"],
+  "thuc te ao": ["thực tế ảo"],
+  "vr": ["vr"],
+  "thuc te tang cuong": ["thực tế tăng cường"],
+  "nfc": ["nfc"],
+  "gps": ["gps"],
+  "vi tri": ["vị trí"],
+  "location": ["vị trí"],
+  "ban do": ["bản đồ"],
+  "map": ["bản đồ"],
+  "dan duong": ["dẫn đường"],
+  "navigation": ["dẫn đường"],
+  "na vi": ["navi"],
+  "compass": ["la bàn"],
+  "la ban": ["la bàn"],
+  "gia toc": ["gia tốc"],
+  "accelerometer": ["gia tốc"],
+  "con quay": ["con quay"],
+  "gyroscope": ["con quay"],
+  "ap suat": ["áp suất"],
+  "barometer": ["áp kế"],
+  "nhiet do": ["nhiệt độ"],
+  "temperature": ["nhiệt độ"],
+  "do am": ["độ ẩm"],
+  "humidity": ["độ ẩm"],
+  "anh sang": ["ánh sáng"],
+  "light": ["ánh sáng"],
+  "gan": ["gần"],
+  "proximity": ["gần"],
+  "tu truong": ["từ trường"],
+  "magnetometer": ["la bàn điện tử"],
+  "tim mach": ["tim mạch"],
+  "heart rate": ["nhịp tim"],
+  "spo2": ["spo2"],
+  "oxy mau": ["oxy máu"],
+  "huyet ap": ["huyết áp"],
+  "blood pressure": ["huyết áp"],
+  "buoc chan": ["bước chân"],
+  "steps": ["bước chân"],
+  "calo": ["calo"],
+  "calorie": ["calo"],
+  "tap luyen": ["tập luyện"],
+  "workout": ["tập luyện"],
+  "fitness": ["fitness"],
+  "suc khoe": ["sức khỏe"],
+  "health": ["sức khỏe"],
+  "the thao": ["thể thao"],
+  "sport": ["thể thao"],
+  "chay bo": ["chạy bộ"],
+  "running": ["chạy bộ"],
+  "dap xe": ["đạp xe"],
+  "cycling": ["đạp xe"],
+  "boi loi": ["bơi lội"],
+  "swimming": ["bơi lội"],
+  "chong nuoc": ["chống nước"],
+  "waterproof": ["chống nước"],
+  "ip67": ["ip67"],
+  "ip68": ["ip68"],
+  "ip rating": ["chỉ số ip"],
+  "gaming": ["gaming"],
+  "choi game": ["chơi game"],
+  "do hoa": ["đồ hoạ"],
+  "graphic": ["đồ hoạ"],
+  "van phong": ["văn phòng"],
+  "office": ["văn phòng"],
+  "hoc tap": ["học tập"],
+  "study": ["học tập"],
+  "online": ["online"],
+  "truc tuyen": ["trực tuyến"],
+  "offline": ["offline"],
+  "ngoai tuyen": ["ngoại tuyến"],
+  "internet": ["internet"],
+  "mang": ["mạng"],
+  "network": ["mạng"],
+  "data": ["data"],
+  "du lieu": ["dữ liệu"],
+  "cloud": ["cloud"],
+  "dam may": ["đám mây"],
+  "icloud": ["icloud"],
+  "google drive": ["google drive"],
+  "onedrive": ["onedrive"],
+  "dropbox": ["dropbox"],
+  "server": ["server"],
+  "may chu": ["máy chủ"],
+  "host": ["host"],
+  "domain": ["tên miền"],
+  "ten mien": ["tên miền"],
+  "website": ["website"],
+  "trang web": ["trang web"],
+  "web": ["web"],
+  "browser": ["trình duyệt"],
+  "trinh duyet": ["trình duyệt"],
+  "chrome": ["chrome"],
+  "firefox": ["firefox"],
+  "safari": ["safari"],
+  "edge": ["edge"],
+  "opera": ["opera"],
+  "coccoc": ["cốc cốc"],
+  "coc coc": ["cốc cốc"],
+  "youtube": ["youtube"],
+  "facebook": ["facebook"],
+  "fb": ["facebook"],
+  "instagram": ["instagram"],
+  "insta": ["instagram"],
+  "ig": ["instagram"],
+  "tiktok": ["tiktok"],
+  "twitter": ["twitter"],
+  "zalo": ["zalo"],
+  "messenger": ["messenger"],
+  "telegram": ["telegram"],
+  "viber": ["viber"],
+  "whatsapp": ["whatsapp"],
+  "skype": ["skype"],
+  "zoom": ["zoom"],
+  "teams": ["teams"],
+  "meet": ["meet"],
+  "google": ["google"],
+  "gmail": ["gmail"],
+  "outlook": ["outlook"],
+  "yahoo": ["yahoo"],
+  "hotmail": ["hotmail"],
+  "iphone": ["iphone"],
+  "ipad": ["ipad"],
+  "macbook": ["macbook"],
+  "imac": ["imac"],
+  "mac": ["mac"],
+  "ios": ["ios"],
+  "android": ["android"],
+  "windows": ["windows"],
+  "win": ["windows"],
+  "linux": ["linux"],
+  "macos": ["macos"],
+  "he dieu hanh": ["hệ điều hành"],
+  "os": ["hệ điều hành"],
+  "operating system": ["hệ điều hành"],
+  "phien ban": ["phiên bản"],
+  "version": ["phiên bản"],
+  "ver": ["phiên bản"],
+  "moi nhat": ["mới nhất"],
+  "latest": ["mới nhất"],
+  "cu nhat": ["cũ nhất"],
+  "oldest": ["cũ nhất"],
+  "pho bien": ["phổ biến"],
+  "popular": ["phổ biến"],
+  "hot": ["hot"],
+  "trending": ["xu hướng"],
+  "xu huong": ["xu hướng"],
+  "bestseller": ["bán chạy"],
+  "ban chay": ["bán chạy"],
+  "top": ["top"],
+  "xep hang": ["xếp hạng"],
+  "ranking": ["xếp hạng"],
+  "danh gia": ["đánh giá"],
+  "review": ["đánh giá"],
+  "feedback": ["phản hồi"],
+  "phan hoi": ["phản hồi"],
+  "comment": ["bình luận"],
+  "binh luan": ["bình luận"],
+  "rate": ["đánh giá"],
+  "xep hang": ["xếp hạng"],
+  "star": ["sao"],
+  "sao": ["sao"],
+  "diem": ["điểm"],
+  "point": ["điểm"],
+  "like": ["thích"],
+  "thich": ["thích"],
+  "dislike": ["không thích"],
+  "khong thich": ["không thích"],
+  "yeu thich": ["yêu thích"],
+  "favorite": ["yêu thích"],
+  "wishlist": ["danh sách yêu thích"],
+  "danh sach yeu thich": ["danh sách yêu thích"],
+  "gio hang": ["giỏ hàng"],
+  "cart": ["giỏ hàng"],
+  "basket": ["giỏ hàng"],
+  "checkout": ["thanh toán"],
+  "order": ["đơn hàng"],
+  "purchase": ["mua hàng"],
+  "mua hang": ["mua hàng"],
+  "buy": ["mua"],
+  "sell": ["bán"],
+  "transaction": ["giao dịch"],
+  "giao dich": ["giao dịch"],
+  "invoice": ["hóa đơn"],
+  "hoa don": ["hóa đơn"],
+  "receipt": ["biên lai"],
+  "bien lai": ["biên lai"],
+  "warranty": ["bảo hành"],
+  "guarantee": ["đảm bảo"],
+  "refund": ["hoàn tiền"],
+  "hoan tien": ["hoàn tiền"],
+  "exchange": ["đổi"],
+  "return": ["trả"],
+  "cancel": ["hủy"],
+  "confirm": ["xác nhận"],
+  "xac nhan": ["xác nhận"],
+  "complete": ["hoàn thành"],
+  "hoan thanh": ["hoàn thành"],
+  "pending": ["đang chờ"],
+  "dang cho": ["đang chờ"],
+  "processing": ["đang xử lý"],
+  "dang xu ly": ["đang xử lý"],
+  "shipping": ["đang giao"],
+  "dang giao": ["đang giao"],
+  "delivered": ["đã giao"],
+  "da giao": ["đã giao"],
+  "received": ["đã nhận"],
+  "da nhan": ["thành công"],
+  "thanh cong": ["thành công"],
+  "error": ["lỗi"],
+  "loi": ["lỗi"],
+  "warning": ["cảnh báo"],
+  "canh bao": ["cảnh báo"],
+  "info": ["thông tin"],
+  "information": ["thông tin"],
+  "detail": ["chi tiết"],
+  "specification": ["thông số kỹ thuật"],
+  "thong so": ["thông số"],
+  "thong so ky thuat": ["thông số kỹ thuật"],
+  "feature": ["tính năng"],
+  "tinh nang": ["tính năng"],
+  "function": ["chức năng"],
+  "chuc nang": ["chức năng"],
+  "advantage": ["ưu điểm"],
+  "uu diem": ["ưu điểm"],
+  "disadvantage": ["nhược điểm"],
+  "nhuoc diem": ["nhược điểm"],
+  "pros": ["ưu điểm"],
+  "cons": ["nhược điểm"],
+  "comparison": ["so sánh"],
+  "compare": ["so sánh"],
+  "difference": ["khác biệt"],
+  "khac biet": ["khác biệt"],
+  "similar": ["tương tự"],
+  "tuong tu": ["tương tự"],
+  "same": ["giống"],
+  "giong": ["giống"],
+  "different": ["khác"],
+  "khac": ["khác"],
+  "better": ["tốt hơn"],
+  "tot hon": ["tốt hơn"],
+  "worse": ["tệ hơn"],
+  "te hon": ["tệ hơn"],
+  "best": ["tốt nhất"],
+  "tot nhat": ["tốt nhất"],
+  "worst": ["tệ nhất"],
+  "te nhat": ["tệ nhất"],
+  "cheap": ["rẻ"],
+  "cheaper": ["rẻ hơn"],
+  "re hon": ["rẻ hơn"],
+  "cheapest": ["rẻ nhất"],
+  "re nhat": ["rẻ nhất"],
+  "expensive": ["đắt"],
+  "more expensive": ["đắt hơn"],
+  "dat hon": ["đắt hơn"],
+  "most expensive": ["đắt nhất"],
+  "dat nhat": ["đắt nhất"],
+  "affordable": ["giá phải chăng"],
+  "gia phai chang": ["giá phải chăng"],
+  "budget": ["ngân sách"],
+  "ngan sach": ["ngân sách"],
+  "mid-range": ["tầm trung"],
+  "tam trung": ["tầm trung"],
+  "high-end": ["cao cấp"],
+  "flagship": ["hàng đầu"],
+  "entry-level": ["phổ thông"],
+  "pho thong": ["phổ thông"],
+  "premium": ["cao cấp"],
+  "luxury": ["sang trọng"],
+  "sang trong": ["sang trọng"],
+  "standard": ["tiêu chuẩn"],
+  "tieu chuan": ["tiêu chuẩn"],
+  "basic": ["cơ bản"],
+  "co ban": ["cơ bản"],
+  "advanced": ["nâng cao"],
+  "nang cao": ["nâng cao"],
+  "professional": ["chuyên nghiệp"],
+  "chuyen nghiep": ["chuyên nghiệp"],
+  "pro": ["pro"],
+  "lite": ["lite"],
+  "plus": ["plus"],
+  "max": ["max"],
+  "mini": ["mini"],
+  "ultra": ["ultra"],
+  "note": ["note"],
+  "series": ["series"],
+  "generation": ["thế hệ"],
+  "the he": ["thế hệ"],
+  "gen": ["thế hệ"],
+  "year": ["năm"],
+  "model": ["mẫu"],
+  "mau": ["mẫu"],
+  "type": [" loại"],
+  "loai": ["loại"],
+  "kind": ["loại"],
+  "category": ["danh mục"],
+  "danh muc": ["danh mục"],
+  "brand": ["thương hiệu"],
+  "thuong hieu": ["thương hiệu"],
+  "manufacturer": ["nhà sản xuất"],
+  "nha san xuat": ["nhà sản xuất"],
+  "maker": ["nhà sản xuất"],
+  "seller": ["người bán"],
+  "nguoi ban": ["người bán"],
+  "buyer": ["người mua"],
+  "nguoi mua": ["người mua"],
+  "dealer": ["đại lý"],
+  "dai ly": ["đại lý"],
+  "distributor": ["nhà phân phối"],
+  "nha phan phoi": ["nhà phân phối"],
+  "retailer": ["nhà bán lẻ"],
+  "nha ban le": ["nhà bán lẻ"],
+  "wholesaler": ["nhà bán sỉ"],
+  "nha ban si": ["nhà bán sỉ"],
+  "supplier": ["nhà cung cấp"],
+  "nha cung cap": ["nhà cung cấp"],
+  "importer": ["nhà nhập khẩu"],
+  "nha nhap khau": ["nhà nhập khẩu"],
+  "exporter": ["nhà xuất khẩu"],
+  "nha xuat khau": ["nhà xuất khẩu"],
+  "authentic": ["chính hãng"],
+  "genuine": ["chính hãng"],
+  "original": ["chính hãng"],
+  "legit": ["chính hãng"],
+  "authorized": ["được ủy quyền"],
+  "duoc uy quyen": ["được ủy quyền"],
+  "official": ["chính thức"],
+  "chinh thuc": ["chính thức"],
+  "licensed": ["có giấy phép"],
+  "co giay phep": ["có giấy phép"],
+  "certified": ["được chứng nhận"],
+  "duoc chung nhan": ["được chứng nhận"],
+  "approved": ["được phê duyệt"],
+  "duoc phe duyet": ["được phê duyệt"],
+  "verified": ["đã xác minh"],
+  "da xac minh": ["đã xác minh"],
+  "trusted": ["đáng tin cậy"],
+  "dang tin cay": ["đáng tin cậy"],
+  "reliable": ["đáng tin cậy"],
+  "quality": ["chất lượng"],
+  "exclusive": ["độc quyền"],
+  "doc quyen": ["độc quyền"],
+  "limited": ["giới hạn"],
+  "gioi han": ["giới hạn"],
+  "limited edition": ["phiên bản giới hạn"],
+  "phien ban gioi han": ["phiên bản giới hạn"],
+  "special edition": ["phiên bản đặc biệt"],
+  "phien ban dac biet": ["phiên bản đặc biệt"],
+  "custom": ["tùy chỉnh"],
+  "tuy chinh": ["tùy chỉnh"],
+  "personalized": ["cá nhân hóa"],
+  "ca nhan hoa": ["cá nhân hóa"],
+  "unique": ["độc đáo"],
+  "doc dao": ["độc đáo"],
+  "rare": ["hiếm"],
+  "hiem": ["hiếm"],
+  "common": ["thông thường"],
+  "thong thuong": ["thông thường"],
+  "available": ["có sẵn"],
+  "co san": ["có sẵn"],
+  "in stock": ["còn hàng"],
+  "con hang": ["còn hàng"],
+  "out of stock": ["hết hàng"],
+  "het hang": ["hết hàng"],
+  "pre-order": ["đặt trước"],
+  "dat truoc": ["đặt trước"],
+  "coming soon": ["sắp ra mắt"],
+  "sap ra mat": ["sắp ra mắt"],
+  "new arrival": ["hàng mới về"],
+  "hang moi ve": ["hàng mới về"],
+  "just in": ["mới về"],
+  "moi ve": ["mới về"],
+  "clearance": ["thanh lý"],
+  "thanh ly": ["thanh lý"],
+  "deal": ["ưu đãi"],
+  "offer": ["ưu đãi"],
+  "promotion": ["khuyến mãi"],
+  "promo": ["khuyến mãi"],
+  "discount": ["giảm giá"],
+  "cut": ["giảm"],
+  "giam": ["giảm"],
+  "reduce": ["giảm"],
+  "percent": ["phần trăm"],
+  "phan tram": ["phần trăm"],
+  "%": ["phần trăm"],
+  "off": ["giảm"],
+  "save": ["tiết kiệm"],
+  "tiet kiem": ["tiết kiệm"],
+  "bonus": ["thưởng"],
+  "thuong": ["thưởng"],
+  "gift": ["quà tặng"],
+  "qua tang": ["quà tặng"],
+  "freebie": ["quà tặng"],
+  "giveaway": ["tặng"],
+  "tang": ["tặng"],
+  "complimentary": ["miễn phí"],
+  "free": ["miễn phí"],
+  "mien phi": ["miễn phí"],
+  "no cost": ["không mất phí"],
+  "khong mat phi": ["không mất phí"],
+  "on the house": ["miễn phí"],
+  "gratis": ["miễn phí"]
 }

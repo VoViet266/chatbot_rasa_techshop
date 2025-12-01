@@ -1,0 +1,38 @@
+version: '3.4'
+
+services:
+  rasa:
+    container_name: rasa_server
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5005:5005"
+    volumes:
+      # QUAN TRỌNG: Chỉ mount models để lưu file model sau khi train
+      - rasa-models:/app/models
+    env_file:
+      - .env
+    restart: always
+    depends_on:
+      - action_server
+    networks:
+      - rasa-network
+
+  action_server:
+    container_name: action_server
+    build:
+      context: ./actions
+      dockerfile: Dockerfile
+    ports:
+      - "5055:5055"
+    networks:
+      - rasa-network
+
+# Định nghĩa Volume để dữ liệu không bị mất khi redeploy
+volumes:
+  rasa-models:
+
+networks:
+  rasa-network:
+    driver: bridge

@@ -115,13 +115,6 @@ rules:
       - intent: cancel
       - action: action_cancel_ordering_process
 
-  - rule: Hủy đơn hàng
-    condition:
-      - active_loop: null
-    steps:
-      - intent: cancel_order
-      - action: action_cancel_order
-
   - rule: Xử lý khi form trả hàng hoàn tất
     condition:
       - active_loop: return_order_form

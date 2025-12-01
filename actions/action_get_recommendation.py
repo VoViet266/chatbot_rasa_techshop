@@ -2,12 +2,16 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from utils.render_product_ui import render_products
 from utils.database import DatabaseService
 from bson import ObjectId
 from rasa_sdk.events import AllSlotsReset, SlotSet
 
-BACKEND_URL = "http://localhost:8080/api/v1"
+
 
 class ActionGetRecommendation(Action):
     def name(self) -> Text:
@@ -53,7 +57,7 @@ class ActionGetRecommendation(Action):
                     headers["Authorization"] = f"Bearer {token}"
                     try:
                         print(f"Fetching recommendations for user: {user_id}")
-                        response = requests.get(f"{BACKEND_URL}/recommend/get-by-user/{user_id}", headers= headers)
+                        response = requests.get(f"{os.getenv('BACKEND_URL')}/recommend/get-by-user/{user_id}", headers= headers)
                         if response.status_code == 200:
                             json_response = response.json()
                             
@@ -65,7 +69,7 @@ class ActionGetRecommendation(Action):
                     recommendations = user_recommendations
                 else:
                 
-                    response = requests.get(f"{BACKEND_URL}/recommend/recommendation/get-popular?limit=5")
+                    response = requests.get(f"{os.getenv('BACKEND_URL')}/recommend/recommendation/get-popular?limit=5")
                     if response.status_code == 200:
                         json_response = response.json()
                         recommendations = json_response.get("data", [])

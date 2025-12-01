@@ -1,5 +1,9 @@
 from utils.format_currentcy import format_vnd
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 
 def render_variants_list(variants, message=""):
@@ -47,7 +51,7 @@ def render_variants_list(variants, message=""):
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {sold_count}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {rating}</span>
         </div>
-        <a href="http://localhost:5173/product/{variant.get('product_id', '')}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
+        <a href="{os.getenv('FRONTEND_URL')}/product/{variant.get('product_id', '')}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
     </div>
 </div>'''
     
@@ -111,7 +115,7 @@ def render_products(products, message=""):
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">Đã bán: {sold_count}</span>
             <span style="font-size:12px;padding:4px 8px;background:#f5f5f5;border-radius:4px;color:#616161;">⭐ {rating}</span>
         </div>
-        <a href="http://localhost:5173/product/{product_id}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
+        <a href="{os.getenv('FRONTEND_URL')}/product/{product_id}" style="display:inline-block;padding:8px 16px;font-size:13px;font-weight:500;color:#fff;background:#1976d2;border-radius:6px;text-decoration:none;transition:background 0.2s;">Xem chi tiết</a>
     </div>
 </div>'''
     
@@ -186,7 +190,7 @@ def render_product_card(product, variants):
         
         variants_html_list += '</div>'
 
-    product_url = f"http://localhost:5173/product/{str(product.get('_id', ''))}"
+    product_url = f"{os.getenv('FRONTEND_URL')}/product/{str(product.get('_id', ''))}"
 
     card_html = f'''<div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:#1a1a1a;max-width:400px;">
 <p style="margin:0 0 16px;font-size:14px;font-weight:500;">Đây là sản phẩm bạn tìm: {product["name"]}</p>

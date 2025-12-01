@@ -1,8 +1,9 @@
 version: "3.1"
 
 nlu:
-  - synonym: laptop
+  - synonym: máy tính
     examples: |
+      - laptop
       - macbook
       - mac
       - máy tính xách tay

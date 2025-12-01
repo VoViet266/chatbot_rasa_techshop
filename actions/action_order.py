@@ -10,6 +10,10 @@ from utils.format_currentcy import format_vnd
 from utils.product_pipelines import build_search_pipeline
 from utils.validate_user import validate_user
 import re
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def _get_validated_order_info(tracker: Tracker, db_service: DatabaseService, dispatcher: CollectingDispatcher) -> Tuple[Optional[str], Optional[Dict]]:
     user_id = validate_user(tracker,dispatcher, message="Vui lòng đăng nhập để đặt hàng!")
@@ -354,7 +358,7 @@ class ActionSubmitOrder(Action):
             
         try:
             response = requests.post(
-                "http://localhost:8080/api/v1/orders", 
+                f"{os.getenv('BACKEND_URL')}/orders", 
                 json=order_payload, 
                 headers=headers, 
                 timeout=10
@@ -431,7 +435,7 @@ class ActionCancelOrder(Action):
 
         try:
             response = requests.patch(
-                f"http://localhost:8080/api/v1/orders/cancel/{order_id}",
+                f"{os.getenv('BACKEND_URL')}/orders/cancel/{order_id}",
                 headers=headers,
                 timeout=10,
             )

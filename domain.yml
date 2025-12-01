@@ -844,28 +844,6 @@ responses:
       text: "Lỗi click đúp hoặc liệt nút cuộn thường do switch bị hỏng hoặc bẩn. Bạn có thể mang qua shop để vệ sinh hoặc thay switch mới ạ."
     - text: "Nếu sản phẩm gặp lỗi, bạn vui lòng mang qua cửa hàng TechShop gần nhất để được kỹ thuật viên kiểm tra và hỗ trợ nhé."
 
-  utter_faq/warranty:
-    - condition:
-        - type: slot
-          name: category
-          value: laptop
-      text: "Laptop tại TechShop được bảo hành 12 tháng (máy mới) hoặc 6 tháng (máy cũ). Bảo hành toàn diện cả nguồn, màn hình, bàn phím. Lỗi 1 đổi 1 trong 30 ngày đầu."
-    - condition:
-        - type: slot
-          name: category
-          value: điện thoại
-      text: "Điện thoại được bảo hành 12 tháng chính hãng hoặc 6 tháng tại cửa hàng (với máy cũ). Bao test 1 đổi 1 trong 30 ngày. Hỗ trợ bảo hành cả nguồn và màn hình."
-    - condition:
-        - type: slot
-          name: category
-          value: tai nghe
-      text: "Tai nghe được bảo hành 12 tháng (với hàng chính hãng) hoặc 3-6 tháng (với hàng xách tay/cũ). Lỗi 1 đổi 1 ngay lập tức nếu có lỗi nhà sản xuất trong tháng đầu."
-    - condition:
-        - type: slot
-          name: category
-          value: chuột
-      text: "Chuột Gaming/Văn phòng được bảo hành 12-24 tháng tùy hãng (Logitech, Razer...). Đổi mới ngay nếu bị lỗi click đúp hoặc cảm biến trong thời gian bảo hành."
-    - text: "TechShop bảo hành 12 tháng cho máy mới và 6 tháng cho máy cũ. Lỗi 1 đổi 1 trong 30 ngày đầu nếu có lỗi nhà sản xuất. Bảo hành cả nguồn và màn hình ạ."
 
   utter_faq/installment:
     - condition:

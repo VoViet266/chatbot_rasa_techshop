@@ -4,6 +4,10 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import AllSlotsReset
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from utils.database import DatabaseService
 from bson import ObjectId
 
@@ -74,7 +78,7 @@ class ActionReturnOrder(Action):
                 
             try:
                 response = requests.patch(
-                    f"http://localhost:8080/api/v1/orders/request-return/{order_id}",
+                    f"{os.getenv('BACKEND_URL')}orders/request-return/{order_id}",
                     json={"returnReason": return_reason},
                     headers= headers,
                     timeout=10,

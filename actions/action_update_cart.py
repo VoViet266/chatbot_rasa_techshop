@@ -1,4 +1,8 @@
 import requests
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 from rasa_sdk import Action, Tracker
 from bson import ObjectId
 from utils.database import DatabaseService
@@ -112,7 +116,7 @@ class ActionUpdateCart(Action):
             headers["Authorization"] = f"Bearer {token}"
 
         try:
-            api_url = f"http://localhost:8080/api/v1/carts/{cart['_id']}"
+            api_url = f"{os.getenv('BACKEND_URL')}/carts/{cart['_id']}"
             response = requests.patch(
                 api_url,
                 json=payload,
