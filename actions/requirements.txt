@@ -1,0 +1,9 @@
+pymongo>=4.3.3
+dnspython
+requests>=2.32.0
+aiohttp>=3.9.0
+python-dotenv
+python-dateutil
+dateparser
+ujson
+APScheduler
