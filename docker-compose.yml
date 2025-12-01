@@ -22,8 +22,8 @@ services:
   action_server:
     container_name: action_server
     build:
-      context: ./actions
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: actions/Dockerfile
     ports:
       - "5055:5055"
     networks:
